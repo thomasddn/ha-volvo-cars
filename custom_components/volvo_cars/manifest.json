@@ -5,9 +5,11 @@
     "@thomasddn"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/thomasddn/home-assistant-volvo-cars",
+  "documentation": "https://github.com/thomasddn/ha-volvo-cars",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/thomasddn/home-assistant-volvo-cars/issues",
-  "requirements": ["pydantic==1.10.18"],
-  "version": "0.1.0"
+  "issue_tracker": "https://github.com/thomasddn/ha-volvo-cars/issues",
+  "requirements": [
+    "pydantic==1.10.18"
+  ],
+  "version": "0.2.0"
 }
