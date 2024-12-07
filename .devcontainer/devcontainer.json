@@ -1,0 +1,52 @@
+{
+    "name": "Home Assistant Volvo Cars",
+    "context": "..",
+    "dockerFile": "../Dockerfile.dev",
+    "postCreateCommand": "scripts/setup.sh",
+    "postStartCommand": "scripts/bootstrap.sh",
+    "containerEnv": {
+      "PYTHONASYNCIODEBUG": "1"
+    },
+    "features": {
+      "ghcr.io/devcontainers/features/github-cli:1": {}
+    },
+    // Port 5683 udp is used by Shelly integration
+    "appPort": ["8124:8123"], // , "5683:5683/udp"
+    "runArgs": ["-e", "GIT_EDITOR=code --wait"],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "charliermarsh.ruff",
+                "ms-python.pylint",
+                "ms-python.vscode-pylance",
+                "visualstudioexptteam.vscodeintellicode",
+                "redhat.vscode-yaml",
+                "esbenp.prettier-vscode"
+            ],
+            // Please keep this file in sync with settings in .vscode/settings.default.json
+            "settings": {
+                "python.experiments.optOutFrom": [
+                    "pythonTestAdapter"
+                ],
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.pythonPath": "/usr/local/bin/python",
+                "python.terminal.activateEnvInCurrentTerminal": true,
+                "python.testing.pytestArgs": [
+                    "--no-cov",
+                    "--init-hook",
+                    "import sys; sys.path.insert(0, './custom_components/volvo_cars')"
+                ],
+                "python.analysis.typeCheckingMode": "basic",
+                "python.analysis.diagnosticMode": "workspace",
+                "pylint.importStrategy": "fromEnvironment",
+                "editor.formatOnPaste": false,
+                "editor.formatOnSave": true,
+                "editor.formatOnType": true,
+                "files.trimTrailingWhitespace": true,
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff"
+                }
+            }
+        }
+    }
+}

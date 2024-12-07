@@ -1,0 +1,13 @@
+{
+  "domain": "volvo_cars",
+  "name": "Volvo Cars",
+  "codeowners": [
+    "@thomasddn"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/thomasddn/home-assistant-volvo-cars",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/thomasddn/home-assistant-volvo-cars/issues",
+  "requirements": ["pydantic==1.10.18"],
+  "version": "0.1.0"
+}

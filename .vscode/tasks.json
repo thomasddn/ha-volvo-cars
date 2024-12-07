@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Home Assistant on port 8123",
+            "type": "shell",
+            "command": "scripts/develop",
+            "problemMatcher": []
+        },
+        {
+            "label": "Activate environment",
+            "type": "shell",
+            "command": "source /home/vscode/.local/ha-venv/bin/activate",
+        }
+    ]
+}
