@@ -1,5 +1,5 @@
 colorlog==6.8.2
-homeassistant==2024.11.0
+homeassistant==2024.12.0
 pip>=21.3.1
 ruff==0.6.7
-pydantic==1.10.18
+pydantic>=1.10.18,<2.0
