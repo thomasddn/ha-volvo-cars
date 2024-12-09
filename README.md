@@ -13,7 +13,6 @@ Now check out the features section for details on what you'll get!
 - Multiple cars
 - Multiple accounts
 - Translations (but [need help](#need-help) on this 🙏)
-- [More to come...](#road-ahead)
 
 ### Entities
 
@@ -129,17 +128,7 @@ Fill in the OTP to complete the process.
 - Test if you have multiple Volvos on the **same account**.
 - Test if you have multiple Volvos across **different accounts**.
 - Test with other Volvo models (non-BEV).
-
-<a name="road-ahead"></a>
-
-## 🛣️ The _road_ ahead
-
-Some features popping up in the _rearview mirror_, in no particular order, are:
-
-- Unit conversions (Volvo API reports in km and liters only)
-- Smart data refresh interval
-- Timestamp last refresh sensor
-- Attribute which holds timestamp of when the value has been last retrieved from the vehicle
+- Users that use imperial system.
 
 ## 🥤 Powered by snacks
 
