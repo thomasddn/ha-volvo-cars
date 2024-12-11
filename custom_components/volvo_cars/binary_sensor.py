@@ -452,7 +452,11 @@ async def async_setup_entry(
 ) -> None:
     """Set up sensors."""
     coordinator = entry.runtime_data.coordinator
-    sensors = [VolvoCarsSensor(coordinator, description) for description in SENSORS]
+    sensors = [
+        VolvoCarsSensor(coordinator, description)
+        for description in SENSORS
+        if description.api_field not in coordinator.unsupported_keys
+    ]
 
     async_add_entities(sensors)
 

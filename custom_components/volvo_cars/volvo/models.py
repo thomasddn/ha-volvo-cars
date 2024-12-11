@@ -3,10 +3,12 @@
 from dataclasses import KW_ONLY, dataclass, field, is_dataclass
 from datetime import datetime
 import inspect
-from typing import Any
+from typing import Any, TypeVar
 
 # pylint: disable-next=no-name-in-module
 from pydantic import BaseModel, Field
+
+T = TypeVar("T", bound="VolvoCarsApiBaseModel")
 
 
 class VolvoCarsModel(BaseModel):
@@ -53,7 +55,7 @@ class VolvoCarsApiBaseModel:
     extra_data: dict[str, Any] = field(default_factory=dict[str, Any])
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]):
+    def from_dict(cls: type[T], data: dict[str, Any]) -> T | None:
         """Create instance from json dict."""
         parameters = inspect.signature(cls).parameters
         class_data: dict[str, Any] = {}
@@ -75,6 +77,9 @@ class VolvoCarsApiBaseModel:
                     class_data[key] = value
             else:
                 extra_data[key] = value
+
+        if len(class_data) == 0:
+            return None
 
         class_data["extra_data"] = extra_data
         return cls(**class_data)

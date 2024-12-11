@@ -69,59 +69,61 @@ class VolvoCarsApi:
             _LOGGER.debug("Request [API status] error: %s", ex.message)
             raise VolvoApiException from ex
 
-    async def async_get_availability_status(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_availability_status(
+        self,
+    ) -> dict[str, VolvoCarsValueField | None]:
         """Get availability status."""
         return await self._async_get_field(
             _API_CONNECTED_ENDPOINT, "command-accessibility"
         )
 
-    async def async_get_brakes_status(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_brakes_status(self) -> dict[str, VolvoCarsValueField | None]:
         """Get brakes status."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "brakes")
 
-    async def async_get_commands(self) -> list[VolvoCarsAvailableCommand]:
+    async def async_get_commands(self) -> list[VolvoCarsAvailableCommand | None]:
         """Get available commands."""
         items = await self._async_get_data_list(_API_CONNECTED_ENDPOINT, "commands")
         return [VolvoCarsAvailableCommand.from_dict(item) for item in items]
 
-    async def async_get_diagnostics(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_diagnostics(self) -> dict[str, VolvoCarsValueField | None]:
         """Get diagnostics."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "diagnostics")
 
-    async def async_get_doors_status(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_doors_status(self) -> dict[str, VolvoCarsValueField | None]:
         """Get doors status."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "doors")
 
-    async def async_get_engine_status(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_engine_status(self) -> dict[str, VolvoCarsValueField | None]:
         """Get engine status."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "engine-status")
 
-    async def async_get_engine_warnings(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_engine_warnings(self) -> dict[str, VolvoCarsValueField | None]:
         """Get engine warnings."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "engine")
 
-    async def async_get_fuel_status(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_fuel_status(self) -> dict[str, VolvoCarsValueField | None]:
         """Get fuel status."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "fuel")
 
-    async def async_get_location(self) -> dict[str, VolvoCarsLocation]:
+    async def async_get_location(self) -> dict[str, VolvoCarsLocation | None]:
         """Get location."""
         data = await self._async_get_data_dict(_API_LOCATION_ENDPOINT, "location")
         return {"location": VolvoCarsLocation.from_dict(data)}
 
-    async def async_get_odometer(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_odometer(self) -> dict[str, VolvoCarsValueField | None]:
         """Get odometer."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "odometer")
 
-    async def async_get_recharge_status(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_recharge_status(self) -> dict[str, VolvoCarsValueField | None]:
         """Get recharge status."""
         return await self._async_get_field(_API_ENERGY_ENDPOINT, "recharge-status")
 
-    async def async_get_statistics(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_statistics(self) -> dict[str, VolvoCarsValueField | None]:
         """Get statistics."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "statistics")
 
-    async def async_get_tyre_states(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_tyre_states(self) -> dict[str, VolvoCarsValueField | None]:
         """Get tyre states."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "tyres")
 
@@ -130,24 +132,26 @@ class VolvoCarsApi:
         data = await self._async_get_data_dict(_API_CONNECTED_ENDPOINT, "")
         return VolvoCarsVehicle.parse_obj(data)
 
-    async def async_get_warnings(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_warnings(self) -> dict[str, VolvoCarsValueField | None]:
         """Get warnings."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "warnings")
 
-    async def async_get_window_states(self) -> dict[str, VolvoCarsValueField]:
+    async def async_get_window_states(self) -> dict[str, VolvoCarsValueField | None]:
         """Get window states."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "windows")
 
-    async def async_execute_command(self, command: str) -> VolvoCarsCommandResult:
+    async def async_execute_command(
+        self, command: str
+    ) -> VolvoCarsCommandResult | None:
         """Execute a command."""
         body = await self._async_post(_API_CONNECTED_ENDPOINT, f"commands/{command}")
         data: dict = body.get("data", {})
-        data["invoke_status"] = data.pop("invokeStatus")
+        data["invoke_status"] = data.pop("invokeStatus", None)
         return VolvoCarsCommandResult.from_dict(data)
 
     async def _async_get_field(
         self, endpoint: str, operation: str
-    ) -> dict[str, VolvoCarsValueField]:
+    ) -> dict[str, VolvoCarsValueField | None]:
         body = await self._async_get(endpoint, operation)
         data: dict = body.get("data", {})
         return {
@@ -206,6 +210,9 @@ class VolvoCarsApi:
                 response.raise_for_status()
                 return data
         except ClientResponseError as ex:
+            if ex.status == 404:
+                return {}
+
             _LOGGER.debug("Request [%s] error: %s", operation, ex.message)
             if ex.status in (401, 403):
                 raise VolvoAuthException from ex

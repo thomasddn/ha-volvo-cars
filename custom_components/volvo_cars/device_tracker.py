@@ -42,7 +42,9 @@ async def async_setup_entry(
     """Set up tracker."""
     coordinator = entry.runtime_data.coordinator
     trackers = [
-        VolvoCarsDeviceTracker(coordinator, description) for description in TRACKERS
+        VolvoCarsDeviceTracker(coordinator, description)
+        for description in TRACKERS
+        if coordinator.supports_location
     ]
 
     async_add_entities(trackers)

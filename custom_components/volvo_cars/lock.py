@@ -109,13 +109,15 @@ class VolvoCarsLock(VolvoCarsEntity, LockEntity):
             self.async_write_ha_state()
 
             result = await self.coordinator.api.async_execute_command(command)
-            _LOGGER.debug("Lock '%s' result: %s", command, result.invoke_status)
-            self._attr_extra_state_attributes[ATTR_LAST_RESULT] = result.invoke_status
+            status = result.invoke_status if result else "<none>"
+
+            _LOGGER.debug("Lock '%s' result: %s", command, status)
+            self._attr_extra_state_attributes[ATTR_LAST_RESULT] = status
             self._attr_extra_state_attributes[ATTR_API_TIMESTAMP] = datetime.now(
                 UTC
             ).isoformat()
 
-            if result.invoke_status not in ("COMPLETED", "DELIVERED"):
+            if status not in ("COMPLETED", "DELIVERED"):
                 self._attr_is_locking = False
                 self._attr_is_unlocking = False
                 self.async_write_ha_state()
@@ -125,8 +127,8 @@ class VolvoCarsLock(VolvoCarsEntity, LockEntity):
                     translation_key="lock_failure",
                     translation_placeholders={
                         "command": command,
-                        "status": result.invoke_status,
-                        "message": result.message,
+                        "status": status,
+                        "message": result.message if result else "",
                     },
                 )
 
