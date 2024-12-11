@@ -34,7 +34,7 @@ class VolvoCarsVehicle(BaseModel):
     gearbox: str
     fuel_type: str = Field(..., alias="fuelType")
     external_colour: str = Field(..., alias="externalColour")
-    battery_capacity_kwh: float = Field(..., alias="batteryCapacityKWH")
+    battery_capacity_kwh: float | None = Field(None, alias="batteryCapacityKWH")
     images: VolvoCarsImages
     description: VolvoCarsModel = Field(..., alias="descriptions")
 
