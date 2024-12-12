@@ -21,9 +21,9 @@ from .volvo.models import VolvoCarsApiBaseModel, VolvoCarsVehicle
 _LOGGER = logging.getLogger(__name__)
 _HEADERS = {
     "Accept-Language": "en-GB",
-    "Sec-Fetch-User": "?1",
-    "User-Agent": "home-assistant",
     "Cache-Control": "no-cache",
+    "Sec-Fetch-User": "?1",
+    "User-Agent": "PostmanRuntime/7.43.0",
 }
 PARALLEL_UPDATES = 0
 
@@ -57,7 +57,6 @@ async def _async_image_exists(client: AsyncClient, url: str) -> bool:
 
 # pylint: disable=unexpected-keyword-arg
 IMAGES: tuple[VolvoCarsImageDescription, ...] = (
-    # TODO: translation = side passenger
     VolvoCarsImageDescription(
         key="exterior",
         translation_key="exterior",
@@ -127,16 +126,18 @@ async def async_setup_entry(
 ) -> None:
     """Set up images."""
     coordinator = entry.runtime_data.coordinator
-    # client = async_get_clientsession(hass)
     client = get_async_client(hass, False)
     client.headers.update(_HEADERS)
 
     images = [
         VolvoCarsImage(coordinator, description)
         for description in IMAGES
-        if await _async_image_exists(
-            client, description.image_url_fn(coordinator.vehicle)
+        if (
+            await _async_image_exists(
+                client, description.image_url_fn(coordinator.vehicle)
+            )
         )
+        is True
     ]
 
     async_add_entities(images)
