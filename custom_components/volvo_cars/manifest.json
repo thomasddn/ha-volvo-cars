@@ -9,5 +9,5 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/thomasddn/ha-volvo-cars/issues",
   "requirements": [],
-  "version": "0.3.0-b2"
+  "version": "0.3.0"
 }
