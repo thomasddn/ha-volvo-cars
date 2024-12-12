@@ -34,8 +34,31 @@ async def async_get_config_entry_diagnostics(
     entry_diagnostics = async_redact_data(config_entry.data, TO_REDACT_ENTRY)
     entry_diagnostics["entry_id"] = config_entry.entry_id
 
+    vehicle_diagnostics = _to_dict(coordinator.vehicle)
+    state_diagnostics = _to_dict(coordinator.data)
+
     return {
         "entry": entry_diagnostics,
-        "vehicle": async_redact_data(coordinator.vehicle, TO_REDACT_DATA),
-        "state": async_redact_data(coordinator.data, TO_REDACT_DATA),
+        "vehicle": async_redact_data(vehicle_diagnostics, TO_REDACT_DATA),
+        "state": async_redact_data(state_diagnostics, TO_REDACT_DATA),
     }
+
+
+def _to_dict(obj: Any) -> Any:
+    if isinstance(obj, dict):
+        data = {}
+        for k, v in obj.items():
+            data[k] = _to_dict(v)
+        return data
+
+    if hasattr(obj, "__iter__") and not isinstance(obj, str):
+        return [_to_dict(v) for v in obj]
+
+    if hasattr(obj, "__dict__"):
+        return {
+            key: _to_dict(value)
+            for key, value in obj.__dict__.items()
+            if not callable(value) and not key.startswith("_")
+        }
+
+    return obj
