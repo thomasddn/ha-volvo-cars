@@ -121,7 +121,7 @@ class VolvoCarsButton(VolvoCarsEntity, ButtonEntity):
                 self.entity_description.api_command
             )
 
-            status = result.invoke_status if result else "<none>"
+            status = result.invoke_status.lower() if result else "<none>"
 
             _LOGGER.debug(
                 "Command %s result: %s",

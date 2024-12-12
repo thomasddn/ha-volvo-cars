@@ -23,6 +23,7 @@ from .const import CONF_REFRESH_TOKEN, CONF_VCC_API_KEY, CONF_VIN, DOMAIN, MANUF
 from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import (
+    VolvoApiException,
     VolvoAuthException,
     VolvoCarsApiBaseModel,
     VolvoCarsValueField,
@@ -92,7 +93,14 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
         This method is called automatically during
         coordinator.async_config_entry_first_refresh.
         """
-        self.vehicle = await self.api.async_get_vehicle_details()
+        vehicle = await self.api.async_get_vehicle_details()
+
+        if vehicle is None:
+            _LOGGER.error("Unable to retrieve vehicle details.")
+            raise VolvoApiException("Unable to retrieve vehicle details.")
+
+        self.vehicle = vehicle
+
         self.device = DeviceInfo(
             identifiers={(DOMAIN, self.vehicle.vin)},
             manufacturer=MANUFACTURER,

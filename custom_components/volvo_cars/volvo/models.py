@@ -3,48 +3,17 @@
 from dataclasses import KW_ONLY, dataclass, field, is_dataclass
 from datetime import datetime
 import inspect
+import re
 from typing import Any, TypeVar
 
-# pylint: disable-next=no-name-in-module
-from pydantic import BaseModel, Field
-
 T = TypeVar("T", bound="VolvoCarsApiBaseModel")
+_TO_SNAKE_CASE_REGEX = re.compile(r"(?<=[a-z0-9])([A-Z])")
 
 
-class VolvoCarsModel(BaseModel):
-    """Representation of a Volvo Cars model."""
-
-    model: str
-    upholstery: str | None
-    steering: str
-
-
-class VolvoCarsImages(BaseModel):
-    """Representation of Volvo Cars images."""
-
-    exterior_image_url: str = Field(..., alias="exteriorImageUrl")
-    internal_image_url: str = Field(..., alias="internalImageUrl")
-
-
-class VolvoCarsVehicle(BaseModel):
-    """Representation of a Volvo Cars vehicle."""
-
-    vin: str
-    model_year: int = Field(..., alias="modelYear")
-    gearbox: str
-    fuel_type: str = Field(..., alias="fuelType")
-    external_colour: str = Field(..., alias="externalColour")
-    battery_capacity_kwh: float | None = Field(None, alias="batteryCapacityKWH")
-    images: VolvoCarsImages
-    description: VolvoCarsModel = Field(..., alias="descriptions")
-
-    def has_battery_engine(self) -> bool:
-        """Determine if vehicle has a battery engine."""
-        return self.fuel_type in ("ELECTRIC", "PETROL/ELECTRIC")
-
-    def has_combustion_engine(self) -> bool:
-        """Determine if vehicle has a combustion engine."""
-        return self.fuel_type in ("DIESEL", "PETROL", "PETROL/ELECTRIC")
+def _sanitize_json_key(key: str) -> str:
+    key = "description" if key == "descriptions" else key
+    key = _TO_SNAKE_CASE_REGEX.sub(r"_\1", key)
+    return key.lower()
 
 
 @dataclass
@@ -62,6 +31,7 @@ class VolvoCarsApiBaseModel:
         extra_data: dict[str, Any] = {}
 
         for key, value in data.items():
+            key = _sanitize_json_key(key)
             if key in parameters:
                 # Check if the field is a dataclass and the value is a dict
                 param_type = parameters[key].annotation
@@ -87,6 +57,45 @@ class VolvoCarsApiBaseModel:
     def get(self, key: str) -> Any:
         """Get a specific key from the API field."""
         return self.extra_data.get(key)
+
+
+@dataclass
+class VolvoCarsModel(VolvoCarsApiBaseModel):
+    """Representation of a Volvo Cars model."""
+
+    model: str
+    steering: str
+    upholstery: str | None = None
+
+
+@dataclass
+class VolvoCarsImages(VolvoCarsApiBaseModel):
+    """Representation of Volvo Cars images."""
+
+    exterior_image_url: str
+    internal_image_url: str
+
+
+@dataclass
+class VolvoCarsVehicle(VolvoCarsApiBaseModel):
+    """Representation of a Volvo Cars vehicle."""
+
+    vin: str
+    model_year: int
+    gearbox: str
+    fuel_type: str
+    external_colour: str
+    images: VolvoCarsImages
+    description: VolvoCarsModel
+    battery_capacity_kwh: float | None = None
+
+    def has_battery_engine(self) -> bool:
+        """Determine if vehicle has a battery engine."""
+        return self.fuel_type in ("ELECTRIC", "PETROL/ELECTRIC")
+
+    def has_combustion_engine(self) -> bool:
+        """Determine if vehicle has a combustion engine."""
+        return self.fuel_type in ("DIESEL", "PETROL", "PETROL/ELECTRIC")
 
 
 @dataclass
@@ -155,14 +164,15 @@ class VolvoCarsCommandResult(VolvoCarsApiBaseModel):
     message: str
 
 
-class TokenResponse(BaseModel):
+@dataclass
+class TokenResponse(VolvoCarsApiBaseModel):
     """Authorization response model."""
 
     access_token: str
     refresh_token: str
     token_type: str
     expires_in: int
-    id_token: str | None
+    id_token: str | None = None
 
 
 @dataclass

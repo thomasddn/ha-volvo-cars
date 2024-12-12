@@ -36,6 +36,6 @@ async def async_get_config_entry_diagnostics(
 
     return {
         "entry": entry_diagnostics,
-        "vehicle": async_redact_data(coordinator.vehicle.dict(), TO_REDACT_DATA),
+        "vehicle": async_redact_data(coordinator.vehicle, TO_REDACT_DATA),
         "state": async_redact_data(coordinator.data, TO_REDACT_DATA),
     }

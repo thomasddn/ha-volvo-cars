@@ -206,7 +206,7 @@ class VolvoCarsAuthApi:
             response.raise_for_status()
             return data
 
-    async def _async_request_token(self, code: str) -> TokenResponse:
+    async def _async_request_token(self, code: str) -> TokenResponse | None:
         headers = await self._async_get_all_headers()
         payload = {"code": code, "grant_type": "authorization_code"}
 
@@ -220,9 +220,9 @@ class VolvoCarsAuthApi:
                 "Request [tokens] body: %s", redact_data(json, _DATA_TO_REDACT)
             )
             response.raise_for_status()
-            return TokenResponse.parse_obj(json)
+            return TokenResponse.from_dict(json)
 
-    async def _async_refresh_token(self, refresh_token: str):
+    async def _async_refresh_token(self, refresh_token: str) -> TokenResponse | None:
         headers = await self._async_get_all_headers()
         payload = {"refresh_token": refresh_token, "grant_type": "refresh_token"}
 
@@ -236,9 +236,9 @@ class VolvoCarsAuthApi:
                 "Request [token refresh] body: %s", redact_data(json, _DATA_TO_REDACT)
             )
             response.raise_for_status()
-            return TokenResponse.parse_obj(json)
+            return TokenResponse.from_dict(json)
 
-    async def _handle_status_completed(self, data, status):
+    async def _handle_status_completed(self, data, status) -> AuthorizationModel:
         code = data["authorizeResponse"]["code"]
         auth = await self._async_request_token(code)
         return AuthorizationModel(status, token=auth)

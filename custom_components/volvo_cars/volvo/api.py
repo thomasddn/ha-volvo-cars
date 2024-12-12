@@ -127,10 +127,10 @@ class VolvoCarsApi:
         """Get tyre states."""
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "tyres")
 
-    async def async_get_vehicle_details(self) -> VolvoCarsVehicle:
+    async def async_get_vehicle_details(self) -> VolvoCarsVehicle | None:
         """Get vehicle details."""
         data = await self._async_get_data_dict(_API_CONNECTED_ENDPOINT, "")
-        return VolvoCarsVehicle.parse_obj(data)
+        return VolvoCarsVehicle.from_dict(data)
 
     async def async_get_warnings(self) -> dict[str, VolvoCarsValueField | None]:
         """Get warnings."""
