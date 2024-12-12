@@ -1,5 +1,7 @@
 """Config flow for Volvo Cars integration."""
 
+from __future__ import annotations
+
 from collections.abc import Mapping
 import logging
 from typing import Any, Self
@@ -7,14 +9,16 @@ from typing import Any, Self
 import voluptuous as vol
 
 from homeassistant import config_entries
-from homeassistant.config_entries import SOURCE_REAUTH, ConfigFlowResult
+from homeassistant.config_entries import SOURCE_REAUTH, ConfigEntry, ConfigFlowResult
 from homeassistant.const import (
     CONF_ACCESS_TOKEN,
     CONF_FRIENDLY_NAME,
     CONF_PASSWORD,
     CONF_USERNAME,
 )
+from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.helpers.selector import selector
 
 from .const import (
     CONF_OTP,
@@ -23,17 +27,39 @@ from .const import (
     CONF_VIN,
     DOMAIN,
     MANUFACTURER,
+    OPT_FUEL_CONSUMPTION_UNIT,
+    OPT_UNIT_LITER_PER_100KM,
+    OPT_UNIT_MPG_UK,
+    OPT_UNIT_MPG_US,
 )
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import AuthorizationModel, VolvoAuthException
 
 _LOGGER = logging.getLogger(__name__)
 
+OPTIONS_SCHEMA = vol.Schema(
+    {
+        vol.Required(OPT_FUEL_CONSUMPTION_UNIT): selector(
+            {
+                "select": {
+                    "options": [
+                        OPT_UNIT_LITER_PER_100KM,
+                        OPT_UNIT_MPG_UK,
+                        OPT_UNIT_MPG_US,
+                    ],
+                    "translation_key": OPT_FUEL_CONSUMPTION_UNIT,
+                }
+            }
+        )
+    }
+)
+
 
 class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     """Volvo Cars config flow."""
 
     VERSION = 1
+    MINOR_VERSION = 2
 
     def __init__(self) -> None:
         """Initialize Volvo Cars config flow."""
@@ -45,6 +71,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
         self._auth_result: AuthorizationModel | None = None
 
+    # Overridden method
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
@@ -59,7 +86,6 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             if flow is not None:
                 return flow
 
-        user_input = user_input or {}
         schema = vol.Schema(
             {
                 vol.Required(CONF_USERNAME, default=self._username or ""): str,
@@ -99,6 +125,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         schema = vol.Schema({vol.Required(CONF_OTP, default=""): str})
         return self.async_show_form(step_id="otp", data_schema=schema, errors=errors)
 
+    # By convention method
     async def async_step_reauth(self, _: Mapping[str, Any]) -> ConfigFlowResult:
         """Perform reauth upon an API authentication error."""
         return await self.async_step_reauth_confirm()
@@ -134,9 +161,19 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="reauth_confirm", data_schema=schema, errors=errors
         )
 
+    # Overridden method
     def is_matching(self, other_flow: Self) -> bool:
         """Return True if other_flow is matching this flow."""
         return other_flow._vin == self._vin  # noqa: SLF001 # pylint: disable=protected-access
+
+    # Overridden method
+    @staticmethod
+    @callback
+    def async_get_options_flow(
+        config_entry: ConfigEntry,
+    ) -> OptionsFlowHandler:
+        """Create the options flow."""
+        return OptionsFlowHandler()
 
     async def _async_authenticate(
         self, vin: str, user_input: dict[str, Any], errors: dict[str, str]
@@ -200,4 +237,23 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         return self.async_create_entry(
             title=f"{MANUFACTURER} {self._vin}",
             data=data,
+            options={OPT_FUEL_CONSUMPTION_UNIT: OPT_UNIT_LITER_PER_100KM},
+        )
+
+
+class OptionsFlowHandler(config_entries.OptionsFlow):
+    """Class to handle the options."""
+
+    async def async_step_init(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """Manage the options."""
+        if user_input is not None:
+            return self.async_create_entry(data=user_input)
+
+        return self.async_show_form(
+            step_id="init",
+            data_schema=self.add_suggested_values_to_schema(
+                OPTIONS_SCHEMA, self.config_entry.options
+            ),
         )

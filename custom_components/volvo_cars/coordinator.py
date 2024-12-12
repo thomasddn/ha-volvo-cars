@@ -16,7 +16,6 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.device_registry import DeviceInfo
-from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import CONF_REFRESH_TOKEN, CONF_VCC_API_KEY, CONF_VIN, DOMAIN, MANUFACTURER
@@ -68,12 +67,6 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
             entry.data[CONF_VIN],
             entry.data[CONF_VCC_API_KEY],
             entry.data[CONF_ACCESS_TOKEN],
-        )
-
-        entry.async_on_unload(
-            async_track_time_interval(
-                self.hass, self.async_refresh_token, timedelta(minutes=25)
-            )
         )
 
         self.vehicle: VolvoCarsVehicle

@@ -1,5 +1,6 @@
 """The Volvo Cars integration."""
 
+from datetime import timedelta
 import logging
 
 from requests import ConnectTimeout, HTTPError
@@ -9,8 +10,15 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.entity_registry import async_get
+from homeassistant.helpers.event import async_track_time_interval
 
-from .const import CONF_REFRESH_TOKEN, PLATFORMS
+from .config_flow import VolvoCarsFlowHandler
+from .const import (
+    CONF_REFRESH_TOKEN,
+    OPT_FUEL_CONSUMPTION_UNIT,
+    OPT_UNIT_LITER_PER_100KM,
+    PLATFORMS,
+)
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsData, VolvoCarsDataCoordinator
 from .entity import get_entity_id
 from .volvo.auth import VolvoCarsAuthApi
@@ -23,6 +31,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     """Set up Volvo Cars integration."""
     _LOGGER.debug("Loading entry %s", entry.entry_id)
 
+    # Try to refresh authentication token
     try:
         client = async_get_clientsession(hass)
         auth_api = VolvoCarsAuthApi(client)
@@ -43,13 +52,54 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
         }
         hass.config_entries.async_update_entry(entry, data=data)
 
+    # Setup coordinator
     coordinator = VolvoCarsDataCoordinator(hass, entry, auth_api)
     entry.runtime_data = VolvoCarsData(coordinator)
 
+    # Setup entities
     await coordinator.async_config_entry_first_refresh()
     _remove_old_entities(hass, coordinator)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
+    # Register events
+    entry.async_on_unload(entry.add_update_listener(options_update_listener))
+    entry.async_on_unload(
+        async_track_time_interval(
+            hass, coordinator.async_refresh_token, timedelta(minutes=25)
+        )
+    )
+
+    return True
+
+
+async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -> bool:
+    """Migrate entry."""
+    _LOGGER.debug(
+        "Migrating configuration from version %s.%s",
+        entry.version,
+        entry.minor_version,
+    )
+
+    if entry.version > VolvoCarsFlowHandler.VERSION:
+        # This means the user has downgraded from a future version
+        return False
+
+    if entry.version == 1:
+        new_data = {**entry.data}
+        new_options = {**entry.options}
+
+        if entry.minor_version < 2:
+            new_options[OPT_FUEL_CONSUMPTION_UNIT] = OPT_UNIT_LITER_PER_100KM
+
+        hass.config_entries.async_update_entry(
+            entry, data=new_data, options=new_options, version=1, minor_version=2
+        )
+
+    _LOGGER.debug(
+        "Migration to configuration version %s.%s successful",
+        entry.version,
+        entry.minor_version,
+    )
     return True
 
 
@@ -57,6 +107,13 @@ async def async_unload_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -
     """Unload a config entry."""
     _LOGGER.debug("Unloading entry %s", entry.entry_id)
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
+
+
+async def options_update_listener(
+    hass: HomeAssistant, entry: VolvoCarsConfigEntry
+) -> None:
+    """Reload entry after config changes."""
+    await hass.config_entries.async_reload(entry.entry_id)
 
 
 def _remove_old_entities(

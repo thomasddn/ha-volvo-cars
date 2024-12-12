@@ -22,3 +22,8 @@ CONF_VCC_API_KEY = "vcc_api_key"
 CONF_VIN = "vin"
 
 MANUFACTURER = "Volvo"
+
+OPT_FUEL_CONSUMPTION_UNIT = "fuel_consumption_unit"
+OPT_UNIT_LITER_PER_100KM = "l_100km"
+OPT_UNIT_MPG_UK = "mpg_uk"
+OPT_UNIT_MPG_US = "mpg_us"

@@ -2,6 +2,7 @@
 
 from collections.abc import Callable
 from dataclasses import dataclass
+from decimal import Decimal
 from typing import Any
 
 from homeassistant.components.sensor import (
@@ -14,6 +15,7 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from .const import OPT_FUEL_CONSUMPTION_UNIT, OPT_UNIT_MPG_UK, OPT_UNIT_MPG_US
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsDescription, VolvoCarsEntity, value_to_translation_key
 from .volvo.models import (
@@ -30,16 +32,17 @@ PARALLEL_UPDATES = 0
 class VolvoCarsSensorDescription(VolvoCarsDescription, SensorEntityDescription):
     """Describes a Volvo Cars sensor entity."""
 
-    value_fn: Callable[[VolvoCarsValue], Any] | None = None
+    value_fn: Callable[[VolvoCarsValue, VolvoCarsConfigEntry], Any] | None = None
     available_fn: Callable[[VolvoCarsVehicle], bool] = lambda vehicle: True
+    unit_fn: Callable[[VolvoCarsConfigEntry], str] | None = None
 
 
-def _availability_status(field: VolvoCarsValue) -> str:
+def _availability_status(field: VolvoCarsValue, _: VolvoCarsConfigEntry) -> str:
     reason = field.get("unavailableReason")
     return reason if reason else field.value
 
 
-def _calculate_time_to_service(field: VolvoCarsValue) -> int:
+def _calculate_time_to_service(field: VolvoCarsValue, _: VolvoCarsConfigEntry) -> int:
     # Always express value in days
     if isinstance(field, VolvoCarsValueField) and field.unit == "months":
         return field.value * 30
@@ -47,9 +50,34 @@ def _calculate_time_to_service(field: VolvoCarsValue) -> int:
     return field.value
 
 
-def _calculate_engine_time_to_service(field: VolvoCarsValue) -> int:
+def _calculate_engine_time_to_service(
+    field: VolvoCarsValue, _: VolvoCarsConfigEntry
+) -> int:
     # Express value in days instead of hours
     return round(field.value / 24)
+
+
+def _determine_fuel_consumption_unit(entry: VolvoCarsConfigEntry) -> str:
+    unit_key = entry.options[OPT_FUEL_CONSUMPTION_UNIT]
+
+    if unit_key in (OPT_UNIT_MPG_UK, OPT_UNIT_MPG_US):
+        return "mpg"
+
+    return "L/100km"
+
+
+def _convert_fuel_consumption(
+    field: VolvoCarsValue, entry: VolvoCarsConfigEntry
+) -> Decimal:
+    unit_key = entry.options[OPT_FUEL_CONSUMPTION_UNIT]
+
+    if unit_key == OPT_UNIT_MPG_UK:
+        return round(Decimal(282.481) / Decimal(field.value), 2)
+
+    if unit_key == OPT_UNIT_MPG_US:
+        return round(Decimal(235.215) / Decimal(field.value), 2)
+
+    return field.value
 
 
 # pylint: disable=unexpected-keyword-arg
@@ -91,6 +119,8 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         native_unit_of_measurement="L/100km",
         icon="mdi:gas-station",
         available_fn=lambda vehicle: vehicle.has_combustion_engine(),
+        unit_fn=_determine_fuel_consumption_unit,
+        value_fn=_convert_fuel_consumption,
     ),
     VolvoCarsSensorDescription(
         key="average_speed",
@@ -274,6 +304,11 @@ class VolvoCarsSensor(VolvoCarsEntity, SensorEntity):
         """Initialize."""
         super().__init__(coordinator, description, Platform.SENSOR)
 
+        if description.unit_fn:
+            self._attr_native_unit_of_measurement = description.unit_fn(
+                self.coordinator.entry
+            )
+
     def _update_state(self, api_field: VolvoCarsApiBaseModel | None) -> None:
         if not isinstance(api_field, VolvoCarsValue):
             return
@@ -281,7 +316,7 @@ class VolvoCarsSensor(VolvoCarsEntity, SensorEntity):
         native_value = (
             api_field.value
             if self.entity_description.value_fn is None
-            else self.entity_description.value_fn(api_field)
+            else self.entity_description.value_fn(api_field, self.coordinator.entry)
         )
 
         if self.device_class == SensorDeviceClass.ENUM:
