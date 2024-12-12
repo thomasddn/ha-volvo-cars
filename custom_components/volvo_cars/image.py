@@ -3,16 +3,28 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime
+import logging
+from urllib import parse
+
+from httpx import AsyncClient, HTTPStatusError, RequestError
 
 from homeassistant.components.image import ImageEntity, ImageEntityDescription
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.httpx_client import get_async_client
 
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsDescription, VolvoCarsEntity
 from .volvo.models import VolvoCarsApiBaseModel, VolvoCarsVehicle
 
+_LOGGER = logging.getLogger(__name__)
+_HEADERS = {
+    "Accept-Language": "en-GB",
+    "Sec-Fetch-User": "?1",
+    "User-Agent": "home-assistant",
+    "Cache-Control": "no-cache",
+}
 PARALLEL_UPDATES = 0
 
 
@@ -24,12 +36,81 @@ class VolvoCarsImageDescription(VolvoCarsDescription, ImageEntityDescription):
     image_url_fn: Callable[[VolvoCarsVehicle], str]
 
 
+def _exterior_angle_image(exterior_url: str, angle: str) -> str:
+    url_parts = parse.urlparse(exterior_url)
+    query = parse.parse_qs(url_parts.query, keep_blank_values=True)
+    query["angle"] = [angle]
+
+    return url_parts._replace(query=parse.urlencode(query, doseq=True)).geturl()
+
+
+async def _async_image_exists(client: AsyncClient, url: str) -> bool:
+    try:
+        response = await client.get(url, timeout=10, follow_redirects=True)
+        response.raise_for_status()
+    except (RequestError, HTTPStatusError):
+        _LOGGER.debug("Image does not exist: %s", url)
+        return False
+    else:
+        return True
+
+
 # pylint: disable=unexpected-keyword-arg
 IMAGES: tuple[VolvoCarsImageDescription, ...] = (
+    # TODO: translation = side passenger
     VolvoCarsImageDescription(
         key="exterior",
         translation_key="exterior",
         image_url_fn=lambda vehicle: vehicle.images.exterior_image_url,
+    ),
+    VolvoCarsImageDescription(
+        key="exterior_back",
+        translation_key="exterior_back",
+        image_url_fn=lambda vehicle: _exterior_angle_image(
+            vehicle.images.exterior_image_url, "6"
+        ),
+    ),
+    VolvoCarsImageDescription(
+        key="exterior_back_driver",
+        translation_key="exterior_back_driver",
+        image_url_fn=lambda vehicle: _exterior_angle_image(
+            vehicle.images.exterior_image_url, "5"
+        ),
+    ),
+    VolvoCarsImageDescription(
+        key="exterior_back_passenger",
+        translation_key="exterior_back_passenger",
+        image_url_fn=lambda vehicle: _exterior_angle_image(
+            vehicle.images.exterior_image_url, "2"
+        ),
+    ),
+    VolvoCarsImageDescription(
+        key="exterior_front",
+        translation_key="exterior_front",
+        image_url_fn=lambda vehicle: _exterior_angle_image(
+            vehicle.images.exterior_image_url, "3"
+        ),
+    ),
+    VolvoCarsImageDescription(
+        key="exterior_front_driver",
+        translation_key="exterior_front_driver",
+        image_url_fn=lambda vehicle: _exterior_angle_image(
+            vehicle.images.exterior_image_url, "4"
+        ),
+    ),
+    VolvoCarsImageDescription(
+        key="exterior_front_passenger",
+        translation_key="exterior_front_passenger",
+        image_url_fn=lambda vehicle: _exterior_angle_image(
+            vehicle.images.exterior_image_url, "0"
+        ),
+    ),
+    VolvoCarsImageDescription(
+        key="exterior_side_driver",
+        translation_key="exterior_side_driver",
+        image_url_fn=lambda vehicle: _exterior_angle_image(
+            vehicle.images.exterior_image_url, "7"
+        ),
     ),
     VolvoCarsImageDescription(
         key="interior",
@@ -40,13 +121,23 @@ IMAGES: tuple[VolvoCarsImageDescription, ...] = (
 
 
 async def async_setup_entry(
-    _: HomeAssistant,
+    hass: HomeAssistant,
     entry: VolvoCarsConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up images."""
     coordinator = entry.runtime_data.coordinator
-    images = [VolvoCarsImage(coordinator, description) for description in IMAGES]
+    # client = async_get_clientsession(hass)
+    client = get_async_client(hass, False)
+    client.headers.update(_HEADERS)
+
+    images = [
+        VolvoCarsImage(coordinator, description)
+        for description in IMAGES
+        if await _async_image_exists(
+            client, description.image_url_fn(coordinator.vehicle)
+        )
+    ]
 
     async_add_entities(images)
 
@@ -66,9 +157,7 @@ class VolvoCarsImage(VolvoCarsEntity, ImageEntity):
         super().__init__(coordinator, description, Platform.IMAGE)
         ImageEntity.__init__(self, coordinator.hass)
 
-        self._client.headers.update(
-            {"Accept-Language": "en-GB", "Sec-Fetch-User": "?1"}
-        )
+        self._client.headers.update(_HEADERS)
 
     def _update_state(self, api_field: VolvoCarsApiBaseModel | None) -> None:
         url = self.entity_description.image_url_fn(self.coordinator.vehicle)

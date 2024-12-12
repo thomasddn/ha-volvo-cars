@@ -406,7 +406,28 @@
         },
         "image": {
             "exterior": {
-                "name": "Exterior"
+                "name": "Exterior side passenger"
+            },
+            "exterior_back": {
+                "name": "Exterior back"
+            },
+            "exterior_back_driver": {
+                "name": "Exterior back driver"
+            },
+            "exterior_back_passenger": {
+                "name": "Exterior back passenger"
+            },
+            "exterior_front": {
+                "name": "Exterior front"
+            },
+            "exterior_front_driver": {
+                "name": "Exterior front driver"
+            },
+            "exterior_front_passenger": {
+                "name": "Exterior front passenger"
+            },
+            "exterior_side_driver": {
+                "name": "Exterior side driver"
             },
             "interior": {
                 "name": "Interior"
