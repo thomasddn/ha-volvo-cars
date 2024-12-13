@@ -21,7 +21,6 @@ from .volvo.models import VolvoCarsApiBaseModel, VolvoCarsVehicle
 _LOGGER = logging.getLogger(__name__)
 _HEADERS = {
     "Accept-Language": "en-GB",
-    "Cache-Control": "no-cache",
     "Sec-Fetch-User": "?1",
     "User-Agent": "PostmanRuntime/7.43.0",
 }
