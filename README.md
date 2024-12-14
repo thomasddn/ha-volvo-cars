@@ -136,7 +136,7 @@ Shoutout to [@Pau1ey](https://github.com/Pau1ey) for testing and confirming this
 
 ## 🛟 Need help?
 
-If you have a feature request or encounter a problem, feel free to open an [issue](/issues)! Have a general question, need help setting up, or want to show off your Volvo dashboard? Go to the [discussions](/discussions).
+If you have a feature request or encounter a problem, feel free to open an [issue](/thomasddn/ha-volvo-cars/issues)! Have a general question, need help setting up, or want to show off your Volvo dashboard? Go to the [discussions](/thomasddn/ha-volvo-cars/discussions).
 
 You can also join the [thread on the HA community](https://community.home-assistant.io/t/volvo-cars-integration/796417/).
 
