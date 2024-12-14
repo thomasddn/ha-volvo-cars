@@ -12,7 +12,7 @@ Now check out the features section for details on what you'll get!
 
 - Multiple cars
 - Multiple accounts
-- Translations (but [need help](#need-help) on this 🙏)
+- Translations (but [need help](#contributing) on this 🙏)
 
 ### Entities
 
@@ -45,7 +45,7 @@ The action's status is included in the attributes.
 
 #### Images
 
-- Exterior
+- Multiple exterior images from different angles
 - Interior
 
 #### Locks
@@ -119,16 +119,26 @@ After submitting, a One Time Password (OTP) will be sent to your email. It's a 6
 
 Fill in the OTP to complete the process.
 
-<a name="need-help"></a>
+<a name="contributing"></a>
 
-## 🤝 Need your help
+## 🤝 Contributing
+
+You can contribute by creating a PR, but also by testing:
 
 - Provide general feedback or report issues.
 - Help with translations.
 - Test if you have multiple Volvos on the **same account**.
-- Test if you have multiple Volvos across **different accounts**.
-- Test with other Volvo models (non-BEV).
-- Users that use imperial system.
+- ~~Test if you have multiple Volvos across **different accounts**.~~
+- ~~Test with other Volvo models (non-BEV).~~
+- ~~Users that use imperial system.~~
+
+Shoutout to [@Pau1ey](https://github.com/Pau1ey) for testing and confirming this! 🤩
+
+## 🛟 Need help?
+
+If you have a feature request or encounter a problem, feel free to open an [issue](/issues)! Have a general question, need help setting up, or want to show off your Volvo dashboard? Go to the [discussions](/discussions).
+
+You can also join the [thread on the HA community](https://community.home-assistant.io/t/volvo-cars-integration/796417/).
 
 ## 🥤 Powered by snacks
 
