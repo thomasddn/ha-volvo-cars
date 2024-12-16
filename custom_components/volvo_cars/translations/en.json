@@ -488,6 +488,7 @@
                     "car_in_use": "Car is in use",
                     "no_internet": "No internet",
                     "power_saving_mode": "Power saving mode",
+                    "unavailable": "Unavailable",
                     "unspecified": "Unknown"
                 }
             },

@@ -38,7 +38,7 @@ class VolvoCarsSensorDescription(VolvoCarsDescription, SensorEntityDescription):
 
 
 def _availability_status(field: VolvoCarsValue, _: VolvoCarsConfigEntry) -> str:
-    reason = field.get("unavailableReason")
+    reason = field.get("unavailable_reason")
     return reason if reason else field.value
 
 
