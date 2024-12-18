@@ -12,9 +12,9 @@ from .const import DOMAIN
 STORAGE_VERSION = 1
 
 
-def create_store(hass: HomeAssistant, entry_id: str) -> VolvoCarsStore:
+def create_store(hass: HomeAssistant, unique_id: str) -> VolvoCarsStore:
     """Create a VolvoCars store."""
-    return VolvoCarsStore(hass, STORAGE_VERSION, f"{DOMAIN}.{entry_id}")
+    return VolvoCarsStore(hass, STORAGE_VERSION, f"{DOMAIN}.{unique_id}")
 
 
 class StoreData(TypedDict):

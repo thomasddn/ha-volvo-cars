@@ -212,19 +212,16 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     async def _async_create_or_update_entry(self) -> ConfigFlowResult:
         data = {
             CONF_USERNAME: self._username,
-            CONF_PASSWORD: self._password,
             CONF_VIN: self._vin,
             CONF_VCC_API_KEY: self._api_key,
             CONF_FRIENDLY_NAME: self._friendly_name,
         }
 
         if self._auth_result and self._auth_result.token:
-            entry_id = self.context.get("entry_id")
+            if self.unique_id is None:
+                raise ConfigEntryError("Config entry has no unique_id")
 
-            if entry_id is None:
-                raise ConfigEntryError("Config entry has no entry_id")
-
-            store = create_store(self.hass, entry_id)
+            store = create_store(self.hass, self.unique_id)
             await store.async_save(
                 StoreData(
                     access_token=self._auth_result.token.access_token,

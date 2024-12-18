@@ -5,7 +5,7 @@ import logging
 
 from requests import ConnectTimeout, HTTPError
 
-from homeassistant.const import CONF_ACCESS_TOKEN, Platform
+from homeassistant.const import CONF_ACCESS_TOKEN, CONF_PASSWORD, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
@@ -34,7 +34,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     """Set up Volvo Cars integration."""
     _LOGGER.debug("Loading entry %s", entry.entry_id)
 
-    store = create_store(hass, entry.entry_id)
+    assert entry.unique_id is not None
+    store = create_store(hass, entry.unique_id)
     store_data = await store.async_load()
 
     if store_data is None:
@@ -115,13 +116,17 @@ async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) 
 
         if entry.minor_version < 3:
             if CONF_ACCESS_TOKEN in new_data and "refresh_token" in new_data:
-                store = create_store(hass, entry.entry_id)
+                assert entry.unique_id is not None
+                store = create_store(hass, entry.unique_id)
                 await store.async_save(
                     StoreData(
                         access_token=new_data.pop(CONF_ACCESS_TOKEN),
                         refresh_token=new_data.pop("refresh_token"),
                     )
                 )
+
+            if CONF_PASSWORD in new_data:
+                new_data.pop(CONF_PASSWORD)
 
         hass.config_entries.async_update_entry(
             entry,
