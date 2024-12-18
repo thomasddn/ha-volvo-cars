@@ -17,7 +17,6 @@ ATTR_DIRECTION = "direction"
 ATTR_LAST_RESULT = "last_result"
 
 CONF_OTP = "otp"
-CONF_REFRESH_TOKEN = "refresh_token"
 CONF_VCC_API_KEY = "vcc_api_key"
 CONF_VIN = "vin"
 

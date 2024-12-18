@@ -8,8 +8,10 @@ __pycache__
 
 # misc
 .coverage
-coverage.xml
+.mypy_cache
 .ruff_cache
+
+coverage.xml
 venv
 
 

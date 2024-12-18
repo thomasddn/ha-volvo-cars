@@ -10,19 +10,14 @@ import voluptuous as vol
 
 from homeassistant import config_entries
 from homeassistant.config_entries import SOURCE_REAUTH, ConfigEntry, ConfigFlowResult
-from homeassistant.const import (
-    CONF_ACCESS_TOKEN,
-    CONF_FRIENDLY_NAME,
-    CONF_PASSWORD,
-    CONF_USERNAME,
-)
+from homeassistant.const import CONF_FRIENDLY_NAME, CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import callback
+from homeassistant.exceptions import ConfigEntryError
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.selector import selector
 
 from .const import (
     CONF_OTP,
-    CONF_REFRESH_TOKEN,
     CONF_VCC_API_KEY,
     CONF_VIN,
     DOMAIN,
@@ -32,6 +27,7 @@ from .const import (
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
 )
+from .entry_data import StoreData, create_store
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import AuthorizationModel, VolvoAuthException
 
@@ -59,7 +55,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     """Volvo Cars config flow."""
 
     VERSION = 1
-    MINOR_VERSION = 2
+    MINOR_VERSION = 3
 
     def __init__(self) -> None:
         """Initialize Volvo Cars config flow."""
@@ -223,10 +219,18 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         }
 
         if self._auth_result and self._auth_result.token:
-            data |= {
-                CONF_ACCESS_TOKEN: self._auth_result.token.access_token,
-                CONF_REFRESH_TOKEN: self._auth_result.token.refresh_token,
-            }
+            entry_id = self.context.get("entry_id")
+
+            if entry_id is None:
+                raise ConfigEntryError("Config entry has no entry_id")
+
+            store = create_store(self.hass, entry_id)
+            await store.async_save(
+                StoreData(
+                    access_token=self._auth_result.token.access_token,
+                    refresh_token=self._auth_result.token.refresh_token,
+                )
+            )
 
         if self.source == SOURCE_REAUTH:
             return self.async_update_reload_and_abort(

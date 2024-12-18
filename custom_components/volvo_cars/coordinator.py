@@ -11,14 +11,14 @@ from typing import Any
 from requests import ConnectTimeout, HTTPError
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_ACCESS_TOKEN, CONF_FRIENDLY_NAME
+from homeassistant.const import CONF_FRIENDLY_NAME
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
-from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .const import CONF_REFRESH_TOKEN, CONF_VCC_API_KEY, CONF_VIN, DOMAIN, MANUFACTURER
+from .const import DOMAIN, MANUFACTURER
+from .entry_data import StoreData, VolvoCarsStore
 from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import (
@@ -37,6 +37,7 @@ class VolvoCarsData:
     """Data for Volvo Cars integration."""
 
     coordinator: VolvoCarsDataCoordinator
+    store: VolvoCarsStore
 
 
 type VolvoCarsConfigEntry = ConfigEntry[VolvoCarsData]
@@ -48,8 +49,9 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
     def __init__(
         self,
         hass: HomeAssistant,
-        entry: ConfigEntry,
+        entry: VolvoCarsConfigEntry,
         auth_api: VolvoCarsAuthApi,
+        api: VolvoCarsApi,
     ) -> None:
         """Initialize the coordinator."""
         super().__init__(
@@ -60,14 +62,8 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
         )
 
         self.entry = entry
+        self.api = api
         self._auth_api = auth_api
-
-        self.api = VolvoCarsApi(
-            async_get_clientsession(hass),
-            entry.data[CONF_VIN],
-            entry.data[CONF_VCC_API_KEY],
-            entry.data[CONF_ACCESS_TOKEN],
-        )
 
         self.vehicle: VolvoCarsVehicle
         self.device: DeviceInfo
@@ -195,9 +191,15 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
     @callback
     async def async_refresh_token(self, _: datetime | None = None) -> None:
         """Refresh token."""
+        store = self.entry.runtime_data.store
+        storage_data = await store.async_load()
+
+        if storage_data is None:
+            return
+
         try:
             result = await self._auth_api.async_refresh_token(
-                self.entry.data.get(CONF_REFRESH_TOKEN, "")
+                storage_data["refresh_token"]
             )
         except VolvoAuthException as ex:
             _LOGGER.exception("Authentication failed")
@@ -207,11 +209,12 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
             raise ConfigEntryNotReady("Unable to connect to Volvo API.") from ex
 
         if result.token:
-            data = self.entry.data | {
-                CONF_ACCESS_TOKEN: result.token.access_token,
-                CONF_REFRESH_TOKEN: result.token.refresh_token,
-            }
-            self.hass.config_entries.async_update_entry(self.entry, data=data)
+            await store.async_save(
+                StoreData(
+                    access_token=result.token.access_token,
+                    refresh_token=result.token.refresh_token,
+                )
+            )
             self.api.update_access_token(result.token.access_token)
 
     def _is_all_unspecified(self, items: dict[str, VolvoCarsValueField | None]) -> bool:

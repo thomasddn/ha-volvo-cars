@@ -14,13 +14,16 @@ from homeassistant.helpers.event import async_track_time_interval
 
 from .config_flow import VolvoCarsFlowHandler
 from .const import (
-    CONF_REFRESH_TOKEN,
+    CONF_VCC_API_KEY,
+    CONF_VIN,
     OPT_FUEL_CONSUMPTION_UNIT,
     OPT_UNIT_LITER_PER_100KM,
     PLATFORMS,
 )
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsData, VolvoCarsDataCoordinator
 from .entity import get_entity_id
+from .entry_data import StoreData, create_store
+from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import VolvoAuthException
 
@@ -31,13 +34,19 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     """Set up Volvo Cars integration."""
     _LOGGER.debug("Loading entry %s", entry.entry_id)
 
+    store = create_store(hass, entry.entry_id)
+    store_data = await store.async_load()
+
+    if store_data is None:
+        _LOGGER.exception("Storage %s missing.", store.key)
+        raise ConfigEntryNotReady(f"Storage {store.key} missing.")
+
+    client = async_get_clientsession(hass)
+    auth_api = VolvoCarsAuthApi(client)
+
     # Try to refresh authentication token
     try:
-        client = async_get_clientsession(hass)
-        auth_api = VolvoCarsAuthApi(client)
-        result = await auth_api.async_refresh_token(
-            entry.data.get(CONF_REFRESH_TOKEN, "")
-        )
+        result = await auth_api.async_refresh_token(store_data["refresh_token"])
     except VolvoAuthException as ex:
         _LOGGER.exception("Authentication failed")
         raise ConfigEntryAuthFailed("Authentication failed.") from ex
@@ -45,16 +54,29 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
         _LOGGER.exception("Connection failed")
         raise ConfigEntryNotReady("Unable to connect to Volvo API.") from ex
 
-    if result.token is not None:
-        data = entry.data | {
-            CONF_ACCESS_TOKEN: result.token.access_token,
-            CONF_REFRESH_TOKEN: result.token.refresh_token,
-        }
-        hass.config_entries.async_update_entry(entry, data=data)
+    if result.token is None:
+        _LOGGER.exception("Authentication token is None")
+        raise ConfigEntryAuthFailed("Authentication token is None.")
+
+    # Save tokens
+    await store.async_save(
+        StoreData(
+            access_token=result.token.access_token,
+            refresh_token=result.token.refresh_token,
+        )
+    )
+
+    # Create api
+    api = VolvoCarsApi(
+        client,
+        entry.data[CONF_VIN],
+        entry.data[CONF_VCC_API_KEY],
+        result.token.access_token,
+    )
 
     # Setup coordinator
-    coordinator = VolvoCarsDataCoordinator(hass, entry, auth_api)
-    entry.runtime_data = VolvoCarsData(coordinator)
+    coordinator = VolvoCarsDataCoordinator(hass, entry, auth_api, api)
+    entry.runtime_data = VolvoCarsData(coordinator, store)
 
     # Setup entities
     await coordinator.async_config_entry_first_refresh()
@@ -65,7 +87,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     entry.async_on_unload(entry.add_update_listener(options_update_listener))
     entry.async_on_unload(
         async_track_time_interval(
-            hass, coordinator.async_refresh_token, timedelta(minutes=25)
+            hass, coordinator.async_refresh_token, timedelta(minutes=1)
         )
     )
 
@@ -91,8 +113,22 @@ async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) 
         if entry.minor_version < 2:
             new_options[OPT_FUEL_CONSUMPTION_UNIT] = OPT_UNIT_LITER_PER_100KM
 
+        if entry.minor_version < 3:
+            if CONF_ACCESS_TOKEN in new_data and "refresh_token" in new_data:
+                store = create_store(hass, entry.entry_id)
+                await store.async_save(
+                    StoreData(
+                        access_token=new_data.pop(CONF_ACCESS_TOKEN),
+                        refresh_token=new_data.pop("refresh_token"),
+                    )
+                )
+
         hass.config_entries.async_update_entry(
-            entry, data=new_data, options=new_options, version=1, minor_version=2
+            entry,
+            data=new_data,
+            options=new_options,
+            version=VolvoCarsFlowHandler.VERSION,
+            minor_version=VolvoCarsFlowHandler.MINOR_VERSION,
         )
 
     _LOGGER.debug(
