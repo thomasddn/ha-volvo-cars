@@ -91,7 +91,7 @@ class VolvoCarsVehicle(VolvoCarsApiBaseModel):
 
     def has_battery_engine(self) -> bool:
         """Determine if vehicle has a battery engine."""
-        return self.fuel_type in ("ELECTRIC", "PETROL/ELECTRIC")
+        return self.fuel_type in ("ELECTRIC", "PETROL/ELECTRIC", "NONE")
 
     def has_combustion_engine(self) -> bool:
         """Determine if vehicle has a combustion engine."""
