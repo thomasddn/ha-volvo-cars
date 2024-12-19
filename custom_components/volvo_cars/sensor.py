@@ -106,7 +106,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
     VolvoCarsSensorDescription(
         key="average_energy_consumption",
         translation_key="average_energy_consumption",
-        api_field="averageEnergyConsumption",
+        api_field=["averageEnergyConsumption", "averageEnergyConsumptionAutomatic"],
         native_unit_of_measurement="kWh",
         device_class=SensorDeviceClass.ENERGY,
         icon="mdi:car-electric",
@@ -115,7 +115,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
     VolvoCarsSensorDescription(
         key="average_fuel_consumption",
         translation_key="average_fuel_consumption",
-        api_field="averageFuelConsumption",
+        api_field=["averageFuelConsumption", "averageFuelConsumptionAutomatic"],
         native_unit_of_measurement="L/100km",
         icon="mdi:gas-station",
         available_fn=lambda vehicle: vehicle.has_combustion_engine(),
@@ -125,7 +125,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
     VolvoCarsSensorDescription(
         key="average_speed",
         translation_key="average_speed",
-        api_field="averageSpeed",
+        api_field=["averageSpeed", "averageSpeedAutomatic"],
         native_unit_of_measurement="km/h",
         device_class=SensorDeviceClass.SPEED,
         state_class=SensorStateClass.MEASUREMENT,

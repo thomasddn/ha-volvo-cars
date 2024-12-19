@@ -132,16 +132,10 @@ class VolvoCarsLock(VolvoCarsEntity, LockEntity):
                     },
                 )
 
-            api_field = cast(
-                VolvoCarsValue, self.coordinator.data[self.entity_description.api_field]
-            )
-
             if locked:
                 self._attr_is_locking = False
-                api_field.value = self.entity_description.api_lock_value
             else:
                 self._attr_is_unlocking = False
-                api_field.value = self.entity_description.api_unlock_value
 
             self._attr_is_locked = locked
             self.async_write_ha_state()

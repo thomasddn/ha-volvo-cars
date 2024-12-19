@@ -453,7 +453,7 @@ async def async_setup_entry(
     """Set up sensors."""
     coordinator = entry.runtime_data.coordinator
     sensors = [
-        VolvoCarsSensor(coordinator, description)
+        VolvoCarsBinarySensor(coordinator, description)
         for description in SENSORS
         if description.api_field not in coordinator.unsupported_keys
     ]
@@ -461,8 +461,8 @@ async def async_setup_entry(
     async_add_entities(sensors)
 
 
-class VolvoCarsSensor(VolvoCarsEntity, BinarySensorEntity):
-    """Representation of a Volvo Cars sensor."""
+class VolvoCarsBinarySensor(VolvoCarsEntity, BinarySensorEntity):
+    """Representation of a Volvo Cars binary sensor."""
 
     entity_description: VolvoCarsBinarySensorDescription
 
@@ -475,7 +475,7 @@ class VolvoCarsSensor(VolvoCarsEntity, BinarySensorEntity):
         super().__init__(coordinator, description, Platform.BINARY_SENSOR)
 
     @property
-    def icon(self):
+    def icon(self) -> str | None:
         """Return icon based on the state."""
         return (
             self.entity_description.icon

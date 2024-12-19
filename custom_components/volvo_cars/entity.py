@@ -38,7 +38,7 @@ def value_to_translation_key(value: str) -> str:
 class VolvoCarsDescription(EntityDescription):
     """Describes a Volvo Cars entity."""
 
-    api_field: str
+    api_field: str | list[str]
 
 
 class VolvoCarsEntity(CoordinatorEntity[VolvoCarsDataCoordinator]):
@@ -69,11 +69,19 @@ class VolvoCarsEntity(CoordinatorEntity[VolvoCarsDataCoordinator]):
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        api_field = (
-            self.coordinator.data.get(self.entity_description.api_field)
-            if self.entity_description.api_field
-            else None
-        )
+        api_field = None
+
+        if isinstance(self.entity_description.api_field, str):
+            api_field = (
+                self.coordinator.data.get(self.entity_description.api_field)
+                if self.entity_description.api_field
+                else None
+            )
+        elif isinstance(self.entity_description.api_field, list):
+            for key in self.entity_description.api_field:
+                if (field := self.coordinator.data.get(key)) is not None:
+                    api_field = field
+                    break
 
         if isinstance(api_field, VolvoCarsValueField):
             self._attr_extra_state_attributes[ATTR_API_TIMESTAMP] = api_field.timestamp
