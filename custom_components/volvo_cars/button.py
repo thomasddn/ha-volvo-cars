@@ -121,14 +121,14 @@ class VolvoCarsButton(VolvoCarsEntity, ButtonEntity):
                 self.entity_description.api_command
             )
 
-            status = result.invoke_status.lower() if result else "<none>"
+            status = result.invoke_status if result else ""
 
             _LOGGER.debug(
                 "Command %s result: %s",
                 self.entity_description.api_command,
                 status,
             )
-            self._attr_extra_state_attributes[ATTR_LAST_RESULT] = status
+            self._attr_extra_state_attributes[ATTR_LAST_RESULT] = status.lower()
             self._attr_extra_state_attributes[ATTR_API_TIMESTAMP] = datetime.now(
                 UTC
             ).isoformat()
