@@ -112,10 +112,10 @@ class VolvoCarsValueField(VolvoCarsValue):
     timestamp: datetime
     unit: str | None = None
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         """Post initialization."""
-        if isinstance(self.timestamp, str):
-            self.timestamp = datetime.fromisoformat(self.timestamp)
+        if isinstance(self.timestamp, str):  # type: ignore[unreachable]
+            self.timestamp = datetime.fromisoformat(self.timestamp)  # type: ignore[unreachable]
 
 
 @dataclass
@@ -132,10 +132,10 @@ class VolvoCarsLocationProperties(VolvoCarsApiBaseModel):
     heading: str
     timestamp: datetime
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         """Post initialization."""
-        if isinstance(self.timestamp, str):
-            self.timestamp = datetime.fromisoformat(self.timestamp)
+        if isinstance(self.timestamp, str):  # type: ignore[unreachable]
+            self.timestamp = datetime.fromisoformat(self.timestamp)  # type: ignore[unreachable]
 
 
 @dataclass

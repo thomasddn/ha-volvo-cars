@@ -64,7 +64,7 @@ class VolvoCarsDataCoordinator(
             update_interval=timedelta(minutes=2, seconds=15),
         )
 
-        self.config_entry = entry
+        self.config_entry: VolvoCarsConfigEntry = entry
         self.api = api
         self._auth_api = auth_api
 

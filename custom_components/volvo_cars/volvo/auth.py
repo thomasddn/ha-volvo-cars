@@ -238,7 +238,9 @@ class VolvoCarsAuthApi:
             response.raise_for_status()
             return TokenResponse.from_dict(json)
 
-    async def _handle_status_completed(self, data, status) -> AuthorizationModel:
+    async def _handle_status_completed(
+        self, data: dict, status: str
+    ) -> AuthorizationModel:
         code = data["authorizeResponse"]["code"]
         auth = await self._async_request_token(code)
         return AuthorizationModel(status, token=auth)

@@ -3,14 +3,10 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import Any
+from typing import Any, cast
 
-from homeassistant.components.sensor import (
-    SensorDeviceClass,  # type: ignore # noqa: PGH003
-    SensorEntity,
-    SensorEntityDescription,
-    SensorStateClass,  # type: ignore # noqa: PGH003
-)
+from homeassistant.components.sensor import SensorEntity, SensorEntityDescription
+from homeassistant.components.sensor.const import SensorDeviceClass, SensorStateClass
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -39,23 +35,26 @@ class VolvoCarsSensorDescription(VolvoCarsDescription, SensorEntityDescription):
 
 
 def _availability_status(field: VolvoCarsValue, _: VolvoCarsConfigEntry) -> str:
-    reason = field.get("unavailable_reason")
-    return reason if reason else field.value
+    reason = cast(str, field.get("unavailable_reason"))
+    return reason if reason else cast(str, field.value)
 
 
 def _calculate_time_to_service(field: VolvoCarsValue, _: VolvoCarsConfigEntry) -> int:
+    value = cast(int, field.value)
+
     # Always express value in days
     if isinstance(field, VolvoCarsValueField) and field.unit == "months":
-        return field.value * 30
+        return value * 30
 
-    return field.value
+    return value
 
 
 def _calculate_engine_time_to_service(
     field: VolvoCarsValue, _: VolvoCarsConfigEntry
 ) -> int:
     # Express value in days instead of hours
-    return round(field.value / 24)
+    value = cast(int, field.value)
+    return round(value / 24)
 
 
 def _determine_fuel_consumption_unit(entry: VolvoCarsConfigEntry) -> str:
@@ -70,15 +69,16 @@ def _determine_fuel_consumption_unit(entry: VolvoCarsConfigEntry) -> str:
 def _convert_fuel_consumption(
     field: VolvoCarsValue, entry: VolvoCarsConfigEntry
 ) -> Decimal:
+    value = cast(Decimal, field.value)
     unit_key = entry.options[OPT_FUEL_CONSUMPTION_UNIT]
 
     if unit_key == OPT_UNIT_MPG_UK:
-        return round(Decimal(282.481) / Decimal(field.value), 2)
+        return round(Decimal(282.481) / value, 2)
 
     if unit_key == OPT_UNIT_MPG_US:
-        return round(Decimal(235.215) / Decimal(field.value), 2)
+        return round(Decimal(235.215) / value, 2)
 
-    return field.value
+    return value
 
 
 # pylint: disable=unexpected-keyword-arg

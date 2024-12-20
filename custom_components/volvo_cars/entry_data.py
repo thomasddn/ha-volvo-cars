@@ -26,6 +26,3 @@ class StoreData(TypedDict):
 
 class VolvoCarsStore(Store[StoreData]):
     """Volvo Cars storage."""
-
-    async def _async_migrate_func(self, old_major_version, old_minor_version, old_data):
-        pass
