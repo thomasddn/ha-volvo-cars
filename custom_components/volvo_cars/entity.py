@@ -1,12 +1,12 @@
 """Volvo Cars base entity."""
 
-from custom_components.volvo_cars.entity_description import VolvoCarsDescription
 from homeassistant.const import CONF_FRIENDLY_NAME, Platform
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import ATTR_API_TIMESTAMP, MANUFACTURER
 from .coordinator import VolvoCarsDataCoordinator
+from .entity_description import VolvoCarsDescription
 from .volvo.models import VolvoCarsApiBaseModel, VolvoCarsValueField
 
 
@@ -14,7 +14,7 @@ def get_entity_id(
     coordinator: VolvoCarsDataCoordinator, platform: Platform, key: str
 ) -> str:
     """Get the entity ID."""
-    friendly_name = coordinator.entry.data.get(CONF_FRIENDLY_NAME)
+    friendly_name = coordinator.config_entry.data.get(CONF_FRIENDLY_NAME)
 
     if friendly_name:
         return f"{platform}.{MANUFACTURER}_{friendly_name}_{key}".lower()

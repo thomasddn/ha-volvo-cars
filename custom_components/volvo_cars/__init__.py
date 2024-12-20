@@ -88,7 +88,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     entry.async_on_unload(entry.add_update_listener(options_update_listener))
     entry.async_on_unload(
         async_track_time_interval(
-            hass, coordinator.async_refresh_token, timedelta(minutes=1)
+            hass, coordinator.async_refresh_token, timedelta(minutes=25)
         )
     )
 

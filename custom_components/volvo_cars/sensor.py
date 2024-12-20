@@ -15,11 +15,10 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from .entity_description import VolvoCarsDescription
-
 from .const import OPT_FUEL_CONSUMPTION_UNIT, OPT_UNIT_MPG_UK, OPT_UNIT_MPG_US
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity, value_to_translation_key
+from .entity_description import VolvoCarsDescription
 from .volvo.models import (
     VolvoCarsApiBaseModel,
     VolvoCarsValue,
@@ -308,7 +307,7 @@ class VolvoCarsSensor(VolvoCarsEntity, SensorEntity):
 
         if description.unit_fn:
             self._attr_native_unit_of_measurement = description.unit_fn(
-                self.coordinator.entry
+                self.coordinator.config_entry
             )
 
     def _update_state(self, api_field: VolvoCarsApiBaseModel | None) -> None:
@@ -318,7 +317,9 @@ class VolvoCarsSensor(VolvoCarsEntity, SensorEntity):
         native_value = (
             api_field.value
             if self.entity_description.value_fn is None
-            else self.entity_description.value_fn(api_field, self.coordinator.entry)
+            else self.entity_description.value_fn(
+                api_field, self.coordinator.config_entry
+            )
         )
 
         if self.device_class == SensorDeviceClass.ENUM:

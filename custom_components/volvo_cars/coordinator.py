@@ -6,7 +6,7 @@ import asyncio
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 import logging
-from typing import Any
+from typing import cast
 
 from requests import ConnectTimeout, HTTPError
 
@@ -44,7 +44,9 @@ class VolvoCarsData:
 type VolvoCarsConfigEntry = ConfigEntry[VolvoCarsData]
 
 
-class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseModel]]):
+class VolvoCarsDataCoordinator(
+    DataUpdateCoordinator[dict[str, VolvoCarsApiBaseModel | None]]
+):
     """Volvo Cars Data Coordinator."""
 
     def __init__(
@@ -62,7 +64,7 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
             update_interval=timedelta(minutes=2, seconds=15),
         )
 
-        self.entry = entry
+        self.config_entry = entry
         self.api = api
         self._auth_api = auth_api
 
@@ -108,17 +110,23 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
 
         self.vehicle = vehicle
 
+        device_name = (
+            f"{MANUFACTURER} {vehicle.description.model} {vehicle.model_year}"
+            if vehicle.fuel_type == "NONE"
+            else f"{MANUFACTURER} {vehicle.description.model} {vehicle.fuel_type} {vehicle.model_year}"
+        )
+
         self.device = DeviceInfo(
-            identifiers={(DOMAIN, self.vehicle.vin)},
+            identifiers={(DOMAIN, vehicle.vin)},
             manufacturer=MANUFACTURER,
-            model=f"{self.vehicle.description.model} ({self.vehicle.model_year})",
-            name=f"{MANUFACTURER} {self.vehicle.description.model} {self.vehicle.fuel_type} {self.vehicle.model_year}",
-            serial_number=self.vehicle.vin,
+            model=f"{vehicle.description.model} ({vehicle.model_year})",
+            name=device_name,
+            serial_number=vehicle.vin,
         )
 
         self.hass.config_entries.async_update_entry(
-            self.entry,
-            title=f"{MANUFACTURER} {self.vehicle.description.model} ({self.vehicle.vin})",
+            self.config_entry,
+            title=f"{MANUFACTURER} {vehicle.description.model} ({vehicle.vin})",
         )
 
         # Check supported commands
@@ -153,47 +161,49 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
             if value is None or value.value == "UNSPECIFIED"
         ]
 
-    async def _async_update_data(self) -> dict[str, Any]:
+    async def _async_update_data(self) -> dict[str, VolvoCarsApiBaseModel | None]:
         """Fetch data from API."""
-        future: asyncio.Future[dict[str, VolvoCarsApiBaseModel | None]] = (
-            asyncio.Future()
-        )
-        future.set_result({})
+        api_calls = [
+            self.api.async_get_api_status,
+            self.api.async_get_availability_status,
+            self.api.async_get_brakes_status,
+            self.api.async_get_diagnostics,
+            self.api.async_get_engine_status,
+            self.api.async_get_engine_warnings,
+            self.api.async_get_odometer,
+            self.api.async_get_statistics,
+        ]
+
+        if self.supports_doors:
+            api_calls.append(self.api.async_get_doors_status)
+
+        if self.vehicle.has_combustion_engine():
+            api_calls.append(self.api.async_get_fuel_status)
+
+        if self.supports_location:
+            api_calls.append(self.api.async_get_location)
+
+        if self.vehicle.has_battery_engine():
+            api_calls.append(self.api.async_get_recharge_status)
+
+        if self.supports_tyres:
+            api_calls.append(self.api.async_get_tyre_states)
+
+        if self.supports_warnings:
+            api_calls.append(self.api.async_get_warnings)
+
+        if self.supports_windows:
+            api_calls.append(self.api.async_get_window_states)
 
         try:
             # Note: asyncio.TimeoutError and aiohttp.ClientError are already
             # handled by the data update coordinator.
             async with asyncio.timeout(30):
                 data: dict[str, VolvoCarsApiBaseModel | None] = {}
-
-                results = await asyncio.gather(
-                    self.api.async_get_api_status(),
-                    self.api.async_get_availability_status(),
-                    self.api.async_get_brakes_status(),
-                    self.api.async_get_diagnostics(),
-                    self.api.async_get_doors_status()
-                    if self.supports_doors
-                    else future,
-                    self.api.async_get_engine_status(),
-                    self.api.async_get_engine_warnings(),
-                    self.api.async_get_fuel_status()
-                    if self.vehicle.has_combustion_engine()
-                    else future,
-                    self.api.async_get_location() if self.supports_location else future,
-                    self.api.async_get_odometer(),
-                    self.api.async_get_recharge_status()
-                    if self.vehicle.has_battery_engine()
-                    else future,
-                    self.api.async_get_statistics(),
-                    self.api.async_get_tyre_states() if self.supports_tyres else future,
-                    self.api.async_get_warnings() if self.supports_warnings else future,
-                    self.api.async_get_window_states()
-                    if self.supports_windows
-                    else future,
-                )
+                results = await asyncio.gather(*(call() for call in api_calls))
 
                 for result in results:
-                    data |= result
+                    data |= cast(dict[str, VolvoCarsApiBaseModel | None], result)
 
         except VolvoAuthException as ex:
             # Raising ConfigEntryAuthFailed will cancel future updates
@@ -209,7 +219,7 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
     @callback
     async def async_refresh_token(self, _: datetime | None = None) -> None:
         """Refresh token."""
-        store = self.entry.runtime_data.store
+        store = self.config_entry.runtime_data.store
         storage_data = await store.async_load()
 
         if storage_data is None:
