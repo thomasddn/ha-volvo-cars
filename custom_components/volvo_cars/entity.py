@@ -1,10 +1,8 @@
 """Volvo Cars base entity."""
 
-from dataclasses import dataclass
-
+from custom_components.volvo_cars.entity_description import VolvoCarsDescription
 from homeassistant.const import CONF_FRIENDLY_NAME, Platform
 from homeassistant.core import callback
-from homeassistant.helpers.entity import EntityDescription
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import ATTR_API_TIMESTAMP, MANUFACTURER
@@ -32,13 +30,6 @@ def get_unique_id(vin: str, key: str) -> str:
 def value_to_translation_key(value: str) -> str:
     """Make sure the translation key is valid."""
     return value.lower()
-
-
-@dataclass(frozen=True, kw_only=True)
-class VolvoCarsDescription(EntityDescription):
-    """Describes a Volvo Cars entity."""
-
-    api_field: str | list[str]
 
 
 class VolvoCarsEntity(CoordinatorEntity[VolvoCarsDataCoordinator]):
@@ -69,19 +60,7 @@ class VolvoCarsEntity(CoordinatorEntity[VolvoCarsDataCoordinator]):
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        api_field = None
-
-        if isinstance(self.entity_description.api_field, str):
-            api_field = (
-                self.coordinator.data.get(self.entity_description.api_field)
-                if self.entity_description.api_field
-                else None
-            )
-        elif isinstance(self.entity_description.api_field, list):
-            for key in self.entity_description.api_field:
-                if (field := self.coordinator.data.get(key)) is not None:
-                    api_field = field
-                    break
+        api_field = self.coordinator.get_api_field(self.entity_description)
 
         if isinstance(api_field, VolvoCarsValueField):
             self._attr_extra_state_attributes[ATTR_API_TIMESTAMP] = api_field.timestamp

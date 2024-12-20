@@ -18,6 +18,7 @@ from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import DOMAIN, MANUFACTURER
+from .entity_description import VolvoCarsDescription
 from .entry_data import StoreData, VolvoCarsStore
 from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
@@ -75,6 +76,23 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[dict[str, VolvoCarsApiBaseM
         self.supports_warnings: bool = False
         self.supports_windows: bool = False
         self.unsupported_keys: list[str] = []
+
+    def get_api_field(
+        self, description: VolvoCarsDescription
+    ) -> VolvoCarsApiBaseModel | None:
+        """Get the API field based on the entity description."""
+
+        if isinstance(description.api_field, str):
+            return (
+                self.data.get(description.api_field) if description.api_field else None
+            )
+
+        if isinstance(description.api_field, list):
+            for key in description.api_field:
+                if (field := self.data.get(key)) is not None:
+                    return field
+
+        return None
 
     async def _async_setup(self) -> None:
         """Set up the coordinator.

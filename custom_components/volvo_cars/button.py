@@ -10,9 +10,11 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from .entity_description import VolvoCarsDescription
+
 from .const import ATTR_API_TIMESTAMP, ATTR_LAST_RESULT
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
-from .entity import VolvoCarsDescription, VolvoCarsEntity
+from .entity import VolvoCarsEntity
 from .volvo.models import VolvoApiException
 
 PARALLEL_UPDATES = 0

@@ -14,8 +14,10 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.httpx_client import get_async_client
 
+from .entity_description import VolvoCarsDescription
+
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
-from .entity import VolvoCarsDescription, VolvoCarsEntity
+from .entity import VolvoCarsEntity
 from .volvo.models import VolvoCarsApiBaseModel, VolvoCarsVehicle
 
 _LOGGER = logging.getLogger(__name__)

@@ -11,9 +11,11 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from .entity_description import VolvoCarsDescription
+
 from .const import ATTR_API_TIMESTAMP, ATTR_LAST_RESULT, DOMAIN
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
-from .entity import VolvoCarsDescription, VolvoCarsEntity
+from .entity import VolvoCarsEntity
 from .volvo.models import VolvoApiException, VolvoCarsApiBaseModel, VolvoCarsValue
 
 PARALLEL_UPDATES = 0
@@ -132,10 +134,16 @@ class VolvoCarsLock(VolvoCarsEntity, LockEntity):
                     },
                 )
 
+            api_field = cast(
+                VolvoCarsValue, self.coordinator.get_api_field(self.entity_description)
+            )
+
             if locked:
                 self._attr_is_locking = False
+                api_field.value = self.entity_description.api_lock_value
             else:
                 self._attr_is_unlocking = False
+                api_field.value = self.entity_description.api_unlock_value
 
             self._attr_is_locked = locked
             self.async_write_ha_state()
