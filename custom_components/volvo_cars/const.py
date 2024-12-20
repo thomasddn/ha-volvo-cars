@@ -20,6 +20,8 @@ CONF_OTP = "otp"
 CONF_VCC_API_KEY = "vcc_api_key"
 CONF_VIN = "vin"
 
+DATA_BATTERY_CAPACITY = "battery_capacity_kwh"
+
 MANUFACTURER = "Volvo"
 
 OPT_FUEL_CONSUMPTION_UNIT = "fuel_consumption_unit"

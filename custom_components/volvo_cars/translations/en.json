@@ -504,8 +504,11 @@
             "average_speed_automatic": {
                 "name": "Avg. speed automatic"
             },
+            "battery_capacity": {
+                "name": "Battery capacity"
+            },
             "battery_charge_level": {
-                "name": "SoC"
+                "name": "Battery charge level"
             },
             "charging_connection_status": {
                 "name": "Charging connection status",

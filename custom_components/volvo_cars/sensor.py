@@ -11,7 +11,12 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from .const import OPT_FUEL_CONSUMPTION_UNIT, OPT_UNIT_MPG_UK, OPT_UNIT_MPG_US
+from .const import (
+    DATA_BATTERY_CAPACITY,
+    OPT_FUEL_CONSUMPTION_UNIT,
+    OPT_UNIT_MPG_UK,
+    OPT_UNIT_MPG_US,
+)
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity, value_to_translation_key
 from .entity_description import VolvoCarsDescription
@@ -133,15 +138,6 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         icon="mdi:speedometer",
     ),
     VolvoCarsSensorDescription(
-        key="battery_charge_level",
-        translation_key="battery_charge_level",
-        api_field="batteryChargeLevel",
-        native_unit_of_measurement="%",
-        device_class=SensorDeviceClass.BATTERY,
-        state_class=SensorStateClass.MEASUREMENT,
-        available_fn=lambda vehicle: vehicle.has_battery_engine(),
-    ),
-    VolvoCarsSensorDescription(
         key="average_speed_automatic",
         translation_key="average_speed_automatic",
         api_field="averageSpeedAutomatic",
@@ -149,6 +145,24 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         device_class=SensorDeviceClass.SPEED,
         state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:speedometer",
+    ),
+    VolvoCarsSensorDescription(
+        key="battery_capacity",
+        translation_key="battery_capacity",
+        api_field=DATA_BATTERY_CAPACITY,
+        native_unit_of_measurement="kWh",
+        device_class=SensorDeviceClass.ENERGY,
+        available_fn=lambda vehicle: vehicle.has_battery_engine(),
+        icon="mdi:car-battery",
+    ),
+    VolvoCarsSensorDescription(
+        key="battery_charge_level",
+        translation_key="battery_charge_level",
+        api_field="batteryChargeLevel",
+        native_unit_of_measurement="%",
+        device_class=SensorDeviceClass.BATTERY,
+        state_class=SensorStateClass.MEASUREMENT,
+        available_fn=lambda vehicle: vehicle.has_battery_engine(),
     ),
     VolvoCarsSensorDescription(
         key="charging_connection_status",

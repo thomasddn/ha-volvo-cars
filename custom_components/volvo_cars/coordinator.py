@@ -17,7 +17,7 @@ from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .const import DOMAIN, MANUFACTURER
+from .const import DATA_BATTERY_CAPACITY, DOMAIN, MANUFACTURER
 from .entity_description import VolvoCarsDescription
 from .entry_data import StoreData, VolvoCarsStore
 from .volvo.api import VolvoCarsApi
@@ -204,6 +204,13 @@ class VolvoCarsDataCoordinator(
 
                 for result in results:
                     data |= cast(dict[str, VolvoCarsApiBaseModel | None], result)
+
+                data[DATA_BATTERY_CAPACITY] = VolvoCarsValueField.from_dict(
+                    {
+                        "value": self.vehicle.battery_capacity_kwh,
+                        "timestamp": self.config_entry.modified_at,
+                    }
+                )
 
         except VolvoAuthException as ex:
             # Raising ConfigEntryAuthFailed will cancel future updates
