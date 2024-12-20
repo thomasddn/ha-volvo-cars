@@ -14,10 +14,9 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.httpx_client import get_async_client
 
-from .entity_description import VolvoCarsDescription
-
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity
+from .entity_description import VolvoCarsDescription
 from .volvo.models import VolvoCarsApiBaseModel, VolvoCarsVehicle
 
 _LOGGER = logging.getLogger(__name__)
@@ -26,6 +25,15 @@ _HEADERS = {
     "Sec-Fetch-User": "?1",
     "User-Agent": "PostmanRuntime/7.43.0",
 }
+_IMAGE_ANGLE_MAP = {
+    "1": "right",
+    "3": "front",
+    "4": "threeQuartersFrontLeft",
+    "5": "threeQuartersRearLeft",
+    "6": "rear",
+    "7": "left",
+}
+
 PARALLEL_UPDATES = 0
 
 
@@ -37,15 +45,26 @@ class VolvoCarsImageDescription(VolvoCarsDescription, ImageEntityDescription):
     image_url_fn: Callable[[VolvoCarsVehicle], str]
 
 
-def _exterior_angle_image(exterior_url: str, angle: str) -> str:
+def _exterior_angle_image_url(exterior_url: str, angle: str) -> str:
     url_parts = parse.urlparse(exterior_url)
-    query = parse.parse_qs(url_parts.query, keep_blank_values=True)
-    query["angle"] = [angle]
 
-    return url_parts._replace(query=parse.urlencode(query, doseq=True)).geturl()
+    if url_parts.netloc.startswith("wizz"):
+        if new_angle := _IMAGE_ANGLE_MAP.get(angle):
+            current_angle = url_parts.path.split("/")[-2]
+            return exterior_url.replace(current_angle, new_angle)
+
+        return ""
+    else:
+        query = parse.parse_qs(url_parts.query, keep_blank_values=True)
+        query["angle"] = [angle]
+
+        return url_parts._replace(query=parse.urlencode(query, doseq=True)).geturl()
 
 
 async def _async_image_exists(client: AsyncClient, url: str) -> bool:
+    if not url:
+        return False
+
     try:
         response = await client.get(url, timeout=10, follow_redirects=True)
         response.raise_for_status()
@@ -66,49 +85,49 @@ IMAGES: tuple[VolvoCarsImageDescription, ...] = (
     VolvoCarsImageDescription(
         key="exterior_back",
         translation_key="exterior_back",
-        image_url_fn=lambda vehicle: _exterior_angle_image(
+        image_url_fn=lambda vehicle: _exterior_angle_image_url(
             vehicle.images.exterior_image_url, "6"
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_back_driver",
         translation_key="exterior_back_driver",
-        image_url_fn=lambda vehicle: _exterior_angle_image(
+        image_url_fn=lambda vehicle: _exterior_angle_image_url(
             vehicle.images.exterior_image_url, "5"
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_back_passenger",
         translation_key="exterior_back_passenger",
-        image_url_fn=lambda vehicle: _exterior_angle_image(
+        image_url_fn=lambda vehicle: _exterior_angle_image_url(
             vehicle.images.exterior_image_url, "2"
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_front",
         translation_key="exterior_front",
-        image_url_fn=lambda vehicle: _exterior_angle_image(
+        image_url_fn=lambda vehicle: _exterior_angle_image_url(
             vehicle.images.exterior_image_url, "3"
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_front_driver",
         translation_key="exterior_front_driver",
-        image_url_fn=lambda vehicle: _exterior_angle_image(
+        image_url_fn=lambda vehicle: _exterior_angle_image_url(
             vehicle.images.exterior_image_url, "4"
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_front_passenger",
         translation_key="exterior_front_passenger",
-        image_url_fn=lambda vehicle: _exterior_angle_image(
+        image_url_fn=lambda vehicle: _exterior_angle_image_url(
             vehicle.images.exterior_image_url, "0"
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_side_driver",
         translation_key="exterior_side_driver",
-        image_url_fn=lambda vehicle: _exterior_angle_image(
+        image_url_fn=lambda vehicle: _exterior_angle_image_url(
             vehicle.images.exterior_image_url, "7"
         ),
     ),

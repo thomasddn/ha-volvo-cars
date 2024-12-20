@@ -10,11 +10,10 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from .entity_description import VolvoCarsDescription
-
 from .const import ATTR_API_TIMESTAMP, ATTR_DIRECTION
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity
+from .entity_description import VolvoCarsDescription
 from .volvo.models import VolvoCarsApiBaseModel, VolvoCarsLocation
 
 PARALLEL_UPDATES = 0

@@ -12,10 +12,9 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from .entity_description import VolvoCarsDescription
-
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity, value_to_translation_key
+from .entity_description import VolvoCarsDescription
 from .volvo.models import VolvoCarsApiBaseModel, VolvoCarsValue
 
 PARALLEL_UPDATES = 0

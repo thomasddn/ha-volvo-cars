@@ -81,7 +81,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
 
     # Setup entities
     await coordinator.async_config_entry_first_refresh()
-    _remove_old_entities(hass, coordinator)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     # Register events
@@ -113,6 +112,7 @@ async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) 
 
         if entry.minor_version < 2:
             new_options[OPT_FUEL_CONSUMPTION_UNIT] = OPT_UNIT_LITER_PER_100KM
+            _remove_old_entities(hass, entry.runtime_data.coordinator)
 
         if entry.minor_version < 3:
             if CONF_ACCESS_TOKEN in new_data and "refresh_token" in new_data:
@@ -161,9 +161,6 @@ def _remove_old_entities(
     hass: HomeAssistant, coordinator: VolvoCarsDataCoordinator
 ) -> None:
     old_entities: tuple[tuple[Platform, str], ...] = (
-        #
-        # v0.2
-        #
         (Platform.BINARY_SENSOR, "availability"),
         (Platform.BINARY_SENSOR, "front_left_door"),
         (Platform.BINARY_SENSOR, "front_right_door"),
