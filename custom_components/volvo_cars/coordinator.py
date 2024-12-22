@@ -19,7 +19,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 
 from .const import DATA_BATTERY_CAPACITY, DOMAIN, MANUFACTURER
 from .entity_description import VolvoCarsDescription
-from .entry_data import StoreData, VolvoCarsStore
+from .store import StoreData, VolvoCarsStore
 from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import (

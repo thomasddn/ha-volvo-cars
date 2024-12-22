@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 import logging
 from typing import Any, Self
+from urllib import parse
 
 import voluptuous as vol
 
@@ -14,7 +15,11 @@ from homeassistant.const import CONF_FRIENDLY_NAME, CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import callback
 from homeassistant.exceptions import ConfigEntryError
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
-from homeassistant.helpers.selector import selector
+from homeassistant.helpers.selector import (
+    ColorRGBSelector,
+    SelectSelector,
+    SelectSelectorConfig,
+)
 
 from .const import (
     CONF_OTP,
@@ -23,29 +28,26 @@ from .const import (
     DOMAIN,
     MANUFACTURER,
     OPT_FUEL_CONSUMPTION_UNIT,
+    OPT_IMG_BG_COLOR,
     OPT_UNIT_LITER_PER_100KM,
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
 )
-from .entry_data import StoreData, create_store
+from .coordinator import VolvoCarsData
+from .store import StoreData, create_store
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import AuthorizationModel, VolvoAuthException
 
 _LOGGER = logging.getLogger(__name__)
 
-OPTIONS_SCHEMA = vol.Schema(
+_OPTIONS_SCHEMA = vol.Schema(
     {
-        vol.Required(OPT_FUEL_CONSUMPTION_UNIT): selector(
-            {
-                "select": {
-                    "options": [
-                        OPT_UNIT_LITER_PER_100KM,
-                        OPT_UNIT_MPG_UK,
-                        OPT_UNIT_MPG_US,
-                    ],
-                    "translation_key": OPT_FUEL_CONSUMPTION_UNIT,
-                }
-            }
+        vol.Required(OPT_FUEL_CONSUMPTION_UNIT): SelectSelector(
+            SelectSelectorConfig(
+                options=[OPT_UNIT_LITER_PER_100KM, OPT_UNIT_MPG_UK, OPT_UNIT_MPG_US],
+                multiple=False,
+                translation_key=OPT_FUEL_CONSUMPTION_UNIT,
+            )
         )
     }
 )
@@ -252,7 +254,23 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         if user_input is not None:
             return self.async_create_entry(data=user_input)
 
+        schema = _OPTIONS_SCHEMA.extend({})
+
+        if isinstance(self.config_entry.runtime_data, VolvoCarsData):
+            url = self.config_entry.runtime_data.coordinator.vehicle.images.exterior_image_url
+            url_parts = parse.urlparse(url)
+
+            if url_parts.netloc.startswith("cas"):
+                schema = schema.extend(
+                    {
+                        vol.Optional(
+                            OPT_IMG_BG_COLOR,
+                            default=[255, 255, 255],
+                        ): ColorRGBSelector()
+                    }
+                )
+
         return self.async_show_form(
             step_id="init",
-            data_schema=OPTIONS_SCHEMA,
+            data_schema=schema,
         )

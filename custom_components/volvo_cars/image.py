@@ -13,7 +13,9 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.httpx_client import get_async_client
+from homeassistant.util.color import color_rgb_to_hex
 
+from .const import OPT_IMG_BG_COLOR
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity
 from .entity_description import VolvoCarsDescription
@@ -42,10 +44,12 @@ class VolvoCarsImageDescription(VolvoCarsDescription, ImageEntityDescription):
     """Describes a Volvo Cars image entity."""
 
     api_field: str = ""
-    image_url_fn: Callable[[VolvoCarsVehicle], str]
+    image_url_fn: Callable[[VolvoCarsVehicle, VolvoCarsConfigEntry], str]
 
 
-def _exterior_angle_image_url(exterior_url: str, angle: str) -> str:
+def _exterior_image_url(
+    exterior_url: str, angle: str, entry: VolvoCarsConfigEntry
+) -> str:
     url_parts = parse.urlparse(exterior_url)
 
     if url_parts.netloc.startswith("wizz"):
@@ -54,11 +58,15 @@ def _exterior_angle_image_url(exterior_url: str, angle: str) -> str:
             return exterior_url.replace(current_angle, new_angle)
 
         return ""
-    else:
-        query = parse.parse_qs(url_parts.query, keep_blank_values=True)
-        query["angle"] = [angle]
 
-        return url_parts._replace(query=parse.urlencode(query, doseq=True)).geturl()
+    query = parse.parse_qs(url_parts.query, keep_blank_values=True)
+    query["angle"] = [angle]
+
+    rgb_color = entry.options.get(OPT_IMG_BG_COLOR, [255, 255, 255])
+    color = color_rgb_to_hex(*rgb_color).lstrip("#")
+    query["bg"] = [color]
+
+    return url_parts._replace(query=parse.urlencode(query, doseq=True)).geturl()
 
 
 async def _async_image_exists(client: AsyncClient, url: str) -> bool:
@@ -80,61 +88,63 @@ IMAGES: tuple[VolvoCarsImageDescription, ...] = (
     VolvoCarsImageDescription(
         key="exterior",
         translation_key="exterior",
-        image_url_fn=lambda vehicle: vehicle.images.exterior_image_url,
+        image_url_fn=lambda vehicle, entry: _exterior_image_url(
+            vehicle.images.exterior_image_url, "1", entry
+        ),
     ),
     VolvoCarsImageDescription(
         key="exterior_back",
         translation_key="exterior_back",
-        image_url_fn=lambda vehicle: _exterior_angle_image_url(
-            vehicle.images.exterior_image_url, "6"
+        image_url_fn=lambda vehicle, entry: _exterior_image_url(
+            vehicle.images.exterior_image_url, "6", entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_back_driver",
         translation_key="exterior_back_driver",
-        image_url_fn=lambda vehicle: _exterior_angle_image_url(
-            vehicle.images.exterior_image_url, "5"
+        image_url_fn=lambda vehicle, entry: _exterior_image_url(
+            vehicle.images.exterior_image_url, "5", entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_back_passenger",
         translation_key="exterior_back_passenger",
-        image_url_fn=lambda vehicle: _exterior_angle_image_url(
-            vehicle.images.exterior_image_url, "2"
+        image_url_fn=lambda vehicle, entry: _exterior_image_url(
+            vehicle.images.exterior_image_url, "2", entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_front",
         translation_key="exterior_front",
-        image_url_fn=lambda vehicle: _exterior_angle_image_url(
-            vehicle.images.exterior_image_url, "3"
+        image_url_fn=lambda vehicle, entry: _exterior_image_url(
+            vehicle.images.exterior_image_url, "3", entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_front_driver",
         translation_key="exterior_front_driver",
-        image_url_fn=lambda vehicle: _exterior_angle_image_url(
-            vehicle.images.exterior_image_url, "4"
+        image_url_fn=lambda vehicle, entry: _exterior_image_url(
+            vehicle.images.exterior_image_url, "4", entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_front_passenger",
         translation_key="exterior_front_passenger",
-        image_url_fn=lambda vehicle: _exterior_angle_image_url(
-            vehicle.images.exterior_image_url, "0"
+        image_url_fn=lambda vehicle, entry: _exterior_image_url(
+            vehicle.images.exterior_image_url, "0", entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_side_driver",
         translation_key="exterior_side_driver",
-        image_url_fn=lambda vehicle: _exterior_angle_image_url(
-            vehicle.images.exterior_image_url, "7"
+        image_url_fn=lambda vehicle, entry: _exterior_image_url(
+            vehicle.images.exterior_image_url, "7", entry
         ),
     ),
     VolvoCarsImageDescription(
         key="interior",
         translation_key="interior",
-        image_url_fn=lambda vehicle: vehicle.images.internal_image_url,
+        image_url_fn=lambda vehicle, _: vehicle.images.internal_image_url,
     ),
 )
 
@@ -154,7 +164,7 @@ async def async_setup_entry(
         for description in IMAGES
         if (
             await _async_image_exists(
-                client, description.image_url_fn(coordinator.vehicle)
+                client, description.image_url_fn(coordinator.vehicle, entry)
             )
         )
         is True
@@ -181,7 +191,9 @@ class VolvoCarsImage(VolvoCarsEntity, ImageEntity):
         self._client.headers.update(_HEADERS)
 
     def _update_state(self, api_field: VolvoCarsApiBaseModel | None) -> None:
-        url = self.entity_description.image_url_fn(self.coordinator.vehicle)
+        url = self.entity_description.image_url_fn(
+            self.coordinator.vehicle, self.coordinator.config_entry
+        )
 
         if self._attr_image_url != url:
             self._attr_image_url = url

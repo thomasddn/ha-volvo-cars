@@ -11,6 +11,7 @@
                     "friendly_name": "Friendly name"
                 },
                 "data_description": {
+                    "vin": "The VIN is 17 characters long and probably starts with YV1 or YV4.",
                     "friendly_name": "This value is used in the entity ID (volvo_[friendly name]_[key]). If left empty, VIN will be used."
                 }
             },
@@ -572,7 +573,8 @@
         "step": {
             "init": {
                 "data": {
-                    "fuel_consumption_unit": "Fuel consumption unit"
+                    "fuel_consumption_unit": "Fuel consumption unit",
+                    "image_bg_color": "Images background color"
                 },
                 "data_description": {
                     "fuel_consumption_unit": "This only matters if your car has a combustion engine."

@@ -36,7 +36,7 @@
                     "--init-hook",
                     "import sys; sys.path.insert(0, './custom_components/volvo_cars')"
                 ],
-                "python.analysis.typeCheckingMode": "basic",
+                // "python.analysis.typeCheckingMode": "basic",
                 "python.analysis.diagnosticMode": "workspace",
                 "pylint.importStrategy": "fromEnvironment",
                 "editor.formatOnPaste": false,

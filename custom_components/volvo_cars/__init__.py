@@ -22,7 +22,7 @@ from .const import (
 )
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsData, VolvoCarsDataCoordinator
 from .entity import get_entity_id
-from .entry_data import StoreData, create_store
+from .store import StoreData, create_store
 from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import VolvoAuthException
