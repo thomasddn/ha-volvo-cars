@@ -5,6 +5,16 @@
             "label": "Activate environment",
             "type": "shell",
             "command": "source /home/vscode/.local/ha-venv/bin/activate",
+        },
+        {
+            "label": "Run ruff",
+            "type": "shell",
+            "command": "ruff check .",
+        },
+        {
+            "label": "Run mypy",
+            "type": "shell",
+            "command": "mypy custom_components/",
         }
     ]
 }
