@@ -14,6 +14,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from .const import (
     DATA_BATTERY_CAPACITY,
     OPT_FUEL_CONSUMPTION_UNIT,
+    OPT_UNIT_LITER_PER_100KM,
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
 )
@@ -63,7 +64,7 @@ def _calculate_engine_time_to_service(
 
 
 def _determine_fuel_consumption_unit(entry: VolvoCarsConfigEntry) -> str:
-    unit_key = entry.options[OPT_FUEL_CONSUMPTION_UNIT]
+    unit_key = entry.options.get(OPT_FUEL_CONSUMPTION_UNIT, OPT_UNIT_LITER_PER_100KM)
 
     if unit_key in (OPT_UNIT_MPG_UK, OPT_UNIT_MPG_US):
         return "mpg"
@@ -75,7 +76,7 @@ def _convert_fuel_consumption(
     field: VolvoCarsValue, entry: VolvoCarsConfigEntry
 ) -> Decimal:
     value = cast(Decimal, field.value)
-    unit_key = entry.options[OPT_FUEL_CONSUMPTION_UNIT]
+    unit_key = entry.options.get(OPT_FUEL_CONSUMPTION_UNIT, OPT_UNIT_LITER_PER_100KM)
 
     if unit_key == OPT_UNIT_MPG_UK:
         return round(Decimal(282.481) / value, 2)

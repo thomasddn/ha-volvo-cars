@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 import logging
-from typing import Any, Self
+from typing import TYPE_CHECKING, Any, Self
 from urllib import parse
 
 import voluptuous as vol
@@ -39,18 +39,6 @@ from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import AuthorizationModel, VolvoAuthException
 
 _LOGGER = logging.getLogger(__name__)
-
-_OPTIONS_SCHEMA = vol.Schema(
-    {
-        vol.Required(OPT_FUEL_CONSUMPTION_UNIT): SelectSelector(
-            SelectSelectorConfig(
-                options=[OPT_UNIT_LITER_PER_100KM, OPT_UNIT_MPG_UK, OPT_UNIT_MPG_US],
-                multiple=False,
-                translation_key=OPT_FUEL_CONSUMPTION_UNIT,
-            )
-        )
-    }
-)
 
 
 class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
@@ -254,23 +242,48 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         if user_input is not None:
             return self.async_create_entry(data=user_input)
 
-        schema = _OPTIONS_SCHEMA.extend({})
+        if TYPE_CHECKING:
+            assert isinstance(self.config_entry.runtime_data, VolvoCarsData)
 
-        if isinstance(self.config_entry.runtime_data, VolvoCarsData):
-            url = self.config_entry.runtime_data.coordinator.vehicle.images.exterior_image_url
-            url_parts = parse.urlparse(url)
+        schema = {}
+        vehicle = self.config_entry.runtime_data.coordinator.vehicle
 
-            if url_parts.netloc.startswith("cas"):
-                schema = schema.extend(
-                    {
-                        vol.Optional(
-                            OPT_IMG_BG_COLOR,
-                            default=[255, 255, 255],
-                        ): ColorRGBSelector()
-                    }
-                )
+        # Check engine
+        if vehicle.has_combustion_engine() or True:
+            schema.update(
+                {
+                    vol.Required(OPT_FUEL_CONSUMPTION_UNIT): SelectSelector(
+                        SelectSelectorConfig(
+                            options=[
+                                OPT_UNIT_LITER_PER_100KM,
+                                OPT_UNIT_MPG_UK,
+                                OPT_UNIT_MPG_US,
+                            ],
+                            multiple=False,
+                            translation_key=OPT_FUEL_CONSUMPTION_UNIT,
+                        )
+                    )
+                }
+            )
+
+        # Check image URL
+        url = vehicle.images.exterior_image_url
+        url_parts = parse.urlparse(url)
+
+        if url_parts.netloc.startswith("cas"):
+            schema.update(
+                {
+                    vol.Optional(
+                        OPT_IMG_BG_COLOR,
+                        default=[255, 255, 255],
+                    ): ColorRGBSelector()
+                }
+            )
+
+        if len(schema) == 0:
+            return self.async_abort(reason="no_options_available")
 
         return self.async_show_form(
             step_id="init",
-            data_schema=schema,
+            data_schema=vol.Schema(schema),
         )

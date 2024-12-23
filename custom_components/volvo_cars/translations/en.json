@@ -580,6 +580,9 @@
                     "fuel_consumption_unit": "This only matters if your car has a combustion engine."
                 }
             }
+        },
+        "abort": {
+            "no_options_available": "No options available for your vehicle."
         }
     },
     "selector": {
