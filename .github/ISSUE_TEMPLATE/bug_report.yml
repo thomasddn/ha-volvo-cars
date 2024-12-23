@@ -1,0 +1,41 @@
+name: Bug report
+description: Something does not work as expected
+labels: ["bug"]
+
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell what you expected to happen.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: api-status
+    attributes:
+      label: API availability
+      description: What does the `API status` sensor report? When selecting `Something else`, please clarify below in `Additional information`.
+      options:
+        - OK
+        - N/A
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional information
+      description: Provide additional information, if any.
+    validations:
+      required: false
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics
+      description: If you think it is applicable, download the diagnostics and attach it to this issue. Privacy related data is redacted. To not disclose your setup, you may delete everything but the data element.
+      render: json
+    validations:
+      required: false
