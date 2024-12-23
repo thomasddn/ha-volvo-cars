@@ -159,7 +159,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         config_entry: ConfigEntry,
     ) -> OptionsFlowHandler:
         """Create the options flow."""
-        return OptionsFlowHandler()
+        return OptionsFlowHandler(config_entry)
 
     async def _async_authenticate(
         self, vin: str, user_input: dict[str, Any], errors: dict[str, str]
@@ -232,7 +232,9 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         )
 
 
-class OptionsFlowHandler(config_entries.OptionsFlow):
+# OptionsFlowWithConfigEntry is being phased out, probably in 2025.12.
+# Use OptionsFlow instead, starting from 2024.12.
+class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
     """Class to handle the options."""
 
     async def async_step_init(
@@ -285,5 +287,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
 
         return self.async_show_form(
             step_id="init",
-            data_schema=vol.Schema(schema),
+            data_schema=self.add_suggested_values_to_schema(
+                vol.Schema(schema), self.config_entry.options
+            ),
         )
