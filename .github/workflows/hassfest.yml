@@ -2,6 +2,8 @@ name: Validate with hassfest
 
 on:
   push:
+    tags-ignore:
+      - '**'
   pull_request:
 
 jobs:

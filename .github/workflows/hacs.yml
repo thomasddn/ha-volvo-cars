@@ -1,15 +1,17 @@
-name: HACS Action
+name: HACS validation
 
 on:
   push:
+    tags-ignore:
+      - '**'
   pull_request:
 
 jobs:
   hacs:
-    name: HACS Action
+    name: HACS validation
     runs-on: "ubuntu-latest"
     steps:
-      - name: HACS Action
+      - name: HACS validation
         uses: "hacs/action@main"
         with:
           category: "integration"
