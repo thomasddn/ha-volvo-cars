@@ -251,7 +251,7 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
         vehicle = self.config_entry.runtime_data.coordinator.vehicle
 
         # Check engine
-        if vehicle.has_combustion_engine() or True:
+        if vehicle.has_combustion_engine():
             schema.update(
                 {
                     vol.Required(OPT_FUEL_CONSUMPTION_UNIT): SelectSelector(
