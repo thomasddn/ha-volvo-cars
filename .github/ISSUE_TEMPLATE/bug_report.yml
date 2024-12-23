@@ -23,6 +23,20 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: availability
+    attributes:
+      label: Car connection
+      description: What does the `Car connection` sensor report?
+      options:
+        - Available
+        - Car in use
+        - No internet
+        - Power saving mode
+        - Unspecified
+    validations:
+      required: true
+
   - type: textarea
     id: additional-info
     attributes:

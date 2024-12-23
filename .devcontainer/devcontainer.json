@@ -17,11 +17,12 @@
         "vscode": {
             "extensions": [
                 "charliermarsh.ruff",
+                "esbenp.prettier-vscode",
+                "mhutchie.git-graph",
                 "ms-python.pylint",
                 "ms-python.vscode-pylance",
-                "visualstudioexptteam.vscodeintellicode",
                 "redhat.vscode-yaml",
-                "esbenp.prettier-vscode"
+                "visualstudioexptteam.vscodeintellicode"
             ],
             // Please keep this file in sync with settings in .vscode/settings.default.json
             "settings": {
