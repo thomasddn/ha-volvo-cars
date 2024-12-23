@@ -62,6 +62,7 @@ The action's status is included in the attributes.
 - Energy and/or fuel consumption
 - Average speed
 - Fuel amount
+- Battery capacity
 - Battery charge level
 - Charging connection
 - Charging status
