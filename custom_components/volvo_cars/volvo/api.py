@@ -162,11 +162,11 @@ class VolvoCarsApi:
         self, endpoint: str, operation: str
     ) -> dict[str, Any]:
         body = await self._async_get(endpoint, operation)
-        return body.get("data", {})
+        return cast(dict[str, Any], body.get("data", {}))
 
     async def _async_get_data_list(self, endpoint: str, operation: str) -> list[Any]:
         body = await self._async_get(endpoint, operation)
-        return body.get("data", [])
+        return cast(list[Any], body.get("data", []))
 
     async def _async_get(self, endpoint: str, operation: str) -> dict[str, Any]:
         return await self._async_request(hdrs.METH_GET, endpoint, operation)

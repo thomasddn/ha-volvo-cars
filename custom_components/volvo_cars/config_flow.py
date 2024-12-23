@@ -247,7 +247,7 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
         if TYPE_CHECKING:
             assert isinstance(self.config_entry.runtime_data, VolvoCarsData)
 
-        schema = {}
+        schema: dict[vol.Marker, Any] = {}
         vehicle = self.config_entry.runtime_data.coordinator.vehicle
 
         # Check engine
