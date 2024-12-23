@@ -121,6 +121,15 @@ Fill in the OTP to complete the process.
 
 <a name="contributing"></a>
 
+### Options
+
+Once a car has been added, you can configure additional options for it.
+
+| Option                  | Description                                                  | Availability                                          |
+| ----------------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| Fuel consumption unit   | You can choose between `l/100km`, `mpg (UK)` and `mpg (US)`. | Cars with a combustion engine.                        |
+| Images background color | Choose the background color for the exterior images.         | Depending on the image URL provided by the Volvo API. |
+
 ## 🤝 Contributing
 
 You can contribute by creating a PR, but also by testing:
