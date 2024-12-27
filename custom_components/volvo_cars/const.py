@@ -26,6 +26,7 @@ MANUFACTURER = "Volvo"
 
 OPT_FUEL_CONSUMPTION_UNIT = "fuel_consumption_unit"
 OPT_IMG_BG_COLOR = "image_bg_color"
+OPT_IMG_TRANSPARENT = "image_transparent"
 OPT_UNIT_LITER_PER_100KM = "l_100km"
 OPT_UNIT_MPG_UK = "mpg_uk"
 OPT_UNIT_MPG_US = "mpg_us"

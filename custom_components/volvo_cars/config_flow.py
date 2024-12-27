@@ -29,6 +29,7 @@ from .const import (
     MANUFACTURER,
     OPT_FUEL_CONSUMPTION_UNIT,
     OPT_IMG_BG_COLOR,
+    OPT_IMG_TRANSPARENT,
     OPT_UNIT_LITER_PER_100KM,
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
@@ -275,10 +276,11 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
         if url_parts.netloc.startswith("cas"):
             schema.update(
                 {
+                    vol.Optional(OPT_IMG_TRANSPARENT, default=True): bool,
                     vol.Optional(
                         OPT_IMG_BG_COLOR,
                         default=[255, 255, 255],
-                    ): ColorRGBSelector()
+                    ): ColorRGBSelector(),
                 }
             )
 

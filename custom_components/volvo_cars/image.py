@@ -15,7 +15,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.httpx_client import get_async_client
 from homeassistant.util.color import color_rgb_to_hex
 
-from .const import OPT_IMG_BG_COLOR
+from .const import OPT_IMG_BG_COLOR, OPT_IMG_TRANSPARENT
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity
 from .entity_description import VolvoCarsDescription
@@ -62,9 +62,10 @@ def _exterior_image_url(
     query = parse.parse_qs(url_parts.query, keep_blank_values=True)
     query["angle"] = [angle]
 
-    rgb_color = entry.options.get(OPT_IMG_BG_COLOR, [255, 255, 255])
-    color = color_rgb_to_hex(*rgb_color).lstrip("#")
-    query["bg"] = [color]
+    if not entry.options.get(OPT_IMG_TRANSPARENT, True):
+        rgb_color = entry.options.get(OPT_IMG_BG_COLOR, [255, 255, 255])
+        color = color_rgb_to_hex(*rgb_color).lstrip("#")
+        query["bg"] = [color]
 
     return url_parts._replace(query=parse.urlencode(query, doseq=True)).geturl()
 

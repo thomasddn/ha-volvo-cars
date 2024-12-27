@@ -574,10 +574,11 @@
             "init": {
                 "data": {
                     "fuel_consumption_unit": "Fuel consumption unit",
-                    "image_bg_color": "Images background color"
+                    "image_bg_color": "Images background color",
+                    "image_transparent": "Images transparent background"
                 },
                 "data_description": {
-                    "fuel_consumption_unit": "This only matters if your car has a combustion engine."
+                    "image_bg_color": "Only applicable if transparent is not checked."
                 }
             }
         },
