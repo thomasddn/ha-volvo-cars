@@ -1,0 +1,3 @@
+[run]
+omit =
+    custom_components/volvo_cars/volvo/*

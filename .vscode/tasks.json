@@ -15,6 +15,15 @@
             "label": "Run mypy",
             "type": "shell",
             "command": "mypy custom_components/",
+        },
+        {
+            "label": "Run tests",
+            "type": "shell",
+            "command": "pytest ./tests/ --cov=custom_components/volvo_cars --cov-report term-missing -vv",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         }
     ]
 }
