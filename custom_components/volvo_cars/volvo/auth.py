@@ -87,9 +87,9 @@ class VolvoCarsAuthApi:
                 data = await self._async_username_pass(url, username, password)
                 status = data.get("status")
 
-                if status == "OTP_REQUIRED":
-                    url = data["_links"]["checkOtp"]["href"] + "?action=checkOtp"
-                    return AuthorizationModel(status, next_url=url)
+            if status == "OTP_REQUIRED":
+                url = data["_links"]["checkOtp"]["href"] + "?action=checkOtp"
+                return AuthorizationModel(status, next_url=url)
 
             if status == "COMPLETED":
                 return await self._handle_status_completed(data, status)

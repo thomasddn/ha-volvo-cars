@@ -187,7 +187,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         self._username = user_input[CONF_USERNAME]
         self._password = user_input[CONF_PASSWORD]
         self._api_key = user_input[CONF_VCC_API_KEY]
-        self._friendly_name = user_input[CONF_FRIENDLY_NAME]
+        self._friendly_name = user_input.get(CONF_FRIENDLY_NAME)
 
         if not errors:
             self._auth_result = result
