@@ -49,6 +49,8 @@ class VolvoCarsDataCoordinator(
 ):
     """Volvo Cars Data Coordinator."""
 
+    config_entry: VolvoCarsConfigEntry
+
     def __init__(
         self,
         hass: HomeAssistant,
@@ -60,11 +62,11 @@ class VolvoCarsDataCoordinator(
         super().__init__(
             hass,
             _LOGGER,
+            config_entry=entry,
             name=entry.data.get(CONF_FRIENDLY_NAME) or entry.entry_id,
             update_interval=timedelta(minutes=2, seconds=15),
         )
 
-        self.config_entry: VolvoCarsConfigEntry = entry
         self.api = api
         self._auth_api = auth_api
 

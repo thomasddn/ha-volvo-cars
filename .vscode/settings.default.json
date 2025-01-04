@@ -1,16 +1,12 @@
 {
   // Please keep this file in sync with settings in .devcontainer/devcontainer.json
-  // Added --no-cov to work around TypeError: message must be set
-  // https://github.com/microsoft/vscode-python/issues/14067
   "python.testing.pytestArgs": [
-    "--no-cov",
-    "--init-hook",
-    "import sys; sys.path.insert(0, './custom_components/volvo_cars')"
+    "tests"
   ],
   // https://code.visualstudio.com/docs/python/testing#_pytest-configuration-settings
   "python.testing.pytestEnabled": false,
   // https://code.visualstudio.com/docs/python/linting#_general-settings
   "pylint.importStrategy": "fromEnvironment",
-  "python.analysis.typeCheckingMode": "basic",
-  "python.analysis.diagnosticMode": "workspace",
+  // "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.diagnosticMode": "workspace"
 }

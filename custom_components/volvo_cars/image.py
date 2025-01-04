@@ -44,12 +44,15 @@ class VolvoCarsImageDescription(VolvoCarsDescription, ImageEntityDescription):
     """Describes a Volvo Cars image entity."""
 
     api_field: str = ""
-    image_url_fn: Callable[[VolvoCarsVehicle, VolvoCarsConfigEntry], str]
+    image_url_fn: Callable[[VolvoCarsDataCoordinator], str]
 
 
 def _exterior_image_url(
     exterior_url: str, angle: str, entry: VolvoCarsConfigEntry
 ) -> str:
+    if not exterior_url:
+        return ""
+
     url_parts = parse.urlparse(exterior_url)
 
     if url_parts.netloc.startswith("wizz"):
@@ -89,63 +92,63 @@ IMAGES: tuple[VolvoCarsImageDescription, ...] = (
     VolvoCarsImageDescription(
         key="exterior",
         translation_key="exterior",
-        image_url_fn=lambda vehicle, entry: _exterior_image_url(
-            vehicle.images.exterior_image_url, "1", entry
+        image_url_fn=lambda coordinator: _exterior_image_url(
+            coordinator.vehicle.images.exterior_image_url, "1", coordinator.config_entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_back",
         translation_key="exterior_back",
-        image_url_fn=lambda vehicle, entry: _exterior_image_url(
-            vehicle.images.exterior_image_url, "6", entry
+        image_url_fn=lambda coordinator: _exterior_image_url(
+            coordinator.vehicle.images.exterior_image_url, "6", coordinator.config_entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_back_driver",
         translation_key="exterior_back_driver",
-        image_url_fn=lambda vehicle, entry: _exterior_image_url(
-            vehicle.images.exterior_image_url, "5", entry
+        image_url_fn=lambda coordinator: _exterior_image_url(
+            coordinator.vehicle.images.exterior_image_url, "5", coordinator.config_entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_back_passenger",
         translation_key="exterior_back_passenger",
-        image_url_fn=lambda vehicle, entry: _exterior_image_url(
-            vehicle.images.exterior_image_url, "2", entry
+        image_url_fn=lambda coordinator: _exterior_image_url(
+            coordinator.vehicle.images.exterior_image_url, "2", coordinator.config_entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_front",
         translation_key="exterior_front",
-        image_url_fn=lambda vehicle, entry: _exterior_image_url(
-            vehicle.images.exterior_image_url, "3", entry
+        image_url_fn=lambda coordinator: _exterior_image_url(
+            coordinator.vehicle.images.exterior_image_url, "3", coordinator.config_entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_front_driver",
         translation_key="exterior_front_driver",
-        image_url_fn=lambda vehicle, entry: _exterior_image_url(
-            vehicle.images.exterior_image_url, "4", entry
+        image_url_fn=lambda coordinator: _exterior_image_url(
+            coordinator.vehicle.images.exterior_image_url, "4", coordinator.config_entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_front_passenger",
         translation_key="exterior_front_passenger",
-        image_url_fn=lambda vehicle, entry: _exterior_image_url(
-            vehicle.images.exterior_image_url, "0", entry
+        image_url_fn=lambda coordinator: _exterior_image_url(
+            coordinator.vehicle.images.exterior_image_url, "0", coordinator.config_entry
         ),
     ),
     VolvoCarsImageDescription(
         key="exterior_side_driver",
         translation_key="exterior_side_driver",
-        image_url_fn=lambda vehicle, entry: _exterior_image_url(
-            vehicle.images.exterior_image_url, "7", entry
+        image_url_fn=lambda coordinator: _exterior_image_url(
+            coordinator.vehicle.images.exterior_image_url, "7", coordinator.config_entry
         ),
     ),
     VolvoCarsImageDescription(
         key="interior",
         translation_key="interior",
-        image_url_fn=lambda vehicle, _: vehicle.images.internal_image_url,
+        image_url_fn=lambda coordinator: coordinator.vehicle.images.internal_image_url,
     ),
 )
 
@@ -163,11 +166,7 @@ async def async_setup_entry(
     images = [
         VolvoCarsImage(coordinator, description)
         for description in IMAGES
-        if (
-            await _async_image_exists(
-                client, description.image_url_fn(coordinator.vehicle, entry)
-            )
-        )
+        if (await _async_image_exists(client, description.image_url_fn(coordinator)))
         is True
     ]
 
@@ -192,9 +191,7 @@ class VolvoCarsImage(VolvoCarsEntity, ImageEntity):
         self._client.headers.update(_HEADERS)
 
     def _update_state(self, api_field: VolvoCarsApiBaseModel | None) -> None:
-        url = self.entity_description.image_url_fn(
-            self.coordinator.vehicle, self.coordinator.config_entry
-        )
+        url = self.entity_description.image_url_fn(self.coordinator)
 
         if self._attr_image_url != url:
             self._attr_image_url = url

@@ -33,9 +33,7 @@
                 "python.pythonPath": "/usr/local/bin/python",
                 "python.terminal.activateEnvInCurrentTerminal": true,
                 "python.testing.pytestArgs": [
-                    "--no-cov",
-                    "--init-hook",
-                    "import sys; sys.path.insert(0, './custom_components/volvo_cars')"
+                    "tests"
                 ],
                 // "python.analysis.typeCheckingMode": "basic",
                 "python.analysis.diagnosticMode": "workspace",

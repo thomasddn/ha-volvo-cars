@@ -120,6 +120,20 @@ async def mock_api(request: SubRequest):
         yield
 
 
+@pytest.fixture
+async def mock_image_client():
+    """Mock the http client used by the image platform."""
+    mock_response = AsyncMock()
+    mock_response.raise_for_status = lambda: None
+    mock_response.status_code = 200
+
+    async def mock_get(*args, **kwargs):
+        return mock_response
+
+    with patch("httpx.AsyncClient.get", new=mock_get):
+        yield
+
+
 def _get_json_as_value_field(filename: str) -> dict:
     data = load_json_object_fixture(filename)
     return {key: VolvoCarsValueField.from_dict(value) for key, value in data.items()}
