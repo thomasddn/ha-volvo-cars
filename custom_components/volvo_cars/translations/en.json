@@ -393,6 +393,9 @@
                         }
                     }
                 }
+            },
+            "refresh_data": {
+                "name": "Refresh data"
             }
         },
         "device_tracker": {

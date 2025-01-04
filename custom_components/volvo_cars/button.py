@@ -25,8 +25,9 @@ class VolvoCarsButtonDescription(VolvoCarsDescription, ButtonEntityDescription):
     """Describes a Volvo Cars button entity."""
 
     api_field: str = ""
-    api_command: str
-    required_command_key: str
+    api_command: str = ""
+    required_command_key: str = ""
+    non_api_command: bool = False
 
 
 # pylint: disable=unexpected-keyword-arg
@@ -80,6 +81,12 @@ BUTTONS: tuple[VolvoCarsButtonDescription, ...] = (
         required_command_key="HONK_AND_FLASH",
         icon="mdi:alarm-light",
     ),
+    VolvoCarsButtonDescription(
+        key="refresh_data",
+        translation_key="refresh_data",
+        non_api_command=True,
+        icon="mdi:cloud-refresh-outline",
+    ),
 )
 
 
@@ -94,7 +101,8 @@ async def async_setup_entry(
     locks = [
         VolvoCarsButton(coordinator, description)
         for description in BUTTONS
-        if description.required_command_key in coordinator.commands
+        if description.non_api_command
+        or description.required_command_key in coordinator.commands
     ]
 
     async_add_entities(locks)
@@ -116,25 +124,33 @@ class VolvoCarsButton(VolvoCarsEntity, ButtonEntity):
 
     async def async_press(self) -> None:
         """Handle the button press."""
-        try:
-            _LOGGER.debug("Command %s executing", self.entity_description.api_command)
-            result = await self.coordinator.api.async_execute_command(
-                self.entity_description.api_command
-            )
 
-            status = result.invoke_status if result else ""
+        if self.entity_description.non_api_command:
+            if self.entity_description.key == "refresh_data":
+                _LOGGER.debug("Command refresh_data executing")
+                await self.coordinator.async_refresh()
+        else:
+            try:
+                _LOGGER.debug(
+                    "Command %s executing", self.entity_description.api_command
+                )
+                result = await self.coordinator.api.async_execute_command(
+                    self.entity_description.api_command
+                )
 
-            _LOGGER.debug(
-                "Command %s result: %s",
-                self.entity_description.api_command,
-                status,
-            )
-            self._attr_extra_state_attributes[ATTR_LAST_RESULT] = status.lower()
-            self._attr_extra_state_attributes[ATTR_API_TIMESTAMP] = datetime.now(
-                UTC
-            ).isoformat()
-            self.async_write_ha_state()
+                status = result.invoke_status if result else ""
 
-        except VolvoApiException as ex:
-            _LOGGER.debug("Command %s error", self.entity_description.api_command)
-            raise HomeAssistantError from ex
+                _LOGGER.debug(
+                    "Command %s result: %s",
+                    self.entity_description.api_command,
+                    status,
+                )
+                self._attr_extra_state_attributes[ATTR_LAST_RESULT] = status.lower()
+                self._attr_extra_state_attributes[ATTR_API_TIMESTAMP] = datetime.now(
+                    UTC
+                ).isoformat()
+                self.async_write_ha_state()
+
+            except VolvoApiException as ex:
+                _LOGGER.debug("Command %s error", self.entity_description.api_command)
+                raise HomeAssistantError from ex
