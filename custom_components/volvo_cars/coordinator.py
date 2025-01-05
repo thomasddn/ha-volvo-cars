@@ -19,7 +19,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 
 from .const import DATA_BATTERY_CAPACITY, DOMAIN, MANUFACTURER
 from .entity_description import VolvoCarsDescription
-from .store import StoreData, VolvoCarsStore
+from .store import VolvoCarsStore
 from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import (
@@ -55,6 +55,7 @@ class VolvoCarsDataCoordinator(
         self,
         hass: HomeAssistant,
         entry: VolvoCarsConfigEntry,
+        update_interval: int,
         auth_api: VolvoCarsAuthApi,
         api: VolvoCarsApi,
     ) -> None:
@@ -64,7 +65,7 @@ class VolvoCarsDataCoordinator(
             _LOGGER,
             config_entry=entry,
             name=entry.data.get(CONF_FRIENDLY_NAME) or entry.entry_id,
-            update_interval=timedelta(minutes=2, seconds=15),
+            update_interval=timedelta(seconds=update_interval),
         )
 
         self.api = api
@@ -246,11 +247,9 @@ class VolvoCarsDataCoordinator(
             raise ConfigEntryNotReady("Unable to connect to Volvo API.") from ex
 
         if result.token:
-            await store.async_save(
-                StoreData(
-                    access_token=result.token.access_token,
-                    refresh_token=result.token.refresh_token,
-                )
+            await store.async_update(
+                access_token=result.token.access_token,
+                refresh_token=result.token.refresh_token,
             )
             self.api.update_access_token(result.token.access_token)
 

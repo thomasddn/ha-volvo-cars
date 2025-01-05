@@ -394,8 +394,8 @@
                     }
                 }
             },
-            "refresh_data": {
-                "name": "Refresh data"
+            "update_data": {
+                "name": "Update data"
             }
         },
         "device_tracker": {
@@ -479,6 +479,11 @@
                         }
                     }
                 }
+            }
+        },
+        "number": {
+            "data_update_interval": {
+                "name": "Data update interval"
             }
         },
         "sensor": {

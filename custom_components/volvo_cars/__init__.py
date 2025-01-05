@@ -22,7 +22,7 @@ from .const import (
 )
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsData, VolvoCarsDataCoordinator
 from .entity import get_entity_id
-from .store import StoreData, create_store
+from .store import create_store
 from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import VolvoAuthException
@@ -60,11 +60,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
         raise ConfigEntryAuthFailed("Authentication token is None.")
 
     # Save tokens
-    await store.async_save(
-        StoreData(
-            access_token=result.token.access_token,
-            refresh_token=result.token.refresh_token,
-        )
+    await store.async_update(
+        access_token=result.token.access_token,
+        refresh_token=result.token.refresh_token,
     )
 
     # Create api
@@ -76,7 +74,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     )
 
     # Setup coordinator
-    coordinator = VolvoCarsDataCoordinator(hass, entry, auth_api, api)
+    coordinator = VolvoCarsDataCoordinator(
+        hass, entry, store_data["data_update_interval"], auth_api, api
+    )
     entry.runtime_data = VolvoCarsData(coordinator, store)
 
     # Setup entities
@@ -118,11 +118,9 @@ async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) 
             if CONF_ACCESS_TOKEN in new_data and "refresh_token" in new_data:
                 assert entry.unique_id is not None
                 store = create_store(hass, entry.unique_id)
-                await store.async_save(
-                    StoreData(
-                        access_token=new_data.pop(CONF_ACCESS_TOKEN),
-                        refresh_token=new_data.pop("refresh_token"),
-                    )
+                await store.async_update(
+                    access_token=new_data.pop(CONF_ACCESS_TOKEN),
+                    refresh_token=new_data.pop("refresh_token"),
                 )
 
             if CONF_PASSWORD in new_data:

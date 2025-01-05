@@ -19,7 +19,7 @@ from .const import OPT_IMG_BG_COLOR, OPT_IMG_TRANSPARENT
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity
 from .entity_description import VolvoCarsDescription
-from .volvo.models import VolvoCarsApiBaseModel, VolvoCarsVehicle
+from .volvo.models import VolvoCarsApiBaseModel
 
 _LOGGER = logging.getLogger(__name__)
 _HEADERS = {

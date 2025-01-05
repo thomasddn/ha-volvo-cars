@@ -82,8 +82,8 @@ BUTTONS: tuple[VolvoCarsButtonDescription, ...] = (
         icon="mdi:alarm-light",
     ),
     VolvoCarsButtonDescription(
-        key="refresh_data",
-        translation_key="refresh_data",
+        key="update_data",
+        translation_key="update_data",
         non_api_command=True,
         icon="mdi:cloud-refresh-outline",
     ),
@@ -126,8 +126,8 @@ class VolvoCarsButton(VolvoCarsEntity, ButtonEntity):
         """Handle the button press."""
 
         if self.entity_description.non_api_command:
-            if self.entity_description.key == "refresh_data":
-                _LOGGER.debug("Command refresh_data executing")
+            if self.entity_description.key == "update_data":
+                _LOGGER.debug("Command update_data executing")
                 await self.coordinator.async_refresh()
         else:
             try:
