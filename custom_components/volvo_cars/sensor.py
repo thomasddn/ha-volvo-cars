@@ -21,6 +21,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import (
     DATA_BATTERY_CAPACITY,
+    DATA_REQUEST_COUNT,
     OPT_FUEL_CONSUMPTION_UNIT,
     OPT_UNIT_LITER_PER_100KM,
     OPT_UNIT_MPG_UK,
@@ -97,6 +98,12 @@ def _convert_fuel_consumption(
 
 # pylint: disable=unexpected-keyword-arg
 SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
+    VolvoCarsSensorDescription(
+        key="api_request_count",
+        translation_key="api_request_count",
+        api_field=DATA_REQUEST_COUNT,
+        icon="mdi:counter",
+    ),
     VolvoCarsSensorDescription(
         key="api_status",
         translation_key="api_status",

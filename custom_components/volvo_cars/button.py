@@ -154,3 +154,6 @@ class VolvoCarsButton(VolvoCarsEntity, ButtonEntity):
             except VolvoApiException as ex:
                 _LOGGER.debug("Command %s error", self.entity_description.api_command)
                 raise HomeAssistantError from ex
+            finally:
+                await self.coordinator.async_update_request_count(1)
+                self.coordinator.async_update_listeners()

@@ -58,7 +58,6 @@ The action's status is included in the attributes.
 
 #### Sensors
 
-- Volvo API status
 - Energy and/or fuel consumption
 - Average speed
 - Fuel amount
@@ -73,6 +72,15 @@ The action's status is included in the attributes.
 - Time to service
 - Odometer
 - Trip meter
+
+#### Additional entities
+
+| Entity               | Type   | Description                                            |
+| -------------------- | ------ | ------------------------------------------------------ |
+| API status           | Sensor | Gives an indication if the Volvo API is online.        |
+| API request counter  | Sensor | Shows the number of requests made by this integration. |
+| Data update interval | Number | Set the data update interval. Default is 135 seconds.  |
+| Update data          | Button | Force a data refresh.                                  |
 
 ## 🛠️ Installation
 

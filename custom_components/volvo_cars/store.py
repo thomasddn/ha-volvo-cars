@@ -29,6 +29,7 @@ class StoreData(TypedDict):
     access_token: str
     refresh_token: str
     data_update_interval: int
+    api_request_count: int
 
 
 class VolvoCarsStore(Store[StoreData]):
@@ -44,6 +45,7 @@ class VolvoCarsStore(Store[StoreData]):
         access_token: str | None = None,
         refresh_token: str | None = None,
         data_update_interval: int | None = None,
+        api_request_count: int | None = None,
     ) -> None: ...
 
     async def async_update(
@@ -53,6 +55,7 @@ class VolvoCarsStore(Store[StoreData]):
         access_token: str | None = None,
         refresh_token: str | None = None,
         data_update_interval: int | None = None,
+        api_request_count: int | None = None,
     ) -> None:
         """Update the current store with given values."""
 
@@ -63,13 +66,13 @@ class VolvoCarsStore(Store[StoreData]):
         data = await self.async_load()
 
         if data:
-            if access_token:
-                data["access_token"] = access_token
-            if refresh_token:
-                data["refresh_token"] = refresh_token
-            if data_update_interval:
-                data["data_update_interval"] = data_update_interval
-
+            self._merge_data(
+                data,
+                access_token,
+                refresh_token,
+                data_update_interval,
+                api_request_count,
+            )
             await self.async_save(data)
 
     async def _async_migrate_func(
@@ -85,8 +88,29 @@ class VolvoCarsStore(Store[StoreData]):
             # This means the user has downgraded from a future version
             return StoreData(**old_data)
 
-        if STORAGE_VERSION == 1:
-            if STORAGE_MINOR_VERSION < 3:
-                return StoreData(**old_data, data_update_interval=135)
+        if old_major_version == 1:
+            if old_minor_version < 2:
+                return self._merge_data(
+                    old_data, data_update_interval=135, api_request_count=0
+                )
 
         return StoreData(**old_data)
+
+    def _merge_data(
+        self,
+        data: StoreData,
+        access_token: str | None = None,
+        refresh_token: str | None = None,
+        data_update_interval: int | None = None,
+        api_request_count: int | None = None,
+    ) -> StoreData:
+        if access_token is not None:
+            data["access_token"] = access_token
+        if refresh_token is not None:
+            data["refresh_token"] = refresh_token
+        if data_update_interval is not None:
+            data["data_update_interval"] = data_update_interval
+        if api_request_count is not None:
+            data["api_request_count"] = api_request_count
+
+        return data

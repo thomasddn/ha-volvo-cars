@@ -17,9 +17,9 @@ from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .const import DATA_BATTERY_CAPACITY, DOMAIN, MANUFACTURER
+from .const import DATA_BATTERY_CAPACITY, DATA_REQUEST_COUNT, DOMAIN, MANUFACTURER
 from .entity_description import VolvoCarsDescription
-from .store import VolvoCarsStore
+from .store import StoreData, VolvoCarsStore
 from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import (
@@ -81,23 +81,6 @@ class VolvoCarsDataCoordinator(
         self.supports_warnings: bool = False
         self.supports_windows: bool = False
         self.unsupported_keys: list[str] = []
-
-    def get_api_field(
-        self, description: VolvoCarsDescription
-    ) -> VolvoCarsApiBaseModel | None:
-        """Get the API field based on the entity description."""
-
-        if isinstance(description.api_field, str):
-            return (
-                self.data.get(description.api_field) if description.api_field else None
-            )
-
-        if isinstance(description.api_field, list):
-            for key in description.api_field:
-                if (field := self.data.get(key)) is not None:
-                    return field
-
-        return None
 
     async def _async_setup(self) -> None:
         """Set up the coordinator.
@@ -208,12 +191,14 @@ class VolvoCarsDataCoordinator(
                 for result in results:
                     data |= cast(dict[str, VolvoCarsApiBaseModel | None], result)
 
-                data[DATA_BATTERY_CAPACITY] = VolvoCarsValueField.from_dict(
-                    {
-                        "value": self.vehicle.battery_capacity_kwh,
-                        "timestamp": self.config_entry.modified_at,
-                    }
-                )
+            await self.async_update_request_count(len(api_calls), data)
+
+            data[DATA_BATTERY_CAPACITY] = VolvoCarsValueField.from_dict(
+                {
+                    "value": self.vehicle.battery_capacity_kwh,
+                    "timestamp": self.config_entry.modified_at,
+                }
+            )
 
         except VolvoAuthException as ex:
             # Raising ConfigEntryAuthFailed will cancel future updates
@@ -225,6 +210,23 @@ class VolvoCarsDataCoordinator(
             raise UpdateFailed("Unable to connect to Volvo API.") from ex
         else:
             return data
+
+    def get_api_field(
+        self, description: VolvoCarsDescription
+    ) -> VolvoCarsApiBaseModel | None:
+        """Get the API field based on the entity description."""
+
+        if isinstance(description.api_field, str):
+            return (
+                self.data.get(description.api_field) if description.api_field else None
+            )
+
+        if isinstance(description.api_field, list):
+            for key in description.api_field:
+                if (field := self.data.get(key)) is not None:
+                    return field
+
+        return None
 
     @callback
     async def async_refresh_token(self, _: datetime | None = None) -> None:
@@ -252,6 +254,60 @@ class VolvoCarsDataCoordinator(
                 refresh_token=result.token.refresh_token,
             )
             self.api.update_access_token(result.token.access_token)
+
+    async def async_update_request_count(
+        self,
+        calls_to_add: int,
+        data: dict[str, VolvoCarsApiBaseModel | None] | None = None,
+    ) -> None:
+        """Update the API request count."""
+        store_data = await self.config_entry.runtime_data.store.async_load()
+
+        if not store_data:
+            # There should be store_data
+            raise UpdateFailed(
+                "Storage '%s' missing.", self.config_entry.runtime_data.store.key
+            )
+
+        current_count = store_data["api_request_count"]
+        request_count = current_count + calls_to_add
+
+        data = data or self.data
+        await self._async_set_request_count(request_count, data, store_data)
+
+    async def async_reset_request_count(self, _: datetime | None = None) -> None:
+        """Reset the API request count."""
+        _LOGGER.debug("Resetting API request count")
+        await self._async_set_request_count(0, self.data, None, True)
+
+    async def _async_set_request_count(
+        self,
+        count: int,
+        data: dict[str, VolvoCarsApiBaseModel | None],
+        store_data: StoreData | None,
+        update_listeners: bool = False,
+    ) -> None:
+        if not store_data:
+            store_data = await self.config_entry.runtime_data.store.async_load()
+
+        if not store_data:
+            # There should be store_data
+            raise UpdateFailed(
+                "Storage '%s' missing.", self.config_entry.runtime_data.store.key
+            )
+
+        store_data["api_request_count"] = count
+        await self.config_entry.runtime_data.store.async_update(store_data)
+
+        data[DATA_REQUEST_COUNT] = VolvoCarsValueField.from_dict(
+            {
+                "value": count,
+                "timestamp": self.config_entry.modified_at,
+            }
+        )
+
+        if update_listeners:
+            self.async_update_listeners()
 
     def _is_all_unspecified(self, items: dict[str, VolvoCarsValueField | None]) -> bool:
         return all(

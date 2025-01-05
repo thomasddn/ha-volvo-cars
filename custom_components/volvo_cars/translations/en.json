@@ -490,6 +490,9 @@
             "api_status": {
                 "name": "API status"
             },
+            "api_request_count": {
+                "name": "API request count"
+            },
             "availability": {
                 "name": "Car connection",
                 "state": {

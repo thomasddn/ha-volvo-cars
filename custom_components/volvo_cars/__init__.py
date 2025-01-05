@@ -10,7 +10,10 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.entity_registry import async_get
-from homeassistant.helpers.event import async_track_time_interval
+from homeassistant.helpers.event import (
+    async_track_time_interval,
+    async_track_utc_time_change,
+)
 
 from .config_flow import VolvoCarsFlowHandler
 from .const import (
@@ -88,6 +91,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     entry.async_on_unload(
         async_track_time_interval(
             hass, coordinator.async_refresh_token, timedelta(minutes=25)
+        )
+    )
+    entry.async_on_unload(
+        async_track_utc_time_change(
+            hass, coordinator.async_reset_request_count, hour=0, minute=0, second=0
         )
     )
 

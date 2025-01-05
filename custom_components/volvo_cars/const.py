@@ -22,6 +22,7 @@ CONF_VCC_API_KEY = "vcc_api_key"
 CONF_VIN = "vin"
 
 DATA_BATTERY_CAPACITY = "battery_capacity_kwh"
+DATA_REQUEST_COUNT = "api_request_count"
 
 MANUFACTURER = "Volvo"
 
