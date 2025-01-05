@@ -57,17 +57,15 @@ class VolvoCarsApi:
                 response.raise_for_status()
                 json = await response.json()
                 data = cast(dict[str, Any], json)
-                _LOGGER.debug("Request [API status] body: %s", data)
+                _LOGGER.debug("Request [API status] response: %s", data)
 
-                message = data.get("message")
+                message = data.get("message") or "OK"
 
-                if not message:
-                    message = "OK"
-
-                return {"apiStatus": VolvoCarsValue(message)}
         except ClientResponseError as ex:
             _LOGGER.debug("Request [API status] error: %s", ex.message)
-            raise VolvoApiException from ex
+            message = "Unknown"
+
+        return {"apiStatus": VolvoCarsValue(message)}
 
     async def async_get_availability_status(
         self,
@@ -203,7 +201,7 @@ class VolvoCarsApi:
                 json = await response.json()
                 data = cast(dict[str, Any], json)
                 _LOGGER.debug(
-                    "Request [%s] body: %s",
+                    "Request [%s] response: %s",
                     operation,
                     redact_data(data, _DATA_TO_REDACT),
                 )
@@ -214,7 +212,17 @@ class VolvoCarsApi:
                 return {}
 
             _LOGGER.debug("Request [%s] error: %s", operation, ex.message)
+
             if ex.status in (401, 403):
                 raise VolvoAuthException from ex
+
+            if ex.status == 422 and "commands" in operation:
+                return {
+                    "data": {
+                        "vin": self._vin,
+                        "invokeStatus": "UNKNOWN",
+                        "message": "",
+                    }
+                }
 
             raise VolvoApiException from ex
