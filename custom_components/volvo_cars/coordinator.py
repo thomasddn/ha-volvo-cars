@@ -191,7 +191,9 @@ class VolvoCarsDataCoordinator(
                 for result in results:
                     data |= cast(dict[str, VolvoCarsApiBaseModel | None], result)
 
-            await self.async_update_request_count(len(api_calls), data)
+            # Do not count API status
+            calls_to_add = len(api_calls) - 1
+            await self.async_update_request_count(calls_to_add, data)
 
             data[DATA_BATTERY_CAPACITY] = VolvoCarsValueField.from_dict(
                 {

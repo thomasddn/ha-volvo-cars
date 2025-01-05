@@ -146,8 +146,10 @@ class VolvoCarsLock(VolvoCarsEntity, LockEntity):
 
             self._attr_is_locked = locked
             self.async_write_ha_state()
-            self.coordinator.async_update_listeners()
 
         except VolvoApiException as ex:
             _LOGGER.debug("Lock '%s' error", command)
             raise HomeAssistantError from ex
+        finally:
+            await self.coordinator.async_update_request_count(1)
+            self.coordinator.async_update_listeners()
