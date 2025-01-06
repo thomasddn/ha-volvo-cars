@@ -82,6 +82,11 @@ class VolvoCarsDataCoordinator(
         self.supports_windows: bool = False
         self.unsupported_keys: list[str] = []
 
+    @property
+    def store(self) -> VolvoCarsStore:
+        """Return the store."""
+        return self.config_entry.runtime_data.store
+
     async def _async_setup(self) -> None:
         """Set up the coordinator.
 
@@ -233,8 +238,7 @@ class VolvoCarsDataCoordinator(
     @callback
     async def async_refresh_token(self, _: datetime | None = None) -> None:
         """Refresh token."""
-        store = self.config_entry.runtime_data.store
-        storage_data = await store.async_load()
+        storage_data = await self.store.async_load()
 
         if storage_data is None:
             return
@@ -251,7 +255,7 @@ class VolvoCarsDataCoordinator(
             raise ConfigEntryNotReady("Unable to connect to Volvo API.") from ex
 
         if result.token:
-            await store.async_update(
+            await self.store.async_update(
                 access_token=result.token.access_token,
                 refresh_token=result.token.refresh_token,
             )
@@ -263,13 +267,11 @@ class VolvoCarsDataCoordinator(
         data: dict[str, VolvoCarsApiBaseModel | None] | None = None,
     ) -> None:
         """Update the API request count."""
-        store_data = await self.config_entry.runtime_data.store.async_load()
+        store_data = await self.store.async_load()
 
         if not store_data:
             # There should be store_data
-            raise UpdateFailed(
-                "Storage '%s' missing.", self.config_entry.runtime_data.store.key
-            )
+            raise UpdateFailed("Storage '%s' missing.", self.store.key)
 
         current_count = store_data["api_request_count"]
         request_count = current_count + calls_to_add
@@ -290,16 +292,14 @@ class VolvoCarsDataCoordinator(
         update_listeners: bool = False,
     ) -> None:
         if not store_data:
-            store_data = await self.config_entry.runtime_data.store.async_load()
+            store_data = await self.store.async_load()
 
         if not store_data:
             # There should be store_data
-            raise UpdateFailed(
-                "Storage '%s' missing.", self.config_entry.runtime_data.store.key
-            )
+            raise UpdateFailed("Storage '%s' missing.", self.store.key)
 
         store_data["api_request_count"] = count
-        await self.config_entry.runtime_data.store.async_update(store_data)
+        await self.store.async_update(store_data)
 
         data[DATA_REQUEST_COUNT] = VolvoCarsValueField.from_dict(
             {

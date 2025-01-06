@@ -484,6 +484,9 @@
         "number": {
             "data_update_interval": {
                 "name": "Data update interval"
+            },
+            "engine_run_time": {
+                "name": "Engine run time"
             }
         },
         "sensor": {

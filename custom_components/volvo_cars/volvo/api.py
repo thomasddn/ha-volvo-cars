@@ -139,10 +139,12 @@ class VolvoCarsApi:
         return await self._async_get_field(_API_CONNECTED_ENDPOINT, "windows")
 
     async def async_execute_command(
-        self, command: str
+        self, command: str, body: dict[str, Any] | None = None
     ) -> VolvoCarsCommandResult | None:
         """Execute a command."""
-        body = await self._async_post(_API_CONNECTED_ENDPOINT, f"commands/{command}")
+        body = await self._async_post(
+            _API_CONNECTED_ENDPOINT, f"commands/{command}", body
+        )
         data: dict = body.get("data", {})
         data["invoke_status"] = data.pop("invokeStatus", None)
         return VolvoCarsCommandResult.from_dict(data)
@@ -169,11 +171,18 @@ class VolvoCarsApi:
     async def _async_get(self, endpoint: str, operation: str) -> dict[str, Any]:
         return await self._async_request(hdrs.METH_GET, endpoint, operation)
 
-    async def _async_post(self, endpoint: str, operation: str) -> dict[str, Any]:
-        return await self._async_request(hdrs.METH_POST, endpoint, operation)
+    async def _async_post(
+        self, endpoint: str, operation: str, body: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
+        return await self._async_request(hdrs.METH_POST, endpoint, operation, body=body)
 
     async def _async_request(
-        self, method: str, endpoint: str, operation: str
+        self,
+        method: str,
+        endpoint: str,
+        operation: str,
+        *,
+        body: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         url = (
             f"{_API_URL}{endpoint}/{self._vin}/{operation}"
@@ -196,7 +205,9 @@ class VolvoCarsApi:
                 method,
                 redact_url(url, self._vin),
             )
-            async with self._client.request(method, url, headers=headers) as response:
+            async with self._client.request(
+                method, url, headers=headers, json=body
+            ) as response:
                 _LOGGER.debug("Request [%s] status: %s", operation, response.status)
                 json = await response.json()
                 data = cast(dict[str, Any], json)

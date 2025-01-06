@@ -1,5 +1,6 @@
 """Volvo Cars button."""
 
+from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime
 import logging
@@ -28,6 +29,14 @@ class VolvoCarsButtonDescription(VolvoCarsDescription, ButtonEntityDescription):
     api_command: str = ""
     required_command_key: str = ""
     non_api_command: bool = False
+    data_fn: Callable[[VolvoCarsDataCoordinator], Awaitable[dict]] | None = None
+
+
+async def _async_get_start_engine_data(coordinator: VolvoCarsDataCoordinator) -> dict:
+    store_data = await coordinator.store.async_load()
+    run_time = store_data["engine_run_time"] or 15
+
+    return {"runtimeMinutes": run_time}
 
 
 # pylint: disable=unexpected-keyword-arg
@@ -52,6 +61,7 @@ BUTTONS: tuple[VolvoCarsButtonDescription, ...] = (
         api_command="engine-start",
         required_command_key="ENGINE_START",
         icon="mdi:engine",
+        data_fn=lambda coordinator: _async_get_start_engine_data(coordinator),
     ),
     VolvoCarsButtonDescription(
         key="engine_stop",
@@ -84,8 +94,8 @@ BUTTONS: tuple[VolvoCarsButtonDescription, ...] = (
     VolvoCarsButtonDescription(
         key="update_data",
         translation_key="update_data",
-        non_api_command=True,
         icon="mdi:cloud-refresh-outline",
+        non_api_command=True,
     ),
 )
 
@@ -134,8 +144,15 @@ class VolvoCarsButton(VolvoCarsEntity, ButtonEntity):
                 _LOGGER.debug(
                     "Command %s executing", self.entity_description.api_command
                 )
+
+                data = (
+                    await self.entity_description.data_fn(self.coordinator)
+                    if self.entity_description.data_fn
+                    else None
+                )
+
                 result = await self.coordinator.api.async_execute_command(
-                    self.entity_description.api_command
+                    self.entity_description.api_command, data
                 )
 
                 status = result.invoke_status if result else ""

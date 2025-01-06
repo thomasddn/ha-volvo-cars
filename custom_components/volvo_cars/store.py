@@ -29,6 +29,7 @@ class StoreData(TypedDict):
     access_token: str
     refresh_token: str
     data_update_interval: int
+    engine_run_time: int
     api_request_count: int
 
 
@@ -45,6 +46,7 @@ class VolvoCarsStore(Store[StoreData]):
         access_token: str | None = None,
         refresh_token: str | None = None,
         data_update_interval: int | None = None,
+        engine_run_time: int | None = None,
         api_request_count: int | None = None,
     ) -> None: ...
 
@@ -55,6 +57,7 @@ class VolvoCarsStore(Store[StoreData]):
         access_token: str | None = None,
         refresh_token: str | None = None,
         data_update_interval: int | None = None,
+        engine_run_time: int | None = None,
         api_request_count: int | None = None,
     ) -> None:
         """Update the current store with given values."""
@@ -71,6 +74,7 @@ class VolvoCarsStore(Store[StoreData]):
                 access_token,
                 refresh_token,
                 data_update_interval,
+                engine_run_time,
                 api_request_count,
             )
             await self.async_save(data)
@@ -91,7 +95,10 @@ class VolvoCarsStore(Store[StoreData]):
         if old_major_version == 1:
             if old_minor_version < 2:
                 return self._merge_data(
-                    old_data, data_update_interval=135, api_request_count=0
+                    old_data,
+                    data_update_interval=135,
+                    engine_run_time=15,
+                    api_request_count=0,
                 )
 
         return StoreData(**old_data)
@@ -102,6 +109,7 @@ class VolvoCarsStore(Store[StoreData]):
         access_token: str | None = None,
         refresh_token: str | None = None,
         data_update_interval: int | None = None,
+        engine_run_time: int | None = None,
         api_request_count: int | None = None,
     ) -> StoreData:
         if access_token is not None:
@@ -110,6 +118,8 @@ class VolvoCarsStore(Store[StoreData]):
             data["refresh_token"] = refresh_token
         if data_update_interval is not None:
             data["data_update_interval"] = data_update_interval
+        if engine_run_time is not None:
+            data["engine_run_time"] = engine_run_time
         if api_request_count is not None:
             data["api_request_count"] = api_request_count
 
