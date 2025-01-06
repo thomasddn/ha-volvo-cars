@@ -13,11 +13,6 @@ _AUTH_URL = "https://volvoid.eu.volvocars.com/as/authorization.oauth2"
 _TOKEN_URL = "https://volvoid.eu.volvocars.com/as/token.oauth2"
 _SCOPE = [
     "openid",
-    "email",
-    "profile",
-    "care_by_volvo:financial_information:invoice:read",
-    "care_by_volvo:financial_information:payment_method",
-    "care_by_volvo:subscription:read",
     "conve:brake_status",
     "conve:climatization_start_stop",
     "conve:command_accessibility",
@@ -39,17 +34,12 @@ _SCOPE = [
     "conve:vehicle_relation",
     "conve:warnings",
     "conve:windows_status",
-    "customer:attributes",
-    "customer:attributes:write",
     "energy:battery_charge_level",
     "energy:charging_connection_status",
     "energy:charging_system_status",
     "energy:electric_range",
     "energy:estimated_charging_time",
     "energy:recharge_status",
-    "order:attributes",
-    "tsp_customer_api:all",
-    "vehicle:attributes",
 ]
 
 _LOGGER = logging.getLogger(__name__)
