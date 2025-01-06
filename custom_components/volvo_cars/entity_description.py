@@ -9,4 +9,4 @@ from homeassistant.helpers.entity import EntityDescription
 class VolvoCarsDescription(EntityDescription):
     """Describes a Volvo Cars entity."""
 
-    api_field: str | list[str]
+    api_field: str

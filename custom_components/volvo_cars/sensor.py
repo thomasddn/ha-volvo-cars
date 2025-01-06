@@ -128,7 +128,25 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
     VolvoCarsSensorDescription(
         key="average_energy_consumption",
         translation_key="average_energy_consumption",
-        api_field=["averageEnergyConsumption", "averageEnergyConsumptionAutomatic"],
+        api_field="averageEnergyConsumption",
+        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
+        device_class=SensorDeviceClass.ENERGY,
+        icon="mdi:car-electric",
+        available_fn=lambda vehicle: vehicle.has_battery_engine(),
+    ),
+    VolvoCarsSensorDescription(
+        key="average_energy_consumption_automatic",
+        translation_key="average_energy_consumption_automatic",
+        api_field="averageEnergyConsumptionAutomatic",
+        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
+        device_class=SensorDeviceClass.ENERGY,
+        icon="mdi:car-electric",
+        available_fn=lambda vehicle: vehicle.has_battery_engine(),
+    ),
+    VolvoCarsSensorDescription(
+        key="average_energy_consumption_charge",
+        translation_key="average_energy_consumption_charge",
+        api_field="averageEnergyConsumptionSinceCharge",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         device_class=SensorDeviceClass.ENERGY,
         icon="mdi:car-electric",
@@ -137,7 +155,17 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
     VolvoCarsSensorDescription(
         key="average_fuel_consumption",
         translation_key="average_fuel_consumption",
-        api_field=["averageFuelConsumption", "averageFuelConsumptionAutomatic"],
+        api_field="averageFuelConsumption",
+        native_unit_of_measurement="L/100km",
+        icon="mdi:gas-station",
+        available_fn=lambda vehicle: vehicle.has_combustion_engine(),
+        unit_fn=_determine_fuel_consumption_unit,
+        value_fn=_convert_fuel_consumption,
+    ),
+    VolvoCarsSensorDescription(
+        key="average_fuel_consumption_automatic",
+        translation_key="average_fuel_consumption_automatic",
+        api_field="averageFuelConsumptionAutomatic",
         native_unit_of_measurement="L/100km",
         icon="mdi:gas-station",
         available_fn=lambda vehicle: vehicle.has_combustion_engine(),
@@ -147,7 +175,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
     VolvoCarsSensorDescription(
         key="average_speed",
         translation_key="average_speed",
-        api_field=["averageSpeed", "averageSpeedAutomatic"],
+        api_field="averageSpeed",
         native_unit_of_measurement=UnitOfSpeed.KILOMETERS_PER_HOUR,
         device_class=SensorDeviceClass.SPEED,
         state_class=SensorStateClass.MEASUREMENT,
@@ -316,7 +344,8 @@ async def async_setup_entry(
     sensors = [
         VolvoCarsSensor(coordinator, description)
         for description in SENSORS
-        if description.available_fn(coordinator.vehicle)
+        if description.api_field in coordinator.data
+        and description.available_fn(coordinator.vehicle)
     ]
 
     async_add_entities(sensors)

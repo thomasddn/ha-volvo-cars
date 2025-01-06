@@ -510,8 +510,17 @@
             "average_energy_consumption": {
                 "name": "Avg. energy consumption"
             },
+            "average_energy_consumption_automatic": {
+                "name": "Avg. energy consumption automatic"
+            },
+            "average_energy_consumption_charge": {
+                "name": "Avg. energy consumption since charge"
+            },
             "average_fuel_consumption": {
                 "name": "Avg. fuel consumption"
+            },
+            "average_fuel_consumption_automatic": {
+                "name": "Avg. fuel consumption automatic"
             },
             "average_speed": {
                 "name": "Avg. speed"

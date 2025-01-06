@@ -223,17 +223,7 @@ class VolvoCarsDataCoordinator(
     ) -> VolvoCarsApiBaseModel | None:
         """Get the API field based on the entity description."""
 
-        if isinstance(description.api_field, str):
-            return (
-                self.data.get(description.api_field) if description.api_field else None
-            )
-
-        if isinstance(description.api_field, list):
-            for key in description.api_field:
-                if (field := self.data.get(key)) is not None:
-                    return field
-
-        return None
+        return self.data.get(description.api_field) if description.api_field else None
 
     @callback
     async def async_refresh_token(self, _: datetime | None = None) -> None:

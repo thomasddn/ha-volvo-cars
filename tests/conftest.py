@@ -41,7 +41,13 @@ async def mock_config_entry(hass: HomeAssistant) -> MockConfigEntry:
 
     store = create_store(hass, config_entry.unique_id)
     await store.async_save(
-        StoreData(access_token="", refresh_token="", data_update_interval=135)
+        StoreData(
+            access_token="",
+            refresh_token="",
+            data_update_interval=135,
+            engine_run_time=15,
+            api_request_count=0,
+        )
     )
 
     config_entry.runtime_data = VolvoCarsData(MagicMock(), store)

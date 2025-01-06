@@ -34,7 +34,7 @@ class VolvoCarsButtonDescription(VolvoCarsDescription, ButtonEntityDescription):
 
 async def _async_get_start_engine_data(coordinator: VolvoCarsDataCoordinator) -> dict:
     store_data = await coordinator.store.async_load()
-    run_time = store_data["engine_run_time"] or 15
+    run_time = store_data["engine_run_time"] if store_data else 15
 
     return {"runtimeMinutes": run_time}
 
