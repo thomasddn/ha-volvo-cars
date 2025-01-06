@@ -94,7 +94,11 @@ async def async_setup_entry(
     """Set up number."""
     coordinator = entry.runtime_data.coordinator
 
-    numbers = [VolvoCarsNumber(coordinator, description) for description in NUMBERS]
+    numbers = [
+        VolvoCarsNumber(coordinator, description)
+        for description in NUMBERS
+        if description.available_fn(coordinator.vehicle)
+    ]
 
     async_add_entities(numbers)
 
