@@ -1,6 +1,8 @@
 # Volvo Cars Home Assistant integration
 
-This integration provides access to your Volvo car, provided your model and region are supported by their API. Supported regions include: Europe, Middle East, and Africa. For a full list of supported countries, visit [Volvo's API documentation](https://developer.volvocars.com/terms-and-conditions/apis-supported-locations/).
+This integration provides access to your Volvo car, provided your model and region are supported by their API. Supported regions include: Europe, Middle East, and Africa.
+
+For a complete list of supported countries, check out [Volvo's API documentation](https://developer.volvocars.com/terms-and-conditions/apis-supported-locations/). However, users have reported it does work in the US and Brazil. So even if you're not in one of the listed countries, you might still get lucky!
 
 Now check out the features section for details on what you'll get!
 
@@ -135,10 +137,11 @@ Fill in the OTP to complete the process.
 
 Once a car has been added, you can configure additional options for it.
 
-| Option                  | Description                                                  | Availability                                          |
-| ----------------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| Fuel consumption unit   | You can choose between `l/100km`, `mpg (UK)` and `mpg (US)`. | Cars with a combustion engine.                        |
-| Images background color | Choose the background color for the exterior images.         | Depending on the image URL provided by the Volvo API. |
+| Option                        | Description                                                               | Availability                                          |
+| ----------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------- |
+| Fuel consumption unit         | You can choose between `l/100km`, `mpg (UK)` and `mpg (US)`.              | Cars with a combustion engine.                        |
+| Images transparent background | Whether or not you want transparent a background for the exterior images. | Depending on the image URL provided by the Volvo API. |
+| Images background color       | Choose the background color for the exterior images.                      | Depending on the image URL provided by the Volvo API. |
 
 ## 🤝 Contributing
 
@@ -146,12 +149,18 @@ You can contribute by creating a PR, but also by testing:
 
 - Provide general feedback or report issues.
 - Help with translations.
-- Test if you have multiple Volvos on the **same account**.
+
+Shoutout to [@Pau1ey](https://github.com/Pau1ey) for testing and confirming this! 🤩
+
 - ~~Test if you have multiple Volvos across **different accounts**.~~
 - ~~Test with other Volvo models (non-BEV).~~
 - ~~Users that use imperial system.~~
 
-Shoutout to [@Pau1ey](https://github.com/Pau1ey) for testing and confirming this! 🤩
+And [timthorn's](https://community.home-assistant.io/t/volvo-cars-integration/796417/73) rocking two cars on the same account, what a flex! 💪
+
+- ~~Test if you have multiple Volvos on the **same account**.~~
+
+To everyone who tested, broke things, reported bugs, shared ideas, and gave feedback — y'all are the dream team! 🙌
 
 ## 🛟 Need help?
 
