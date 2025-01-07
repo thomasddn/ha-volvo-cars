@@ -87,7 +87,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     # Register events
-    entry.async_on_unload(entry.add_update_listener(options_update_listener))
+    entry.async_on_unload(entry.add_update_listener(_options_update_listener))
     entry.async_on_unload(
         async_track_time_interval(
             hass, coordinator.async_refresh_token, timedelta(minutes=25)
@@ -156,7 +156,12 @@ async def async_unload_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
 
 
-async def options_update_listener(
+async def async_remove_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -> None:
+    """Remove a config entry."""
+    await entry.runtime_data.store.async_remove()
+
+
+async def _options_update_listener(
     hass: HomeAssistant, entry: VolvoCarsConfigEntry
 ) -> None:
     """Reload entry after config changes."""
