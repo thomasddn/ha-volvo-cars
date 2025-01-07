@@ -189,12 +189,11 @@ class VolvoCarsDataCoordinator(
         try:
             # Note: asyncio.TimeoutError and aiohttp.ClientError are already
             # handled by the data update coordinator.
-            async with asyncio.timeout(30):
-                data: dict[str, VolvoCarsApiBaseModel | None] = {}
-                results = await asyncio.gather(*(call() for call in api_calls))
+            data: dict[str, VolvoCarsApiBaseModel | None] = {}
+            results = await asyncio.gather(*(call() for call in api_calls))
 
-                for result in results:
-                    data |= cast(dict[str, VolvoCarsApiBaseModel | None], result)
+            for result in results:
+                data |= cast(dict[str, VolvoCarsApiBaseModel | None], result)
 
             # Do not count API status
             calls_to_add = len(api_calls) - 1
@@ -212,9 +211,6 @@ class VolvoCarsDataCoordinator(
             # and start a config flow with SOURCE_REAUTH (async_step_reauth)
             _LOGGER.exception("Authentication failed")
             raise ConfigEntryAuthFailed("Authentication failed.") from ex
-        except (ConnectTimeout, HTTPError) as ex:
-            _LOGGER.exception("Connection failed")
-            raise UpdateFailed("Unable to connect to Volvo API.") from ex
         else:
             return data
 
