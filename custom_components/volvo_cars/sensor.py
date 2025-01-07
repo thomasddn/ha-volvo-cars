@@ -102,6 +102,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         key="api_request_count",
         translation_key="api_request_count",
         api_field=DATA_REQUEST_COUNT,
+        state_class=SensorStateClass.TOTAL_INCREASING,
         icon="mdi:counter",
     ),
     VolvoCarsSensorDescription(

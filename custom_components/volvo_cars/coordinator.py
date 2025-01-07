@@ -251,9 +251,6 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
         except VolvoAuthException as ex:
             _LOGGER.exception("Authentication failed")
             raise ConfigEntryAuthFailed("Authentication failed.") from ex
-        except (ConnectTimeout, HTTPError) as ex:
-            _LOGGER.exception("Connection failed")
-            raise ConfigEntryNotReady("Unable to connect to Volvo API.") from ex
 
         if result.token:
             await self.store.async_update(
