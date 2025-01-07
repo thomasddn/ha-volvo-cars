@@ -6,7 +6,7 @@ body:
   - type: textarea
     id: idea
     attributes:
-      label: Your idea
+      label: Idea
       description: Describe your idea as detailed as possible.
     validations:
       required: true

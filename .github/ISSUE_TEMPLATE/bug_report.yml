@@ -18,6 +18,7 @@ body:
       description: What does the `API status` sensor report? When selecting `Something else`, please clarify below in `Additional information`.
       options:
         - OK
+        - Unknown
         - N/A
         - Something else
     validations:
@@ -34,6 +35,13 @@ body:
         - No internet
         - Power saving mode
         - Unspecified
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Installed integration version
     validations:
       required: true
 
