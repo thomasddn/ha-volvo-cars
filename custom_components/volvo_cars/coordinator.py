@@ -42,11 +42,10 @@ class VolvoCarsData:
 
 
 type VolvoCarsConfigEntry = ConfigEntry[VolvoCarsData]
+type CoordinatorData = dict[str, VolvoCarsApiBaseModel | None]
 
 
-class VolvoCarsDataCoordinator(
-    DataUpdateCoordinator[dict[str, VolvoCarsApiBaseModel | None]]
-):
+class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
     """Volvo Cars Data Coordinator."""
 
     config_entry: VolvoCarsConfigEntry
@@ -93,67 +92,83 @@ class VolvoCarsDataCoordinator(
         This method is called automatically during
         coordinator.async_config_entry_first_refresh.
         """
-        vehicle = await self.api.async_get_vehicle_details()
+        _LOGGER.debug("%s - Setting up", self.config_entry.entry_id)
 
-        if vehicle is None:
-            _LOGGER.error("Unable to retrieve vehicle details.")
-            raise VolvoApiException("Unable to retrieve vehicle details.")
+        try:
+            count = 0
+            vehicle = await self.api.async_get_vehicle_details()
+            count += 1
 
-        self.vehicle = vehicle
+            if vehicle is None:
+                _LOGGER.error("Unable to retrieve vehicle details.")
+                raise VolvoApiException("Unable to retrieve vehicle details.")
 
-        device_name = (
-            f"{MANUFACTURER} {vehicle.description.model} {vehicle.model_year}"
-            if vehicle.fuel_type == "NONE"
-            else f"{MANUFACTURER} {vehicle.description.model} {vehicle.fuel_type} {vehicle.model_year}"
-        )
+            self.vehicle = vehicle
 
-        self.device = DeviceInfo(
-            identifiers={(DOMAIN, vehicle.vin)},
-            manufacturer=MANUFACTURER,
-            model=f"{vehicle.description.model} ({vehicle.model_year})",
-            name=device_name,
-            serial_number=vehicle.vin,
-        )
+            device_name = (
+                f"{MANUFACTURER} {vehicle.description.model} {vehicle.model_year}"
+                if vehicle.fuel_type == "NONE"
+                else f"{MANUFACTURER} {vehicle.description.model} {vehicle.fuel_type} {vehicle.model_year}"
+            )
 
-        self.hass.config_entries.async_update_entry(
-            self.config_entry,
-            title=f"{MANUFACTURER} {vehicle.description.model} ({vehicle.vin})",
-        )
+            self.device = DeviceInfo(
+                identifiers={(DOMAIN, vehicle.vin)},
+                manufacturer=MANUFACTURER,
+                model=f"{vehicle.description.model} ({vehicle.model_year})",
+                name=device_name,
+                serial_number=vehicle.vin,
+            )
 
-        # Check supported commands
-        commands = await self.api.async_get_commands()
-        self.commands = [command.command for command in commands if command]
+            self.hass.config_entries.async_update_entry(
+                self.config_entry,
+                title=f"{MANUFACTURER} {vehicle.description.model} ({vehicle.vin})",
+            )
 
-        # Check if location is supported
-        location = await self.api.async_get_location()
-        self.supports_location = location.get("location") is not None
+            # Check supported commands
+            commands = await self.api.async_get_commands()
+            count += 1
+            self.commands = [command.command for command in commands if command]
 
-        # Check if doors are supported
-        doors = await self.api.async_get_doors_status()
-        self.supports_doors = not self._is_all_unspecified(doors)
+            # Check if location is supported
+            location = await self.api.async_get_location()
+            count += 1
+            self.supports_location = location.get("location") is not None
 
-        # Check if tyres are supported
-        tyres = await self.api.async_get_tyre_states()
-        self.supports_tyres = not self._is_all_unspecified(tyres)
+            # Check if doors are supported
+            doors = await self.api.async_get_doors_status()
+            count += 1
+            self.supports_doors = not self._is_all_unspecified(doors)
 
-        # Check if warnings are supported
-        warnings = await self.api.async_get_warnings()
-        self.supports_warnings = not self._is_all_unspecified(warnings)
+            # Check if tyres are supported
+            tyres = await self.api.async_get_tyre_states()
+            count += 1
+            self.supports_tyres = not self._is_all_unspecified(tyres)
 
-        # Check if windows are supported
-        windows = await self.api.async_get_window_states()
-        self.supports_windows = not self._is_all_unspecified(windows)
+            # Check if warnings are supported
+            warnings = await self.api.async_get_warnings()
+            count += 1
+            self.supports_warnings = not self._is_all_unspecified(warnings)
+
+            # Check if windows are supported
+            windows = await self.api.async_get_window_states()
+            count += 1
+            self.supports_windows = not self._is_all_unspecified(windows)
+
+        finally:
+            self.data = self.data or {}
+            await self.async_update_request_count(count)
 
         # Keep track of unsupported keys
-        self.unsupported_keys.append("location")
         self.unsupported_keys += [
             key
             for key, value in (doors | tyres | warnings | windows).items()
             if value is None or value.value == "UNSPECIFIED"
         ]
 
-    async def _async_update_data(self) -> dict[str, VolvoCarsApiBaseModel | None]:
+    async def _async_update_data(self) -> CoordinatorData:
         """Fetch data from API."""
+        _LOGGER.debug("%s - Updating data", self.config_entry.entry_id)
+
         api_calls = [
             self.api.async_get_api_status,
             self.api.async_get_availability_status,
@@ -189,11 +204,11 @@ class VolvoCarsDataCoordinator(
         try:
             # Note: asyncio.TimeoutError and aiohttp.ClientError are already
             # handled by the data update coordinator.
-            data: dict[str, VolvoCarsApiBaseModel | None] = {}
+            data: CoordinatorData = {}
             results = await asyncio.gather(*(call() for call in api_calls))
 
             for result in results:
-                data |= cast(dict[str, VolvoCarsApiBaseModel | None], result)
+                data |= cast(CoordinatorData, result)
 
             # Do not count API status
             calls_to_add = len(api_calls) - 1
@@ -250,7 +265,7 @@ class VolvoCarsDataCoordinator(
     async def async_update_request_count(
         self,
         calls_to_add: int,
-        data: dict[str, VolvoCarsApiBaseModel | None] | None = None,
+        data: CoordinatorData | None = None,
     ) -> None:
         """Update the API request count."""
         store_data = await self.store.async_load()
@@ -267,13 +282,13 @@ class VolvoCarsDataCoordinator(
 
     async def async_reset_request_count(self, _: datetime | None = None) -> None:
         """Reset the API request count."""
-        _LOGGER.debug("Resetting API request count")
+        _LOGGER.debug("%s - Resetting API request count", self.config_entry.entry_id)
         await self._async_set_request_count(0, self.data, None, True)
 
     async def _async_set_request_count(
         self,
         count: int,
-        data: dict[str, VolvoCarsApiBaseModel | None],
+        data: CoordinatorData | None,
         store_data: StoreData | None,
         update_listeners: bool = False,
     ) -> None:
@@ -287,12 +302,13 @@ class VolvoCarsDataCoordinator(
         store_data["api_request_count"] = count
         await self.store.async_update(store_data)
 
-        data[DATA_REQUEST_COUNT] = VolvoCarsValueField.from_dict(
-            {
-                "value": count,
-                "timestamp": self.config_entry.modified_at,
-            }
-        )
+        if data is not None:
+            data[DATA_REQUEST_COUNT] = VolvoCarsValueField.from_dict(
+                {
+                    "value": count,
+                    "timestamp": self.config_entry.modified_at,
+                }
+            )
 
         if update_listeners:
             self.async_update_listeners()
