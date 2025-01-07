@@ -5,11 +5,7 @@ from dataclasses import dataclass
 from datetime import timedelta
 import logging
 
-from homeassistant.components.number import (
-    NumberEntity,
-    NumberEntityDescription,
-    NumberMode,
-)
+from homeassistant.components.number import NumberEntity, NumberEntityDescription
 from homeassistant.const import Platform, UnitOfTime
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -66,7 +62,6 @@ NUMBERS: tuple[VolvoCarsNumberDescription, ...] = (
         native_max_value=3600,
         native_step=5,
         native_unit_of_measurement=UnitOfTime.SECONDS,
-        mode=NumberMode.SLIDER,
         get_value_fn=_get_update_interval,
         set_value_fn=_set_update_interval,
     ),
@@ -78,7 +73,6 @@ NUMBERS: tuple[VolvoCarsNumberDescription, ...] = (
         native_max_value=15,
         native_step=1,
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        mode=NumberMode.SLIDER,
         get_value_fn=_get_engine_run_time,
         set_value_fn=_set_engine_run_time,
         available_fn=lambda vehicle: vehicle.has_combustion_engine(),
