@@ -8,6 +8,9 @@ Now check out the features section for details on what you'll get!
 
 [![GitHub release (with filter)][releases-shield]][releases]
 
+> [!IMPORTANT]
+> Coming over from volvo2mqtt? Hi! 👋 Please [read this](https://github.com/thomasddn/ha-volvo-cars/wiki/volvo2mqtt).
+
 ## ✨ Features
 
 ### General
@@ -18,7 +21,10 @@ Now check out the features section for details on what you'll get!
 
 ### Entities
 
-This integration will give you about 70 entities! Some may only be added if it is supported by your car.
+This integration will give you about 70 entities!
+
+> [!NOTE]
+> Some entities may only be available if supported by your car.
 
 #### Binary sensors
 
@@ -150,13 +156,13 @@ You can contribute by creating a PR, but also by testing:
 - Provide general feedback or report issues.
 - Help with translations.
 
-Shoutout to [@Pau1ey](https://github.com/Pau1ey) for testing and confirming this! 🤩
+Shoutout to [Pau1ey](https://github.com/thomasddn/ha-volvo-cars/issues/1#issuecomment-2540446206) for testing and confirming this! 🤩
 
 - ~~Test if you have multiple Volvos across **different accounts**.~~
 - ~~Test with other Volvo models (non-BEV).~~
 - ~~Users that use imperial system.~~
 
-And [timthorn's](https://community.home-assistant.io/t/volvo-cars-integration/796417/73) rocking two cars on the same account, what a flex! 💪
+Both [timthorn](https://community.home-assistant.io/t/volvo-cars-integration/796417/73) and [dalvald](https://github.com/thomasddn/ha-volvo-cars/discussions/3#discussioncomment-11754676) rocking two cars on the same account, what a flex! 💪
 
 - ~~Test if you have multiple Volvos on the **same account**.~~
 
