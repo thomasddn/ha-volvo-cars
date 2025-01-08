@@ -158,7 +158,10 @@ async def async_unload_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -
 
 async def async_remove_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -> None:
     """Remove a config entry."""
-    await entry.runtime_data.store.async_remove()
+    try:
+        await entry.runtime_data.store.async_remove()
+    except Exception:
+        pass
 
 
 async def _options_update_listener(
