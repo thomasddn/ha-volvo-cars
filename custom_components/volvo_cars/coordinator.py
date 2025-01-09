@@ -3,17 +3,16 @@
 from __future__ import annotations
 
 import asyncio
+from collections.abc import Callable, Coroutine
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 import logging
-from typing import cast
-
-from requests import ConnectTimeout, HTTPError
+from typing import Any, cast
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_FRIENDLY_NAME
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
+from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
@@ -169,65 +168,69 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
         """Fetch data from API."""
         _LOGGER.debug("%s - Updating data", self.config_entry.entry_id)
 
-        api_calls = [
-            self.api.async_get_api_status,
-            self.api.async_get_availability_status,
-            self.api.async_get_brakes_status,
-            self.api.async_get_diagnostics,
-            self.api.async_get_engine_status,
-            self.api.async_get_engine_warnings,
-            self.api.async_get_odometer,
-            self.api.async_get_statistics,
-        ]
-
-        if self.supports_doors:
-            api_calls.append(self.api.async_get_doors_status)
-
-        if self.vehicle.has_combustion_engine():
-            api_calls.append(self.api.async_get_fuel_status)
-
-        if self.supports_location:
-            api_calls.append(self.api.async_get_location)
-
-        if self.vehicle.has_battery_engine():
-            api_calls.append(self.api.async_get_recharge_status)
-
-        if self.supports_tyres:
-            api_calls.append(self.api.async_get_tyre_states)
-
-        if self.supports_warnings:
-            api_calls.append(self.api.async_get_warnings)
-
-        if self.supports_windows:
-            api_calls.append(self.api.async_get_window_states)
+        api_calls = self._get_api_calls()
+        data: CoordinatorData = {}
+        valid = 0
+        exception: Exception | None = None
 
         try:
-            # Note: asyncio.TimeoutError and aiohttp.ClientError are already
-            # handled by the data update coordinator.
-            data: CoordinatorData = {}
-            results = await asyncio.gather(*(call() for call in api_calls))
+            results = await asyncio.gather(
+                *(call() for call in api_calls), return_exceptions=True
+            )
 
             for result in results:
+                if isinstance(result, VolvoAuthException):
+                    # If one result is a VolvoAuthException, then probably all requests
+                    # will fail. In this case we can cancel everything to
+                    # reauthenticate.
+                    #
+                    # Raising ConfigEntryAuthFailed will cancel future updates
+                    # and start a config flow with SOURCE_REAUTH (async_step_reauth)
+                    _LOGGER.exception(
+                        "%s - Authentication failed", self.config_entry.entry_id
+                    )
+                    raise ConfigEntryAuthFailed("Authentication failed.") from result
+
+                if isinstance(result, VolvoApiException):
+                    # Maybe it's just one call that fails. Log the error and
+                    # continue processing the other calls.
+                    _LOGGER.debug(
+                        "%s - Error during data update: %s",
+                        self.config_entry.entry_id,
+                        result,
+                    )
+                    exception = exception or result
+                    continue
+
+                if isinstance(result, Exception):
+                    # Something bad happened, raise immediately.
+                    raise result
+
                 data |= cast(CoordinatorData, result)
+                valid += 1
 
-            # Do not count API status
-            calls_to_add = len(api_calls) - 1
-            await self.async_update_request_count(calls_to_add, data)
+            # Raise an error if not a single API call succeeded
+            if valid == 0:
+                message = "Unable to update data."
 
+                if exception:
+                    raise UpdateFailed(message) from exception
+
+                raise UpdateFailed(message)
+
+            # Add static values
             data[DATA_BATTERY_CAPACITY] = VolvoCarsValueField.from_dict(
                 {
                     "value": self.vehicle.battery_capacity_kwh,
                     "timestamp": self.config_entry.modified_at,
                 }
             )
+        finally:
+            # Save number of API requests made (excluding API status)
+            calls_to_add = len(api_calls) - 1
+            await self.async_update_request_count(calls_to_add, data)
 
-        except VolvoAuthException as ex:
-            # Raising ConfigEntryAuthFailed will cancel future updates
-            # and start a config flow with SOURCE_REAUTH (async_step_reauth)
-            _LOGGER.exception("Authentication failed")
-            raise ConfigEntryAuthFailed("Authentication failed.") from ex
-        else:
-            return data
+        return data
 
     def get_api_field(
         self, description: VolvoCarsDescription
@@ -249,7 +252,7 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
                 storage_data["refresh_token"]
             )
         except VolvoAuthException as ex:
-            _LOGGER.exception("Authentication failed")
+            _LOGGER.exception("Authentication failed: %s", ex.message)
             raise ConfigEntryAuthFailed("Authentication failed.") from ex
 
         if result.token:
@@ -309,6 +312,43 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
 
         if update_listeners:
             self.async_update_listeners()
+
+    def _get_api_calls(
+        self,
+    ) -> list[Callable[[], Coroutine[Any, Any, Any]]]:
+        api_calls = [
+            self.api.async_get_api_status,
+            self.api.async_get_availability_status,
+            self.api.async_get_brakes_status,
+            self.api.async_get_diagnostics,
+            self.api.async_get_engine_status,
+            self.api.async_get_engine_warnings,
+            self.api.async_get_odometer,
+            self.api.async_get_statistics,
+        ]
+
+        if self.supports_doors:
+            api_calls.append(self.api.async_get_doors_status)
+
+        if self.vehicle.has_combustion_engine():
+            api_calls.append(self.api.async_get_fuel_status)
+
+        if self.supports_location:
+            api_calls.append(self.api.async_get_location)
+
+        if self.vehicle.has_battery_engine():
+            api_calls.append(self.api.async_get_recharge_status)
+
+        if self.supports_tyres:
+            api_calls.append(self.api.async_get_tyre_states)
+
+        if self.supports_warnings:
+            api_calls.append(self.api.async_get_warnings)
+
+        if self.supports_windows:
+            api_calls.append(self.api.async_get_window_states)
+
+        return api_calls
 
     def _is_all_unspecified(self, items: dict[str, VolvoCarsValueField | None]) -> bool:
         return all(

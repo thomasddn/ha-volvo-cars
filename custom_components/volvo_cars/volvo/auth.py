@@ -145,7 +145,7 @@ class VolvoCarsAuthApi:
             json = await response.json()
             data = cast(dict[str, Any], json)
             _LOGGER.debug(
-                "Request [auth init] body: %s", redact_data(data, _DATA_TO_REDACT)
+                "Request [auth init] response: %s", redact_data(data, _DATA_TO_REDACT)
             )
             response.raise_for_status()
             return data
@@ -165,7 +165,7 @@ class VolvoCarsAuthApi:
             json = await response.json()
             data = cast(dict[str, Any], json)
             _LOGGER.debug(
-                "Request [credentials] body: %s", redact_data(data, _DATA_TO_REDACT)
+                "Request [credentials] response: %s", redact_data(data, _DATA_TO_REDACT)
             )
             response.raise_for_status()
             return data
@@ -179,7 +179,9 @@ class VolvoCarsAuthApi:
             _LOGGER.debug("Request [OTP] status: %s", response.status)
             json = await response.json()
             data = cast(dict[str, Any], json)
-            _LOGGER.debug("Request [OTP] body: %s", redact_data(data, _DATA_TO_REDACT))
+            _LOGGER.debug(
+                "Request [OTP] response: %s", redact_data(data, _DATA_TO_REDACT)
+            )
             response.raise_for_status()
             return data
 
@@ -191,7 +193,7 @@ class VolvoCarsAuthApi:
             json = await response.json()
             data = cast(dict[str, Any], json)
             _LOGGER.debug(
-                "Request [auth cont] body: %s", redact_data(data, _DATA_TO_REDACT)
+                "Request [auth cont] response: %s", redact_data(data, _DATA_TO_REDACT)
             )
             response.raise_for_status()
             return data
@@ -207,7 +209,7 @@ class VolvoCarsAuthApi:
             _LOGGER.debug("Request [tokens] status: %s", response.status)
             json = await response.json()
             _LOGGER.debug(
-                "Request [tokens] body: %s", redact_data(json, _DATA_TO_REDACT)
+                "Request [tokens] response: %s", redact_data(json, _DATA_TO_REDACT)
             )
             response.raise_for_status()
             return TokenResponse.from_dict(json)
@@ -223,7 +225,8 @@ class VolvoCarsAuthApi:
             _LOGGER.debug("Request [token refresh] status: %s", response.status)
             json = await response.json()
             _LOGGER.debug(
-                "Request [token refresh] body: %s", redact_data(json, _DATA_TO_REDACT)
+                "Request [token refresh] response: %s",
+                redact_data(json, _DATA_TO_REDACT),
             )
             response.raise_for_status()
             return TokenResponse.from_dict(json)

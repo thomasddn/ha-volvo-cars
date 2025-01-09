@@ -184,3 +184,7 @@ class VolvoApiException(Exception):
 
 class VolvoAuthException(VolvoApiException):
     """Thrown when the authentication fails."""
+
+    def __init__(self, message: str = "") -> None:
+        """Initialze exception."""
+        self.message = message

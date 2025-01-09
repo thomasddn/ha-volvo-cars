@@ -3,7 +3,7 @@
 import logging
 from typing import Any, cast
 
-from aiohttp import ClientResponseError, ClientSession, hdrs
+from aiohttp import ClientError, ClientResponseError, ClientSession, ClientTimeout, hdrs
 
 from .models import (
     VolvoApiException,
@@ -22,6 +22,7 @@ _API_ENERGY_ENDPOINT = "/energy/v1/vehicles"
 _API_LOCATION_ENDPOINT = "/location/v1/vehicles"
 _API_URL = "https://api.volvocars.com"
 _API_STATUS_URL = "https://public-developer-portal-bff.weu-prod.ecpaz.volvocars.biz/api/v1/backend-status"
+_API_REQUEST_TIMEOUT = ClientTimeout(total=30)
 
 _LOGGER = logging.getLogger(__name__)
 _DATA_TO_REDACT = [
@@ -52,7 +53,9 @@ class VolvoCarsApi:
         """Check the API status."""
         try:
             _LOGGER.debug("Request [API status]")
-            async with self._client.get(_API_STATUS_URL) as response:
+            async with self._client.get(
+                _API_STATUS_URL, timeout=_API_REQUEST_TIMEOUT
+            ) as response:
                 _LOGGER.debug("Request [API status] status: %s", response.status)
                 response.raise_for_status()
                 json = await response.json()
@@ -61,8 +64,8 @@ class VolvoCarsApi:
 
                 message = data.get("message") or "OK"
 
-        except ClientResponseError as ex:
-            _LOGGER.debug("Request [API status] error: %s", ex.message)
+        except (ClientError, TimeoutError) as ex:
+            _LOGGER.debug("Request [API status] error: %s", ex)
             message = "Unknown"
 
         return {"apiStatus": VolvoCarsValue(message)}
@@ -206,7 +209,7 @@ class VolvoCarsApi:
                 redact_url(url, self._vin),
             )
             async with self._client.request(
-                method, url, headers=headers, json=body
+                method, url, headers=headers, json=body, timeout=_API_REQUEST_TIMEOUT
             ) as response:
                 _LOGGER.debug("Request [%s] status: %s", operation, response.status)
                 json = await response.json()
@@ -236,4 +239,8 @@ class VolvoCarsApi:
                     }
                 }
 
+            raise VolvoApiException from ex
+
+        except (ClientError, TimeoutError) as ex:
+            _LOGGER.debug("Request [%s] error: %s", operation, ex)
             raise VolvoApiException from ex

@@ -102,8 +102,8 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                     self._auth_result = await api.async_request_token(
                         self._auth_result.next_url, user_input[CONF_OTP]
                     )
-            except VolvoAuthException:
-                _LOGGER.exception("Authentication failed")
+            except VolvoAuthException as ex:
+                _LOGGER.exception("Authentication failed: %s", ex.message)
                 errors["base"] = "invalid_auth"
 
             if not errors:
@@ -179,8 +179,8 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             result = await api.async_authenticate(
                 user_input[CONF_USERNAME], user_input[CONF_PASSWORD]
             )
-        except VolvoAuthException:
-            _LOGGER.exception("Authentication failed")
+        except VolvoAuthException as ex:
+            _LOGGER.exception("Authentication failed: %s", ex.message)
             errors["base"] = "invalid_auth"
 
         self._vin = vin
