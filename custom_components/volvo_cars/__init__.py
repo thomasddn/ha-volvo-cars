@@ -165,8 +165,9 @@ async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
 
     # entry.runtime_data does not exist at this time. Creating a new
     # store manager to delete it the storage data.
-    store = create_store(hass, entry.unique_id)
-    await store.async_remove()
+    if entry.unique_id:
+        store = create_store(hass, entry.unique_id)
+        await store.async_remove()
 
 
 async def _options_update_listener(

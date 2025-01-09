@@ -43,6 +43,9 @@ class VolvoCarsApiBaseModel:
                 ):
                     # Recursive call for nested dataclasses
                     class_data[key] = param_type.from_dict(value)
+                elif key == "timestamp" and isinstance(value, str):
+                    if value:
+                        class_data[key] = datetime.fromisoformat(value)
                 else:
                     class_data[key] = value
             else:
@@ -109,13 +112,8 @@ class VolvoCarsValue(VolvoCarsApiBaseModel):
 class VolvoCarsValueField(VolvoCarsValue):
     """API value field model."""
 
-    timestamp: datetime
+    timestamp: datetime | None = None
     unit: str | None = None
-
-    def __post_init__(self) -> None:
-        """Post initialization."""
-        if isinstance(self.timestamp, str):  # type: ignore[unreachable]
-            self.timestamp = datetime.fromisoformat(self.timestamp)  # type: ignore[unreachable]
 
 
 @dataclass
@@ -130,12 +128,7 @@ class VolvoCarsLocationProperties(VolvoCarsApiBaseModel):
     """API location properties model."""
 
     heading: str
-    timestamp: datetime
-
-    def __post_init__(self) -> None:
-        """Post initialization."""
-        if isinstance(self.timestamp, str):  # type: ignore[unreachable]
-            self.timestamp = datetime.fromisoformat(self.timestamp)  # type: ignore[unreachable]
+    timestamp: datetime | None = None
 
 
 @dataclass
