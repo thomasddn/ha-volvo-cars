@@ -5,6 +5,7 @@ import logging
 
 from requests import ConnectTimeout, HTTPError
 
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ACCESS_TOKEN, CONF_PASSWORD, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
@@ -35,7 +36,7 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -> bool:
     """Set up Volvo Cars integration."""
-    _LOGGER.debug("Loading entry %s", entry.entry_id)
+    _LOGGER.debug("%s - Loading entry", entry.entry_id)
 
     assert entry.unique_id is not None
     store = create_store(hass, entry.unique_id)
@@ -105,7 +106,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
 async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -> bool:
     """Migrate entry."""
     _LOGGER.debug(
-        "Migrating configuration from version %s.%s",
+        "%s - Migrating configuration from version %s.%s",
+        entry.entry_id,
         entry.version,
         entry.minor_version,
     )
@@ -143,7 +145,8 @@ async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) 
         )
 
     _LOGGER.debug(
-        "Migration to configuration version %s.%s successful",
+        "%s - Migration to configuration version %s.%s successful",
+        entry.entry_id,
         entry.version,
         entry.minor_version,
     )
@@ -152,13 +155,18 @@ async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) 
 
 async def async_unload_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -> bool:
     """Unload a config entry."""
-    _LOGGER.debug("Unloading entry %s", entry.entry_id)
+    _LOGGER.debug("%s - Unloading entry", entry.entry_id)
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
 
 
-async def async_remove_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -> None:
+async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
     """Remove a config entry."""
-    await entry.runtime_data.store.async_remove()
+    _LOGGER.debug("%s - Removing entry", entry.entry_id)
+
+    # entry.runtime_data does not exist at this time. Creating a new
+    # store manager to delete it the storage data.
+    store = create_store(hass, entry.unique_id)
+    await store.async_remove()
 
 
 async def _options_update_listener(

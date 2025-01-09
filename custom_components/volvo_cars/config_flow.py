@@ -212,6 +212,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             if self.unique_id is None:
                 raise ConfigEntryError("Config entry has no unique_id")
 
+            _LOGGER.debug("Storing tokens")
             store = create_store(self.hass, self.unique_id)
             await store.async_update(
                 access_token=self._auth_result.token.access_token,
@@ -224,6 +225,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 data_updates=data,
             )
 
+        _LOGGER.debug("Creating entry")
         return self.async_create_entry(
             title=f"{MANUFACTURER} {self._vin}",
             data=data,

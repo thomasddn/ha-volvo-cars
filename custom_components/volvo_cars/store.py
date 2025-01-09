@@ -68,16 +68,18 @@ class VolvoCarsStore(Store[StoreData]):
 
         data = await self.async_load()
 
-        if data:
-            self._merge_data(
-                data,
-                access_token,
-                refresh_token,
-                data_update_interval,
-                engine_run_time,
-                api_request_count,
-            )
-            await self.async_save(data)
+        if not data:
+            data = self._create_default()
+
+        self._merge_data(
+            data,
+            access_token,
+            refresh_token,
+            data_update_interval,
+            engine_run_time,
+            api_request_count,
+        )
+        await self.async_save(data)
 
     async def _async_migrate_func(
         self,
@@ -124,3 +126,12 @@ class VolvoCarsStore(Store[StoreData]):
             data["api_request_count"] = api_request_count
 
         return data
+
+    def _create_default(self) -> StoreData:
+        return StoreData(
+            access_token="",
+            refresh_token="",
+            data_update_interval=135,
+            engine_run_time=15,
+            api_request_count=0,
+        )
