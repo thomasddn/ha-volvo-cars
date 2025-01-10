@@ -24,13 +24,14 @@ _API_URL = "https://api.volvocars.com"
 _API_STATUS_URL = "https://public-developer-portal-bff.weu-prod.ecpaz.volvocars.biz/api/v1/backend-status"
 _API_REQUEST_TIMEOUT = ClientTimeout(total=30)
 
-_LOGGER = logging.getLogger(__name__)
 _DATA_TO_REDACT = [
     "coordinates",
     "heading",
     "href",
     "vin",
 ]
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class VolvoCarsApi:
