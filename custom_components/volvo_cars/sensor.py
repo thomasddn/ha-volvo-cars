@@ -64,14 +64,6 @@ def _calculate_time_to_service(field: VolvoCarsValue, _: VolvoCarsConfigEntry) -
     return value
 
 
-def _calculate_engine_time_to_service(
-    field: VolvoCarsValue, _: VolvoCarsConfigEntry
-) -> int:
-    # Express value in days instead of hours
-    value = int(field.value)
-    return round(value / 24)
-
-
 def _determine_fuel_consumption_unit(entry: VolvoCarsConfigEntry) -> str:
     unit_key = entry.options.get(OPT_FUEL_CONSUMPTION_UNIT, OPT_UNIT_LITER_PER_100KM)
 
@@ -273,8 +265,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         key="engine_time_to_service",
         translation_key="engine_time_to_service",
         api_field="engineHoursToService",
-        native_unit_of_measurement=UnitOfTime.DAYS,
-        value_fn=_calculate_engine_time_to_service,
+        native_unit_of_measurement=UnitOfTime.HOURS,
         icon="mdi:wrench-clock",
     ),
     VolvoCarsSensorDescription(
