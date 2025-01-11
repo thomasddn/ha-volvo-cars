@@ -70,28 +70,28 @@ async def mock_api(request: SubRequest):
             autospec=True,
         ) as mock_api,
     ):
-        vehicle_data = load_json_object_fixture(f"vehicle_{model}.json")
+        vehicle_data = load_json_object_fixture("vehicle", model)
         vehicle = VolvoCarsVehicle.from_dict(vehicle_data)
 
-        commands_data = load_json_object_fixture("commands.json").get("data")
+        commands_data = load_json_object_fixture("commands", model).get("data")
         commands = [VolvoCarsAvailableCommand.from_dict(item) for item in commands_data]
 
-        location_data = load_json_object_fixture("location.json")
+        location_data = load_json_object_fixture("location", model)
         location = {"location": VolvoCarsLocation.from_dict(location_data)}
 
-        availability = _get_json_as_value_field("availability.json")
-        brakes = _get_json_as_value_field("brakes.json")
-        diagnostics = _get_json_as_value_field("diagnostics.json")
-        doors = _get_json_as_value_field("doors.json")
-        engine_status = _get_json_as_value_field("engine_status.json")
-        engine_warnings = _get_json_as_value_field("engine_warnings.json")
-        fuel_status = _get_json_as_value_field("fuel_status.json")
-        odometer = _get_json_as_value_field("odometer.json")
-        recharge_status = _get_json_as_value_field("recharge_status.json")
-        statistics = _get_json_as_value_field("statistics.json")
-        tyres = _get_json_as_value_field("tyres.json")
-        warnings = _get_json_as_value_field("warnings.json")
-        windows = _get_json_as_value_field("windows.json")
+        availability = _get_json_as_value_field("availability", model)
+        brakes = _get_json_as_value_field("brakes", model)
+        diagnostics = _get_json_as_value_field("diagnostics", model)
+        doors = _get_json_as_value_field("doors", model)
+        engine_status = _get_json_as_value_field("engine_status", model)
+        engine_warnings = _get_json_as_value_field("engine_warnings", model)
+        fuel_status = _get_json_as_value_field("fuel_status", model)
+        odometer = _get_json_as_value_field("odometer", model)
+        recharge_status = _get_json_as_value_field("recharge_status", model)
+        statistics = _get_json_as_value_field("statistics", model)
+        tyres = _get_json_as_value_field("tyres", model)
+        warnings = _get_json_as_value_field("warnings", model)
+        windows = _get_json_as_value_field("windows", model)
 
         api = mock_api.return_value
         api.async_get_api_status = AsyncMock(
@@ -142,6 +142,6 @@ async def mock_image_client():
         yield
 
 
-def _get_json_as_value_field(filename: str) -> dict:
-    data = load_json_object_fixture(filename)
+def _get_json_as_value_field(name: str, model: str) -> dict:
+    data = load_json_object_fixture(name, model)
     return {key: VolvoCarsValueField.from_dict(value) for key, value in data.items()}

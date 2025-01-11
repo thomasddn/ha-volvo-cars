@@ -124,9 +124,15 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
             )
 
             # Check supported commands
+            # We're unable to use the scope 'conve:climatization_start_stop' that
+            # is required to use the "ENGINE_START" and "ENGINE_STOP" commands.
             commands = await self.api.async_get_commands()
             count += 1
-            self.commands = [command.command for command in commands if command]
+            self.commands = [
+                command.command
+                for command in commands
+                if command and command.command not in ("ENGINE_START", "ENGINE_STOP")
+            ]
 
             # Check if location is supported
             location = await self.api.async_get_location()
