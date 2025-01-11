@@ -595,13 +595,29 @@
     "options": {
         "step": {
             "init": {
-                "data": {
-                    "fuel_consumption_unit": "Fuel consumption unit",
-                    "image_bg_color": "Images background color",
-                    "image_transparent": "Images transparent background"
-                },
-                "data_description": {
-                    "image_bg_color": "Only applicable if transparent is not checked."
+                "sections": {
+                    "api": {
+                        "name": "API",
+                        "data": {
+                            "vcc_api_key": "Volvo API key"
+                        }
+                    },
+                    "images": {
+                        "name": "Images",
+                        "data": {
+                            "image_bg_color": "Images background color",
+                            "image_transparent": "Images transparent background"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Only applicable if transparent is not checked."
+                        }
+                    },
+                    "units": {
+                        "name": "Units",
+                        "data": {
+                            "fuel_consumption_unit": "Fuel consumption unit"
+                        }
+                    }
                 }
             }
         },

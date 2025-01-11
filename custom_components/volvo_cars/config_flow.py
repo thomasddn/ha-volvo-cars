@@ -13,6 +13,7 @@ from homeassistant import config_entries
 from homeassistant.config_entries import SOURCE_REAUTH, ConfigEntry, ConfigFlowResult
 from homeassistant.const import CONF_FRIENDLY_NAME, CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import callback
+from homeassistant.data_entry_flow import section
 from homeassistant.exceptions import ConfigEntryError
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.selector import (
@@ -34,12 +35,20 @@ from .const import (
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
 )
-from .coordinator import VolvoCarsData
+from .coordinator import VolvoCarsConfigEntry, VolvoCarsData
 from .store import create_store
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import AuthorizationModel, VolvoAuthException
 
 _LOGGER = logging.getLogger(__name__)
+
+
+def get_setting(entry: VolvoCarsConfigEntry, key: str) -> Any:
+    """Get setting from options with a fallback to config."""
+    if key in entry.options:
+        return entry.options[key]
+
+    return entry.data[key]
 
 
 class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
@@ -243,45 +252,68 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
     ) -> ConfigFlowResult:
         """Manage the options."""
         if user_input is not None:
-            return self.async_create_entry(data=user_input)
+            # Remove sections
+            flat_input = {}
+            for key, value in user_input.items():
+                if isinstance(value, dict):
+                    flat_input.update(value)
+                else:
+                    flat_input[key] = value
+
+            return self.async_create_entry(data=flat_input)
 
         if TYPE_CHECKING:
             assert isinstance(self.config_entry.runtime_data, VolvoCarsData)
 
-        schema: dict[vol.Marker, Any] = {}
-        vehicle = self.config_entry.runtime_data.coordinator.vehicle
+        coordinator = self.config_entry.runtime_data.coordinator
+
+        schema: dict[vol.Marker, Any] = self._create_section(
+            "api",
+            {
+                vol.Required(
+                    CONF_VCC_API_KEY,
+                    default=get_setting(self.config_entry, CONF_VCC_API_KEY),
+                ): str
+            },
+        )
 
         # Check engine
-        if vehicle.has_combustion_engine():
+        if coordinator.vehicle.has_combustion_engine():
             schema.update(
-                {
-                    vol.Required(OPT_FUEL_CONSUMPTION_UNIT): SelectSelector(
-                        SelectSelectorConfig(
-                            options=[
-                                OPT_UNIT_LITER_PER_100KM,
-                                OPT_UNIT_MPG_UK,
-                                OPT_UNIT_MPG_US,
-                            ],
-                            multiple=False,
-                            translation_key=OPT_FUEL_CONSUMPTION_UNIT,
+                self._create_section(
+                    "units",
+                    {
+                        vol.Required(OPT_FUEL_CONSUMPTION_UNIT): SelectSelector(
+                            SelectSelectorConfig(
+                                options=[
+                                    OPT_UNIT_LITER_PER_100KM,
+                                    OPT_UNIT_MPG_UK,
+                                    OPT_UNIT_MPG_US,
+                                ],
+                                multiple=False,
+                                translation_key=OPT_FUEL_CONSUMPTION_UNIT,
+                            )
                         )
-                    )
-                }
+                    },
+                )
             )
 
         # Check image URL
-        url = vehicle.images.exterior_image_url
+        url = coordinator.vehicle.images.exterior_image_url
         url_parts = parse.urlparse(url)
 
         if url_parts.netloc.startswith("cas"):
             schema.update(
-                {
-                    vol.Optional(OPT_IMG_TRANSPARENT, default=True): bool,
-                    vol.Optional(
-                        OPT_IMG_BG_COLOR,
-                        default=[255, 255, 255],
-                    ): ColorRGBSelector(),
-                }
+                self._create_section(
+                    "images",
+                    {
+                        vol.Optional(OPT_IMG_TRANSPARENT, default=True): bool,
+                        vol.Optional(
+                            OPT_IMG_BG_COLOR,
+                            default=[255, 255, 255],
+                        ): ColorRGBSelector(),
+                    },
+                )
             )
 
         if len(schema) == 0:
@@ -293,3 +325,13 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
                 vol.Schema(schema), self.config_entry.options
             ),
         )
+
+    def _create_section(
+        self, name: str, schema: dict[vol.Marker, Any]
+    ) -> dict[vol.Marker, Any]:
+        return {
+            vol.Required(name): section(
+                vol.Schema(schema),
+                {"collapsed": True},
+            )
+        }

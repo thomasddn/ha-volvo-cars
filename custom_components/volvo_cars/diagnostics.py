@@ -35,15 +35,16 @@ async def async_get_config_entry_diagnostics(
     coordinator = config_entry.runtime_data.coordinator
     store = config_entry.runtime_data.store
 
-    entry_diagnostics = async_redact_data(config_entry.data, TO_REDACT_ENTRY)
-    entry_diagnostics["entry_id"] = config_entry.entry_id
+    config_data = async_redact_data(config_entry.data, TO_REDACT_ENTRY)
+    config_data["entry_id"] = config_entry.entry_id
 
     vehicle_data = _to_dict(coordinator.vehicle)
     coordinator_data = _to_dict(coordinator.data)
     store_data = await store.async_load()
 
     return {
-        "entry": entry_diagnostics,
+        "config": config_data,
+        "options": async_redact_data(config_entry.options, TO_REDACT_ENTRY),
         "vehicle": async_redact_data(vehicle_data, TO_REDACT_DATA),
         "coordinator": async_redact_data(coordinator_data, TO_REDACT_DATA),
         "store": async_redact_data(store_data, TO_REDACT_STORE),

@@ -16,7 +16,7 @@ from homeassistant.helpers.event import (
     async_track_utc_time_change,
 )
 
-from .config_flow import VolvoCarsFlowHandler
+from .config_flow import VolvoCarsFlowHandler, get_setting
 from .const import (
     CONF_VCC_API_KEY,
     CONF_VIN,
@@ -72,8 +72,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     # Create api
     api = VolvoCarsApi(
         client,
-        entry.data[CONF_VIN],
-        entry.data[CONF_VCC_API_KEY],
+        get_setting(entry, CONF_VIN),
+        get_setting(entry, CONF_VCC_API_KEY),
         result.token.access_token,
     )
 
