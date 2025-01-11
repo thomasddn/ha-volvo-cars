@@ -1,8 +1,8 @@
 # Volvo Cars Home Assistant integration
 
-This integration provides access to your Volvo car, provided your model and region are supported by their API. Supported regions include: Europe, Middle East, and Africa.
+This integration provides access to your Volvo car, provided your model and region are supported by Volvo's public API. This is not a one-to-one replacement for the official Volvo app, as the app has access to more resources than those available through the public API.
 
-For a complete list of supported countries, check out [Volvo's API documentation](https://developer.volvocars.com/terms-and-conditions/apis-supported-locations/). However, users have reported it does work in the US and Brazil. So even if you're not in one of the listed countries, you might still get lucky!
+Supported regions include: Europe, the Middle East, and Africa. For a complete list of supported countries, check out [Volvo's API documentation](https://developer.volvocars.com/terms-and-conditions/apis-supported-locations/). However, users have reported it does work in the US and Brazil. So even if you're not in one of the listed countries, you might still get lucky!
 
 Now check out the features section for details on what you'll get!
 
@@ -40,7 +40,6 @@ Some sensors provide extra information in the attributes, like reason, pressure 
 #### Buttons
 
 - Start/stop climatization
-- Start/stop engine
 - Flash
 - Honk
 - Honk & flash
