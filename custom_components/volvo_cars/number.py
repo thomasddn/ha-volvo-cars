@@ -8,6 +8,7 @@ import logging
 from homeassistant.components.number import NumberEntity, NumberEntityDescription
 from homeassistant.const import Platform, UnitOfTime
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
@@ -64,6 +65,7 @@ NUMBERS: tuple[VolvoCarsNumberDescription, ...] = (
         native_unit_of_measurement=UnitOfTime.SECONDS,
         get_value_fn=_get_update_interval,
         set_value_fn=_set_update_interval,
+        entity_category=EntityCategory.CONFIG,
     ),
     VolvoCarsNumberDescription(
         key="engine_run_time",

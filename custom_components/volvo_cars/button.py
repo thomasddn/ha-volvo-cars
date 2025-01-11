@@ -9,6 +9,7 @@ from homeassistant.components.button import ButtonEntity, ButtonEntityDescriptio
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
+from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import ATTR_API_TIMESTAMP, ATTR_LAST_RESULT
@@ -96,6 +97,7 @@ BUTTONS: tuple[VolvoCarsButtonDescription, ...] = (
         translation_key="update_data",
         icon="mdi:cloud-refresh-outline",
         non_api_command=True,
+        entity_category=EntityCategory.CONFIG,
     ),
 )
 

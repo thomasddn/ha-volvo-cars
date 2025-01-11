@@ -17,6 +17,7 @@ from homeassistant.const import (
     UnitOfVolume,
 )
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import (
@@ -96,12 +97,14 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         api_field=DATA_REQUEST_COUNT,
         state_class=SensorStateClass.TOTAL_INCREASING,
         icon="mdi:counter",
+        entity_category=EntityCategory.DIAGNOSTIC,
     ),
     VolvoCarsSensorDescription(
         key="api_status",
         translation_key="api_status",
         api_field="apiStatus",
         icon="mdi:api",
+        entity_category=EntityCategory.DIAGNOSTIC,
     ),
     VolvoCarsSensorDescription(
         key="availability",
@@ -191,6 +194,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         device_class=SensorDeviceClass.ENERGY,
         available_fn=lambda vehicle: vehicle.has_battery_engine(),
         icon="mdi:car-battery",
+        entity_category=EntityCategory.DIAGNOSTIC,
     ),
     VolvoCarsSensorDescription(
         key="battery_charge_level",
