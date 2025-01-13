@@ -193,9 +193,13 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
                     # Raising ConfigEntryAuthFailed will cancel future updates
                     # and start a config flow with SOURCE_REAUTH (async_step_reauth)
                     _LOGGER.exception(
-                        "%s - Authentication failed", self.config_entry.entry_id
+                        "%s - Authentication failed. %s",
+                        self.config_entry.entry_id,
+                        result.message,
                     )
-                    raise ConfigEntryAuthFailed("Authentication failed.") from result
+                    raise ConfigEntryAuthFailed(
+                        f"Authentication failed. {result.message}"
+                    ) from result
 
                 if isinstance(result, VolvoApiException):
                     # Maybe it's just one call that fails. Log the error and
@@ -259,7 +263,7 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
             )
         except VolvoAuthException as ex:
             _LOGGER.exception("Authentication failed: %s", ex.message)
-            raise ConfigEntryAuthFailed("Authentication failed.") from ex
+            raise ConfigEntryAuthFailed(f"Authentication failed. {ex.message}") from ex
 
         if result.token:
             await self.store.async_update(

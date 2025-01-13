@@ -53,8 +53,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     try:
         result = await auth_api.async_refresh_token(store_data["refresh_token"])
     except VolvoAuthException as ex:
-        _LOGGER.exception("Authentication failed")
-        raise ConfigEntryAuthFailed("Authentication failed.") from ex
+        _LOGGER.exception("Authentication failed. %s", ex.message)
+        raise ConfigEntryAuthFailed(f"Authentication failed. {ex.message}") from ex
     except (ConnectTimeout, HTTPError) as ex:
         _LOGGER.exception("Connection failed")
         raise ConfigEntryNotReady("Unable to connect to Volvo API.") from ex

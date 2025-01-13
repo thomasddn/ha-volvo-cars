@@ -84,7 +84,7 @@ class VolvoCarsAuthApi:
         if status == "COMPLETED":
             return await self._handle_status_completed(data, status)
 
-        raise VolvoAuthException(f"Unhandled status: {status}")
+        raise self._create_exception(data)
 
     async def async_request_token(self, url: str, otp: str) -> AuthorizationModel:
         """Request token."""
@@ -103,7 +103,7 @@ class VolvoCarsAuthApi:
             if status == "COMPLETED":
                 return await self._handle_status_completed(data, status)
 
-        raise VolvoAuthException(f"Unhandled status: {status}")
+        raise self._create_exception(data)
 
     async def async_refresh_token(self, refresh_token: str) -> AuthorizationModel:
         """Refresh token."""
@@ -265,3 +265,8 @@ class VolvoCarsAuthApi:
         except (ClientError, TimeoutError) as ex:
             _LOGGER.debug("Request [%s] error: %s", name, ex)
             raise VolvoAuthException from ex
+
+    def _create_exception(self, data: dict[str, Any]) -> VolvoAuthException:
+        return VolvoAuthException(
+            f"Status: {data.get("status")} Reason: {data.get("message")}"
+        )
