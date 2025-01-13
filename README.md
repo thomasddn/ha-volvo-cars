@@ -88,7 +88,6 @@ The action's status is included in the attributes.
 | API request counter  | Sensor | Shows the number of requests made by this integration. |
 | Data update interval | Number | Set the data update interval. Default is 135 seconds.  |
 | Update data          | Button | Force a data refresh.                                  |
-| Engine run time      | Number | Choose for how long you want to start the engine.      |
 
 ## 🛠️ Installation
 

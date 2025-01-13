@@ -28,7 +28,7 @@ class VolvoCarsNumberDescription(VolvoCarsDescription, NumberEntityDescription):
     api_field: str = ""
     get_value_fn: Callable[[StoreData], float]
     set_value_fn: Callable[[VolvoCarsDataCoordinator, float], Awaitable[None]]
-    available_fn: Callable[[VolvoCarsVehicle], bool] = lambda vehicle: True
+    available_fn: Callable[[VolvoCarsDataCoordinator], bool] = lambda coordinator: True
 
 
 def _get_update_interval(data: StoreData) -> float:
@@ -54,6 +54,13 @@ async def _set_engine_run_time(
     await coordinator.store.async_update(engine_run_time=value)
 
 
+def _engine_run_time_available(coordinator: VolvoCarsDataCoordinator) -> bool:
+    return (
+        coordinator.vehicle.has_combustion_engine()
+        and "ENGINE_START" in coordinator.commands
+    )
+
+
 NUMBERS: tuple[VolvoCarsNumberDescription, ...] = (
     VolvoCarsNumberDescription(
         key="data_update_interval",
@@ -77,7 +84,7 @@ NUMBERS: tuple[VolvoCarsNumberDescription, ...] = (
         native_unit_of_measurement=UnitOfTime.MINUTES,
         get_value_fn=_get_engine_run_time,
         set_value_fn=_set_engine_run_time,
-        available_fn=lambda vehicle: vehicle.has_combustion_engine(),
+        available_fn=_engine_run_time_available,
     ),
 )
 
@@ -93,7 +100,7 @@ async def async_setup_entry(
     numbers = [
         VolvoCarsNumber(coordinator, description)
         for description in NUMBERS
-        if description.available_fn(coordinator.vehicle)
+        if description.available_fn(coordinator)
     ]
 
     async_add_entities(numbers)
