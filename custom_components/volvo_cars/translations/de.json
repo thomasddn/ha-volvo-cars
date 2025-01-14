@@ -1,481 +1,487 @@
 {
+    "//translator": {
+        "//firstname": "arend",
+        "//lastname": "boehmer",
+        "//mail": "arend.boehmer@web.de",
+        "//country": "germany"
+    },
     "config": {
         "step": {
             "user": {
-                "description": "Bitte Volvo-Account-Zugangsdaten eingeben - VIN and Volvo Developers API-Schlüssel (https://developer.volvocars.com/).",
+                "description": "Bitte deine Volvo-Account-Zugangsdaten eingeben: Fahrzeug-Identifikationsnummer und Volvo-Developers-API-Schlüssel (https://developer.volvocars.com/).",
                 "data": {
-                    "username": "Nutzername",
+                    "username": "Benutzername",
                     "password": "Passwort",
                     "vin": "Fahrzeug-Identifikationsnummer",
-                    "vcc_api_key": "Volvo API-Schlüssel",
+                    "vcc_api_key": "Volvo-Developers-API-Schlüssel",
                     "friendly_name": "Friendly Name"
                 },
                 "data_description": {
-                    "vin": "Die Fahrzeug-Identifikationsnummer ist 17 Zeichen lang und beginnt normalerweise mit YV1 or YV4.",
+                    "vin": "Die Fahrzeug-Identifikationsnummer ist 17 Zeichen lang und beginnt normalerweise für Volvo-Fahrzeuge mit YV1 or YV4.",
                     "friendly_name": "Dieser Wert wird in der Entitäts-ID benutzt (volvo_[friendly name]_[key]). Falls leer, wird die Fahrzeug-Identifiktationsnummer benutzt."
                 }
             },
             "otp": {
-                "description": "Bitte das Einmal-Kennwort (OTP) eingeben, welches dir per Mail zugeschickt wurde.",
+                "description": "Bitte das Einmal-Kennwort (One-Time-Password) eingeben, welches dir soeben per Mail zugeschickt wurde.",
                 "data": {
                     "otp": "OTP"
                 }
             },
             "reauth_confirm": {
                 "title": "Zugangsdaten abgelaufen",
-                "description": "The Volvo Cars integration needs to re-authenticate your account."
+                "description": "Die Volvo-Cars-Integration muss deinen Account erneut authentifizieren."
             }
         },
         "abort": {
-            "already_configured": "Car is already configured",
-            "reauth_successful": "Sucessfully updated credentials"
+            "already_configured": "Das Fahrzeug ist bereits konfiguriert",
+            "reauth_successful": "Zugangsdaten erfolgreich aktualisiert"
         },
         "error": {
-            "invalid_auth": "Authentication failed"
+            "invalid_auth": "Authentifizierung fehlgeschlagen"
         }
     },
     "entity": {
         "binary_sensor": {
             "brake_fluid_level_warning": {
-                "name": "Brake fluid"
+                "name": "Bremsflüssigkeit"
             },
             "brake_light_center_warning": {
-                "name": "Brake light center"
+                "name": "Zentrales Bremslicht"
             },
             "brake_light_left_warning": {
-                "name": "Brake light left"
+                "name": "Bremslicht links"
             },
             "brake_light_right_warning": {
-                "name": "Brake light right"
+                "name": "Bremslicht rechts"
             },
             "coolant_level_warning": {
-                "name": "Coolant level"
+                "name": "Kühlflüssigkeitsstand"
             },
             "daytime_running_light_left_warning": {
-                "name": "Daytime running light left"
+                "name": "Tagfahrlicht links"
             },
             "daytime_running_light_right_warning": {
-                "name": "Daytime running light right"
+                "name": "Tagfahrlicht rechts"
             },
             "door_front_left": {
-                "name": "Door front left"
+                "name": "Tür vorne links"
             },
             "door_front_right": {
-                "name": "Door front right"
+                "name": "Tür vorne rechts"
             },
             "door_rear_left": {
-                "name": "Door rear left"
+                "name": "Tür hinten links"
             },
             "door_rear_right": {
-                "name": "Door rear right"
+                "name": "Tür hinten rechts"
             },
             "engine_status": {
-                "name": "Engine status"
+                "name": "Status Motor"
             },
             "fog_light_front_warning": {
-                "name": "Fog light front"
+                "name": "Nebelleuchten vorne"
             },
             "fog_light_rear_warning": {
-                "name": "Fog light rear"
+                "name": "Nebelleuchten hinten"
             },
             "hazard_lights_warning": {
-                "name": "Hazard lights"
+                "name": "Warnblinker"
             },
             "high_beam_left_warning": {
-                "name": "High beam left"
+                "name": "Fernlicht links"
             },
             "high_beam_right_warning": {
-                "name": "High beam right"
+                "name": "Fernlicht rechts"
             },
             "hood": {
-                "name": "Hood"
+                "name": "Motorhaube"
             },
             "low_beam_left_warning": {
-                "name": "Low beam left"
+                "name": "Abblendlicht links"
             },
             "low_beam_right_warning": {
-                "name": "Low beam right"
+                "name": "Abblendlicht rechts"
             },
             "oil_level_warning": {
-                "name": "Oil level",
+                "name": "Ölstand",
                 "state_attributes": {
                     "level": {
-                        "name": "Level",
+                        "name": "Füllstand",
                         "state": {
                             "no_warning": "OK",
-                            "service_required": "Service required",
-                            "too_low": "Too low",
-                            "too_high": "Too high"
+                            "service_required": "Service benötigt",
+                            "too_low": "Zu niedrig",
+                            "too_high": "Zu hoch"
                         }
                     }
                 }
             },
             "position_light_front_left_warning": {
-                "name": "Position light front left"
+                "name": "Standlicht vorne links"
             },
             "position_light_front_right_warning": {
-                "name": "Position light front right"
+                "name": "Standlicht vorne rechts"
             },
             "position_light_rear_left_warning": {
-                "name": "Position light rear left"
+                "name": "Standlicht hinten links"
             },
             "position_light_rear_right_warning": {
-                "name": "Position light rear right"
+                "name": "Standlicht hinten rechts"
             },
             "registration_plate_light_warning": {
-                "name": "Registration plate light"
+                "name": "Kennzeichenbeleuchtung"
             },
             "reverse_lights_warning": {
-                "name": "Reverse lights"
+                "name": "Rückfahrlicht"
             },
             "service_warning": {
                 "name": "Service",
                 "state_attributes": {
                     "reason": {
-                        "name": "Reason",
+                        "name": "Grund",
                         "state": {
-                            "distance_driven_almost_time_for_service": "Almost time for distance service",
-                            "distance_driven_overdue_for_service": "Distance service overdue",
-                            "distance_driven_time_for_service": "Time for distance service",
-                            "engine_hours_almost_time_for_service": "Almost time for engine service",
-                            "engine_hours_overdue_for_service": "Engine service overdue",
-                            "engine_hours_time_for_service": "Time for engine service",
+                            "distance_driven_almost_time_for_service": "Bald Zeit für die Kilometer-Service",
+                            "distance_driven_overdue_for_service": "Kilometer-Service überfällig",
+                            "distance_driven_time_for_service": "Zeit für den Kilometer-Service",
+                            "engine_hours_almost_time_for_service": "Bald Zeit für den Service nach Betriebsstunden",
+                            "engine_hours_overdue_for_service": "Service nach Betriebsstunden überfällig",
+                            "engine_hours_time_for_service": "Zeit für den Service nach Betriebsstunden",
                             "no_warning": "OK",
-                            "regular_maintenance_almost_time_for_service": "Almost time for service",
-                            "regular_maintenance_overdue_for_service": "Service overdue",
-                            "regular_maintenance_time_for_service": "Time for service",
-                            "unknown_warning": "Unknown warning"
+                            "regular_maintenance_almost_time_for_service": "Bald Zeit für den turnusgemäßen Service",
+                            "regular_maintenance_overdue_for_service": "Turnusgemäßer Service überfällig",
+                            "regular_maintenance_time_for_service": "Zeit für den turnusgemäßen Service",
+                            "unknown_warning": "Unbekannte Warnung"
                         }
                     }
                 }
             },
             "side_mark_lights_warning": {
-                "name": "Side mark lights"
+                "name": "Setiliche Markierungsleuchten"
             },
             "sunroof": {
-                "name": "Sunroof"
+                "name": "Schiebedach"
             },
             "tailgate": {
-                "name": "Tailgate"
+                "name": "Kofferaum"
             },
             "tank_lid": {
-                "name": "Tank lid"
+                "name": "Tank-/Ladeklappe"
             },
             "turn_indication_front_left_warning": {
-                "name": "Turn indication front left"
+                "name": "Blinker vorne links"
             },
             "turn_indication_front_right_warning": {
-                "name": "Turn indication front right"
+                "name": "Blinker vorne rechts"
             },
             "turn_indication_rear_left_warning": {
-                "name": "Turn indication rear left"
+                "name": "Blinker hinten links"
             },
             "turn_indication_rear_right_warning": {
-                "name": "Turn indication rear right"
+                "name": "Blinker hinten rechts"
             },
             "tyre_front_left": {
-                "name": "Tyre front left",
+                "name": "Reifen vorne links",
                 "state_attributes": {
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "Reifendruck",
                         "state": {
                             "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure",
-                            "low_pressure": "Low pressure",
-                            "high_pressure": "High pressure"
+                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "low_pressure": "Niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck"
                         }
                     }
                 }
             },
             "tyre_front_right": {
-                "name": "Tyre front right",
+                "name": "Reifen vorne rechts",
                 "state_attributes": {
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "Reifendruck",
                         "state": {
                             "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure",
-                            "low_pressure": "Low pressure",
-                            "high_pressure": "High pressure"
+                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "low_pressure": "Niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck"
                         }
                     }
                 }
             },
             "tyre_rear_left": {
-                "name": "Tyre rear left",
+                "name": "Reifen hinten links",
                 "state_attributes": {
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "Reifendruck",
                         "state": {
                             "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure",
-                            "low_pressure": "Low pressure",
-                            "high_pressure": "High pressure"
+                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "low_pressure": "Niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck"
                         }
                     }
                 }
             },
             "tyre_rear_right": {
-                "name": "Tyre rear right",
+                "name": "Reifen hinten rechts",
                 "state_attributes": {
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "Reifendruck",
                         "state": {
                             "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure",
-                            "low_pressure": "Low pressure",
-                            "high_pressure": "High pressure"
+                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "low_pressure": "Niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck"
                         }
                     }
                 }
             },
             "washer_fluid_level_warning": {
-                "name": "Washer fluid"
+                "name": "Füllstand Scheibenwischwasser"
             },
             "window_front_left": {
-                "name": "Window front left"
+                "name": "Fenster vorne links"
             },
             "window_front_right": {
-                "name": "Window front right"
+                "name": "Fenster vorne rechts"
             },
             "window_rear_left": {
-                "name": "Window rear left"
+                "name": "Fenster hinten links"
             },
             "window_rear_right": {
-                "name": "Window rear right"
+                "name": "Fenster hinten rechts"
             }
         },
         "button": {
             "climatization_start": {
-                "name": "Start climatization",
+                "name": "Klimatisierung starten",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Letztes Ergebnis",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "running": "Läuft",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus",
+                            "waiting": "Warten"
                         }
                     }
                 }
             },
             "climatization_stop": {
-                "name": "Stop climatization",
+                "name": "Klimatisierung ausschalten",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Letztes Ergebnis",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "running": "Läuft",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus",
+                            "waiting": "Warten"
                         }
                     }
                 }
             },
             "engine_start": {
-                "name": "Start engine",
+                "name": "Motor starten",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Letztes Ergebnis",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "running": "Läuft",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus",
+                            "waiting": "Warten"
                         }
                     }
                 }
             },
             "engine_stop": {
-                "name": "Stop engine",
+                "name": "Motor ausschalten",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Letztes Ergebnis",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "running": "Läuft",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus",
+                            "waiting": "Warten"
                         }
                     }
                 }
             },
             "flash": {
-                "name": "Flash",
+                "name": "Lichtsignal",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Letztes Ergebnis",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus"
                         }
                     }
                 }
             },
             "honk": {
-                "name": "Honk",
+                "name": "Signalhorn",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Letztes Ergebnis",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus"
                         }
                     }
                 }
             },
             "honk_flash": {
-                "name": "Honk & flash",
+                "name": "Signalhorn & Lichtsignal",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Letztes Ergebnis",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus"
                         }
                     }
                 }
             },
             "update_data": {
-                "name": "Update data"
+                "name": "Daten aktualisieren"
             }
         },
         "device_tracker": {
             "location": {
-                "name": "Location",
+                "name": "Standort",
                 "state_attributes": {
                     "direction": {
-                        "name": "Direction"
+                        "name": "Richtung"
                     }
                 }
             }
         },
         "image": {
             "exterior": {
-                "name": "Exterior side passenger"
+                "name": "Außen Beifahrerseite"
             },
             "exterior_back": {
-                "name": "Exterior back"
+                "name": "Heckansicht"
             },
             "exterior_back_driver": {
-                "name": "Exterior back driver"
+                "name": "Außen Fahrerseite hinten"
             },
             "exterior_back_passenger": {
-                "name": "Exterior back passenger"
+                "name": "Außen Beifahrerseite hinten"
             },
             "exterior_front": {
-                "name": "Exterior front"
+                "name": "Frontansicht"
             },
             "exterior_front_driver": {
-                "name": "Exterior front driver"
+                "name": "Außen Fahrerseite vorne"
             },
             "exterior_front_passenger": {
-                "name": "Exterior front passenger"
+                "name": "Außen Beifahrerseite vorne"
             },
             "exterior_side_driver": {
-                "name": "Exterior side driver"
+                "name": "Außen Fahrerseite"
             },
             "interior": {
-                "name": "Interior"
+                "name": "Innen"
             }
         },
         "lock": {
             "lock": {
-                "name": "Central lock",
+                "name": "Zentralverriegelung",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Letztes Ergebnis",
                         "state": {
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unable_to_lock_door_open": "Door open",
-                            "unknown": "Unknown",
-                            "unlock_time_frame_passed": "Time frame passed",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "timeout": "Zeitüberschreitung",
+                            "unable_to_lock_door_open": "Tür offen",
+                            "unknown": "Unbekannt",
+                            "unlock_time_frame_passed": "Zeitfenster abgelaufen",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus"
                         }
                     }
                 }
             },
             "lock_reduced_guard": {
-                "name": "Reduced guard lock",
+                "name": "Reduzierter Sicherheitsmodus",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Letztes Ergebnis",
                         "state": {
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unable_to_lock_door_open": "Door open",
-                            "unknown": "Unknown",
-                            "unlock_time_frame_passed": "Time frame passed",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "timeout": "Zeitüberschreitung",
+                            "unable_to_lock_door_open": "Tür offen",
+                            "unknown": "Unbekannt",
+                            "unlock_time_frame_passed": "Zeitfenster abgelaufen",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus"
                         }
                     }
                 }
@@ -483,130 +489,130 @@
         },
         "number": {
             "data_update_interval": {
-                "name": "Data update interval"
+                "name": "Daten-Abrufintervall"
             },
             "engine_run_time": {
-                "name": "Engine run time"
+                "name": "Motor-Betriebsstunden"
             }
         },
         "sensor": {
             "api_status": {
-                "name": "API status"
+                "name": "API Status"
             },
             "api_request_count": {
-                "name": "API request count"
+                "name": "API Zugriffszähler"
             },
             "availability": {
-                "name": "Car connection",
+                "name": "Fahrzeugverbindung",
                 "state": {
-                    "available": "Available",
-                    "car_in_use": "Car is in use",
-                    "no_internet": "No internet",
-                    "power_saving_mode": "Power saving mode",
-                    "unavailable": "Unavailable",
-                    "unspecified": "Unknown"
+                    "available": "Verfügbar",
+                    "car_in_use": "Fahrzeug ist in Gebrauch",
+                    "no_internet": "Keine Internetverbindung",
+                    "power_saving_mode": "Energiesparmodus",
+                    "unavailable": "Nicht verfügbar",
+                    "unspecified": "Unbekannt"
                 }
             },
             "average_energy_consumption": {
-                "name": "Avg. energy consumption"
+                "name": "Durchschn. Energieverbrauch"
             },
             "average_energy_consumption_automatic": {
-                "name": "Avg. energy consumption automatic"
+                "name": "Durchschn. Energieverbrauch Automatik"
             },
             "average_energy_consumption_charge": {
-                "name": "Avg. energy consumption since charge"
+                "name": "Durchschn. Energieverbrauch seit dem Laden"
             },
             "average_fuel_consumption": {
-                "name": "Avg. fuel consumption"
+                "name": "Durchschn. Kraftstoffverbrauch"
             },
             "average_fuel_consumption_automatic": {
-                "name": "Avg. fuel consumption automatic"
+                "name": "Durchschn. Kraftstoffverbrauch Automatik"
             },
             "average_speed": {
-                "name": "Avg. speed"
+                "name": "Durchschn. Geschwindigkeit"
             },
             "average_speed_automatic": {
-                "name": "Avg. speed automatic"
+                "name": "Durchschn. Geschwindigkeit Automatik"
             },
             "battery_capacity": {
-                "name": "Battery capacity"
+                "name": "Batteriekapazität"
             },
             "battery_charge_level": {
-                "name": "Battery charge level"
+                "name": "Batterieladestand (SOC)"
             },
             "charging_connection_status": {
-                "name": "Charging connection status",
+                "name": "Status Ladeanschluss",
                 "state": {
-                    "connection_status_connected_ac": "Connected AC",
-                    "connection_status_connected_dc": "Connected DC",
-                    "connection_status_disconnected": "Disconnected",
-                    "connection_status_fault": "Error",
-                    "connection_status_unspecified": "Unknown"
+                    "connection_status_connected_ac": "Wechselstrom verbunden",
+                    "connection_status_connected_dc": "Gleichstrom verbunden",
+                    "connection_status_disconnected": "Getrennt",
+                    "connection_status_fault": "Fehler",
+                    "connection_status_unspecified": "Unbekannt"
                 }
             },
             "charging_system_status": {
-                "name": "Charging status",
+                "name": "Ladezustand",
                 "state": {
-                    "charging_system_charging": "Charging",
-                    "charging_system_done": "Done",
-                    "charging_system_fault": "Error",
-                    "charging_system_idle": "Idle",
-                    "charging_system_scheduled": "Scheduled",
-                    "charging_system_unspecified": "Unknown"
+                    "charging_system_charging": "Laden",
+                    "charging_system_done": "Fertig",
+                    "charging_system_fault": "Fehler",
+                    "charging_system_idle": "Warten",
+                    "charging_system_scheduled": "Geplant",
+                    "charging_system_unspecified": "Unbekannt"
                 }
             },
             "distance_to_empty_battery": {
-                "name": "Distance to empty battery"
+                "name": "Reichweite EV"
             },
             "distance_to_empty_tank": {
-                "name": "Distance to empty tank"
+                "name": "Reichweite Verbrenner"
             },
             "distance_to_service": {
-                "name": "Distance to service"
+                "name": "Kilometer bis zum Service"
             },
             "engine_time_to_service": {
-                "name": "Engine time to service"
+                "name": "Betriebsstunden bis zum Service"
             },
             "estimated_charging_time": {
-                "name": "Est. charging time"
+                "name": "Vorauss. Ladezeit"
             },
             "fuel_amount": {
-                "name": "Fuel amount"
+                "name": "Kraftstoffmenge"
             },
             "odometer": {
-                "name": "Odometer"
+                "name": "Gesamt-Kilometerstand"
             },
             "time_to_service": {
-                "name": "Time to service"
+                "name": "Zeit bis zum Service"
             },
             "trip_meter_automatic": {
-                "name": "Trip meter automatic"
+                "name": "Kilometerzähler Automatik"
             },
             "trip_meter_manual": {
-                "name": "Trip meter manual"
+                "name": "Kilometerzähler Manuell"
             }
         }
     },
     "exceptions": {
         "lock_failure": {
-            "message": "Failed to {command} vehichle. Status: {status}. Message: {message}"
+            "message": "{command} Fahrzeug fehlgeschlagen. Status: {status}. Nachricht: {message}"
         }
     },
     "options": {
         "step": {
             "init": {
                 "data": {
-                    "fuel_consumption_unit": "Fuel consumption unit",
-                    "image_bg_color": "Images background color",
-                    "image_transparent": "Images transparent background"
+                    "fuel_consumption_unit": "Einheit Verbrauch",
+                    "image_bg_color": "Hintergrundfarbe Bilder",
+                    "image_transparent": "Transparenter Hintergrund Bilder"
                 },
                 "data_description": {
-                    "image_bg_color": "Only applicable if transparent is not checked."
+                    "image_bg_color": "Nur auswählbar, wenn kein transparenter Hintergrund für Bilder ausgewählt wurde."
                 }
             }
         },
         "abort": {
-            "no_options_available": "No options available for your vehicle."
+            "no_options_available": "Für dein Fahrzeug sind keine Optionen auswählbar."
         }
     },
     "selector": {
