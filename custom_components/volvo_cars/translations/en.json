@@ -1,37 +1,37 @@
 {
     "config": {
-        "step": {
-            "user": {
-                "description": "Enter your Volvo account credentials, VIN and Volvo developers API key (https://developer.volvocars.com/).",
-                "data": {
-                    "username": "Username",
-                    "password": "Password",
-                    "vin": "Vehicle Identification Number",
-                    "vcc_api_key": "Volvo API key",
-                    "friendly_name": "Friendly name"
-                },
-                "data_description": {
-                    "vin": "The VIN is 17 characters long and probably starts with YV1 or YV4.",
-                    "friendly_name": "This value is used in the entity ID (volvo_[friendly name]_[key]). If left empty, VIN will be used."
-                }
-            },
-            "otp": {
-                "description": "Enter the OTP you received in your mailbox.",
-                "data": {
-                    "otp": "OTP"
-                }
-            },
-            "reauth_confirm": {
-                "title": "Credentials expired",
-                "description": "The Volvo Cars integration needs to re-authenticate your account."
-            }
-        },
         "abort": {
             "already_configured": "Car is already configured",
-            "reauth_successful": "Sucessfully updated credentials"
+            "reauth_successful": "Successfully updated credentials"
         },
         "error": {
             "invalid_auth": "Authentication failed"
+        },
+        "step": {
+            "otp": {
+                "data": {
+                    "otp": "OTP"
+                },
+                "description": "Enter the OTP you received in your mailbox."
+            },
+            "reauth_confirm": {
+                "description": "The Volvo Cars integration needs to re-authenticate your account.",
+                "title": "Credentials expired"
+            },
+            "user": {
+                "data": {
+                    "friendly_name": "Friendly name",
+                    "password": "Password",
+                    "username": "Username",
+                    "vcc_api_key": "Volvo API key",
+                    "vin": "Vehicle Identification Number"
+                },
+                "data_description": {
+                    "friendly_name": "This value is used in the entity ID (volvo_[friendly name]_[key]). If left empty, VIN will be used.",
+                    "vin": "The VIN is 17 characters long and probably starts with YV1 or YV4."
+                },
+                "description": "Enter your Volvo account credentials, VIN and Volvo developers API key (https://developer.volvocars.com/)."
+            }
         }
     },
     "entity": {
@@ -104,8 +104,8 @@
                         "state": {
                             "no_warning": "OK",
                             "service_required": "Service required",
-                            "too_low": "Too low",
-                            "too_high": "Too high"
+                            "too_high": "Too high",
+                            "too_low": "Too low"
                         }
                     }
                 }
@@ -179,10 +179,10 @@
                     "pressure": {
                         "name": "Pressure",
                         "state": {
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure",
+                            "high_pressure": "High pressure",
                             "low_pressure": "Low pressure",
-                            "high_pressure": "High pressure"
+                            "no_warning": "OK",
+                            "very_low_pressure": "Very low pressure"
                         }
                     }
                 }
@@ -193,10 +193,10 @@
                     "pressure": {
                         "name": "Pressure",
                         "state": {
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure",
+                            "high_pressure": "High pressure",
                             "low_pressure": "Low pressure",
-                            "high_pressure": "High pressure"
+                            "no_warning": "OK",
+                            "very_low_pressure": "Very low pressure"
                         }
                     }
                 }
@@ -207,10 +207,10 @@
                     "pressure": {
                         "name": "Pressure",
                         "state": {
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure",
+                            "high_pressure": "High pressure",
                             "low_pressure": "Low pressure",
-                            "high_pressure": "High pressure"
+                            "no_warning": "OK",
+                            "very_low_pressure": "Very low pressure"
                         }
                     }
                 }
@@ -221,10 +221,10 @@
                     "pressure": {
                         "name": "Pressure",
                         "state": {
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure",
+                            "high_pressure": "High pressure",
                             "low_pressure": "Low pressure",
-                            "high_pressure": "High pressure"
+                            "no_warning": "OK",
+                            "very_low_pressure": "Very low pressure"
                         }
                     }
                 }
@@ -490,11 +490,11 @@
             }
         },
         "sensor": {
-            "api_status": {
-                "name": "API status"
-            },
             "api_request_count": {
                 "name": "API request count"
+            },
+            "api_status": {
+                "name": "API status"
             },
             "availability": {
                 "name": "Car connection",
@@ -589,40 +589,40 @@
     },
     "exceptions": {
         "lock_failure": {
-            "message": "Failed to {command} vehichle. Status: {status}. Message: {message}"
+            "message": "Failed to {command} vehicle. Status: {status}. Message: {message}"
         }
     },
     "options": {
+        "abort": {
+            "no_options_available": "No options available for your vehicle."
+        },
         "step": {
             "init": {
                 "sections": {
                     "api": {
-                        "name": "API",
                         "data": {
                             "vcc_api_key": "Volvo API key"
-                        }
+                        },
+                        "name": "API"
                     },
                     "images": {
-                        "name": "Images",
                         "data": {
                             "image_bg_color": "Images background color",
                             "image_transparent": "Images transparent background"
                         },
                         "data_description": {
                             "image_bg_color": "Only applicable if transparent is not checked."
-                        }
+                        },
+                        "name": "Images"
                     },
                     "units": {
-                        "name": "Units",
                         "data": {
                             "fuel_consumption_unit": "Fuel consumption unit"
-                        }
+                        },
+                        "name": "Units"
                     }
                 }
             }
-        },
-        "abort": {
-            "no_options_available": "No options available for your vehicle."
         }
     },
     "selector": {

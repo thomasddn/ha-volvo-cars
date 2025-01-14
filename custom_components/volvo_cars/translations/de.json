@@ -1,43 +1,37 @@
 {
-    "//translator": {
-        "//firstname": "arend",
-        "//lastname": "boehmer",
-        "//mail": "arend.boehmer@web.de",
-        "//country": "germany"
-    },
     "config": {
-        "step": {
-            "user": {
-                "description": "Bitte deine Volvo-Account-Zugangsdaten eingeben: Fahrzeug-Identifikationsnummer und Volvo-Developers-API-Schlüssel (https://developer.volvocars.com/).",
-                "data": {
-                    "username": "Benutzername",
-                    "password": "Passwort",
-                    "vin": "Fahrzeug-Identifikationsnummer",
-                    "vcc_api_key": "Volvo-Developers-API-Schlüssel",
-                    "friendly_name": "Friendly Name"
-                },
-                "data_description": {
-                    "vin": "Die Fahrzeug-Identifikationsnummer ist 17 Zeichen lang und beginnt normalerweise für Volvo-Fahrzeuge mit YV1 or YV4.",
-                    "friendly_name": "Dieser Wert wird in der Entitäts-ID benutzt (volvo_[friendly name]_[key]). Falls leer, wird die Fahrzeug-Identifiktationsnummer benutzt."
-                }
-            },
-            "otp": {
-                "description": "Bitte das Einmal-Kennwort (One-Time-Password) eingeben, welches dir soeben per Mail zugeschickt wurde.",
-                "data": {
-                    "otp": "OTP"
-                }
-            },
-            "reauth_confirm": {
-                "title": "Zugangsdaten abgelaufen",
-                "description": "Die Volvo-Cars-Integration muss deinen Account erneut authentifizieren."
-            }
-        },
         "abort": {
             "already_configured": "Das Fahrzeug ist bereits konfiguriert",
             "reauth_successful": "Zugangsdaten erfolgreich aktualisiert"
         },
         "error": {
             "invalid_auth": "Authentifizierung fehlgeschlagen"
+        },
+        "step": {
+            "otp": {
+                "data": {
+                    "otp": "OTP"
+                },
+                "description": "Bitte das Einmal-Kennwort (One-Time-Password) eingeben, welches dir soeben per Mail zugeschickt wurde."
+            },
+            "reauth_confirm": {
+                "description": "Die Volvo-Cars-Integration muss deinen Account erneut authentifizieren.",
+                "title": "Zugangsdaten abgelaufen"
+            },
+            "user": {
+                "data": {
+                    "friendly_name": "Friendly Name",
+                    "password": "Passwort",
+                    "username": "Benutzername",
+                    "vcc_api_key": "Volvo-Developers-API-Schlüssel",
+                    "vin": "Fahrzeug-Identifikationsnummer"
+                },
+                "data_description": {
+                    "friendly_name": "Dieser Wert wird in der Entitäts-ID benutzt (volvo_[friendly name]_[key]). Falls leer, wird die Fahrzeug-Identifiktationsnummer benutzt.",
+                    "vin": "Die Fahrzeug-Identifikationsnummer ist 17 Zeichen lang und beginnt normalerweise für Volvo-Fahrzeuge mit YV1 or YV4."
+                },
+                "description": "Bitte deine Volvo-Account-Zugangsdaten eingeben: Fahrzeug-Identifikationsnummer und Volvo-Developers-API-Schlüssel (https://developer.volvocars.com/)."
+            }
         }
     },
     "entity": {
@@ -110,8 +104,8 @@
                         "state": {
                             "no_warning": "OK",
                             "service_required": "Service benötigt",
-                            "too_low": "Zu niedrig",
-                            "too_high": "Zu hoch"
+                            "too_high": "Zu hoch",
+                            "too_low": "Zu niedrig"
                         }
                     }
                 }
@@ -185,10 +179,10 @@
                     "pressure": {
                         "name": "Reifendruck",
                         "state": {
-                            "no_warning": "OK",
-                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck",
                             "low_pressure": "Niedriger Reifendruck",
-                            "high_pressure": "Hoher Reifendruck"
+                            "no_warning": "OK",
+                            "very_low_pressure": "Sehr niedriger Reifendruck"
                         }
                     }
                 }
@@ -199,10 +193,10 @@
                     "pressure": {
                         "name": "Reifendruck",
                         "state": {
-                            "no_warning": "OK",
-                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck",
                             "low_pressure": "Niedriger Reifendruck",
-                            "high_pressure": "Hoher Reifendruck"
+                            "no_warning": "OK",
+                            "very_low_pressure": "Sehr niedriger Reifendruck"
                         }
                     }
                 }
@@ -213,10 +207,10 @@
                     "pressure": {
                         "name": "Reifendruck",
                         "state": {
-                            "no_warning": "OK",
-                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck",
                             "low_pressure": "Niedriger Reifendruck",
-                            "high_pressure": "Hoher Reifendruck"
+                            "no_warning": "OK",
+                            "very_low_pressure": "Sehr niedriger Reifendruck"
                         }
                     }
                 }
@@ -227,10 +221,10 @@
                     "pressure": {
                         "name": "Reifendruck",
                         "state": {
-                            "no_warning": "OK",
-                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck",
                             "low_pressure": "Niedriger Reifendruck",
-                            "high_pressure": "Hoher Reifendruck"
+                            "no_warning": "OK",
+                            "very_low_pressure": "Sehr niedriger Reifendruck"
                         }
                     }
                 }
@@ -496,11 +490,11 @@
             }
         },
         "sensor": {
-            "api_status": {
-                "name": "API Status"
-            },
             "api_request_count": {
                 "name": "API Zugriffszähler"
+            },
+            "api_status": {
+                "name": "API Status"
             },
             "availability": {
                 "name": "Fahrzeugverbindung",
@@ -599,20 +593,36 @@
         }
     },
     "options": {
-        "step": {
-            "init": {
-                "data": {
-                    "fuel_consumption_unit": "Einheit Verbrauch",
-                    "image_bg_color": "Hintergrundfarbe Bilder",
-                    "image_transparent": "Transparenter Hintergrund Bilder"
-                },
-                "data_description": {
-                    "image_bg_color": "Nur auswählbar, wenn kein transparenter Hintergrund für Bilder ausgewählt wurde."
-                }
-            }
-        },
         "abort": {
             "no_options_available": "Für dein Fahrzeug sind keine Optionen auswählbar."
+        },
+        "step": {
+            "init": {
+                "sections": {
+                    "api": {
+                        "data": {
+                            "vcc_api_key": "Volvo-Developers-API-Schlüssel"
+                        },
+                        "name": "API"
+                    },
+                    "images": {
+                        "data": {
+                            "image_bg_color": "Hintergrundfarbe Bilder",
+                            "image_transparent": "Transparenter Hintergrund Bilder"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Nur auswählbar, wenn kein transparenter Hintergrund für Bilder ausgewählt wurde."
+                        },
+                        "name": "Bilder"
+                    },
+                    "units": {
+                        "data": {
+                            "fuel_consumption_unit": "Einheit Verbrauch"
+                        },
+                        "name": "Einheit"
+                    }
+                }
+            }
         }
     },
     "selector": {
