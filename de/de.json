@@ -1,0 +1,643 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "description": "Bitte deine Volvo-Account-Zugangsdaten eingeben: Fahrzeug-Identifikationsnummer und Volvo-Developers-API-Schlüssel (https:\/\/developer.volvocars.com\/).",
+                "data": {
+                    "username": "Benutzername",
+                    "password": "Passwort",
+                    "vin": "Fahrzeug-Identifikationsnummer",
+                    "vcc_api_key": "Volvo-Developers-API-Schlüssel",
+                    "friendly_name": "Friendly Name"
+                },
+                "data_description": {
+                    "vin": "Die Fahrzeug-Identifikationsnummer ist 17 Zeichen lang und beginnt normalerweise für Volvo-Fahrzeuge mit YV1 or YV4.",
+                    "friendly_name": "Dieser Wert wird in der Entitäts-ID benutzt (volvo_[friendly name]_[key]). Falls leer, wird die Fahrzeug-Identifiktationsnummer benutzt."
+                }
+            },
+            "otp": {
+                "description": "Bitte das Einmal-Kennwort (One-Time-Password) eingeben, welches dir soeben per Mail zugeschickt wurde.",
+                "data": {
+                    "otp": "OTP"
+                }
+            },
+            "reauth_confirm": {
+                "title": "Zugangsdaten abgelaufen",
+                "description": "Die Volvo-Cars-Integration muss deinen Account erneut authentifizieren."
+            }
+        },
+        "abort": {
+            "already_configured": "Das Fahrzeug ist bereits konfiguriert",
+            "reauth_successful": "Zugangsdaten erfolgreich aktualisiert"
+        },
+        "error": {
+            "invalid_auth": "Authentifizierung fehlgeschlagen"
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "brake_fluid_level_warning": {
+                "name": "Bremsflüssigkeit"
+            },
+            "brake_light_center_warning": {
+                "name": "Zentrales Bremslicht"
+            },
+            "brake_light_left_warning": {
+                "name": "Bremslicht links"
+            },
+            "brake_light_right_warning": {
+                "name": "Bremslicht rechts"
+            },
+            "coolant_level_warning": {
+                "name": "Kühlflüssigkeitsstand"
+            },
+            "daytime_running_light_left_warning": {
+                "name": "Tagfahrlicht links"
+            },
+            "daytime_running_light_right_warning": {
+                "name": "Tagfahrlicht rechts"
+            },
+            "door_front_left": {
+                "name": "Tür vorne links"
+            },
+            "door_front_right": {
+                "name": "Tür vorne rechts"
+            },
+            "door_rear_left": {
+                "name": "Tür hinten links"
+            },
+            "door_rear_right": {
+                "name": "Tür hinten rechts"
+            },
+            "engine_status": {
+                "name": "Status Motor"
+            },
+            "fog_light_front_warning": {
+                "name": "Nebelleuchten vorne"
+            },
+            "fog_light_rear_warning": {
+                "name": "Nebelleuchten hinten"
+            },
+            "hazard_lights_warning": {
+                "name": "Warnblinker"
+            },
+            "high_beam_left_warning": {
+                "name": "Fernlicht links"
+            },
+            "high_beam_right_warning": {
+                "name": "Fernlicht rechts"
+            },
+            "hood": {
+                "name": "Motorhaube"
+            },
+            "low_beam_left_warning": {
+                "name": "Abblendlicht links"
+            },
+            "low_beam_right_warning": {
+                "name": "Abblendlicht rechts"
+            },
+            "oil_level_warning": {
+                "name": "Ölstand",
+                "state_attributes": {
+                    "level": {
+                        "name": "Füllstand",
+                        "state": {
+                            "no_warning": "OK",
+                            "service_required": "Service benötigt",
+                            "too_low": "Zu niedrig",
+                            "too_high": "Zu hoch"
+                        }
+                    }
+                }
+            },
+            "position_light_front_left_warning": {
+                "name": "Standlicht vorne links"
+            },
+            "position_light_front_right_warning": {
+                "name": "Standlicht vorne rechts"
+            },
+            "position_light_rear_left_warning": {
+                "name": "Standlicht hinten links"
+            },
+            "position_light_rear_right_warning": {
+                "name": "Standlicht hinten rechts"
+            },
+            "registration_plate_light_warning": {
+                "name": "Kennzeichenbeleuchtung"
+            },
+            "reverse_lights_warning": {
+                "name": "Rückfahrlicht"
+            },
+            "service_warning": {
+                "name": "Service",
+                "state_attributes": {
+                    "reason": {
+                        "name": "Grund",
+                        "state": {
+                            "distance_driven_almost_time_for_service": "Bald Zeit für die Kilometer-Service",
+                            "distance_driven_overdue_for_service": "Kilometer-Service überfällig",
+                            "distance_driven_time_for_service": "Zeit für den Kilometer-Service",
+                            "engine_hours_almost_time_for_service": "Bald Zeit für den Service nach Betriebsstunden",
+                            "engine_hours_overdue_for_service": "Service nach Betriebsstunden überfällig",
+                            "engine_hours_time_for_service": "Zeit für den Service nach Betriebsstunden",
+                            "no_warning": "OK",
+                            "regular_maintenance_almost_time_for_service": "Bald Zeit für den turnusgemäßen Service",
+                            "regular_maintenance_overdue_for_service": "Turnusgemäßer Service überfällig",
+                            "regular_maintenance_time_for_service": "Zeit für den turnusgemäßen Service",
+                            "unknown_warning": "Unbekannte Warnung"
+                        }
+                    }
+                }
+            },
+            "side_mark_lights_warning": {
+                "name": "Setiliche Markierungsleuchten"
+            },
+            "sunroof": {
+                "name": "Schiebedach"
+            },
+            "tailgate": {
+                "name": "Kofferaum"
+            },
+            "tank_lid": {
+                "name": "Tank-\/Ladeklappe"
+            },
+            "turn_indication_front_left_warning": {
+                "name": "Blinker vorne links"
+            },
+            "turn_indication_front_right_warning": {
+                "name": "Blinker vorne rechts"
+            },
+            "turn_indication_rear_left_warning": {
+                "name": "Blinker hinten links"
+            },
+            "turn_indication_rear_right_warning": {
+                "name": "Blinker hinten rechts"
+            },
+            "tyre_front_left": {
+                "name": "Reifen vorne links",
+                "state_attributes": {
+                    "pressure": {
+                        "name": "Reifendruck",
+                        "state": {
+                            "no_warning": "OK",
+                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "low_pressure": "Niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck"
+                        }
+                    }
+                }
+            },
+            "tyre_front_right": {
+                "name": "Reifen vorne rechts",
+                "state_attributes": {
+                    "pressure": {
+                        "name": "Reifendruck",
+                        "state": {
+                            "no_warning": "OK",
+                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "low_pressure": "Niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_left": {
+                "name": "Reifen hinten links",
+                "state_attributes": {
+                    "pressure": {
+                        "name": "Reifendruck",
+                        "state": {
+                            "no_warning": "OK",
+                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "low_pressure": "Niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_right": {
+                "name": "Reifen hinten rechts",
+                "state_attributes": {
+                    "pressure": {
+                        "name": "Reifendruck",
+                        "state": {
+                            "no_warning": "OK",
+                            "very_low_pressure": "Sehr niedriger Reifendruck",
+                            "low_pressure": "Niedriger Reifendruck",
+                            "high_pressure": "Hoher Reifendruck"
+                        }
+                    }
+                }
+            },
+            "washer_fluid_level_warning": {
+                "name": "Füllstand Scheibenwischwasser"
+            },
+            "window_front_left": {
+                "name": "Fenster vorne links"
+            },
+            "window_front_right": {
+                "name": "Fenster vorne rechts"
+            },
+            "window_rear_left": {
+                "name": "Fenster hinten links"
+            },
+            "window_rear_right": {
+                "name": "Fenster hinten rechts"
+            }
+        },
+        "button": {
+            "climatization_start": {
+                "name": "Klimatisierung starten",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Letztes Ergebnis",
+                        "state": {
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "running": "Läuft",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus",
+                            "waiting": "Warten"
+                        }
+                    }
+                }
+            },
+            "climatization_stop": {
+                "name": "Klimatisierung ausschalten",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Letztes Ergebnis",
+                        "state": {
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "running": "Läuft",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus",
+                            "waiting": "Warten"
+                        }
+                    }
+                }
+            },
+            "engine_start": {
+                "name": "Motor starten",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Letztes Ergebnis",
+                        "state": {
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "running": "Läuft",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus",
+                            "waiting": "Warten"
+                        }
+                    }
+                }
+            },
+            "engine_stop": {
+                "name": "Motor ausschalten",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Letztes Ergebnis",
+                        "state": {
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "running": "Läuft",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus",
+                            "waiting": "Warten"
+                        }
+                    }
+                }
+            },
+            "flash": {
+                "name": "Lichtsignal",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Letztes Ergebnis",
+                        "state": {
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus"
+                        }
+                    }
+                }
+            },
+            "honk": {
+                "name": "Signalhorn",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Letztes Ergebnis",
+                        "state": {
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus"
+                        }
+                    }
+                }
+            },
+            "honk_flash": {
+                "name": "Signalhorn & Lichtsignal",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Letztes Ergebnis",
+                        "state": {
+                            "car_error": "Fahrzeugfehler",
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "timeout": "Zeitüberschreitung",
+                            "unknown": "Unbekannt",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus"
+                        }
+                    }
+                }
+            },
+            "update_data": {
+                "name": "Daten aktualisieren"
+            }
+        },
+        "device_tracker": {
+            "location": {
+                "name": "Standort",
+                "state_attributes": {
+                    "direction": {
+                        "name": "Richtung"
+                    }
+                }
+            }
+        },
+        "image": {
+            "exterior": {
+                "name": "Außen Beifahrerseite"
+            },
+            "exterior_back": {
+                "name": "Heckansicht"
+            },
+            "exterior_back_driver": {
+                "name": "Außen Fahrerseite hinten"
+            },
+            "exterior_back_passenger": {
+                "name": "Außen Beifahrerseite hinten"
+            },
+            "exterior_front": {
+                "name": "Frontansicht"
+            },
+            "exterior_front_driver": {
+                "name": "Außen Fahrerseite vorne"
+            },
+            "exterior_front_passenger": {
+                "name": "Außen Beifahrerseite vorne"
+            },
+            "exterior_side_driver": {
+                "name": "Außen Fahrerseite"
+            },
+            "interior": {
+                "name": "Innen"
+            }
+        },
+        "lock": {
+            "lock": {
+                "name": "Zentralverriegelung",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Letztes Ergebnis",
+                        "state": {
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "timeout": "Zeitüberschreitung",
+                            "unable_to_lock_door_open": "Tür offen",
+                            "unknown": "Unbekannt",
+                            "unlock_time_frame_passed": "Zeitfenster abgelaufen",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus"
+                        }
+                    }
+                }
+            },
+            "lock_reduced_guard": {
+                "name": "Reduzierter Sicherheitsmodus",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Letztes Ergebnis",
+                        "state": {
+                            "completed": "Abgeschlossen",
+                            "connection_failure": "Verbindungsfehler",
+                            "delivered": "Geliefert",
+                            "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "rejected": "Abgelehnt",
+                            "timeout": "Zeitüberschreitung",
+                            "unable_to_lock_door_open": "Tür offen",
+                            "unknown": "Unbekannt",
+                            "unlock_time_frame_passed": "Zeitfenster abgelaufen",
+                            "vehicle_in_sleep": "Fahrzeug im Schlafmodus"
+                        }
+                    }
+                }
+            }
+        },
+        "number": {
+            "data_update_interval": {
+                "name": "Daten-Abrufintervall"
+            },
+            "engine_run_time": {
+                "name": "Motor-Betriebsstunden"
+            }
+        },
+        "sensor": {
+            "api_status": {
+                "name": "API Status"
+            },
+            "api_request_count": {
+                "name": "API Zugriffszähler"
+            },
+            "availability": {
+                "name": "Fahrzeugverbindung",
+                "state": {
+                    "available": "Verfügbar",
+                    "car_in_use": "Fahrzeug ist in Gebrauch",
+                    "no_internet": "Keine Internetverbindung",
+                    "power_saving_mode": "Energiesparmodus",
+                    "unavailable": "Nicht verfügbar",
+                    "unspecified": "Unbekannt"
+                }
+            },
+            "average_energy_consumption": {
+                "name": "Durchschn. Energieverbrauch"
+            },
+            "average_energy_consumption_automatic": {
+                "name": "Durchschn. Energieverbrauch Automatik"
+            },
+            "average_energy_consumption_charge": {
+                "name": "Durchschn. Energieverbrauch seit dem Laden"
+            },
+            "average_fuel_consumption": {
+                "name": "Durchschn. Kraftstoffverbrauch"
+            },
+            "average_fuel_consumption_automatic": {
+                "name": "Durchschn. Kraftstoffverbrauch Automatik"
+            },
+            "average_speed": {
+                "name": "Durchschn. Geschwindigkeit"
+            },
+            "average_speed_automatic": {
+                "name": "Durchschn. Geschwindigkeit Automatik"
+            },
+            "battery_capacity": {
+                "name": "Batteriekapazität"
+            },
+            "battery_charge_level": {
+                "name": "Batterieladestand (SOC)"
+            },
+            "charging_connection_status": {
+                "name": "Status Ladeanschluss",
+                "state": {
+                    "connection_status_connected_ac": "Wechselstrom verbunden",
+                    "connection_status_connected_dc": "Gleichstrom verbunden",
+                    "connection_status_disconnected": "Getrennt",
+                    "connection_status_fault": "Fehler",
+                    "connection_status_unspecified": "Unbekannt"
+                }
+            },
+            "charging_system_status": {
+                "name": "Ladezustand",
+                "state": {
+                    "charging_system_charging": "Laden",
+                    "charging_system_done": "Fertig",
+                    "charging_system_fault": "Fehler",
+                    "charging_system_idle": "Warten",
+                    "charging_system_scheduled": "Geplant",
+                    "charging_system_unspecified": "Unbekannt"
+                }
+            },
+            "distance_to_empty_battery": {
+                "name": "Reichweite EV"
+            },
+            "distance_to_empty_tank": {
+                "name": "Reichweite Verbrenner"
+            },
+            "distance_to_service": {
+                "name": "Kilometer bis zum Service"
+            },
+            "engine_time_to_service": {
+                "name": "Betriebsstunden bis zum Service"
+            },
+            "estimated_charging_time": {
+                "name": "Vorauss. Ladezeit"
+            },
+            "fuel_amount": {
+                "name": "Kraftstoffmenge"
+            },
+            "odometer": {
+                "name": "Gesamt-Kilometerstand"
+            },
+            "time_to_service": {
+                "name": "Zeit bis zum Service"
+            },
+            "trip_meter_automatic": {
+                "name": "Kilometerzähler Automatik"
+            },
+            "trip_meter_manual": {
+                "name": "Kilometerzähler Manuell"
+            }
+        }
+    },
+    "exceptions": {
+        "lock_failure": {
+            "message": "{command} Fahrzeug fehlgeschlagen. Status: {status}. Nachricht: {message}"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "sections": {
+                    "api": {
+                        "name": "API",
+                        "data": {
+                            "vcc_api_key": "Volvo-Developers-API-Schlüssel"
+                        }
+                    },
+                    "images": {
+                        "name": "Bilder",
+                        "data": {
+                            "image_bg_color": "Hintergrundfarbe Bilder",
+                            "image_transparent": "Transparenter Hintergrund Bilder"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Nur auswählbar, wenn kein transparenter Hintergrund für Bilder ausgewählt wurde."
+                        }
+                    },
+                    "units": {
+                        "name": "Einheit",
+                        "data": {
+                            "fuel_consumption_unit": "Einheit Verbrauch"
+                        }
+                    }
+                }
+            }
+        },
+        "abort": {
+            "no_options_available": "Für dein Fahrzeug sind keine Optionen auswählbar."
+        }
+    },
+    "selector": {
+        "fuel_consumption_unit": {
+            "options": {
+                "l_100km": "l\/100km",
+                "mpg_uk": "mpg (UK)",
+                "mpg_us": "mpg (US)"
+            }
+        }
+    },
+    "\/\/translator": {
+        "\/\/firstname": "Arend",
+        "\/\/lastname": "Boehmer",
+        "\/\/mail": "arend.boehmer@web.de",
+        "\/\/country": "Germany"
+    }
+}
