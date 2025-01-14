@@ -81,12 +81,18 @@ def _convert_fuel_consumption(
     unit_key = entry.options.get(OPT_FUEL_CONSUMPTION_UNIT, OPT_UNIT_LITER_PER_100KM)
 
     if unit_key == OPT_UNIT_MPG_UK:
-        return round(Decimal(282.481) / value, 2)
+        decimals = 2
+        converted_value = (Decimal(282.481) / value) if value else 0
 
-    if unit_key == OPT_UNIT_MPG_US:
-        return round(Decimal(235.215) / value, 2)
+    elif unit_key == OPT_UNIT_MPG_US:
+        decimals = 2
+        converted_value = (Decimal(235.215) / value) if value else 0
 
-    return round(value, 1)
+    else:
+        decimals = 1
+        converted_value = value
+
+    return round(converted_value, decimals)
 
 
 # pylint: disable=unexpected-keyword-arg
