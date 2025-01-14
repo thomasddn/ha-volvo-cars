@@ -1,14 +1,8 @@
 {
-    "//translator": {
-        "//firstname": "arend",
-        "//lastname": "boehmer",
-        "//mail": "arend.boehmer@web.de",
-        "//country": "germany"
-    },
     "config": {
         "step": {
             "user": {
-                "description": "Bitte deine Volvo-Account-Zugangsdaten eingeben: Fahrzeug-Identifikationsnummer und Volvo-Developers-API-Schlüssel (https://developer.volvocars.com/).",
+                "description": "Bitte deine Volvo-Account-Zugangsdaten eingeben: Fahrzeug-Identifikationsnummer und Volvo-Developers-API-Schlüssel (https:\/\/developer.volvocars.com\/).",
                 "data": {
                     "username": "Benutzername",
                     "password": "Passwort",
@@ -165,7 +159,7 @@
                 "name": "Kofferaum"
             },
             "tank_lid": {
-                "name": "Tank-/Ladeklappe"
+                "name": "Tank-\/Ladeklappe"
             },
             "turn_indication_front_left_warning": {
                 "name": "Blinker vorne links"
@@ -601,13 +595,29 @@
     "options": {
         "step": {
             "init": {
-                "data": {
-                    "fuel_consumption_unit": "Einheit Verbrauch",
-                    "image_bg_color": "Hintergrundfarbe Bilder",
-                    "image_transparent": "Transparenter Hintergrund Bilder"
-                },
-                "data_description": {
-                    "image_bg_color": "Nur auswählbar, wenn kein transparenter Hintergrund für Bilder ausgewählt wurde."
+                "sections": {
+                    "api": {
+                        "name": "API",
+                        "data": {
+                            "vcc_api_key": "Volvo-Developers-API-Schlüssel"
+                        }
+                    },
+                    "images": {
+                        "name": "Bilder",
+                        "data": {
+                            "image_bg_color": "Hintergrundfarbe Bilder",
+                            "image_transparent": "Transparenter Hintergrund Bilder"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Nur auswählbar, wenn kein transparenter Hintergrund für Bilder ausgewählt wurde."
+                        }
+                    },
+                    "units": {
+                        "name": "Einheit",
+                        "data": {
+                            "fuel_consumption_unit": "Einheit Verbrauch"
+                        }
+                    }
                 }
             }
         },
@@ -618,10 +628,16 @@
     "selector": {
         "fuel_consumption_unit": {
             "options": {
-                "l_100km": "l/100km",
+                "l_100km": "l\/100km",
                 "mpg_uk": "mpg (UK)",
                 "mpg_us": "mpg (US)"
             }
         }
+    },
+    "\/\/translator": {
+        "\/\/firstname": "Arend",
+        "\/\/lastname": "Boehmer",
+        "\/\/mail": "arend.boehmer@web.de",
+        "\/\/country": "Germany"
     }
 }

@@ -2,7 +2,7 @@
     "config": {
         "step": {
             "user": {
-                "description": "Enter your Volvo account credentials, VIN and Volvo developers API key (https://developer.volvocars.com/).",
+                "description": "Enter your Volvo account credentials, VIN and Volvo developers API key (https:\/\/developer.volvocars.com\/).",
                 "data": {
                     "username": "Username",
                     "password": "Password",
@@ -28,7 +28,7 @@
         },
         "abort": {
             "already_configured": "Car is already configured",
-            "reauth_successful": "Sucessfully updated credentials"
+            "reauth_successful": "Successfully updated credentials"
         },
         "error": {
             "invalid_auth": "Authentication failed"
@@ -589,7 +589,7 @@
     },
     "exceptions": {
         "lock_failure": {
-            "message": "Failed to {command} vehichle. Status: {status}. Message: {message}"
+            "message": "Failed to {command} vehicle. Status: {status}. Message: {message}"
         }
     },
     "options": {
@@ -628,10 +628,16 @@
     "selector": {
         "fuel_consumption_unit": {
             "options": {
-                "l_100km": "l/100km",
+                "l_100km": "l\/100km",
                 "mpg_uk": "mpg (UK)",
                 "mpg_us": "mpg (US)"
             }
         }
+    },
+    "\/\/translator": {
+        "\/\/firstname": "",
+        "\/\/lastname": "",
+        "\/\/mail": "",
+        "\/\/country": ""
     }
 }
