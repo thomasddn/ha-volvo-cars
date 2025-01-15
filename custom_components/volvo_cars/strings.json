@@ -4,22 +4,24 @@
         "completed": "Completed",
         "connection_failure": "Connection failure",
         "delivered": "Delivered",
+        "door_open": "Door open",
         "error": "Error",
         "high_pressure": "High pressure",
         "last_result": "Last result",
         "low_pressure": "Low pressure",
-        "ok": "OK",
         "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-        "wrong_usage": "Wrong usage",
+        "ok": "OK",
+        "pressure": "Pressure",
         "rejected": "Rejected",
         "running": "Running",
+        "time_frame_passed": "Time frame passed",
         "timeout": "Timeout",
-        "door_open": "Door open",
         "unknown": "Unknown",
         "vcc_api_key": "Volvo API key",
         "vehicle_in_sleep": "Vehicle in sleep",
         "very_low_pressure": "Very low pressure",
-        "waiting": "Waiting"
+        "waiting": "Waiting",
+        "wrong_usage": "Wrong usage"
     },
     "config": {
         "abort": {
@@ -45,7 +47,7 @@
                     "friendly_name": "Friendly name",
                     "password": "Password",
                     "username": "Username",
-                    "vcc_api_key": "Volvo API key",
+                    "vcc_api_key": "[%key:common::vcc_api_key%]",
                     "vin": "Vehicle Identification Number"
                 },
                 "data_description": {
@@ -124,7 +126,7 @@
                     "level": {
                         "name": "Level",
                         "state": {
-                            "no_warning": "OK",
+                            "no_warning": "[%key:common::ok%]",
                             "service_required": "Service required",
                             "too_high": "Too high",
                             "too_low": "Too low"
@@ -162,7 +164,7 @@
                             "engine_hours_almost_time_for_service": "Almost time for engine service",
                             "engine_hours_overdue_for_service": "Engine service overdue",
                             "engine_hours_time_for_service": "Time for engine service",
-                            "no_warning": "OK",
+                            "no_warning": "[%key:common::ok%]",
                             "regular_maintenance_almost_time_for_service": "Almost time for service",
                             "regular_maintenance_overdue_for_service": "Service overdue",
                             "regular_maintenance_time_for_service": "Time for service",
@@ -199,12 +201,12 @@
                 "name": "Tyre front left",
                 "state_attributes": {
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "[%key:common::pressure%]",
                         "state": {
-                            "high_pressure": "High pressure",
-                            "low_pressure": "Low pressure",
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure"
+                            "high_pressure": "[%key:common::high_pressure%]",
+                            "low_pressure": "[%key:common::low_pressure%]",
+                            "no_warning": "[%key:common::ok%]",
+                            "very_low_pressure": "[%key:common::very_low_pressure%]"
                         }
                     }
                 }
@@ -213,12 +215,12 @@
                 "name": "Tyre front right",
                 "state_attributes": {
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "[%key:common::pressure%]",
                         "state": {
-                            "high_pressure": "High pressure",
-                            "low_pressure": "Low pressure",
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure"
+                            "high_pressure": "[%key:common::high_pressure%]",
+                            "low_pressure": "[%key:common::low_pressure%]",
+                            "no_warning": "[%key:common::ok%]",
+                            "very_low_pressure": "[%key:common::very_low_pressure%]"
                         }
                     }
                 }
@@ -227,12 +229,12 @@
                 "name": "Tyre rear left",
                 "state_attributes": {
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "[%key:common::pressure%]",
                         "state": {
-                            "high_pressure": "High pressure",
-                            "low_pressure": "Low pressure",
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure"
+                            "high_pressure": "[%key:common::high_pressure%]",
+                            "low_pressure": "[%key:common::low_pressure%]",
+                            "no_warning": "[%key:common::ok%]",
+                            "very_low_pressure": "[%key:common::very_low_pressure%]"
                         }
                     }
                 }
@@ -241,12 +243,12 @@
                 "name": "Tyre rear right",
                 "state_attributes": {
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "[%key:common::pressure%]",
                         "state": {
-                            "high_pressure": "High pressure",
-                            "low_pressure": "Low pressure",
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure"
+                            "high_pressure": "[%key:common::high_pressure%]",
+                            "low_pressure": "[%key:common::low_pressure%]",
+                            "no_warning": "[%key:common::ok%]",
+                            "very_low_pressure": "[%key:common::very_low_pressure%]"
                         }
                     }
                 }
@@ -272,20 +274,20 @@
                 "name": "Start climatization",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "[%key:common::last_result%]",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "car_error": "[%key:common::car_error%]",
+                            "completed": "[%key:common::completed%]",
+                            "connection_failure": "[%key:common::connection_failure%]",
+                            "delivered": "[%key:common::delivered%]",
+                            "not_allowed_privacy_enabled": "[%key:common::not_allowed_privacy_enabled%]",
+                            "not_allowed_wrong_usage_mode": "[%key:common::wrong_usage%]",
+                            "rejected": "[%key:common::rejected%]",
+                            "running": "[%key:common::running%]",
+                            "timeout": "[%key:common::timeout%]",
+                            "unknown": "[%key:common::Unknown%]",
+                            "vehicle_in_sleep": "[%key:common::vehicle_in_sleep%]",
+                            "waiting": "[%key:common::waiting%]"
                         }
                     }
                 }
@@ -294,20 +296,20 @@
                 "name": "Stop climatization",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "[%key:common::last_result%]",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "car_error": "[%key:common::car_error%]",
+                            "completed": "[%key:common::completed%]",
+                            "connection_failure": "[%key:common::connection_failure%]",
+                            "delivered": "[%key:common::delivered%]",
+                            "not_allowed_privacy_enabled": "[%key:common::not_allowed_privacy_enabled%]",
+                            "not_allowed_wrong_usage_mode": "[%key:common::wrong_usage%]",
+                            "rejected": "[%key:common::rejected%]",
+                            "running": "[%key:common::running%]",
+                            "timeout": "[%key:common::timeout%]",
+                            "unknown": "[%key:common::Unknown%]",
+                            "vehicle_in_sleep": "[%key:common::vehicle_in_sleep%]",
+                            "waiting": "[%key:common::waiting%]"
                         }
                     }
                 }
@@ -316,20 +318,20 @@
                 "name": "Start engine",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "[%key:common::last_result%]",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "car_error": "[%key:common::car_error%]",
+                            "completed": "[%key:common::completed%]",
+                            "connection_failure": "[%key:common::connection_failure%]",
+                            "delivered": "[%key:common::delivered%]",
+                            "not_allowed_privacy_enabled": "[%key:common::not_allowed_privacy_enabled%]",
+                            "not_allowed_wrong_usage_mode": "[%key:common::wrong_usage%]",
+                            "rejected": "[%key:common::rejected%]",
+                            "running": "[%key:common::running%]",
+                            "timeout": "[%key:common::timeout%]",
+                            "unknown": "[%key:common::Unknown%]",
+                            "vehicle_in_sleep": "[%key:common::vehicle_in_sleep%]",
+                            "waiting": "[%key:common::waiting%]"
                         }
                     }
                 }
@@ -338,20 +340,20 @@
                 "name": "Stop engine",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "[%key:common::last_result%]",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "car_error": "[%key:common::car_error%]",
+                            "completed": "[%key:common::completed%]",
+                            "connection_failure": "[%key:common::connection_failure%]",
+                            "delivered": "[%key:common::delivered%]",
+                            "not_allowed_privacy_enabled": "[%key:common::not_allowed_privacy_enabled%]",
+                            "not_allowed_wrong_usage_mode": "[%key:common::wrong_usage%]",
+                            "rejected": "[%key:common::rejected%]",
+                            "running": "[%key:common::running%]",
+                            "timeout": "[%key:common::timeout%]",
+                            "unknown": "[%key:common::Unknown%]",
+                            "vehicle_in_sleep": "[%key:common::vehicle_in_sleep%]",
+                            "waiting": "[%key:common::waiting%]"
                         }
                     }
                 }
@@ -360,18 +362,18 @@
                 "name": "Flash",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "[%key:common::last_result%]",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "car_error": "[%key:common::car_error%]",
+                            "completed": "[%key:common::completed%]",
+                            "connection_failure": "[%key:common::connection_failure%]",
+                            "delivered": "[%key:common::delivered%]",
+                            "not_allowed_privacy_enabled": "[%key:common::not_allowed_privacy_enabled%]",
+                            "not_allowed_wrong_usage_mode": "[%key:common::wrong_usage%]",
+                            "rejected": "[%key:common::rejected%]",
+                            "timeout": "[%key:common::timeout%]",
+                            "unknown": "[%key:common::Unknown%]",
+                            "vehicle_in_sleep": "[%key:common::vehicle_in_sleep%]"
                         }
                     }
                 }
@@ -380,18 +382,18 @@
                 "name": "Honk",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "[%key:common::last_result%]",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "car_error": "[%key:common::car_error%]",
+                            "completed": "[%key:common::completed%]",
+                            "connection_failure": "[%key:common::connection_failure%]",
+                            "delivered": "[%key:common::delivered%]",
+                            "not_allowed_privacy_enabled": "[%key:common::not_allowed_privacy_enabled%]",
+                            "not_allowed_wrong_usage_mode": "[%key:common::wrong_usage%]",
+                            "rejected": "[%key:common::rejected%]",
+                            "timeout": "[%key:common::timeout%]",
+                            "unknown": "[%key:common::Unknown%]",
+                            "vehicle_in_sleep": "[%key:common::vehicle_in_sleep%]"
                         }
                     }
                 }
@@ -400,18 +402,18 @@
                 "name": "Honk & flash",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "[%key:common::last_result%]",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "car_error": "[%key:common::car_error%]",
+                            "completed": "[%key:common::completed%]",
+                            "connection_failure": "[%key:common::connection_failure%]",
+                            "delivered": "[%key:common::delivered%]",
+                            "not_allowed_privacy_enabled": "[%key:common::not_allowed_privacy_enabled%]",
+                            "not_allowed_wrong_usage_mode": "[%key:common::wrong_usage%]",
+                            "rejected": "[%key:common::rejected%]",
+                            "timeout": "[%key:common::timeout%]",
+                            "unknown": "[%key:common::Unknown%]",
+                            "vehicle_in_sleep": "[%key:common::vehicle_in_sleep%]"
                         }
                     }
                 }
@@ -464,19 +466,19 @@
                 "name": "Central lock",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "[%key:common::last_result%]",
                         "state": {
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unable_to_lock_door_open": "Door open",
-                            "unknown": "Unknown",
-                            "unlock_time_frame_passed": "Time frame passed",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "completed": "[%key:common::completed%]",
+                            "connection_failure": "[%key:common::connection_failure%]",
+                            "delivered": "[%key:common::delivered%]",
+                            "not_allowed_privacy_enabled": "[%key:common::not_allowed_privacy_enabled%]",
+                            "not_allowed_wrong_usage_mode": "[%key:common::wrong_usage%]",
+                            "rejected": "[%key:common::rejected%]",
+                            "timeout": "[%key:common::timeout%]",
+                            "unable_to_lock_door_open": "[%key:common::door_open%]",
+                            "unknown": "[%key:common::Unknown%]",
+                            "unlock_time_frame_passed": "[%key:common::time_frame_passed%]",
+                            "vehicle_in_sleep": "[%key:common::vehicle_in_sleep%]"
                         }
                     }
                 }
@@ -485,19 +487,19 @@
                 "name": "Reduced guard lock",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "[%key:common::last_result%]",
                         "state": {
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unable_to_lock_door_open": "Door open",
-                            "unknown": "Unknown",
-                            "unlock_time_frame_passed": "Time frame passed",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "completed": "[%key:common::completed%]",
+                            "connection_failure": "[%key:common::connection_failure%]",
+                            "delivered": "[%key:common::delivered%]",
+                            "not_allowed_privacy_enabled": "[%key:common::not_allowed_privacy_enabled%]",
+                            "not_allowed_wrong_usage_mode": "[%key:common::wrong_usage%]",
+                            "rejected": "[%key:common::rejected%]",
+                            "timeout": "[%key:common::timeout%]",
+                            "unable_to_lock_door_open": "[%key:common::door_open%]",
+                            "unknown": "[%key:common::Unknown%]",
+                            "unlock_time_frame_passed": "[%key:common::time_frame_passed%]",
+                            "vehicle_in_sleep": "[%key:common::vehicle_in_sleep%]"
                         }
                     }
                 }
@@ -526,7 +528,7 @@
                     "no_internet": "No internet",
                     "power_saving_mode": "Power saving mode",
                     "unavailable": "Unavailable",
-                    "unspecified": "Unknown"
+                    "unspecified": "[%key:common::Unknown%]"
                 }
             },
             "average_energy_consumption": {
@@ -562,8 +564,8 @@
                     "connection_status_connected_ac": "Connected AC",
                     "connection_status_connected_dc": "Connected DC",
                     "connection_status_disconnected": "Disconnected",
-                    "connection_status_fault": "Error",
-                    "connection_status_unspecified": "Unknown"
+                    "connection_status_fault": "[%key:common::error%]",
+                    "connection_status_unspecified": "[%key:common::Unknown%]"
                 }
             },
             "charging_system_status": {
@@ -571,10 +573,10 @@
                 "state": {
                     "charging_system_charging": "Charging",
                     "charging_system_done": "Done",
-                    "charging_system_fault": "Error",
+                    "charging_system_fault": "[%key:common::error%]",
                     "charging_system_idle": "Idle",
                     "charging_system_scheduled": "Scheduled",
-                    "charging_system_unspecified": "Unknown"
+                    "charging_system_unspecified": "[%key:common::Unknown%]"
                 }
             },
             "distance_to_empty_battery": {
@@ -623,7 +625,7 @@
                 "sections": {
                     "api": {
                         "data": {
-                            "vcc_api_key": "Volvo API key"
+                            "vcc_api_key": "[%key:common::vcc_api_key%]"
                         },
                         "name": "API"
                     },
