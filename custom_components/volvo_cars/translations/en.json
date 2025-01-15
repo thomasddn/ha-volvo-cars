@@ -1,4 +1,28 @@
 {
+    "common": {
+        "car_error": "Car error",
+        "completed": "Completed",
+        "connection_failure": "Connection failure",
+        "delivered": "Delivered",
+        "door_open": "Door open",
+        "error": "Error",
+        "high_pressure": "High pressure",
+        "last_result": "Last result",
+        "low_pressure": "Low pressure",
+        "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+        "ok": "OK",
+        "pressure": "Pressure",
+        "rejected": "Rejected",
+        "running": "Running",
+        "time_frame_passed": "Time frame passed",
+        "timeout": "Timeout",
+        "unknown": "Unknown",
+        "vcc_api_key": "Volvo API key",
+        "vehicle_in_sleep": "Vehicle in sleep",
+        "very_low_pressure": "Very low pressure",
+        "waiting": "Waiting",
+        "wrong_usage": "Wrong usage"
+    },
     "config": {
         "abort": {
             "already_configured": "Car is already configured",
@@ -628,7 +652,7 @@
     "selector": {
         "fuel_consumption_unit": {
             "options": {
-                "l_100km": "l/100km",
+                "l_100km": "l/100 km",
                 "mpg_uk": "mpg (UK)",
                 "mpg_us": "mpg (US)"
             }
