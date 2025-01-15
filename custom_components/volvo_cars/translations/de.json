@@ -1,4 +1,28 @@
 {
+    "common": {
+        "car_error": "Fahrzeugfehler",
+        "completed": "Abgeschlossen",
+        "connection_failure": "Verbindungsfehler",
+        "delivered": "Geliefert",
+        "door_open": "Tür offen",
+        "error": "Fehler",
+        "high_pressure": "Hoher Reifendruck",
+        "last_result": "Letztes Ergebnis",
+        "low_pressure": "Niedriger Reifendruck",
+        "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
+        "ok": "OK",
+        "pressure": "Reifendruck",
+        "rejected": "Abgelehnt",
+        "running": "Läuft",
+        "time_frame_passed": "Zeitfenster abgelaufen",
+        "timeout": "Zeitüberschreitung",
+        "unknown": "Unbekannt",
+        "vcc_api_key": "Volvo-Developers-API-Schlüssel",
+        "vehicle_in_sleep": "Fahrzeug im Schlafmodus",
+        "very_low_pressure": "Sehr niedriger Reifendruck",
+        "waiting": "Warten",
+        "wrong_usage": "Falscher Nutzungsmodus"
+    },
     "config": {
         "abort": {
             "already_configured": "Das Fahrzeug ist bereits konfiguriert",
@@ -12,7 +36,7 @@
                 "data": {
                     "otp": "OTP"
                 },
-                "description": "Bitte das Einmal-Kennwort (One-Time-Password) eingeben, welches dir soeben per Mail zugeschickt wurde."
+                "description": "Enter the OTP you received in your mailbox."
             },
             "reauth_confirm": {
                 "description": "Die Volvo-Cars-Integration muss deinen Account erneut authentifizieren.",
@@ -257,7 +281,7 @@
                             "connection_failure": "Verbindungsfehler",
                             "delivered": "Geliefert",
                             "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
-                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "not_allowed_wrong_usage_mode": "Falscher Nutzungsmodus",
                             "rejected": "Abgelehnt",
                             "running": "Läuft",
                             "timeout": "Zeitüberschreitung",
@@ -279,7 +303,7 @@
                             "connection_failure": "Verbindungsfehler",
                             "delivered": "Geliefert",
                             "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
-                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "not_allowed_wrong_usage_mode": "Falscher Nutzungsmodus",
                             "rejected": "Abgelehnt",
                             "running": "Läuft",
                             "timeout": "Zeitüberschreitung",
@@ -301,7 +325,7 @@
                             "connection_failure": "Verbindungsfehler",
                             "delivered": "Geliefert",
                             "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
-                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "not_allowed_wrong_usage_mode": "Falscher Nutzungsmodus",
                             "rejected": "Abgelehnt",
                             "running": "Läuft",
                             "timeout": "Zeitüberschreitung",
@@ -323,7 +347,7 @@
                             "connection_failure": "Verbindungsfehler",
                             "delivered": "Geliefert",
                             "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
-                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "not_allowed_wrong_usage_mode": "Falscher Nutzungsmodus",
                             "rejected": "Abgelehnt",
                             "running": "Läuft",
                             "timeout": "Zeitüberschreitung",
@@ -345,7 +369,7 @@
                             "connection_failure": "Verbindungsfehler",
                             "delivered": "Geliefert",
                             "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
-                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "not_allowed_wrong_usage_mode": "Falscher Nutzungsmodus",
                             "rejected": "Abgelehnt",
                             "timeout": "Zeitüberschreitung",
                             "unknown": "Unbekannt",
@@ -365,7 +389,7 @@
                             "connection_failure": "Verbindungsfehler",
                             "delivered": "Geliefert",
                             "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
-                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "not_allowed_wrong_usage_mode": "Falscher Nutzungsmodus",
                             "rejected": "Abgelehnt",
                             "timeout": "Zeitüberschreitung",
                             "unknown": "Unbekannt",
@@ -385,7 +409,7 @@
                             "connection_failure": "Verbindungsfehler",
                             "delivered": "Geliefert",
                             "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
-                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "not_allowed_wrong_usage_mode": "Falscher Nutzungsmodus",
                             "rejected": "Abgelehnt",
                             "timeout": "Zeitüberschreitung",
                             "unknown": "Unbekannt",
@@ -448,7 +472,7 @@
                             "connection_failure": "Verbindungsfehler",
                             "delivered": "Geliefert",
                             "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
-                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "not_allowed_wrong_usage_mode": "Falscher Nutzungsmodus",
                             "rejected": "Abgelehnt",
                             "timeout": "Zeitüberschreitung",
                             "unable_to_lock_door_open": "Tür offen",
@@ -469,7 +493,7 @@
                             "connection_failure": "Verbindungsfehler",
                             "delivered": "Geliefert",
                             "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
-                            "not_allowed_wrong_usage_mode": "Nicht erlaubt, falscher Nutzungsmodus",
+                            "not_allowed_wrong_usage_mode": "Falscher Nutzungsmodus",
                             "rejected": "Abgelehnt",
                             "timeout": "Zeitüberschreitung",
                             "unable_to_lock_door_open": "Tür offen",
@@ -628,7 +652,7 @@
     "selector": {
         "fuel_consumption_unit": {
             "options": {
-                "l_100km": "l/100km",
+                "l_100km": "l/100 km",
                 "mpg_uk": "mpg (UK)",
                 "mpg_us": "mpg (US)"
             }
