@@ -3,7 +3,15 @@
 import logging
 from typing import Any, cast
 
-from aiohttp import ClientError, ClientResponseError, ClientSession, ClientTimeout, hdrs
+from aiohttp import (
+    ClientError,
+    ClientResponseError,
+    ClientSession,
+    ClientTimeout,
+    RequestInfo,
+    hdrs,
+)
+from yarl import URL
 
 from .models import (
     VolvoApiException,
@@ -228,9 +236,6 @@ class VolvoCarsApi:
 
             _LOGGER.debug("Request [%s] error: %s", operation, ex.message)
 
-            if ex.status in (401, 403):
-                raise VolvoAuthException from ex
-
             if ex.status == 422 and "commands" in operation:
                 return {
                     "data": {
@@ -240,8 +245,41 @@ class VolvoCarsApi:
                     }
                 }
 
-            raise VolvoApiException from ex
+            redacted_exception = RedactedClientResponseError(ex, self._vin)
+
+            if ex.status in (401, 403):
+                raise VolvoAuthException from redacted_exception
+
+            raise VolvoApiException from redacted_exception
 
         except (ClientError, TimeoutError) as ex:
             _LOGGER.debug("Request [%s] error: %s", operation, ex)
             raise VolvoApiException from ex
+
+
+class RedactedClientResponseError(ClientResponseError):
+    """Exception class that redacts sensitive data."""
+
+    def __init__(self, exception: ClientResponseError, vin: str) -> None:
+        """Initialize class."""
+
+        redacted_url = self._redact_url(exception.request_info.url, vin)
+        redacted_real_url = self._redact_url(exception.request_info.real_url, vin)
+        redacted_request_info = RequestInfo(
+            redacted_url,
+            exception.request_info.method,
+            exception.request_info.headers,
+            redacted_real_url,
+        )
+
+        super().__init__(
+            redacted_request_info,
+            exception.history,
+            status=exception.status,
+            message=exception.message,
+            headers=exception.headers,
+        )
+
+    def _redact_url(self, url: URL, vin: str) -> URL:
+        redacted_url = redact_url(str(url), vin)
+        return URL(redacted_url)
