@@ -1,0 +1,29 @@
+name: Translation issue
+description: Request to add a new language or correct typos and grammar
+labels: ["translation"]
+
+body:
+  - type: input
+    id: language
+    attributes:
+      label: "Enter the language (and optional country), e.g., en, fr-CA."
+    validations:
+      required: true
+
+  - type: textarea
+    id: change
+    attributes:
+      label: "What should change?"
+      description: >
+        Provide the specific text that is translated incorrectly. If you know the translation key, please mention it.
+        If you are requesting a new language, simply enter 'New language' or a similar description.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected translation"
+      description: "If possible, provide the correct translation or a suggestion for improvement."
+    validations:
+      required: false
