@@ -80,17 +80,16 @@ def _convert_fuel_consumption(
     value = Decimal(field.value)
     unit_key = entry.options.get(OPT_FUEL_CONSUMPTION_UNIT, OPT_UNIT_LITER_PER_100KM)
 
+    decimals = 1
+    converted_value = value
+
     if unit_key == OPT_UNIT_MPG_UK:
         decimals = 2
-        converted_value = (Decimal(282.481) / value) if value else 0
+        converted_value = (Decimal(282.481) / value) if value else Decimal(0)
 
     elif unit_key == OPT_UNIT_MPG_US:
         decimals = 2
-        converted_value = (Decimal(235.215) / value) if value else 0
-
-    else:
-        decimals = 1
-        converted_value = value
+        converted_value = (Decimal(235.215) / value) if value else Decimal(0)
 
     return round(converted_value, decimals)
 
