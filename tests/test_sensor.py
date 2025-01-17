@@ -29,7 +29,7 @@ from homeassistant.util.unit_system import (
 )
 async def test_ha_unit_conversion(
     hass: HomeAssistant,
-    enable_custom_integrations,
+    enable_custom_integrations: None,
     mock_config_entry: MockConfigEntry,
     entity_id: str,
     unit: UnitSystem,
@@ -45,6 +45,7 @@ async def test_ha_unit_conversion(
         await hass.async_block_till_done()
 
         entity = hass.states.get(entity_id)
+        assert entity
         assert entity.state == value
         assert entity.attributes.get("unit_of_measurement") == unit_of_measurement
 
@@ -75,7 +76,7 @@ async def test_ha_unit_conversion(
 @pytest.mark.use_model("xc90_ice")
 async def test_fuel_unit_conversion(
     hass: HomeAssistant,
-    enable_custom_integrations,
+    enable_custom_integrations: None,
     mock_config_entry: MockConfigEntry,
     entity_id: str,
     unit: str,
@@ -95,5 +96,6 @@ async def test_fuel_unit_conversion(
         await hass.async_block_till_done()
 
         entity = hass.states.get(entity_id)
+        assert entity
         assert entity.state == value
         assert entity.attributes.get("unit_of_measurement") == unit_of_measurement

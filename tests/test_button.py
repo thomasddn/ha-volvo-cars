@@ -11,7 +11,9 @@ from homeassistant.core import HomeAssistant
 
 @pytest.mark.use_model("xc90_ice")
 async def test_engine_buttons_disabled(
-    hass: HomeAssistant, enable_custom_integrations, mock_config_entry: MockConfigEntry
+    hass: HomeAssistant,
+    enable_custom_integrations: None,
+    mock_config_entry: MockConfigEntry,
 ) -> None:
     """Test if engine buttons are not added."""
 

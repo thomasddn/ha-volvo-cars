@@ -1,5 +1,7 @@
 """Test fixtures for Volvo Cars."""
 
+from collections.abc import AsyncGenerator
+from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from _pytest.fixtures import SubRequest
@@ -49,7 +51,7 @@ async def mock_config_entry(hass: HomeAssistant) -> MockConfigEntry:
 
 
 @pytest.fixture(autouse=True)
-async def mock_api(request: SubRequest):
+async def mock_api(request: SubRequest) -> AsyncGenerator[None, None]:
     """Mock APIs."""
 
     marker = request.node.get_closest_marker("use_model")
@@ -66,7 +68,7 @@ async def mock_api(request: SubRequest):
         vehicle = VolvoCarsVehicle.from_dict(vehicle_data)
 
         commands_data = load_json_object_fixture("commands", model).get("data")
-        commands = [VolvoCarsAvailableCommand.from_dict(item) for item in commands_data]
+        commands = [VolvoCarsAvailableCommand.from_dict(item) for item in commands_data]  # type: ignore[arg-type, union-attr]
 
         location_data = load_json_object_fixture("location", model)
         location = {"location": VolvoCarsLocation.from_dict(location_data)}
@@ -121,13 +123,13 @@ async def mock_api(request: SubRequest):
 
 
 @pytest.fixture
-async def mock_image_client():
+async def mock_image_client() -> AsyncGenerator[None, None]:
     """Mock the http client used by the image platform."""
     mock_response = AsyncMock()
     mock_response.raise_for_status = lambda: None
     mock_response.status_code = 200
 
-    async def mock_get(*args, **kwargs):
+    async def mock_get(*args: tuple[Any, ...], **kwargs: dict[str, Any]) -> AsyncMock:
         return mock_response
 
     with patch("httpx.AsyncClient.get", new=mock_get):
@@ -136,4 +138,4 @@ async def mock_image_client():
 
 def _get_json_as_value_field(name: str, model: str) -> dict:
     data = load_json_object_fixture(name, model)
-    return {key: VolvoCarsValueField.from_dict(value) for key, value in data.items()}
+    return {key: VolvoCarsValueField.from_dict(value) for key, value in data.items()}  # type: ignore[arg-type]

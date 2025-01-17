@@ -22,8 +22,7 @@ def test_create_value_field(has_timestamp: bool) -> None:
         else load_json_object_fixture("engine_status_no_timestamp")
     )
 
-    field = VolvoCarsValueField.from_dict(data["engineStatus"])
-
+    field = VolvoCarsValueField.from_dict(data["engineStatus"])  # type: ignore[arg-type]
     assert field
     assert field.value == "STOPPED"
 
