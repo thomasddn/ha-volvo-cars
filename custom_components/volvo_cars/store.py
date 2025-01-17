@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TypedDict, overload
+from typing import TypedDict
 
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.storage import Store
@@ -11,16 +11,6 @@ from .const import DOMAIN
 
 STORAGE_VERSION = 1
 STORAGE_MINOR_VERSION = 2
-
-
-def create_store(hass: HomeAssistant, unique_id: str) -> VolvoCarsStore:
-    """Create a VolvoCars store."""
-    return VolvoCarsStore(
-        hass,
-        STORAGE_VERSION,
-        f"{DOMAIN}.{unique_id}",
-        minor_version=STORAGE_MINOR_VERSION,
-    )
 
 
 class StoreData(TypedDict):
@@ -36,50 +26,30 @@ class StoreData(TypedDict):
 class VolvoCarsStore(Store[StoreData]):
     """Volvo Cars storage."""
 
-    @overload
-    async def async_update(self, data: StoreData) -> None: ...
-
-    @overload
-    async def async_update(
+    def merge_data(
         self,
+        data: StoreData,
         *,
         access_token: str | None = None,
         refresh_token: str | None = None,
         data_update_interval: int | None = None,
         engine_run_time: int | None = None,
         api_request_count: int | None = None,
-    ) -> None: ...
+    ) -> StoreData:
+        """Merge new values into the data."""
 
-    async def async_update(
-        self,
-        data: StoreData | None = None,
-        *,
-        access_token: str | None = None,
-        refresh_token: str | None = None,
-        data_update_interval: int | None = None,
-        engine_run_time: int | None = None,
-        api_request_count: int | None = None,
-    ) -> None:
-        """Update the current store with given values."""
+        if access_token is not None:
+            data["access_token"] = access_token
+        if refresh_token is not None:
+            data["refresh_token"] = refresh_token
+        if data_update_interval is not None:
+            data["data_update_interval"] = data_update_interval
+        if engine_run_time is not None:
+            data["engine_run_time"] = engine_run_time
+        if api_request_count is not None:
+            data["api_request_count"] = api_request_count
 
-        if data:
-            await self.async_save(data)
-            return
-
-        data = await self.async_load()
-
-        if not data:
-            data = self._create_default()
-
-        self._merge_data(
-            data,
-            access_token,
-            refresh_token,
-            data_update_interval,
-            engine_run_time,
-            api_request_count,
-        )
-        await self.async_save(data)
+        return data
 
     async def _async_migrate_func(
         self,
@@ -96,7 +66,7 @@ class VolvoCarsStore(Store[StoreData]):
 
         if old_major_version == 1:
             if old_minor_version < 2:
-                return self._merge_data(
+                return self.merge_data(
                     old_data,
                     data_update_interval=135,
                     engine_run_time=15,
@@ -105,27 +75,64 @@ class VolvoCarsStore(Store[StoreData]):
 
         return StoreData(**old_data)
 
-    def _merge_data(
+
+class VolvoCarsStoreManager:
+    """Class to handle store access."""
+
+    def __init__(self, hass: HomeAssistant, unique_id: str) -> None:
+        """Initialize class."""
+        self._store = VolvoCarsStore(
+            hass,
+            STORAGE_VERSION,
+            f"{DOMAIN}.{unique_id}",
+            minor_version=STORAGE_MINOR_VERSION,
+        )
+
+        self._data: StoreData | None = None
+
+    @property
+    def data(self) -> StoreData:
+        """Return the store data."""
+        assert self._data is not None
+        return self._data
+
+    async def async_load(self) -> StoreData:
+        """Load store data."""
+        self._data = await self._store.async_load()
+
+        if not self._data:
+            self._data = self._create_default()
+
+        return self._data
+
+    async def async_update(
         self,
-        data: StoreData,
+        *,
         access_token: str | None = None,
         refresh_token: str | None = None,
         data_update_interval: int | None = None,
         engine_run_time: int | None = None,
         api_request_count: int | None = None,
-    ) -> StoreData:
-        if access_token is not None:
-            data["access_token"] = access_token
-        if refresh_token is not None:
-            data["refresh_token"] = refresh_token
-        if data_update_interval is not None:
-            data["data_update_interval"] = data_update_interval
-        if engine_run_time is not None:
-            data["engine_run_time"] = engine_run_time
-        if api_request_count is not None:
-            data["api_request_count"] = api_request_count
+    ) -> None:
+        """Update the current store with given values."""
 
-        return data
+        self._data = self._data or await self.async_load()
+
+        self._store.merge_data(
+            self._data,
+            access_token=access_token,
+            refresh_token=refresh_token,
+            data_update_interval=data_update_interval,
+            engine_run_time=engine_run_time,
+            api_request_count=api_request_count,
+        )
+
+        await self._store.async_save(self._data)
+
+    async def async_remove(self) -> None:
+        """Remove store data."""
+        self._data = None
+        await self._store.async_remove()
 
     def _create_default(self) -> StoreData:
         return StoreData(

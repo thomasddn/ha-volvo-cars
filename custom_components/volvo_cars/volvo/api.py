@@ -14,6 +14,7 @@ from aiohttp import (
 from yarl import URL
 
 from .models import (
+    TokenResponse,
     VolvoApiException,
     VolvoAuthException,
     VolvoCarsAvailableCommand,
@@ -45,18 +46,15 @@ _LOGGER = logging.getLogger(__name__)
 class VolvoCarsApi:
     """Volvo Cars API."""
 
-    def __init__(
-        self, client: ClientSession, vin: str, api_key: str, access_token: str
-    ) -> None:
+    def __init__(self, client: ClientSession, vin: str, api_key: str) -> None:
         """Initialize Volvo Cars API."""
         self._client = client
         self._vin = vin
         self._api_key = api_key
-        self._access_token = access_token
 
-    def update_access_token(self, access_token: str) -> None:
+    def update_access_token(self, token: TokenResponse) -> None:
         """Update the access token."""
-        self._access_token = access_token
+        self._access_token = token.access_token
 
     async def async_get_api_status(self) -> dict[str, VolvoCarsValue]:
         """Check the API status."""

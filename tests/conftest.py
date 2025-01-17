@@ -8,7 +8,7 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.volvo_cars.const import CONF_VCC_API_KEY, CONF_VIN, DOMAIN
 from custom_components.volvo_cars.coordinator import VolvoCarsData
-from custom_components.volvo_cars.store import StoreData, create_store
+from custom_components.volvo_cars.store import VolvoCarsStoreManager
 from custom_components.volvo_cars.volvo.auth import VolvoCarsAuthApi
 from custom_components.volvo_cars.volvo.models import (
     AuthorizationModel,
@@ -39,18 +39,10 @@ async def mock_config_entry(hass: HomeAssistant) -> MockConfigEntry:
         },
     )
 
-    store = create_store(hass, config_entry.unique_id)
-    await store.async_save(
-        StoreData(
-            access_token="",
-            refresh_token="",
-            data_update_interval=135,
-            engine_run_time=15,
-            api_request_count=0,
-        )
-    )
+    store = VolvoCarsStoreManager(hass, config_entry.unique_id)
+    await store.async_update()
 
-    config_entry.runtime_data = VolvoCarsData(MagicMock(), store)
+    config_entry.runtime_data = VolvoCarsData(MagicMock(), MagicMock(), store)
     config_entry.add_to_hass(hass)
 
     return config_entry

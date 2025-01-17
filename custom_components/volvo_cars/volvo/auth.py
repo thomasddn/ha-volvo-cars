@@ -1,5 +1,6 @@
 """Volvo Auth API."""
 
+from collections.abc import Callable
 import logging
 from typing import Any, cast
 
@@ -60,9 +61,14 @@ _LOGGER = logging.getLogger(__name__)
 class VolvoCarsAuthApi:
     """Volvo Cars Authentication API."""
 
-    def __init__(self, client: ClientSession) -> None:
+    def __init__(
+        self,
+        client: ClientSession,
+        on_token_refresh: Callable[[TokenResponse], None] | None = None,
+    ) -> None:
         """Initialize Volvo Cars Authentication API."""
         self._client = client
+        self._on_token_refresh = on_token_refresh
 
     async def async_authenticate(
         self, username: str, password: str
@@ -108,9 +114,10 @@ class VolvoCarsAuthApi:
     async def async_refresh_token(self, refresh_token: str) -> AuthorizationModel:
         """Refresh token."""
 
-        auth = await async_retry(
-            lambda: self._async_refresh_token(refresh_token), VolvoAuthException, 1, 2
-        )
+        auth = await self._async_refresh_token(refresh_token)
+
+        if auth and self._on_token_refresh:
+            self._on_token_refresh(auth)
 
         return AuthorizationModel("COMPLETED", token=auth)
 
@@ -264,7 +271,7 @@ class VolvoCarsAuthApi:
 
         except (ClientError, TimeoutError) as ex:
             _LOGGER.debug("Request [%s] error: %s", name, ex)
-            raise VolvoAuthException from ex
+            raise VolvoAuthException(ex.__class__.__name__) from ex
 
     def _create_exception(self, data: dict[str, Any]) -> VolvoAuthException:
         return VolvoAuthException(

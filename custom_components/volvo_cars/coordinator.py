@@ -5,23 +5,24 @@ from __future__ import annotations
 import asyncio
 from collections.abc import Callable, Coroutine
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 import logging
 from typing import Any, cast
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_FRIENDLY_NAME
-from homeassistant.core import HomeAssistant, callback
+from homeassistant.core import CALLBACK_TYPE, HomeAssistant, callback
 from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import DATA_BATTERY_CAPACITY, DATA_REQUEST_COUNT, DOMAIN, MANUFACTURER
 from .entity_description import VolvoCarsDescription
-from .store import StoreData, VolvoCarsStore
+from .store import VolvoCarsStoreManager
 from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import (
+    AuthorizationModel,
     VolvoApiException,
     VolvoAuthException,
     VolvoCarsApiBaseModel,
@@ -37,7 +38,8 @@ class VolvoCarsData:
     """Data for Volvo Cars integration."""
 
     coordinator: VolvoCarsDataCoordinator
-    store: VolvoCarsStore
+    token_coordinator: TokenCoordinator
+    store: VolvoCarsStoreManager
 
 
 type VolvoCarsConfigEntry = ConfigEntry[VolvoCarsData]
@@ -54,7 +56,6 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
         hass: HomeAssistant,
         entry: VolvoCarsConfigEntry,
         update_interval: int,
-        auth_api: VolvoCarsAuthApi,
         api: VolvoCarsApi,
     ) -> None:
         """Initialize the coordinator."""
@@ -67,7 +68,6 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
         )
 
         self.api = api
-        self._auth_api = auth_api
 
         self.vehicle: VolvoCarsVehicle
         self.device: DeviceInfo
@@ -81,8 +81,8 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
         self.unsupported_keys: list[str] = []
 
     @property
-    def store(self) -> VolvoCarsStore:
-        """Return the store."""
+    def store(self) -> VolvoCarsStoreManager:
+        """Return the store manager."""
         return self.config_entry.runtime_data.store
 
     async def _async_setup(self) -> None:
@@ -99,7 +99,7 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
             count += 1
 
             if vehicle is None:
-                _LOGGER.error("Unable to retrieve vehicle details.")
+                _LOGGER.error("Unable to retrieve vehicle details")
                 raise VolvoApiException("Unable to retrieve vehicle details.")
 
             self.vehicle = vehicle
@@ -249,74 +249,36 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
 
         return self.data.get(description.api_field) if description.api_field else None
 
-    @callback
-    async def async_refresh_token(self, _: datetime | None = None) -> None:
-        """Refresh token."""
-        storage_data = await self.store.async_load()
-
-        if storage_data is None:
-            return
-
-        try:
-            result = await self._auth_api.async_refresh_token(
-                storage_data["refresh_token"]
-            )
-        except VolvoAuthException as ex:
-            _LOGGER.exception("Authentication failed: %s", ex.message)
-            raise ConfigEntryAuthFailed(f"Authentication failed. {ex.message}") from ex
-
-        if result.token:
-            await self.store.async_update(
-                access_token=result.token.access_token,
-                refresh_token=result.token.refresh_token,
-            )
-            self.api.update_access_token(result.token.access_token)
-
     async def async_update_request_count(
         self,
         calls_to_add: int,
         data: CoordinatorData | None = None,
     ) -> None:
         """Update the API request count."""
-        store_data = await self.store.async_load()
-
-        if not store_data:
-            # There should be store_data
-            raise UpdateFailed("Storage '%s' missing.", self.store.key)
-
-        current_count = store_data["api_request_count"]
+        current_count = self.store.data["api_request_count"]
         request_count = current_count + calls_to_add
 
         data = data or self.data
-        await self._async_set_request_count(request_count, data, store_data)
+        await self._async_set_request_count(request_count, data)
 
     async def async_reset_request_count(self, _: datetime | None = None) -> None:
         """Reset the API request count."""
         _LOGGER.debug("%s - Resetting API request count", self.config_entry.entry_id)
-        await self._async_set_request_count(0, self.data, None, True)
+        await self._async_set_request_count(0, self.data, True)
 
     async def _async_set_request_count(
         self,
         count: int,
         data: CoordinatorData | None,
-        store_data: StoreData | None,
         update_listeners: bool = False,
     ) -> None:
-        if not store_data:
-            store_data = await self.store.async_load()
-
-        if not store_data:
-            # There should be store_data
-            raise UpdateFailed("Storage '%s' missing.", self.store.key)
-
-        store_data["api_request_count"] = count
-        await self.store.async_update(store_data)
+        await self.store.async_update(api_request_count=count)
 
         if data is not None:
             data[DATA_REQUEST_COUNT] = VolvoCarsValueField.from_dict(
                 {
                     "value": count,
-                    "timestamp": self.config_entry.modified_at,
+                    "timestamp": datetime.now(UTC),
                 }
             )
 
@@ -364,3 +326,123 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
         return all(
             item is None or item.value == "UNSPECIFIED" for item in items.values()
         )
+
+
+class TokenCoordinator:
+    """Coordinator for handling refresh tokens."""
+
+    _RETRY_AT_PERCENTAGES = [0.65, 0.8, 0.90]
+
+    def __init__(
+        self,
+        hass: HomeAssistant,
+        entry: ConfigEntry,
+        store: VolvoCarsStoreManager,
+        auth_api: VolvoCarsAuthApi,
+    ) -> None:
+        """Initialize the coordinator."""
+
+        self._hass = hass
+        self._entry = entry
+        self._store = store
+        self._auth_api = auth_api
+
+        entry_name = entry.data.get(CONF_FRIENDLY_NAME) or entry.entry_id
+        self._name = f"{entry_name} - refresh token"
+
+        self._delays: list[int] = []
+        self._unsub_refresh: CALLBACK_TYPE | None = None
+
+    async def async_schedule_refresh(self, init: bool = False) -> None:
+        """Schedule the token refresher."""
+        self.cancel_refresh()
+
+        if init:
+            await self._async_refresh_token(raise_on_auth_failed=True)
+            return
+
+        if not self._delays:
+            _LOGGER.debug("%s - No token refresh schedule found", self._entry.entry_id)
+            return
+
+        delay = self._delays.pop()
+        _LOGGER.debug("%s - Next token refresh in %ss", self._entry.entry_id, delay)
+
+        loop = self._hass.loop
+        next_refresh = int(loop.time()) + delay
+
+        self._unsub_refresh = loop.call_at(
+            next_refresh, self.__wrap_handle_refresh_interval
+        ).cancel
+
+    def cancel_refresh(self) -> None:
+        """Cancel any scheduled call."""
+        if self._unsub_refresh:
+            self._unsub_refresh()
+            self._unsub_refresh = None
+
+    async def _async_refresh_token(self, raise_on_auth_failed: bool = False) -> None:
+        """Refresh token."""
+        _LOGGER.debug("%s - Refreshing token", self._entry.entry_id)
+
+        self.cancel_refresh()
+
+        if self._hass.is_stopping:
+            return
+
+        result: AuthorizationModel | None = None
+
+        try:
+            result = await self._auth_api.async_refresh_token(
+                self._store.data["refresh_token"]
+            )
+        except VolvoAuthException as ex:
+            if raise_on_auth_failed:
+                _LOGGER.exception("Authentication failed: %s", ex.message)
+                raise ConfigEntryAuthFailed(
+                    f"Authentication failed. {ex.message}"
+                ) from ex
+
+            if self._delays:
+                _LOGGER.exception(
+                    "Authentication failed: %s. Trying again in %ss",
+                    ex.message,
+                    self._delays[0],
+                )
+            else:
+                _LOGGER.exception(
+                    "Authentication failed: %s. Starting reauth flow", ex.message
+                )
+                self._entry.async_start_reauth(self._hass)
+
+        if result and result.token:
+            await self._store.async_update(
+                access_token=result.token.access_token,
+                refresh_token=result.token.refresh_token,
+            )
+
+            self._set_delays(result.token.expires_in)
+
+        if self._delays and not self._hass.is_stopping:
+            await self.async_schedule_refresh()
+
+    def _set_delays(self, expiry: int) -> None:
+        percentages = self._RETRY_AT_PERCENTAGES
+
+        self._delays = [int(percentages[0] * expiry)] + [
+            int((percentages[i] - percentages[i - 1]) * expiry)
+            for i in range(1, len(percentages))
+        ]
+
+    @callback
+    def __wrap_handle_refresh_interval(self) -> None:
+        self._entry.async_create_background_task(
+            self._hass,
+            self._handle_refresh_interval(),
+            name=self._name,
+            eager_start=True,
+        )
+
+    async def _handle_refresh_interval(self, _now: datetime | None = None) -> None:
+        self._unsub_refresh = None
+        await self._async_refresh_token()

@@ -36,7 +36,7 @@ from .const import (
     OPT_UNIT_MPG_US,
 )
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsData
-from .store import create_store
+from .store import VolvoCarsStoreManager
 from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import AuthorizationModel, VolvoAuthException
 
@@ -222,7 +222,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 raise ConfigEntryError("Config entry has no unique_id")
 
             _LOGGER.debug("Storing tokens")
-            store = create_store(self.hass, self.unique_id)
+            store = VolvoCarsStoreManager(self.hass, self.unique_id)
             await store.async_update(
                 access_token=self._auth_result.token.access_token,
                 refresh_token=self._auth_result.token.refresh_token,

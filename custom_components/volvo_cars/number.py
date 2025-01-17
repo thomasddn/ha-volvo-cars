@@ -15,7 +15,6 @@ from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity
 from .entity_description import VolvoCarsDescription
 from .store import StoreData
-from .volvo.models import VolvoCarsVehicle
 
 PARALLEL_UPDATES = 0
 _LOGGER = logging.getLogger(__name__)
@@ -85,6 +84,7 @@ NUMBERS: tuple[VolvoCarsNumberDescription, ...] = (
         get_value_fn=_get_engine_run_time,
         set_value_fn=_set_engine_run_time,
         available_fn=_engine_run_time_available,
+        entity_category=EntityCategory.CONFIG,
     ),
 )
 

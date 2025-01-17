@@ -1,20 +1,13 @@
 """The Volvo Cars integration."""
 
-from datetime import timedelta
 import logging
-
-from requests import ConnectTimeout, HTTPError
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ACCESS_TOKEN, CONF_PASSWORD, Platform
 from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.entity_registry import async_get
-from homeassistant.helpers.event import (
-    async_track_time_interval,
-    async_track_utc_time_change,
-)
+from homeassistant.helpers.event import async_track_utc_time_change
 
 from .config_flow import VolvoCarsFlowHandler, get_setting
 from .const import (
@@ -24,12 +17,16 @@ from .const import (
     OPT_UNIT_LITER_PER_100KM,
     PLATFORMS,
 )
-from .coordinator import VolvoCarsConfigEntry, VolvoCarsData, VolvoCarsDataCoordinator
+from .coordinator import (
+    TokenCoordinator,
+    VolvoCarsConfigEntry,
+    VolvoCarsData,
+    VolvoCarsDataCoordinator,
+)
 from .entity import get_entity_id
-from .store import create_store
+from .store import VolvoCarsStoreManager
 from .volvo.api import VolvoCarsApi
 from .volvo.auth import VolvoCarsAuthApi
-from .volvo.models import VolvoAuthException
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -38,62 +35,36 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     """Set up Volvo Cars integration."""
     _LOGGER.debug("%s - Loading entry", entry.entry_id)
 
+    # Load store
     assert entry.unique_id is not None
-    store = create_store(hass, entry.unique_id)
-    store_data = await store.async_load()
+    store = VolvoCarsStoreManager(hass, entry.unique_id)
+    await store.async_load()
 
-    if store_data is None:
-        _LOGGER.exception("Storage %s missing.", store.key)
-        raise ConfigEntryNotReady(f"Storage {store.key} missing.")
-
+    # Create APIs
     client = async_get_clientsession(hass)
-    auth_api = VolvoCarsAuthApi(client)
-
-    # Try to refresh authentication token
-    try:
-        result = await auth_api.async_refresh_token(store_data["refresh_token"])
-    except VolvoAuthException as ex:
-        _LOGGER.exception("Authentication failed. %s", ex.message)
-        raise ConfigEntryAuthFailed(f"Authentication failed. {ex.message}") from ex
-    except (ConnectTimeout, HTTPError) as ex:
-        _LOGGER.exception("Connection failed")
-        raise ConfigEntryNotReady("Unable to connect to Volvo API.") from ex
-
-    if result.token is None:
-        _LOGGER.exception("Authentication token is None")
-        raise ConfigEntryAuthFailed("Authentication token is None.")
-
-    # Save tokens
-    await store.async_update(
-        access_token=result.token.access_token,
-        refresh_token=result.token.refresh_token,
-    )
-
-    # Create api
     api = VolvoCarsApi(
         client,
         get_setting(entry, CONF_VIN),
         get_setting(entry, CONF_VCC_API_KEY),
-        result.token.access_token,
     )
+    auth_api = VolvoCarsAuthApi(client, api.update_access_token)
 
-    # Setup coordinator
+    # Setup token refresh
+    token_coordinator = TokenCoordinator(hass, entry, store, auth_api)
+    await token_coordinator.async_schedule_refresh(True)
+
+    # Setup data coordinator
     coordinator = VolvoCarsDataCoordinator(
-        hass, entry, store_data["data_update_interval"], auth_api, api
+        hass, entry, store.data["data_update_interval"], api
     )
-    entry.runtime_data = VolvoCarsData(coordinator, store)
 
-    # Setup entities
+    # Setup entry
+    entry.runtime_data = VolvoCarsData(coordinator, token_coordinator, store)
     await coordinator.async_config_entry_first_refresh()
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     # Register events
     entry.async_on_unload(entry.add_update_listener(_options_update_listener))
-    entry.async_on_unload(
-        async_track_time_interval(
-            hass, coordinator.async_refresh_token, timedelta(minutes=25)
-        )
-    )
     entry.async_on_unload(
         async_track_utc_time_change(
             hass, coordinator.async_reset_request_count, hour=0, minute=0, second=0
@@ -127,7 +98,7 @@ async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) 
         if entry.minor_version < 3:
             if CONF_ACCESS_TOKEN in new_data and "refresh_token" in new_data:
                 assert entry.unique_id is not None
-                store = create_store(hass, entry.unique_id)
+                store = VolvoCarsStoreManager(hass, entry.unique_id)
                 await store.async_update(
                     access_token=new_data.pop(CONF_ACCESS_TOKEN),
                     refresh_token=new_data.pop("refresh_token"),
@@ -156,6 +127,7 @@ async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) 
 async def async_unload_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -> bool:
     """Unload a config entry."""
     _LOGGER.debug("%s - Unloading entry", entry.entry_id)
+    entry.runtime_data.token_coordinator.cancel_refresh()
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
 
 
@@ -166,7 +138,7 @@ async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
     # entry.runtime_data does not exist at this time. Creating a new
     # store manager to delete it the storage data.
     if entry.unique_id:
-        store = create_store(hass, entry.unique_id)
+        store = VolvoCarsStoreManager(hass, entry.unique_id)
         await store.async_remove()
 
 
