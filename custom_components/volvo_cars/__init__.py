@@ -1,5 +1,6 @@
 """The Volvo Cars integration."""
 
+from datetime import UTC, date, datetime, time
 import logging
 
 from homeassistant.config_entries import ConfigEntry
@@ -54,8 +55,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
     await token_coordinator.async_schedule_refresh(True)
 
     # Setup data coordinator
-    coordinator = VolvoCarsDataCoordinator(
-        hass, entry, store.data["data_update_interval"], api
+    coordinator = VolvoCarsDataCoordinator(hass, entry, store, api)
+
+    # Reset API count if it the auto-reset was missed
+    await _async_reset_request_count_if_missed(
+        store.data["api_requests_reset_time"], coordinator
     )
 
     # Setup entry
@@ -140,6 +144,22 @@ async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
     if entry.unique_id:
         store = VolvoCarsStoreManager(hass, entry.unique_id)
         await store.async_remove()
+
+
+async def _async_reset_request_count_if_missed(
+    last_reset_time: str | None, coordinator: VolvoCarsDataCoordinator
+) -> None:
+    if not last_reset_time:
+        return
+
+    now = datetime.now(UTC)
+    most_recent_midnight = datetime.combine(
+        date(now.year, now.month, now.day), time(0, 0, 0, tzinfo=UTC)
+    )
+    reset_time = datetime.fromisoformat(last_reset_time)
+
+    if reset_time < most_recent_midnight:
+        await coordinator.async_reset_request_count()
 
 
 async def _options_update_listener(

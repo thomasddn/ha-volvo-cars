@@ -55,18 +55,20 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
         self,
         hass: HomeAssistant,
         entry: VolvoCarsConfigEntry,
-        update_interval: int,
+        store: VolvoCarsStoreManager,
         api: VolvoCarsApi,
     ) -> None:
         """Initialize the coordinator."""
+
         super().__init__(
             hass,
             _LOGGER,
             config_entry=entry,
             name=entry.data.get(CONF_FRIENDLY_NAME) or entry.entry_id,
-            update_interval=timedelta(seconds=update_interval),
+            update_interval=timedelta(seconds=store.data["data_update_interval"]),
         )
 
+        self.store = store
         self.api = api
 
         self.vehicle: VolvoCarsVehicle
@@ -79,11 +81,6 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
         self.supports_warnings: bool = False
         self.supports_windows: bool = False
         self.unsupported_keys: list[str] = []
-
-    @property
-    def store(self) -> VolvoCarsStoreManager:
-        """Return the store manager."""
-        return self.config_entry.runtime_data.store
 
     async def _async_setup(self) -> None:
         """Set up the coordinator.
@@ -264,15 +261,22 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
     async def async_reset_request_count(self, _: datetime | None = None) -> None:
         """Reset the API request count."""
         _LOGGER.debug("%s - Resetting API request count", self.config_entry.entry_id)
-        await self._async_set_request_count(0, self.data, True)
+        await self._async_set_request_count(
+            0, self.data, update_listeners=True, set_reset_timestamp=True
+        )
 
     async def _async_set_request_count(
         self,
         count: int,
         data: CoordinatorData | None,
+        *,
         update_listeners: bool = False,
+        set_reset_timestamp: bool = False,
     ) -> None:
-        await self.store.async_update(api_request_count=count)
+        reset_time = datetime.now(UTC).isoformat() if set_reset_timestamp else None
+        await self.store.async_update(
+            api_request_count=count, api_requests_reset_time=reset_time
+        )
 
         if data is not None:
             data[DATA_REQUEST_COUNT] = VolvoCarsValueField.from_dict(
