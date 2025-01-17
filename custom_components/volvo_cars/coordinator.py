@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+from collections import deque
 from collections.abc import Callable, Coroutine
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
@@ -354,7 +355,7 @@ class TokenCoordinator:
         entry_name = entry.data.get(CONF_FRIENDLY_NAME) or entry.entry_id
         self._name = f"{entry_name} - refresh token"
 
-        self._delays: list[int] = []
+        self._delays: deque[int] = []
         self._unsub_refresh: CALLBACK_TYPE | None = None
 
     async def async_schedule_refresh(self, init: bool = False) -> None:
@@ -369,7 +370,7 @@ class TokenCoordinator:
             _LOGGER.debug("%s - No token refresh schedule found", self._entry.entry_id)
             return
 
-        delay = self._delays.pop()
+        delay = self._delays.popleft()
         _LOGGER.debug("%s - Next token refresh in %ss", self._entry.entry_id, delay)
 
         loop = self._hass.loop
@@ -433,10 +434,13 @@ class TokenCoordinator:
     def _set_delays(self, expiry: int) -> None:
         percentages = self._RETRY_AT_PERCENTAGES
 
-        self._delays = [int(percentages[0] * expiry)] + [
-            int((percentages[i] - percentages[i - 1]) * expiry)
-            for i in range(1, len(percentages))
-        ]
+        self._delays = deque(
+            [int(percentages[0] * expiry)]
+            + [
+                int((percentages[i] - percentages[i - 1]) * expiry)
+                for i in range(1, len(percentages))
+            ]
+        )
 
     @callback
     def __wrap_handle_refresh_interval(self) -> None:
