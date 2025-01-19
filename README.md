@@ -6,7 +6,11 @@ Supported regions include: Europe, the Middle East, and Africa. For a complete l
 
 Now check out the features section for details on what you'll get!
 
-[![GitHub release (with filter)][releases-shield]][releases]
+[![GitHub release][releases-shield]][releases]
+[![CI main][ci-main-shield]][ci-workflow]
+[![CI dev][ci-dev-shield]][ci-workflow]
+[![HACS][hacs-shield]][hacs]
+[![Sponsor][sponsor-shield]][sponsor]
 
 > [!IMPORTANT]
 > Coming over from volvo2mqtt? Hi! 👋 Please [read this](https://github.com/thomasddn/ha-volvo-cars/wiki/volvo2mqtt).
@@ -82,12 +86,12 @@ The action's status is included in the attributes.
 
 #### Additional entities
 
-| Entity               | Type   | Description                                            |
-| -------------------- | ------ | ------------------------------------------------------ |
-| API status           | Sensor | Gives an indication if the Volvo API is online.        |
-| API request counter  | Sensor | Shows the number of requests made by this integration. |
-| Data update interval | Number | Set the data update interval. Default is 135 seconds.  |
-| Update data          | Button | Force a data refresh.                                  |
+| Entity               | Type   | Description                                                                                                                                 |
+| -------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| API status           | Sensor | Gives an indication if the Volvo API is online.                                                                                             |
+| API request counter  | Sensor | Shows the number of requests made by this integration.                                                                                      |
+| Data update interval | Number | Set the data update interval. Default is 135 seconds. Volvo gives you 10.000 requests a day (per API key), so you may want to do some math! |
+| Update data          | Button | Force a data refresh.                                                                                                                       |
 
 ## 🛠️ Installation
 
@@ -99,7 +103,7 @@ The action's status is included in the attributes.
 
 - You'll also need a Volvo developer account to use this integration. Don't worry, it's free of charge!
 
-  1. Head over to https://developer.volvocars.com/ and make an account.
+  1. Head over to https://developer.volvocars.com/ and make an account. Make sure to use the same e-mail address as your Volvo Id.
   2. Once signed in, go to https://developer.volvocars.com/account/#your-api-applications and create an "API application". Give it some meaningful name.
   3. Repeat step 2 for every additional car **on this account** that you'd like to use with this integration. Repeat the whole process if you have cars on different accounts.
 
@@ -123,8 +127,8 @@ Remember to generate an API key for every car. There is a limit on the number of
 
 | Field                         | Description                                                                                           |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Username                      | The username of your Volvo developer account.                                                         |
-| Password                      | The password of your Volvo developer account.                                                         |
+| Username                      | The username of your Volvo Id account.                                                                |
+| Password                      | The password of your Volvo Id account.                                                                |
 | Vehicle Identification Number | The VIN of the car you want to add.                                                                   |
 | Volvo API key                 | The generated API key in the developer account.                                                       |
 | Friendly name                 | This value is used in the entity ID (volvo\_[friendly name]\_[key]). If left empty, VIN will be used. |
@@ -135,24 +139,42 @@ After submitting, a One Time Password (OTP) will be sent to your email. It's a 6
 
 Fill in the OTP to complete the process.
 
-<a name="contributing"></a>
-
 ### Options
 
 Once a car has been added, you can configure additional options for it.
 
 | Option                        | Description                                                               | Availability                                          |
 | ----------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------- |
+| Volvo API key                 | The generated API key in the developer account.                           |
 | Fuel consumption unit         | You can choose between `l/100km`, `mpg (UK)` and `mpg (US)`.              | Cars with a combustion engine.                        |
 | Images transparent background | Whether or not you want transparent a background for the exterior images. | Depending on the image URL provided by the Volvo API. |
 | Images background color       | Choose the background color for the exterior images.                      | Depending on the image URL provided by the Volvo API. |
 
+## 🛟 Need help?
+
+Make sure to [read the FAQ](https://github.com/thomasddn/ha-volvo-cars/wiki/FAQ) first. Maybe the topic is covered there.
+
+If you have a feature request or encounter a problem, feel free to open an issue! Have a general question, need help setting up, or want to show off your Volvo dashboard? Go to the discussions.
+
+You can also join the [thread on the HA community](https://community.home-assistant.io/t/volvo-cars-integration/796417/).
+
+<a name="contributing"></a>
+
 ## 🤝 Contributing
 
-You can contribute by creating a PR, but also by testing:
+### General
 
-- Provide general feedback or report issues.
-- Help with translations.
+To everyone who tested, broke things, reported bugs, shared ideas, and gave feedback — y'all are the dream team! 🙌
+
+If you stumble upon a bug, or have an idea to improve this integration, you may always submit a pull request.
+
+### Translations
+
+Would you like to see the labels in your own language? Or perhaps you've spotted a typo or grammatical error that needs fixing? Hop over to [the Lokalise project](https://app.lokalise.com/public/7821992667866be0aaf3d4.04682215/) to manage translations. Alternatively you can create a "translation" issue to request a change.
+
+Thanks for the idea, [ivanfmartinez](https://github.com/ivanfmartinez)! 🔡
+
+### Testing
 
 Shoutout to [Pau1ey](https://github.com/thomasddn/ha-volvo-cars/issues/1#issuecomment-2540446206) for testing and confirming this! 🤩
 
@@ -164,14 +186,6 @@ Both [timthorn](https://community.home-assistant.io/t/volvo-cars-integration/796
 
 - ~~Test if you have multiple Volvos on the **same account**.~~
 
-To everyone who tested, broke things, reported bugs, shared ideas, and gave feedback — y'all are the dream team! 🙌
-
-## 🛟 Need help?
-
-If you have a feature request or encounter a problem, feel free to open an issue! Have a general question, need help setting up, or want to show off your Volvo dashboard? Go to the discussions.
-
-You can also join the [thread on the HA community](https://community.home-assistant.io/t/volvo-cars-integration/796417/).
-
 ## 🥤 Powered by snacks
 
 When I'm coding, I run on coffee, Coca-Cola*, and Lays* potato chips. If you'd like to show your appreciation for this project, consider making a small donation to help keep my stash stocked! (Note: I'm also happy to accept 1,000,000 USD — or EUR, I'm not picky. 😁)
@@ -182,3 +196,10 @@ When I'm coding, I run on coffee, Coca-Cola*, and Lays* potato chips. If you'd l
 
 [releases-shield]: https://img.shields.io/github/v/release/thomasddn/ha-volvo-cars?style=flat-square
 [releases]: https://github.com/thomasddn/ha-volvo-cars/releases
+[ci-dev-shield]: https://img.shields.io/github/actions/workflow/status/thomasddn/ha-volvo-cars/ci.yml?branch=develop&style=flat-square&label=develop
+[ci-main-shield]: https://img.shields.io/github/actions/workflow/status/thomasddn/ha-volvo-cars/ci.yml?branch=main&style=flat-square&label=main
+[ci-workflow]: https://github.com/thomasddn/ha-volvo-cars/actions/workflows/ci.yml
+[hacs-shield]: https://img.shields.io/badge/HACS-queued-orange?style=flat-square
+[hacs]: https://github.com/hacs/default/pulls?q=is%3Apr+is%3Aopen+draft%3Afalse+sort%3Acreated-asc
+[sponsor-shield]: https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&color=%23fe8e86&style=flat-square
+[sponsor]: https://ko-fi.com/N4N7UZ6KN

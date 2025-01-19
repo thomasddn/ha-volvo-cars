@@ -1,10 +1,7 @@
 name: HACS validation
 
 on:
-  push:
-    tags-ignore:
-      - '**'
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   hacs:

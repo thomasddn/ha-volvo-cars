@@ -355,7 +355,7 @@ class TokenCoordinator:
         entry_name = entry.data.get(CONF_FRIENDLY_NAME) or entry.entry_id
         self._name = f"{entry_name} - refresh token"
 
-        self._delays: deque[int] = []
+        self._delays: deque[int] = deque()
         self._unsub_refresh: CALLBACK_TYPE | None = None
 
     async def async_schedule_refresh(self, init: bool = False) -> None:

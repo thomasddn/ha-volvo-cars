@@ -1,14 +1,11 @@
-name: Validate with hassfest
+name: hassfest validation
 
 on:
-  push:
-    tags-ignore:
-      - '**'
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   validate:
     runs-on: "ubuntu-latest"
     steps:
-        - uses: "actions/checkout@v4"
-        - uses: "home-assistant/actions/hassfest@master"
+      - uses: "actions/checkout@v4"
+      - uses: "home-assistant/actions/hassfest@master"
