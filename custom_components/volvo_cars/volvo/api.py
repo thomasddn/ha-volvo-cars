@@ -246,13 +246,13 @@ class VolvoCarsApi:
             redacted_exception = RedactedClientResponseError(ex, self._vin)
 
             if ex.status in (401, 403):
-                raise VolvoAuthException from redacted_exception
+                raise VolvoAuthException(ex.message) from redacted_exception
 
-            raise VolvoApiException from redacted_exception
+            raise VolvoApiException(ex.message) from redacted_exception
 
         except (ClientError, TimeoutError) as ex:
             _LOGGER.debug("Request [%s] error: %s", operation, ex)
-            raise VolvoApiException from ex
+            raise VolvoApiException(ex.__class__.__name__) from ex
 
 
 class RedactedClientResponseError(ClientResponseError):

@@ -181,10 +181,10 @@ class AuthorizationModel:
 class VolvoApiException(Exception):
     """Thrown when an API request fails."""
 
+    def __init__(self, message: str = "") -> None:
+        """Initialize exception."""
+        self.message = message
+
 
 class VolvoAuthException(VolvoApiException):
     """Thrown when the authentication fails."""
-
-    def __init__(self, message: str = "") -> None:
-        """Initialze exception."""
-        self.message = message

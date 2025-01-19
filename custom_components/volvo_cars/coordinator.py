@@ -205,7 +205,7 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
                     _LOGGER.debug(
                         "%s - Error during data update: %s",
                         self.config_entry.entry_id,
-                        result,
+                        result.message,
                     )
                     exception = exception or result
                     continue
