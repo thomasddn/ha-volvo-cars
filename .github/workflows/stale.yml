@@ -7,7 +7,7 @@ on:
   
 jobs:
   stale:
-    name: Close stale issues
+    name: Close stale issues & discussions
     if: github.repository_owner == 'thomasddn'
     runs-on: ubuntu-latest
     permissions:
