@@ -1,0 +1,36 @@
+name: Stale
+
+on:
+  schedule:
+    - cron: '23 4 * * *'
+  workflow_dispatch:
+  
+jobs:
+  stale:
+    name: Close stale issues
+    if: github.repository_owner == 'thomasddn'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      discussions: write
+    steps:
+      - name: Stale issues
+        uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-stale: 7
+          days-before-close: 2
+          days-before-pr-stale: -1
+          days-before-pr-close: -1
+          stale-issue-label: stale
+          stale-issue-message: >
+            This issue has now been marked as stale and will be closed in 2 days
+            if no further activity occurs.
+
+      - name: Stale discussions
+        uses: steffen-karlsson/stalesweeper@v1.1.1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-close: 14
+          close-unanswered: true
+          message: This discussion has been closed due to inactivity.
