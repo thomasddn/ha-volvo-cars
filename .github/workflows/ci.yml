@@ -7,7 +7,11 @@ on:
       - develop
     tags-ignore:
       - "**"
+    paths-ignore:
+      - "custom_components/volvo_cars/translations/**"
   pull_request:
+    paths-ignore:
+      - "custom_components/volvo_cars/translations/**"
   workflow_dispatch:
 
 env:
