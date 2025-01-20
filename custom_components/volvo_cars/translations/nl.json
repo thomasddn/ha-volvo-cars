@@ -1,0 +1,661 @@
+{
+    "common": {
+        "car_error": "Voertuigfout",
+        "completed": "Voltooid",
+        "connection_failure": "Verbindingsfout",
+        "delivered": "Bezorgd",
+        "door_open": "Deur open",
+        "error": "Fout",
+        "high_pressure": "Hoge druk",
+        "last_result": "Laatste resultaat",
+        "low_pressure": "Lage druk",
+        "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
+        "ok": "OK",
+        "pressure": "Druk",
+        "rejected": "Geweigerd",
+        "running": "Actief",
+        "time_frame_passed": "Time-out",
+        "timeout": "Time-out",
+        "unknown": "Onbekend",
+        "vcc_api_key": "Volvo API key",
+        "vehicle_in_sleep": "Voertuig in slaapmodus",
+        "very_low_pressure": "Zeer lage druk",
+        "waiting": "Wachten",
+        "wrong_usage": "Foutief gebruik"
+    },
+    "config": {
+        "abort": {
+            "already_configured": "Voertuig reeds toegevoegd",
+            "reauth_successful": "Inloggegevens succesvol bijgewerkt"
+        },
+        "error": {
+            "invalid_auth": "Aanmelden mislukt"
+        },
+        "step": {
+            "otp": {
+                "data": {
+                    "otp": "OTP"
+                },
+                "description": "Voer de OTP in die u in uw mailbox hebt ontvangen."
+            },
+            "reauth_confirm": {
+                "description": "De Volvo Cars-integratie moet uw account opnieuw verifiëren.",
+                "title": "Inloggegevens verlopen"
+            },
+            "user": {
+                "data": {
+                    "friendly_name": "Leesbare naam",
+                    "password": "Wachtwoord",
+                    "username": "Gebruikersnaam",
+                    "vcc_api_key": "Volvo API key",
+                    "vin": "Voertuig Identificatie Nummer"
+                },
+                "data_description": {
+                    "friendly_name": "Deze waarde wordt gebruikt in de \"entity ID\" (volvo_[leesbare naam]_[key]). Als de waarde leeg blijft, wordt VIN gebruikt.",
+                    "vin": "Het VIN is 17 karakters lang en begint waarschijnlijk met YV1 of YV4."
+                },
+                "description": "Voer uw Volvo accountgegevens, VIN en Volvo developers API key (https://developer.volvocars.com/) in."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "brake_fluid_level_warning": {
+                "name": "Remvloeistof"
+            },
+            "brake_light_center_warning": {
+                "name": "Remlicht centraal"
+            },
+            "brake_light_left_warning": {
+                "name": "Remlicht links"
+            },
+            "brake_light_right_warning": {
+                "name": "Remlicht rechts"
+            },
+            "coolant_level_warning": {
+                "name": "Koelvloeistofpeil"
+            },
+            "daytime_running_light_left_warning": {
+                "name": "Dagrijlicht links"
+            },
+            "daytime_running_light_right_warning": {
+                "name": "Dagrijlicht rechts"
+            },
+            "door_front_left": {
+                "name": "Deur linksvoor"
+            },
+            "door_front_right": {
+                "name": "Deur rechtsvoor"
+            },
+            "door_rear_left": {
+                "name": "Deur linksachter"
+            },
+            "door_rear_right": {
+                "name": "Deur rechtsachter"
+            },
+            "engine_status": {
+                "name": "Motorstatus"
+            },
+            "fog_light_front_warning": {
+                "name": "Mistlampen vooraan"
+            },
+            "fog_light_rear_warning": {
+                "name": "Mistlampen achteraan"
+            },
+            "hazard_lights_warning": {
+                "name": "Waarschuwingslichten"
+            },
+            "high_beam_left_warning": {
+                "name": "Grootlicht links"
+            },
+            "high_beam_right_warning": {
+                "name": "Grootlicht rechts"
+            },
+            "hood": {
+                "name": "Motorkap"
+            },
+            "low_beam_left_warning": {
+                "name": "Dimlicht links"
+            },
+            "low_beam_right_warning": {
+                "name": "Dimlicht rechts"
+            },
+            "oil_level_warning": {
+                "name": "Oliepeil",
+                "state_attributes": {
+                    "level": {
+                        "name": "Niveau",
+                        "state": {
+                            "no_warning": "OK",
+                            "service_required": "Onderhoud vereist",
+                            "too_high": "Te hoog",
+                            "too_low": "Te laag"
+                        }
+                    }
+                }
+            },
+            "position_light_front_left_warning": {
+                "name": "Positielicht linksvoor"
+            },
+            "position_light_front_right_warning": {
+                "name": "Positielicht rechtsvoor"
+            },
+            "position_light_rear_left_warning": {
+                "name": "Positielicht linksachter"
+            },
+            "position_light_rear_right_warning": {
+                "name": "Positielicht rechtsachter"
+            },
+            "registration_plate_light_warning": {
+                "name": "Kentekenverlichting"
+            },
+            "reverse_lights_warning": {
+                "name": "Achteruitrijlichten"
+            },
+            "service_warning": {
+                "name": "Onderhoud",
+                "state_attributes": {
+                    "reason": {
+                        "name": "Reden",
+                        "state": {
+                            "distance_driven_almost_time_for_service": "Bijna tijd voor afstandsonderhoud",
+                            "distance_driven_overdue_for_service": "Te laat voor afstandsonderhoud",
+                            "distance_driven_time_for_service": "Tijd voor afstandsonderhoud",
+                            "engine_hours_almost_time_for_service": "Bijna tijd voor motoronderhoud",
+                            "engine_hours_overdue_for_service": "Te laat voor motoronderhoud",
+                            "engine_hours_time_for_service": "Tijd voor motoronderhoud",
+                            "no_warning": "OK",
+                            "regular_maintenance_almost_time_for_service": "Bijna tijd voor onderhoud",
+                            "regular_maintenance_overdue_for_service": "Te laat voor onderhoud",
+                            "regular_maintenance_time_for_service": "Tijd voor onderhoud",
+                            "unknown_warning": "Onbekende waarschuwing"
+                        }
+                    }
+                }
+            },
+            "side_mark_lights_warning": {
+                "name": "Zijmarkeringslichten"
+            },
+            "sunroof": {
+                "name": "Schuifdak"
+            },
+            "tailgate": {
+                "name": "Koffer"
+            },
+            "tank_lid": {
+                "name": "Tankdeksel"
+            },
+            "turn_indication_front_left_warning": {
+                "name": "Richtingaanwijzer linksvoor"
+            },
+            "turn_indication_front_right_warning": {
+                "name": "Richtingaanwijzer rechtsvoor"
+            },
+            "turn_indication_rear_left_warning": {
+                "name": "Richtingaanwijzer linksachter"
+            },
+            "turn_indication_rear_right_warning": {
+                "name": "Richtingaanwijzer rechtsachter"
+            },
+            "tyre_front_left": {
+                "name": "Band linksvoor",
+                "state_attributes": {
+                    "pressure": {
+                        "name": "Druk",
+                        "state": {
+                            "high_pressure": "Hoge druk",
+                            "low_pressure": "Lage druk",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Zeer lage druk"
+                        }
+                    }
+                }
+            },
+            "tyre_front_right": {
+                "name": "Band rechtsvoor",
+                "state_attributes": {
+                    "pressure": {
+                        "name": "Druk",
+                        "state": {
+                            "high_pressure": "Hoge druk",
+                            "low_pressure": "Lage druk",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Zeer lage druk"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_left": {
+                "name": "Band linksachter",
+                "state_attributes": {
+                    "pressure": {
+                        "name": "Druk",
+                        "state": {
+                            "high_pressure": "Hoge druk",
+                            "low_pressure": "Lage druk",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Zeer lage druk"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_right": {
+                "name": "Band rechtsachter",
+                "state_attributes": {
+                    "pressure": {
+                        "name": "Druk",
+                        "state": {
+                            "high_pressure": "Hoge druk",
+                            "low_pressure": "Lage druk",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Zeer lage druk"
+                        }
+                    }
+                }
+            },
+            "washer_fluid_level_warning": {
+                "name": "Sproeiervloeistof"
+            },
+            "window_front_left": {
+                "name": "Raam linksvoor"
+            },
+            "window_front_right": {
+                "name": "Raam rechtsvoor"
+            },
+            "window_rear_left": {
+                "name": "Raam linksachter"
+            },
+            "window_rear_right": {
+                "name": "Raam rechtsachter"
+            }
+        },
+        "button": {
+            "climatization_start": {
+                "name": "Start klimatisatie",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Laatste resultaat",
+                        "state": {
+                            "car_error": "Voertuigfout",
+                            "completed": "Voltooid",
+                            "connection_failure": "Verbindingsfout",
+                            "delivered": "Bezorgd",
+                            "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
+                            "not_allowed_wrong_usage_mode": "Foutief gebruik",
+                            "rejected": "Geweigerd",
+                            "running": "Actief",
+                            "timeout": "Time-out",
+                            "unknown": "Onbekend",
+                            "vehicle_in_sleep": "Voertuig in slaapmodus",
+                            "waiting": "Wachten"
+                        }
+                    }
+                }
+            },
+            "climatization_stop": {
+                "name": "Stop klimatisatie",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Laatste resultaat",
+                        "state": {
+                            "car_error": "Voertuigfout",
+                            "completed": "Voltooid",
+                            "connection_failure": "Verbindingsfout",
+                            "delivered": "Bezorgd",
+                            "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
+                            "not_allowed_wrong_usage_mode": "Foutief gebruik",
+                            "rejected": "Geweigerd",
+                            "running": "Actief",
+                            "timeout": "Time-out",
+                            "unknown": "Onbekend",
+                            "vehicle_in_sleep": "Voertuig in slaapmodus",
+                            "waiting": "Wachten"
+                        }
+                    }
+                }
+            },
+            "engine_start": {
+                "name": "Start motor",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Laatste resultaat",
+                        "state": {
+                            "car_error": "Voertuigfout",
+                            "completed": "Voltooid",
+                            "connection_failure": "Verbindingsfout",
+                            "delivered": "Bezorgd",
+                            "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
+                            "not_allowed_wrong_usage_mode": "Foutief gebruik",
+                            "rejected": "Geweigerd",
+                            "running": "Actief",
+                            "timeout": "Time-out",
+                            "unknown": "Onbekend",
+                            "vehicle_in_sleep": "Voertuig in slaapmodus",
+                            "waiting": "Wachten"
+                        }
+                    }
+                }
+            },
+            "engine_stop": {
+                "name": "Stop motor",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Laatste resultaat",
+                        "state": {
+                            "car_error": "Voertuigfout",
+                            "completed": "Voltooid",
+                            "connection_failure": "Verbindingsfout",
+                            "delivered": "Bezorgd",
+                            "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
+                            "not_allowed_wrong_usage_mode": "Foutief gebruik",
+                            "rejected": "Geweigerd",
+                            "running": "Actief",
+                            "timeout": "Time-out",
+                            "unknown": "Onbekend",
+                            "vehicle_in_sleep": "Voertuig in slaapmodus",
+                            "waiting": "Wachten"
+                        }
+                    }
+                }
+            },
+            "flash": {
+                "name": "Knipperen",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Laatste resultaat",
+                        "state": {
+                            "car_error": "Voertuigfout",
+                            "completed": "Voltooid",
+                            "connection_failure": "Verbindingsfout",
+                            "delivered": "Bezorgd",
+                            "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
+                            "not_allowed_wrong_usage_mode": "Foutief gebruik",
+                            "rejected": "Geweigerd",
+                            "timeout": "Time-out",
+                            "unknown": "Onbekend",
+                            "vehicle_in_sleep": "Voertuig in slaapmodus"
+                        }
+                    }
+                }
+            },
+            "honk": {
+                "name": "Toeteren",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Laatste resultaat",
+                        "state": {
+                            "car_error": "Voertuigfout",
+                            "completed": "Voltooid",
+                            "connection_failure": "Verbindingsfout",
+                            "delivered": "Bezorgd",
+                            "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
+                            "not_allowed_wrong_usage_mode": "Foutief gebruik",
+                            "rejected": "Geweigerd",
+                            "timeout": "Time-out",
+                            "unknown": "Onbekend",
+                            "vehicle_in_sleep": "Voertuig in slaapmodus"
+                        }
+                    }
+                }
+            },
+            "honk_flash": {
+                "name": "Toeteren & knipperen",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Laatste resultaat",
+                        "state": {
+                            "car_error": "Voertuigfout",
+                            "completed": "Voltooid",
+                            "connection_failure": "Verbindingsfout",
+                            "delivered": "Bezorgd",
+                            "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
+                            "not_allowed_wrong_usage_mode": "Foutief gebruik",
+                            "rejected": "Geweigerd",
+                            "timeout": "Time-out",
+                            "unknown": "Onbekend",
+                            "vehicle_in_sleep": "Voertuig in slaapmodus"
+                        }
+                    }
+                }
+            },
+            "update_data": {
+                "name": "Gegevens bijwerken"
+            }
+        },
+        "device_tracker": {
+            "location": {
+                "name": "Locatie",
+                "state_attributes": {
+                    "direction": {
+                        "name": "Richting"
+                    }
+                }
+            }
+        },
+        "image": {
+            "exterior": {
+                "name": "Exterieur passagier"
+            },
+            "exterior_back": {
+                "name": "Exterieur achteraan"
+            },
+            "exterior_back_driver": {
+                "name": "Exterieur achteraan bestuurder"
+            },
+            "exterior_back_passenger": {
+                "name": "Exterieur achteraan passagier"
+            },
+            "exterior_front": {
+                "name": "Exterieur vooraan"
+            },
+            "exterior_front_driver": {
+                "name": "Exterieur vooraan bestuurder"
+            },
+            "exterior_front_passenger": {
+                "name": "Exterieur vooraan passagier"
+            },
+            "exterior_side_driver": {
+                "name": "Exterieur bestuurder"
+            },
+            "interior": {
+                "name": "Interieur"
+            }
+        },
+        "lock": {
+            "lock": {
+                "name": "Vergrendeling",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Laatste resultaat",
+                        "state": {
+                            "completed": "Voltooid",
+                            "connection_failure": "Verbindingsfout",
+                            "delivered": "Bezorgd",
+                            "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
+                            "not_allowed_wrong_usage_mode": "Foutief gebruik",
+                            "rejected": "Geweigerd",
+                            "timeout": "Time-out",
+                            "unable_to_lock_door_open": "Deur open",
+                            "unknown": "Onbekend",
+                            "unlock_time_frame_passed": "Time-out",
+                            "vehicle_in_sleep": "Voertuig in slaapmodus"
+                        }
+                    }
+                }
+            },
+            "lock_reduced_guard": {
+                "name": "Vergrendeling zonder alarm",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Laatste resultaat",
+                        "state": {
+                            "completed": "Voltooid",
+                            "connection_failure": "Verbindingsfout",
+                            "delivered": "Bezorgd",
+                            "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
+                            "not_allowed_wrong_usage_mode": "Foutief gebruik",
+                            "rejected": "Geweigerd",
+                            "timeout": "Time-out",
+                            "unable_to_lock_door_open": "Deur open",
+                            "unknown": "Onbekend",
+                            "unlock_time_frame_passed": "Time-out",
+                            "vehicle_in_sleep": "Voertuig in slaapmodus"
+                        }
+                    }
+                }
+            }
+        },
+        "number": {
+            "data_update_interval": {
+                "name": "Interval gegevensupdates"
+            },
+            "engine_run_time": {
+                "name": "Looptijd motor"
+            }
+        },
+        "sensor": {
+            "api_request_count": {
+                "name": "Aantal API requests"
+            },
+            "api_status": {
+                "name": "API status"
+            },
+            "availability": {
+                "name": "Verbinding voertuig",
+                "state": {
+                    "available": "Beschikbaar",
+                    "car_in_use": "Voertuig in gebruik",
+                    "no_internet": "Geen internet",
+                    "power_saving_mode": "Spaarstand",
+                    "unavailable": "Niet beschikbaar",
+                    "unspecified": "Onbekend"
+                }
+            },
+            "average_energy_consumption": {
+                "name": "Gemiddeld energieverbruik"
+            },
+            "average_energy_consumption_automatic": {
+                "name": "Gemiddeld energieverbruik automatisch"
+            },
+            "average_energy_consumption_charge": {
+                "name": "Gemiddeld energieverbruik sinds laden"
+            },
+            "average_fuel_consumption": {
+                "name": "Gemiddeld brandstofverbruik"
+            },
+            "average_fuel_consumption_automatic": {
+                "name": "Gemiddeld brandstofverbruik automatisch"
+            },
+            "average_speed": {
+                "name": "Gemiddelde snelheid"
+            },
+            "average_speed_automatic": {
+                "name": "Gemiddelde snelheid automatisch"
+            },
+            "battery_capacity": {
+                "name": "Batterijcapaciteit"
+            },
+            "battery_charge_level": {
+                "name": "Laadniveau batterij"
+            },
+            "charging_connection_status": {
+                "name": "Status laadverbinding",
+                "state": {
+                    "connection_status_connected_ac": "Verbonden via AC",
+                    "connection_status_connected_dc": "Verbonden via DC",
+                    "connection_status_disconnected": "Losgekoppeld",
+                    "connection_status_fault": "Fout",
+                    "connection_status_unspecified": "Onbekend"
+                }
+            },
+            "charging_system_status": {
+                "name": "Laadstatus",
+                "state": {
+                    "charging_system_charging": "Laden",
+                    "charging_system_done": "Klaar",
+                    "charging_system_fault": "Fout",
+                    "charging_system_idle": "Niet actief",
+                    "charging_system_scheduled": "Gepland",
+                    "charging_system_unspecified": "Onbekend"
+                }
+            },
+            "distance_to_empty_battery": {
+                "name": "Afstand tot lege batterij"
+            },
+            "distance_to_empty_tank": {
+                "name": "Afstand tot lege tank"
+            },
+            "distance_to_service": {
+                "name": "Afstand tot onderhoud"
+            },
+            "engine_time_to_service": {
+                "name": "Motortijd tot onderhoud"
+            },
+            "estimated_charging_time": {
+                "name": "Geschatte laadtijd"
+            },
+            "fuel_amount": {
+                "name": "Brandstofhoeveelheid"
+            },
+            "odometer": {
+                "name": "Kilometerstand"
+            },
+            "time_to_service": {
+                "name": "Tijd tot onderhoud"
+            },
+            "trip_meter_automatic": {
+                "name": "Tripmeter automatisch"
+            },
+            "trip_meter_manual": {
+                "name": "Tripmeter manueel"
+            }
+        }
+    },
+    "exceptions": {
+        "lock_failure": {
+            "message": "{command} mislukt. Status: {status}. Message: {message}"
+        }
+    },
+    "options": {
+        "abort": {
+            "no_options_available": "Geen opties beschikbaar voor uw voertuig."
+        },
+        "step": {
+            "init": {
+                "sections": {
+                    "api": {
+                        "data": {
+                            "vcc_api_key": "Volvo API key"
+                        },
+                        "name": "API"
+                    },
+                    "images": {
+                        "data": {
+                            "image_bg_color": "Achtergrondkleur afbeeldingen",
+                            "image_transparent": "Transparante achtergrond afbeeldingen"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Alleen van toepassing als transparant niet is aangevinkt."
+                        },
+                        "name": "Afbeeldingen"
+                    },
+                    "units": {
+                        "data": {
+                            "fuel_consumption_unit": "Eenheid brandstofverbruik"
+                        },
+                        "name": "Eenheden"
+                    }
+                }
+            }
+        }
+    },
+    "selector": {
+        "fuel_consumption_unit": {
+            "options": {
+                "l_100km": "l / 100 km",
+                "mpg_uk": "mpg (VK)",
+                "mpg_us": "mpg (VS)"
+            }
+        }
+    }
+}
