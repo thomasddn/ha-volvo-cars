@@ -251,7 +251,7 @@ class VolvoCarsApi:
             raise VolvoApiException(ex.message) from redacted_exception
 
         except (ClientError, TimeoutError) as ex:
-            _LOGGER.debug("Request [%s] error: %s", operation, ex)
+            _LOGGER.debug("Request [%s] error: %s", operation, ex.__class__.__name__)
             raise VolvoApiException(ex.__class__.__name__) from ex
 
 
