@@ -8,7 +8,7 @@ from aiohttp import ClientError, ClientSession, ClientTimeout, hdrs
 
 from .data import DataCache
 from .models import AuthorizationModel, TokenResponse, VolvoAuthException
-from .util import async_retry, redact_data
+from .util import redact_data
 
 _AUTH_URL = "https://volvoid.eu.volvocars.com/as/authorization.oauth2"
 _TOKEN_URL = "https://volvoid.eu.volvocars.com/as/token.oauth2"
