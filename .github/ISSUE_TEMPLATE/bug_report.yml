@@ -1,6 +1,6 @@
-name: Bug report
+name: Report a problem
 description: Something does not work as expected
-labels: ["bug"]
+labels: ["problem"]
 
 body:
   - type: textarea
