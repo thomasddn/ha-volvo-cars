@@ -158,6 +158,14 @@ class VolvoCarsCommandResult(VolvoCarsApiBaseModel):
 
 
 @dataclass
+class VolvoCarsErrorResult(VolvoCarsApiBaseModel):
+    """Error result model."""
+
+    message: str
+    description: str
+
+
+@dataclass
 class TokenResponse(VolvoCarsApiBaseModel):
     """Authorization response model."""
 

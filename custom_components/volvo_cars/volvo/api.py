@@ -19,6 +19,7 @@ from .models import (
     VolvoAuthException,
     VolvoCarsAvailableCommand,
     VolvoCarsCommandResult,
+    VolvoCarsErrorResult,
     VolvoCarsLocation,
     VolvoCarsValue,
     VolvoCarsValueField,
@@ -208,6 +209,8 @@ class VolvoCarsApi:
         if method == hdrs.METH_POST:
             headers[hdrs.CONTENT_TYPE] = "application/json"
 
+        data: dict[str, Any]
+
         try:
             _LOGGER.debug(
                 "Request [%s]: %s %s",
@@ -244,11 +247,16 @@ class VolvoCarsApi:
                 }
 
             redacted_exception = RedactedClientResponseError(ex, self._vin)
+            message = redacted_exception.message
+
+            if data and (error_data := data.get("error")):
+                error = VolvoCarsErrorResult.from_dict(error_data)
+                message = f"{error.message}. {error.description}".strip()
 
             if ex.status in (401, 403):
-                raise VolvoAuthException(ex.message) from redacted_exception
+                raise VolvoAuthException(message) from redacted_exception
 
-            raise VolvoApiException(ex.message) from redacted_exception
+            raise VolvoApiException(message) from redacted_exception
 
         except (ClientError, TimeoutError) as ex:
             _LOGGER.debug("Request [%s] error: %s", operation, ex.__class__.__name__)
