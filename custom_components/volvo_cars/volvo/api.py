@@ -251,7 +251,9 @@ class VolvoCarsApi:
 
             if data and (error_data := data.get("error")):
                 error = VolvoCarsErrorResult.from_dict(error_data)
-                message = f"{error.message}. {error.description}".strip()
+
+                if error is not None:
+                    message = f"{error.message}. {error.description}".strip()
 
             if ex.status in (401, 403):
                 raise VolvoAuthException(message) from redacted_exception
