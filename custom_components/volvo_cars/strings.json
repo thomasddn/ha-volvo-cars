@@ -532,25 +532,25 @@
                 }
             },
             "average_energy_consumption": {
-                "name": "Avg. energy consumption"
+                "name": "TM Avg. energy consumption"
             },
             "average_energy_consumption_automatic": {
-                "name": "Avg. energy consumption automatic"
+                "name": "TA Avg. energy consumption"
             },
             "average_energy_consumption_charge": {
                 "name": "Avg. energy consumption since charge"
             },
             "average_fuel_consumption": {
-                "name": "Avg. fuel consumption"
+                "name": "TM Avg. fuel consumption"
             },
             "average_fuel_consumption_automatic": {
-                "name": "Avg. fuel consumption automatic"
+                "name": "TA Avg. fuel consumption"
             },
             "average_speed": {
-                "name": "Avg. speed"
+                "name": "TM Avg. speed"
             },
             "average_speed_automatic": {
-                "name": "Avg. speed automatic"
+                "name": "TA Avg. speed"
             },
             "battery_capacity": {
                 "name": "Battery capacity"
@@ -604,10 +604,10 @@
                 "name": "Time to service"
             },
             "trip_meter_automatic": {
-                "name": "Trip meter automatic"
+                "name": "TA Distance"
             },
             "trip_meter_manual": {
-                "name": "Trip meter manual"
+                "name": "TM Distance"
             }
         }
     },
@@ -652,7 +652,7 @@
     "selector": {
         "fuel_consumption_unit": {
             "options": {
-                "l_100km": "l/100km",
+                "l_100km": "L/100 km",
                 "mpg_uk": "mpg (UK)",
                 "mpg_us": "mpg (US)"
             }
