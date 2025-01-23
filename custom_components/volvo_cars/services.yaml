@@ -1,0 +1,29 @@
+refresh_data:
+  fields:
+    entry:
+      required: false
+      selector:
+        config_entry:
+          integration: volvo_cars
+    data:
+      required: false
+      selector:
+        select:
+          translation_key: refresh_data_param
+          multiple: true
+          sort: true
+          options:
+            - availability
+            - brakes
+            - diagnostics
+            - doors
+            - engine_status
+            - engine
+            - fuel
+            - location
+            - odometer
+            - recharge_status
+            - statistics
+            - tyres
+            - warnings
+            - windows

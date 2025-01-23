@@ -17,7 +17,13 @@ from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .const import DATA_BATTERY_CAPACITY, DATA_REQUEST_COUNT, DOMAIN, MANUFACTURER
+from .const import (
+    ATTR_LAST_REFRESH,
+    DATA_BATTERY_CAPACITY,
+    DATA_REQUEST_COUNT,
+    DOMAIN,
+    MANUFACTURER,
+)
 from .entity_description import VolvoCarsDescription
 from .store import VolvoCarsStoreManager
 from .volvo.api import VolvoCarsApi
@@ -83,6 +89,17 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
         self.supports_windows: bool = False
         self.unsupported_keys: list[str] = []
 
+        # Keys must match the values of the data field of the "refresh_data" service.
+        # The variable is set during _async_setup().
+        self._refresh_conditions: dict[
+            str, tuple[Callable[[], Coroutine[Any, Any, Any]], bool]
+        ] = {}
+
+        # Values must match with a key from self._refresh_conditions.
+        # If list is empty, a full data refresh will occur, otherwise
+        # only the indicated data will be refreshed.
+        self._refresh_parts: list[str] = []
+
     async def _async_setup(self) -> None:
         """Set up the coordinator.
 
@@ -90,9 +107,9 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
         coordinator.async_config_entry_first_refresh.
         """
         _LOGGER.debug("%s - Setting up", self.config_entry.entry_id)
+        count = 0
 
         try:
-            count = 0
             vehicle = await self.api.async_get_vehicle_details()
             count += 1
 
@@ -121,59 +138,41 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
                 title=f"{MANUFACTURER} {vehicle.description.model} ({vehicle.vin})",
             )
 
-            # Check supported commands
-            # We're unable to use the scope 'conve:climatization_start_stop' that
-            # is required to use the "ENGINE_START" and "ENGINE_STOP" commands.
-            commands = await self.api.async_get_commands()
-            count += 1
-            self.commands = [
-                command.command
-                for command in commands
-                if command and command.command not in ("ENGINE_START", "ENGINE_STOP")
-            ]
-
-            # Check if location is supported
-            location = await self.api.async_get_location()
-            count += 1
-            self.supports_location = location.get("location") is not None
-
-            # Check if doors are supported
-            doors = await self.api.async_get_doors_status()
-            count += 1
-            self.supports_doors = not self._is_all_unspecified(doors)
-
-            # Check if tyres are supported
-            tyres = await self.api.async_get_tyre_states()
-            count += 1
-            self.supports_tyres = not self._is_all_unspecified(tyres)
-
-            # Check if warnings are supported
-            warnings = await self.api.async_get_warnings()
-            count += 1
-            self.supports_warnings = not self._is_all_unspecified(warnings)
-
-            # Check if windows are supported
-            windows = await self.api.async_get_window_states()
-            count += 1
-            self.supports_windows = not self._is_all_unspecified(windows)
+            count += await self._async_determine_features()
 
         finally:
             self.data = self.data or {}
             await self.async_update_request_count(count)
 
-        # Keep track of unsupported keys
-        self.unsupported_keys += [
-            key
-            for key, value in (doors | tyres | warnings | windows).items()
-            if value is None or value.value == "UNSPECIFIED"
-        ]
+        self._refresh_conditions = {
+            "availability": (self.api.async_get_availability_status, True),
+            "brakes": (self.api.async_get_brakes_status, True),
+            "diagnostics": (self.api.async_get_diagnostics, True),
+            "doors": (self.api.async_get_doors_status, self.supports_doors),
+            "engine_status": (self.api.async_get_engine_status, True),
+            "engine": (self.api.async_get_engine_warnings, True),
+            "fuel": (
+                self.api.async_get_fuel_status,
+                self.vehicle.has_combustion_engine(),
+            ),
+            "location": (self.api.async_get_location, self.supports_location),
+            "odometer": (self.api.async_get_odometer, True),
+            "recharge_status": (
+                self.api.async_get_recharge_status,
+                self.vehicle.has_battery_engine(),
+            ),
+            "statistics": (self.api.async_get_statistics, True),
+            "tyres": (self.api.async_get_tyre_states, self.supports_tyres),
+            "warnings": (self.api.async_get_warnings, self.supports_warnings),
+            "windows": (self.api.async_get_window_states, self.supports_windows),
+        }
 
     async def _async_update_data(self) -> CoordinatorData:
         """Fetch data from API."""
         _LOGGER.debug("%s - Updating data", self.config_entry.entry_id)
 
         api_calls = self._get_api_calls()
-        data: CoordinatorData = {}
+        data: CoordinatorData = self.data if self._refresh_parts else {}
         valid = 0
         exception: Exception | None = None
 
@@ -214,7 +213,13 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
                     # Something bad happened, raise immediately.
                     raise result
 
-                data |= cast(CoordinatorData, result)
+                api_data = cast(CoordinatorData, result)
+
+                for v in api_data.values():
+                    if v:
+                        v.extra_data[ATTR_LAST_REFRESH] = datetime.now(UTC)
+
+                data |= api_data
                 valid += 1
 
             # Raise an error if not a single API call succeeded
@@ -239,6 +244,14 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
             await self.async_update_request_count(calls_to_add, data)
 
         return data
+
+    async def async_partial_refresh(self, parts: list[str]) -> None:
+        """Refresh data partially."""
+        try:
+            self._refresh_parts = parts
+            await self.async_refresh()
+        finally:
+            self._refresh_parts = []
 
     def get_api_field(
         self, description: VolvoCarsDescription
@@ -293,39 +306,67 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
     def _get_api_calls(
         self,
     ) -> list[Callable[[], Coroutine[Any, Any, Any]]]:
-        api_calls = [
-            self.api.async_get_api_status,
-            self.api.async_get_availability_status,
-            self.api.async_get_brakes_status,
-            self.api.async_get_diagnostics,
-            self.api.async_get_engine_status,
-            self.api.async_get_engine_warnings,
-            self.api.async_get_odometer,
-            self.api.async_get_statistics,
-        ]
-
-        if self.supports_doors:
-            api_calls.append(self.api.async_get_doors_status)
-
-        if self.vehicle.has_combustion_engine():
-            api_calls.append(self.api.async_get_fuel_status)
-
-        if self.supports_location:
-            api_calls.append(self.api.async_get_location)
-
-        if self.vehicle.has_battery_engine():
-            api_calls.append(self.api.async_get_recharge_status)
-
-        if self.supports_tyres:
-            api_calls.append(self.api.async_get_tyre_states)
-
-        if self.supports_warnings:
-            api_calls.append(self.api.async_get_warnings)
-
-        if self.supports_windows:
-            api_calls.append(self.api.async_get_window_states)
+        api_calls = [self.api.async_get_api_status]
+        api_calls.extend(
+            [
+                api_call
+                for part, (api_call, condition) in self._refresh_conditions.items()
+                if condition
+                and (len(self._refresh_parts) == 0 or part in self._refresh_parts)
+            ]
+        )
 
         return api_calls
+
+    async def _async_determine_features(self) -> int:
+        count = 0
+
+        try:
+            # Check supported commands
+            # We're unable to use the scope 'conve:climatization_start_stop' that
+            # is required to use the "ENGINE_START" and "ENGINE_STOP" commands.
+            commands = await self.api.async_get_commands()
+            count += 1
+            self.commands = [
+                command.command
+                for command in commands
+                if command and command.command not in ("ENGINE_START", "ENGINE_STOP")
+            ]
+
+            # Check if location is supported
+            location = await self.api.async_get_location()
+            count += 1
+            self.supports_location = location.get("location") is not None
+
+            # Check if doors are supported
+            doors = await self.api.async_get_doors_status()
+            count += 1
+            self.supports_doors = not self._is_all_unspecified(doors)
+
+            # Check if tyres are supported
+            tyres = await self.api.async_get_tyre_states()
+            count += 1
+            self.supports_tyres = not self._is_all_unspecified(tyres)
+
+            # Check if warnings are supported
+            warnings = await self.api.async_get_warnings()
+            count += 1
+            self.supports_warnings = not self._is_all_unspecified(warnings)
+
+            # Check if windows are supported
+            windows = await self.api.async_get_window_states()
+            count += 1
+            self.supports_windows = not self._is_all_unspecified(windows)
+
+            # Keep track of unsupported keys
+            self.unsupported_keys += [
+                key
+                for key, value in (doors | tyres | warnings | windows).items()
+                if value is None or value.value == "UNSPECIFIED"
+            ]
+
+        finally:
+            return count
 
     def _is_all_unspecified(self, items: dict[str, VolvoCarsValueField | None]) -> bool:
         return all(

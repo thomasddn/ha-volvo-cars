@@ -2,6 +2,9 @@
 
 from datetime import UTC, date, datetime, time
 import logging
+from typing import cast
+
+import voluptuous as vol
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ACCESS_TOKEN, CONF_PASSWORD, Platform
@@ -9,14 +12,20 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.entity_registry import async_get
 from homeassistant.helpers.event import async_track_utc_time_change
+from homeassistant.helpers.service import ServiceCall
+from homeassistant.helpers.typing import ConfigType
 
 from .config_flow import VolvoCarsFlowHandler, get_setting
 from .const import (
     CONF_VCC_API_KEY,
     CONF_VIN,
+    DOMAIN,
     OPT_FUEL_CONSUMPTION_UNIT,
     OPT_UNIT_LITER_PER_100KM,
     PLATFORMS,
+    SERVICE_PARAM_DATA,
+    SERVICE_PARAM_ENTRY,
+    SERVICE_REFRESH_DATA,
 )
 from .coordinator import (
     TokenCoordinator,
@@ -31,9 +40,45 @@ from .volvo.auth import VolvoCarsAuthApi
 
 _LOGGER = logging.getLogger(__name__)
 
+_SERVICE_REFRESH_SCHEMA = vol.Schema(
+    {
+        vol.Optional(SERVICE_PARAM_ENTRY): str,
+        vol.Optional(SERVICE_PARAM_DATA): list[str],
+    }
+)
+
+
+async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
+    """Set up Volvo Cars integration."""
+    _LOGGER.debug("Loading integration")
+
+    # Register services
+    async def refresh_data(call: ServiceCall) -> None:
+        entry_id = call.data.get(SERVICE_PARAM_ENTRY)
+        data = call.data.get(SERVICE_PARAM_DATA)
+
+        # Remove duplicates
+        data = list(set(data)) if data else []
+
+        entries = (
+            [hass.config_entries.async_get_entry(entry_id)]
+            if entry_id
+            else hass.config_entries.async_entries(DOMAIN)
+        )
+
+        for entry in entries:
+            if entry and (entry := cast(VolvoCarsConfigEntry, entry)):
+                await entry.runtime_data.coordinator.async_partial_refresh(data)
+
+    hass.services.async_register(
+        DOMAIN, SERVICE_REFRESH_DATA, refresh_data, schema=_SERVICE_REFRESH_SCHEMA
+    )
+
+    return True
+
 
 async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -> bool:
-    """Set up Volvo Cars integration."""
+    """Set up Volvo Cars entry."""
     _LOGGER.debug("%s - Loading entry", entry.entry_id)
 
     # Load store

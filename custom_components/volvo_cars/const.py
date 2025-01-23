@@ -15,6 +15,7 @@ PLATFORMS: list = [
 
 ATTR_API_TIMESTAMP = "api_timestamp"
 ATTR_DIRECTION = "direction"
+ATTR_LAST_REFRESH = "last_refresh"
 ATTR_LAST_RESULT = "last_result"
 
 CONF_OTP = "otp"
@@ -33,3 +34,7 @@ OPT_IMG_TRANSPARENT = "image_transparent"
 OPT_UNIT_LITER_PER_100KM = "l_100km"
 OPT_UNIT_MPG_UK = "mpg_uk"
 OPT_UNIT_MPG_US = "mpg_us"
+
+SERVICE_REFRESH_DATA = "refresh_data"
+SERVICE_PARAM_DATA = "data"
+SERVICE_PARAM_ENTRY = "entry"

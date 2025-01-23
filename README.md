@@ -150,6 +150,12 @@ Once a car has been added, you can configure additional options for it.
 | Images transparent background | Whether or not you want transparent a background for the exterior images. | Depending on the image URL provided by the Volvo API. |
 | Images background color       | Choose the background color for the exterior images.                      | Depending on the image URL provided by the Volvo API. |
 
+## 🤖 Actions
+
+The integration allows you to refresh all data or only specific parts of the data as needed by using the `Refresh data` action. This action can be used in automations.
+
+Triggering a data refresh with this action will reset the current refresh timer, postponing the next scheduled full data refresh.
+
 ## 🛟 Need help?
 
 Make sure to [read the FAQ](https://github.com/thomasddn/ha-volvo-cars/wiki/FAQ) first. Maybe the topic is covered there.

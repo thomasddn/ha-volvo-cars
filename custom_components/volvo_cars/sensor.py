@@ -71,7 +71,7 @@ def _determine_fuel_consumption_unit(entry: VolvoCarsConfigEntry) -> str:
     if unit_key in (OPT_UNIT_MPG_UK, OPT_UNIT_MPG_US):
         return "mpg"
 
-    return "L/100km"
+    return "L/100 km"
 
 
 def _convert_fuel_consumption(
@@ -157,7 +157,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         key="average_fuel_consumption",
         translation_key="average_fuel_consumption",
         api_field="averageFuelConsumption",
-        native_unit_of_measurement="L/100km",
+        native_unit_of_measurement="L/100 km",
         icon="mdi:gas-station",
         available_fn=lambda vehicle: vehicle.has_combustion_engine(),
         unit_fn=_determine_fuel_consumption_unit,
@@ -167,7 +167,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         key="average_fuel_consumption_automatic",
         translation_key="average_fuel_consumption_automatic",
         api_field="averageFuelConsumptionAutomatic",
-        native_unit_of_measurement="L/100km",
+        native_unit_of_measurement="L/100 km",
         icon="mdi:gas-station",
         available_fn=lambda vehicle: vehicle.has_combustion_engine(),
         unit_fn=_determine_fuel_consumption_unit,
