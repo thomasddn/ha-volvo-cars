@@ -2,9 +2,9 @@ name: Stale
 
 on:
   schedule:
-    - cron: '23 4 * * *'
+    - cron: "23 4 * * *"
   workflow_dispatch:
-  
+
 jobs:
   stale:
     name: Close stale issues & discussions
@@ -24,8 +24,9 @@ jobs:
           days-before-pr-close: -1
           stale-issue-label: stale
           stale-issue-message: >
-            This issue has now been marked as stale and will be closed in 2 days
-            if no further activity occurs.
+            This issue has been marked as stale due to inactivity. If no response
+            is provided within 2 days, it will be automatically closed. Feel free
+            to comment below if you'd like to keep it open.
 
       - name: Stale discussions
         uses: steffen-karlsson/stalesweeper@v1.1.1
