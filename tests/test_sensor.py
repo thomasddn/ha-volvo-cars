@@ -57,7 +57,7 @@ async def test_ha_unit_conversion(
             "sensor.volvo_myvolvo_average_fuel_consumption",
             OPT_UNIT_LITER_PER_100KM,
             "7.2",
-            "L/100km",
+            "L/100 km",
         ),
         (
             "sensor.volvo_myvolvo_average_fuel_consumption",
