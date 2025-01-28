@@ -1,0 +1,1244 @@
+{
+    "common": {
+        "api_timestamp": "API tidsstämpel",
+        "car_error": "Bilfel",
+        "completed": "Avslutad",
+        "connection_failure": "Anslutningsfel",
+        "delivered": "Levererad",
+        "door_open": "Dörr öppen",
+        "error": "Fel",
+        "high_pressure": "Högt tryck",
+        "last_refresh": "Senast uppdaterat",
+        "last_result": "Senaste resultat",
+        "low_pressure": "Lågt tryck",
+        "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
+        "ok": "OK",
+        "pressure": "Tryck",
+        "rejected": "Avvisad",
+        "running": "Löper",
+        "time_frame_passed": "Tidsram passerad",
+        "timeout": "Timeout",
+        "unknown": "Okänd",
+        "vcc_api_key": "Volvo API-nyckel",
+        "vehicle_in_sleep": "Fordonet i dvala",
+        "very_low_pressure": "Väldigt lågt tryck",
+        "waiting": "Väntar",
+        "wrong_usage": "Fel användning"
+    },
+    "config": {
+        "abort": {
+            "already_configured": "Bilen är redan konfigurerad",
+            "reauth_successful": "Autentiseringsuppgifterna har uppdaterats"
+        },
+        "error": {
+            "invalid_auth": "Autentiseringen misslyckades"
+        },
+        "step": {
+            "otp": {
+                "data": {
+                    "otp": "OTP"
+                },
+                "description": "Ange den OTP-kod du har fått per e-post"
+            },
+            "reauth_confirm": {
+                "description": "Volvo Cars-integrationen måste autentisera ditt konto igen.",
+                "title": "Autentiseringsuppgifterna har löpt ut"
+            },
+            "user": {
+                "data": {
+                    "friendly_name": "Eget namn",
+                    "password": "Lösenord",
+                    "username": "Användarnamn",
+                    "vcc_api_key": "Volvo API-nyckel",
+                    "vin": "Fordonets identifieringsnummer"
+                },
+                "data_description": {
+                    "friendly_name": "Detta värde används i enhets-ID (volvo_[friendly name]_[key]). Om det lämnas tomt kommer VIN att användas.",
+                    "vin": "VIN-koden är 17 tecken lång och börjar förmodligen med YV1 eller YV4."
+                },
+                "description": "Ange ditt Volvo-kontouppgifter, VIN och Volvo utvecklare API-nyckel (https://developer.volvocars.com/)."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "brake_fluid_level_warning": {
+                "name": "Bromsvätska",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "brake_light_center_warning": {
+                "name": "Bromsljus mitten",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "brake_light_left_warning": {
+                "name": "Bromsljus vänster",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "brake_light_right_warning": {
+                "name": "Bromsljus höger",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "coolant_level_warning": {
+                "name": "Kylvätskenivå",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "daytime_running_light_left_warning": {
+                "name": "Varselljus vänster",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "daytime_running_light_right_warning": {
+                "name": "Varselljus höger",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "door_front_left": {
+                "name": "Dörr vänster fram",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "door_front_right": {
+                "name": "Dörr höger fram",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "door_rear_left": {
+                "name": "Dörr vänster bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "door_rear_right": {
+                "name": "Dörr höger bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "engine_status": {
+                "name": "Motorstatus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "fog_light_front_warning": {
+                "name": "Dimljus vänster",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "fog_light_rear_warning": {
+                "name": "Dimljus höger",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "hazard_lights_warning": {
+                "name": "Varningsblinkers",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "high_beam_left_warning": {
+                "name": "Helljus vänster",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "high_beam_right_warning": {
+                "name": "Helljus höger",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "hood": {
+                "name": "Motorhuv",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "low_beam_left_warning": {
+                "name": "Halvljus vänster",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "low_beam_right_warning": {
+                "name": "Halvljus höger",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "oil_level_warning": {
+                "name": "Oljenivå",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    },
+                    "level": {
+                        "name": "Nivå",
+                        "state": {
+                            "no_warning": "OK",
+                            "service_required": "Service krävs",
+                            "too_high": "För högt",
+                            "too_low": "För lågt"
+                        }
+                    }
+                }
+            },
+            "position_light_front_left_warning": {
+                "name": "Positionsljus vänster fram",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "position_light_front_right_warning": {
+                "name": "Positionsljus höger fram",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "position_light_rear_left_warning": {
+                "name": "Positionsljus vänster bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "position_light_rear_right_warning": {
+                "name": "Positionsljus höger bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "registration_plate_light_warning": {
+                "name": "Nummerskyltsbelysning",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "reverse_lights_warning": {
+                "name": "Backljus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "service_warning": {
+                "name": "Service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    },
+                    "reason": {
+                        "name": "Orsak",
+                        "state": {
+                            "distance_driven_almost_time_for_service": "Snart dags för distansservice",
+                            "distance_driven_overdue_for_service": "Distanstjänst försenad",
+                            "distance_driven_time_for_service": "Dags för distansservice",
+                            "engine_hours_almost_time_for_service": "Snart dags för motorservice",
+                            "engine_hours_overdue_for_service": "Motorservice försenad",
+                            "engine_hours_time_for_service": "Tid för motorservice",
+                            "no_warning": "OK",
+                            "regular_maintenance_almost_time_for_service": "Snart dags för service",
+                            "regular_maintenance_overdue_for_service": "Service försenad",
+                            "regular_maintenance_time_for_service": "Tid för service",
+                            "unknown_warning": "Okänd varning"
+                        }
+                    }
+                }
+            },
+            "side_mark_lights_warning": {
+                "name": "Sidomarkeringsljus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "sunroof": {
+                "name": "Taklucka",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "tailgate": {
+                "name": "Baklucka",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "tank_lid": {
+                "name": "Tanklock",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "turn_indication_front_left_warning": {
+                "name": "Blinkers vänster fram",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "turn_indication_front_right_warning": {
+                "name": "Blinkers höger fram",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "turn_indication_rear_left_warning": {
+                "name": "Blinkers vänster bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "turn_indication_rear_right_warning": {
+                "name": "Blinkers höger bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "tyre_front_left": {
+                "name": "Däck vänster fram",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    },
+                    "pressure": {
+                        "name": "Tryck",
+                        "state": {
+                            "high_pressure": "Högt tryck",
+                            "low_pressure": "Lågt tryck",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Väldigt lågt tryck"
+                        }
+                    }
+                }
+            },
+            "tyre_front_right": {
+                "name": "Däck höger fram",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    },
+                    "pressure": {
+                        "name": "Tryck",
+                        "state": {
+                            "high_pressure": "Högt tryck",
+                            "low_pressure": "Lågt tryck",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Väldigt lågt tryck"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_left": {
+                "name": "Däck vänster bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    },
+                    "pressure": {
+                        "name": "Tryck",
+                        "state": {
+                            "high_pressure": "Högt tryck",
+                            "low_pressure": "Lågt tryck",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Väldigt lågt tryck"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_right": {
+                "name": "Däck höger bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    },
+                    "pressure": {
+                        "name": "Tryck",
+                        "state": {
+                            "high_pressure": "Högt tryck",
+                            "low_pressure": "Lågt tryck",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Väldigt lågt tryck"
+                        }
+                    }
+                }
+            },
+            "washer_fluid_level_warning": {
+                "name": "Spolarvätska",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "window_front_left": {
+                "name": "Fönster vänster fram",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "window_front_right": {
+                "name": "Fönster höger fram",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "window_rear_left": {
+                "name": "Fönster vänster bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "window_rear_right": {
+                "name": "Fönster höger bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            }
+        },
+        "button": {
+            "climatization_start": {
+                "name": "Starta klimatisering",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Senaste resultat",
+                        "state": {
+                            "car_error": "Bilfel",
+                            "completed": "Avslutad",
+                            "connection_failure": "Anslutningsfel",
+                            "delivered": "Levererad",
+                            "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
+                            "not_allowed_wrong_usage_mode": "Fel användning",
+                            "rejected": "Avvisad",
+                            "running": "Löper",
+                            "timeout": "Timeout",
+                            "unknown": "Okänd",
+                            "vehicle_in_sleep": "Fordonet i dvala",
+                            "waiting": "Väntar"
+                        }
+                    }
+                }
+            },
+            "climatization_stop": {
+                "name": "Stoppa klimatisering",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Senaste resultat",
+                        "state": {
+                            "car_error": "Bilfel",
+                            "completed": "Avslutad",
+                            "connection_failure": "Anslutningsfel",
+                            "delivered": "Levererad",
+                            "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
+                            "not_allowed_wrong_usage_mode": "Fel användning",
+                            "rejected": "Avvisad",
+                            "running": "Löper",
+                            "timeout": "Timeout",
+                            "unknown": "Okänd",
+                            "vehicle_in_sleep": "Fordonet i dvala",
+                            "waiting": "Väntar"
+                        }
+                    }
+                }
+            },
+            "engine_start": {
+                "name": "Starta motorn",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Senaste resultat",
+                        "state": {
+                            "car_error": "Bilfel",
+                            "completed": "Avslutad",
+                            "connection_failure": "Anslutningsfel",
+                            "delivered": "Levererad",
+                            "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
+                            "not_allowed_wrong_usage_mode": "Fel användning",
+                            "rejected": "Avvisad",
+                            "running": "Löper",
+                            "timeout": "Timeout",
+                            "unknown": "Okänd",
+                            "vehicle_in_sleep": "Fordonet i dvala",
+                            "waiting": "Väntar"
+                        }
+                    }
+                }
+            },
+            "engine_stop": {
+                "name": "Stoppa motorn",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Senaste resultat",
+                        "state": {
+                            "car_error": "Bilfel",
+                            "completed": "Avslutad",
+                            "connection_failure": "Anslutningsfel",
+                            "delivered": "Levererad",
+                            "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
+                            "not_allowed_wrong_usage_mode": "Fel användning",
+                            "rejected": "Avvisad",
+                            "running": "Löper",
+                            "timeout": "Timeout",
+                            "unknown": "Okänd",
+                            "vehicle_in_sleep": "Fordonet i dvala",
+                            "waiting": "Väntar"
+                        }
+                    }
+                }
+            },
+            "flash": {
+                "name": "Blinka",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Senaste resultat",
+                        "state": {
+                            "car_error": "Bilfel",
+                            "completed": "Avslutad",
+                            "connection_failure": "Anslutningsfel",
+                            "delivered": "Levererad",
+                            "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
+                            "not_allowed_wrong_usage_mode": "Fel användning",
+                            "rejected": "Avvisad",
+                            "timeout": "Timeout",
+                            "unknown": "Okänd",
+                            "vehicle_in_sleep": "Fordonet i dvala"
+                        }
+                    }
+                }
+            },
+            "honk": {
+                "name": "Tuta",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Senaste resultat",
+                        "state": {
+                            "car_error": "Bilfel",
+                            "completed": "Avslutad",
+                            "connection_failure": "Anslutningsfel",
+                            "delivered": "Levererad",
+                            "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
+                            "not_allowed_wrong_usage_mode": "Fel användning",
+                            "rejected": "Avvisad",
+                            "timeout": "Timeout",
+                            "unknown": "Okänd",
+                            "vehicle_in_sleep": "Fordonet i dvala"
+                        }
+                    }
+                }
+            },
+            "honk_flash": {
+                "name": "Tuta och blinka",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Senaste resultat",
+                        "state": {
+                            "car_error": "Bilfel",
+                            "completed": "Avslutad",
+                            "connection_failure": "Anslutningsfel",
+                            "delivered": "Levererad",
+                            "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
+                            "not_allowed_wrong_usage_mode": "Fel användning",
+                            "rejected": "Avvisad",
+                            "timeout": "Timeout",
+                            "unknown": "Okänd",
+                            "vehicle_in_sleep": "Fordonet i dvala"
+                        }
+                    }
+                }
+            },
+            "update_data": {
+                "name": "Uppdaterar data"
+            }
+        },
+        "device_tracker": {
+            "location": {
+                "name": "Plats",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "direction": {
+                        "name": "Riktning"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            }
+        },
+        "image": {
+            "exterior": {
+                "name": "Exteriör sida passagerare"
+            },
+            "exterior_back": {
+                "name": "Exteriör bak"
+            },
+            "exterior_back_driver": {
+                "name": "Exteriör bak förare"
+            },
+            "exterior_back_passenger": {
+                "name": "Exteriör bak passagerare"
+            },
+            "exterior_front": {
+                "name": "Exteriör främre"
+            },
+            "exterior_front_driver": {
+                "name": "Exteriör front förare"
+            },
+            "exterior_front_passenger": {
+                "name": "Exteriör främre passagerare"
+            },
+            "exterior_side_driver": {
+                "name": "Exteriör förarsida"
+            },
+            "interior": {
+                "name": "Interiör"
+            }
+        },
+        "lock": {
+            "lock": {
+                "name": "Centrallås",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    },
+                    "last_result": {
+                        "name": "Senaste resultat",
+                        "state": {
+                            "completed": "Avslutad",
+                            "connection_failure": "Anslutningsfel",
+                            "delivered": "Levererad",
+                            "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
+                            "not_allowed_wrong_usage_mode": "Fel användning",
+                            "rejected": "Avvisad",
+                            "timeout": "Timeout",
+                            "unable_to_lock_door_open": "Dörr öppen",
+                            "unknown": "Okänd",
+                            "unlock_time_frame_passed": "Tidsram passerad",
+                            "vehicle_in_sleep": "Fordonet i dvala"
+                        }
+                    }
+                }
+            },
+            "lock_reduced_guard": {
+                "name": "Reducerad larmnivå",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    },
+                    "last_result": {
+                        "name": "Senaste resultat",
+                        "state": {
+                            "completed": "Avslutad",
+                            "connection_failure": "Anslutningsfel",
+                            "delivered": "Levererad",
+                            "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
+                            "not_allowed_wrong_usage_mode": "Fel användning",
+                            "rejected": "Avvisad",
+                            "timeout": "Timeout",
+                            "unable_to_lock_door_open": "Dörr öppen",
+                            "unknown": "Okänd",
+                            "unlock_time_frame_passed": "Tidsram passerad",
+                            "vehicle_in_sleep": "Fordonet i dvala"
+                        }
+                    }
+                }
+            }
+        },
+        "number": {
+            "data_update_interval": {
+                "name": "Data uppdateringsintervall"
+            },
+            "engine_run_time": {
+                "name": "Motordriftstid"
+            }
+        },
+        "sensor": {
+            "api_request_count": {
+                "name": "API frågeantal"
+            },
+            "api_status": {
+                "name": "API status",
+                "state_attributes": {
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "availability": {
+                "name": "Bilanslutning",
+                "state": {
+                    "available": "Tillgänglig",
+                    "car_in_use": "Bilen används",
+                    "no_internet": "Ingen internet",
+                    "power_saving_mode": "Energisparläge",
+                    "unavailable": "Inte tillgänglig",
+                    "unspecified": "Okänd"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "average_energy_consumption": {
+                "name": "TM Medelförbrukning energi",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "average_energy_consumption_automatic": {
+                "name": "TA Medelförbrukning energi",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "average_energy_consumption_charge": {
+                "name": "Medelförbrukning energi sedan laddning",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "average_fuel_consumption": {
+                "name": "TM Medelförbrukning bränsle",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "average_fuel_consumption_automatic": {
+                "name": "TA Medelförbrukning bränsle",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "average_speed": {
+                "name": "TM Medelhastighet",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "average_speed_automatic": {
+                "name": "TA Medelhastighet",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "battery_capacity": {
+                "name": "Batterikapacitet",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "battery_charge_level": {
+                "name": "Batteriladdningsnivå",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "charging_connection_status": {
+                "name": "Status laddningsanslutning",
+                "state": {
+                    "connection_status_connected_ac": "Ansluten till växelström",
+                    "connection_status_connected_dc": "Ansluten till likström",
+                    "connection_status_disconnected": "Frånkopplad",
+                    "connection_status_fault": "Fel",
+                    "connection_status_unspecified": "Okänd"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "charging_system_status": {
+                "name": "Laddningsstatus",
+                "state": {
+                    "charging_system_charging": "Laddar",
+                    "charging_system_done": "Utfört",
+                    "charging_system_fault": "Fel",
+                    "charging_system_idle": "På tomgång",
+                    "charging_system_scheduled": "Schemalagd",
+                    "charging_system_unspecified": "Okänd"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "distance_to_empty_battery": {
+                "name": "Körsträcka till tomt batteri",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "distance_to_empty_tank": {
+                "name": "Körsträcka till tom tank",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "distance_to_service": {
+                "name": "Körsträcka till service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "engine_time_to_service": {
+                "name": "Motordriftstid till service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "estimated_charging_time": {
+                "name": "Beräknad laddningstid",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "fuel_amount": {
+                "name": "Bränslemängd",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "odometer": {
+                "name": "Vägmätare",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "time_to_service": {
+                "name": "Driftstid till service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "trip_meter_automatic": {
+                "name": "TA Trippmätare",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            },
+            "trip_meter_manual": {
+                "name": "TM Trippmätare",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstämpel"
+                    },
+                    "last_refresh": {
+                        "name": "Senast uppdaterat"
+                    }
+                }
+            }
+        }
+    },
+    "exceptions": {
+        "lock_failure": {
+            "message": "Det gick inte att skicka {command} till fordonet. Status: {status}. Meddelande: {message}"
+        }
+    },
+    "options": {
+        "abort": {
+            "no_options_available": "Inga alternativ tillgängliga för ditt fordon"
+        },
+        "step": {
+            "init": {
+                "sections": {
+                    "api": {
+                        "data": {
+                            "vcc_api_key": "Volvo API-nyckel"
+                        },
+                        "name": "API"
+                    },
+                    "images": {
+                        "data": {
+                            "image_bg_color": "Bakgrundsfärg bilder",
+                            "image_transparent": "Bilder med transparent bakgrund"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Endast tillämpligt om transparent inte är markerad."
+                        },
+                        "name": "Bilder"
+                    },
+                    "units": {
+                        "data": {
+                            "fuel_consumption_unit": "Bränsleförbrukningsenhet"
+                        },
+                        "name": "Enheter"
+                    }
+                }
+            }
+        }
+    },
+    "selector": {
+        "fuel_consumption_unit": {
+            "options": {
+                "l_100km": "L/100 km",
+                "mpg_uk": "mpg (Uk)",
+                "mpg_us": "mpg (US)"
+            }
+        },
+        "refresh_data_param": {
+            "options": {
+                "availability": "Tillgänglighet",
+                "brakes": "Bromsar",
+                "diagnostics": "Diagnostik",
+                "doors": "Dörrar",
+                "engine": "Motor",
+                "engine_status": "Motorstatus",
+                "fuel": "Bränsle",
+                "location": "Plats",
+                "odometer": "Vägmätare",
+                "recharge_status": "Laddningsstatus",
+                "statistics": "Statistik",
+                "tyres": "Däck",
+                "warnings": "Varningar",
+                "windows": "Fönster"
+            }
+        }
+    },
+    "services": {
+        "refresh_data": {
+            "description": "Uppdatera all data eller endast specifika delar.",
+            "fields": {
+                "data": {
+                    "description": "Lämna fältet tomt för att uppdatera all data",
+                    "name": "Data"
+                },
+                "entry": {
+                    "description": "Posten för att uppdatera. Lämna tomt för att uppdatera data för alla poster.",
+                    "name": "Post"
+                }
+            },
+            "name": "Uppdatera data"
+        }
+    }
+}
