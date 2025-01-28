@@ -1,5 +1,6 @@
 {
     "common": {
+        "api_timestamp": "API tijdstip",
         "car_error": "Voertuigfout",
         "completed": "Voltooid",
         "connection_failure": "Verbindingsfout",
@@ -7,6 +8,7 @@
         "door_open": "Deur open",
         "error": "Fout",
         "high_pressure": "Hoge druk",
+        "last_refresh": "Laatst ververst",
         "last_result": "Laatste resultaat",
         "low_pressure": "Lage druk",
         "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
@@ -61,68 +63,234 @@
     "entity": {
         "binary_sensor": {
             "brake_fluid_level_warning": {
-                "name": "Remvloeistof"
+                "name": "Remvloeistof",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "brake_light_center_warning": {
-                "name": "Remlicht centraal"
+                "name": "Remlicht centraal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "brake_light_left_warning": {
-                "name": "Remlicht links"
+                "name": "Remlicht links",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "brake_light_right_warning": {
-                "name": "Remlicht rechts"
+                "name": "Remlicht rechts",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "coolant_level_warning": {
-                "name": "Koelvloeistofpeil"
+                "name": "Koelvloeistofpeil",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "daytime_running_light_left_warning": {
-                "name": "Dagrijlicht links"
+                "name": "Dagrijlicht links",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "daytime_running_light_right_warning": {
-                "name": "Dagrijlicht rechts"
+                "name": "Dagrijlicht rechts",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "door_front_left": {
-                "name": "Deur linksvoor"
+                "name": "Deur linksvoor",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "door_front_right": {
-                "name": "Deur rechtsvoor"
+                "name": "Deur rechtsvoor",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "door_rear_left": {
-                "name": "Deur linksachter"
+                "name": "Deur linksachter",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "door_rear_right": {
-                "name": "Deur rechtsachter"
+                "name": "Deur rechtsachter",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "engine_status": {
-                "name": "Motorstatus"
+                "name": "Motorstatus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "fog_light_front_warning": {
-                "name": "Mistlampen vooraan"
+                "name": "Mistlampen vooraan",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "fog_light_rear_warning": {
-                "name": "Mistlampen achteraan"
+                "name": "Mistlampen achteraan",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "hazard_lights_warning": {
-                "name": "Waarschuwingslichten"
+                "name": "Waarschuwingslichten",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "high_beam_left_warning": {
-                "name": "Grootlicht links"
+                "name": "Grootlicht links",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "high_beam_right_warning": {
-                "name": "Grootlicht rechts"
+                "name": "Grootlicht rechts",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "hood": {
-                "name": "Motorkap"
+                "name": "Motorkap",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "low_beam_left_warning": {
-                "name": "Dimlicht links"
+                "name": "Dimlicht links",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "low_beam_right_warning": {
-                "name": "Dimlicht rechts"
+                "name": "Dimlicht rechts",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "oil_level_warning": {
                 "name": "Oliepeil",
                 "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    },
                     "level": {
                         "name": "Niveau",
                         "state": {
@@ -135,26 +303,80 @@
                 }
             },
             "position_light_front_left_warning": {
-                "name": "Positielicht linksvoor"
+                "name": "Positielicht linksvoor",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "position_light_front_right_warning": {
-                "name": "Positielicht rechtsvoor"
+                "name": "Positielicht rechtsvoor",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "position_light_rear_left_warning": {
-                "name": "Positielicht linksachter"
+                "name": "Positielicht linksachter",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "position_light_rear_right_warning": {
-                "name": "Positielicht rechtsachter"
+                "name": "Positielicht rechtsachter",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "registration_plate_light_warning": {
-                "name": "Kentekenverlichting"
+                "name": "Kentekenverlichting",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "reverse_lights_warning": {
-                "name": "Achteruitrijlichten"
+                "name": "Achteruitrijlichten",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "service_warning": {
                 "name": "Onderhoud",
                 "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    },
                     "reason": {
                         "name": "Reden",
                         "state": {
@@ -174,32 +396,102 @@
                 }
             },
             "side_mark_lights_warning": {
-                "name": "Zijmarkeringslichten"
+                "name": "Zijmarkeringslichten",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "sunroof": {
-                "name": "Schuifdak"
+                "name": "Schuifdak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "tailgate": {
-                "name": "Koffer"
+                "name": "Koffer",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "tank_lid": {
-                "name": "Tankdeksel"
+                "name": "Tankdeksel",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "turn_indication_front_left_warning": {
-                "name": "Richtingaanwijzer linksvoor"
+                "name": "Richtingaanwijzer linksvoor",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "turn_indication_front_right_warning": {
-                "name": "Richtingaanwijzer rechtsvoor"
+                "name": "Richtingaanwijzer rechtsvoor",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "turn_indication_rear_left_warning": {
-                "name": "Richtingaanwijzer linksachter"
+                "name": "Richtingaanwijzer linksachter",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "turn_indication_rear_right_warning": {
-                "name": "Richtingaanwijzer rechtsachter"
+                "name": "Richtingaanwijzer rechtsachter",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "tyre_front_left": {
                 "name": "Band linksvoor",
                 "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    },
                     "pressure": {
                         "name": "Druk",
                         "state": {
@@ -214,6 +506,12 @@
             "tyre_front_right": {
                 "name": "Band rechtsvoor",
                 "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    },
                     "pressure": {
                         "name": "Druk",
                         "state": {
@@ -228,6 +526,12 @@
             "tyre_rear_left": {
                 "name": "Band linksachter",
                 "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    },
                     "pressure": {
                         "name": "Druk",
                         "state": {
@@ -242,6 +546,12 @@
             "tyre_rear_right": {
                 "name": "Band rechtsachter",
                 "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    },
                     "pressure": {
                         "name": "Druk",
                         "state": {
@@ -254,19 +564,59 @@
                 }
             },
             "washer_fluid_level_warning": {
-                "name": "Sproeiervloeistof"
+                "name": "Sproeiervloeistof",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "window_front_left": {
-                "name": "Raam linksvoor"
+                "name": "Raam linksvoor",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "window_front_right": {
-                "name": "Raam rechtsvoor"
+                "name": "Raam rechtsvoor",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "window_rear_left": {
-                "name": "Raam linksachter"
+                "name": "Raam linksachter",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "window_rear_right": {
-                "name": "Raam rechtsachter"
+                "name": "Raam rechtsachter",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             }
         },
         "button": {
@@ -426,8 +776,14 @@
             "location": {
                 "name": "Locatie",
                 "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
                     "direction": {
                         "name": "Richting"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
                     }
                 }
             }
@@ -465,6 +821,12 @@
             "lock": {
                 "name": "Vergrendeling",
                 "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    },
                     "last_result": {
                         "name": "Laatste resultaat",
                         "state": {
@@ -486,6 +848,12 @@
             "lock_reduced_guard": {
                 "name": "Vergrendeling zonder alarm",
                 "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    },
                     "last_result": {
                         "name": "Laatste resultaat",
                         "state": {
@@ -518,7 +886,12 @@
                 "name": "Aantal API requests"
             },
             "api_status": {
-                "name": "API status"
+                "name": "API status",
+                "state_attributes": {
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "availability": {
                 "name": "Verbinding voertuig",
@@ -529,34 +902,114 @@
                     "power_saving_mode": "Spaarstand",
                     "unavailable": "Niet beschikbaar",
                     "unspecified": "Onbekend"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
                 }
             },
             "average_energy_consumption": {
-                "name": "Gemiddeld energieverbruik"
+                "name": "TM Gemiddeld energieverbruik",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "average_energy_consumption_automatic": {
-                "name": "Gemiddeld energieverbruik automatisch"
+                "name": "TA Gemiddeld energieverbruik",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "average_energy_consumption_charge": {
-                "name": "Gemiddeld energieverbruik sinds laden"
+                "name": "Gemiddeld energieverbruik sinds laden",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "average_fuel_consumption": {
-                "name": "Gemiddeld brandstofverbruik"
+                "name": "TM Gemiddeld brandstofverbruik",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "average_fuel_consumption_automatic": {
-                "name": "Gemiddeld brandstofverbruik automatisch"
+                "name": "TA Gemiddeld brandstofverbruik",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "average_speed": {
-                "name": "Gemiddelde snelheid"
+                "name": "TM Gemiddelde snelheid",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "average_speed_automatic": {
-                "name": "Gemiddelde snelheid automatisch"
+                "name": "TA Gemiddelde snelheid",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "battery_capacity": {
-                "name": "Batterijcapaciteit"
+                "name": "Batterijcapaciteit",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "battery_charge_level": {
-                "name": "Laadniveau batterij"
+                "name": "Laadniveau batterij",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "charging_connection_status": {
                 "name": "Status laadverbinding",
@@ -566,6 +1019,14 @@
                     "connection_status_disconnected": "Losgekoppeld",
                     "connection_status_fault": "Fout",
                     "connection_status_unspecified": "Onbekend"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
                 }
             },
             "charging_system_status": {
@@ -577,37 +1038,125 @@
                     "charging_system_idle": "Niet actief",
                     "charging_system_scheduled": "Gepland",
                     "charging_system_unspecified": "Onbekend"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
                 }
             },
             "distance_to_empty_battery": {
-                "name": "Afstand tot lege batterij"
+                "name": "Afstand tot lege batterij",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "distance_to_empty_tank": {
-                "name": "Afstand tot lege tank"
+                "name": "Afstand tot lege tank",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "distance_to_service": {
-                "name": "Afstand tot onderhoud"
+                "name": "Afstand tot onderhoud",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "engine_time_to_service": {
-                "name": "Motortijd tot onderhoud"
+                "name": "Motortijd tot onderhoud",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "estimated_charging_time": {
-                "name": "Geschatte laadtijd"
+                "name": "Geschatte laadtijd",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "fuel_amount": {
-                "name": "Brandstofhoeveelheid"
+                "name": "Brandstofhoeveelheid",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "odometer": {
-                "name": "Kilometerstand"
+                "name": "Kilometerstand",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "time_to_service": {
-                "name": "Tijd tot onderhoud"
+                "name": "Tijd tot onderhoud",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "trip_meter_automatic": {
-                "name": "Tripmeter automatisch"
+                "name": "TA Afstand",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             },
             "trip_meter_manual": {
-                "name": "Tripmeter manueel"
+                "name": "TM Afstand",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tijdstip"
+                    },
+                    "last_refresh": {
+                        "name": "Laatst ververst"
+                    }
+                }
             }
         }
     },
@@ -652,10 +1201,44 @@
     "selector": {
         "fuel_consumption_unit": {
             "options": {
-                "l_100km": "l / 100 km",
+                "l_100km": "L/100 km",
                 "mpg_uk": "mpg (VK)",
                 "mpg_us": "mpg (VS)"
             }
+        },
+        "refresh_data_param": {
+            "options": {
+                "availability": "Beschikbaarheid",
+                "brakes": "Remmen",
+                "diagnostics": "Diagnostiek",
+                "doors": "Deuren",
+                "engine": "Motor",
+                "engine_status": "Motorstatus",
+                "fuel": "Brandstof",
+                "location": "Locatie",
+                "odometer": "Kilometerteller",
+                "recharge_status": "Oplaadstatus",
+                "statistics": "Statistieken",
+                "tyres": "Banden",
+                "warnings": "Waarschuwingen",
+                "windows": "Ramen"
+            }
+        }
+    },
+    "services": {
+        "refresh_data": {
+            "description": "Ververs alle gegevens of alleen specifieke delen.",
+            "fields": {
+                "data": {
+                    "description": "Laat het veld leeg om alle gegevens te verversen.",
+                    "name": "Gegevens"
+                },
+                "entry": {
+                    "description": "Het record dat moet worden ververst. Leeg laten om de gegevens voor alle records te verversen.",
+                    "name": "Record"
+                }
+            },
+            "name": "Gegevens verversen"
         }
     }
 }
