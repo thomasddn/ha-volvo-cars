@@ -6,7 +6,6 @@ from typing import Any, cast
 
 from aiohttp import ClientError, ClientSession, ClientTimeout, hdrs
 
-from .data import DataCache
 from .models import AuthorizationModel, TokenResponse, VolvoAuthException
 from .util import redact_data
 
@@ -64,11 +63,19 @@ class VolvoCarsAuthApi:
     def __init__(
         self,
         client: ClientSession,
+        *,
+        client_id: str,
+        auth_header: dict[str, str],
+        default_headers: dict[str, str],
         on_token_refresh: Callable[[TokenResponse], None] | None = None,
     ) -> None:
         """Initialize Volvo Cars Authentication API."""
         self._client = client
+        self._client_id = client_id
+        self._default_headers = default_headers
         self._on_token_refresh = on_token_refresh
+
+        self._all_headers = default_headers | auth_header
 
     async def async_authenticate(
         self, username: str, password: str
@@ -122,14 +129,8 @@ class VolvoCarsAuthApi:
         return AuthorizationModel("COMPLETED", token=auth)
 
     async def _async_auth_init(self) -> dict[str, Any]:
-        helper_data = await DataCache.async_get_data(self._client)
-        client_id = DataCache.deobfuscate_str(
-            helper_data["h"]["a"]["value"].split(" ")[1]
-        ).split(":")[0]
-
-        headers = await self._async_get_default_headers()
         payload = {
-            "client_id": client_id,
+            "client_id": self._client_id,
             "response_type": "code",
             "response_mode": "pi.flow",
             "acr_values": "urn:volvoid:aal:bronze:2sv",
@@ -139,7 +140,7 @@ class VolvoCarsAuthApi:
         return await self._async_request(
             hdrs.METH_POST,
             _AUTH_URL,
-            headers=headers,
+            headers=self._default_headers,
             data=payload,
             name="auth init",
         )
@@ -147,49 +148,44 @@ class VolvoCarsAuthApi:
     async def _async_username_pass(
         self, url: str, username: str, password: str
     ) -> dict[str, Any]:
-        headers = await self._async_get_default_headers()
         params = {"action": "checkUsernamePassword"}
         payload = {"username": username, "password": password}
 
         return await self._async_request(
             hdrs.METH_POST,
             url,
-            headers=headers,
+            headers=self._default_headers,
             params=params,
             json=payload,
             name="credentials",
         )
 
     async def _async_send_otp(self, url: str, otp: str) -> dict[str, Any]:
-        headers = await self._async_get_default_headers()
         payload = {"otp": otp}
 
         return await self._async_request(
             hdrs.METH_POST,
             url,
-            headers=headers,
+            headers=self._default_headers,
             json=payload,
             name="OTP",
         )
 
     async def _async_continue_auth(self, url: str) -> dict[str, Any]:
-        headers = await self._async_get_default_headers()
-
         return await self._async_request(
             hdrs.METH_GET,
             url,
-            headers=headers,
+            headers=self._default_headers,
             name="auth cont",
         )
 
     async def _async_request_token(self, code: str) -> TokenResponse | None:
-        headers = await self._async_get_all_headers()
         payload = {"code": code, "grant_type": "authorization_code"}
 
         data = await self._async_request(
             hdrs.METH_POST,
             _TOKEN_URL,
-            headers=headers,
+            headers=self._all_headers,
             data=payload,
             name="tokens",
         )
@@ -197,13 +193,12 @@ class VolvoCarsAuthApi:
         return TokenResponse.from_dict(data)
 
     async def _async_refresh_token(self, refresh_token: str) -> TokenResponse | None:
-        headers = await self._async_get_all_headers()
         payload = {"refresh_token": refresh_token, "grant_type": "refresh_token"}
 
         data = await self._async_request(
             hdrs.METH_POST,
             _TOKEN_URL,
-            headers=headers,
+            headers=self._all_headers,
             data=payload,
             name="token refresh",
         )
@@ -216,21 +211,6 @@ class VolvoCarsAuthApi:
         code = data["authorizeResponse"]["code"]
         auth = await self._async_request_token(code)
         return AuthorizationModel(status, token=auth)
-
-    async def _async_get_default_headers(self) -> dict[str, str]:
-        helper_data = await DataCache.async_get_data(self._client)
-        p = helper_data["h"]["p"]
-        return {p["key"]: p["value"]}
-
-    async def _async_get_all_headers(self) -> dict[str, str]:
-        helper_data = await DataCache.async_get_data(self._client)
-        p = helper_data["h"]["p"]
-        a = helper_data["h"]["a"]
-
-        return {
-            p["key"]: p["value"],
-            a["key"]: a["value"],
-        }
 
     async def _async_request(
         self,
@@ -270,7 +250,7 @@ class VolvoCarsAuthApi:
                 return data
 
         except (ClientError, TimeoutError) as ex:
-            _LOGGER.debug("Request [%s] error: %s", name, ex)
+            _LOGGER.debug("Request [%s] error: %s", name, ex.__class__.__name__)
             raise VolvoAuthException(ex.__class__.__name__) from ex
 
     def _create_exception(self, data: dict[str, Any]) -> VolvoAuthException:

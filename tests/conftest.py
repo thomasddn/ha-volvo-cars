@@ -10,6 +10,7 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.volvo_cars.const import CONF_VCC_API_KEY, CONF_VIN, DOMAIN
 from custom_components.volvo_cars.coordinator import VolvoCarsData
+from custom_components.volvo_cars.data_manager import ApiData, ApiDataManager
 from custom_components.volvo_cars.store import VolvoCarsStoreManager
 from custom_components.volvo_cars.volvo.auth import VolvoCarsAuthApi
 from custom_components.volvo_cars.volvo.models import (
@@ -63,6 +64,7 @@ async def mock_api(request: SubRequest) -> AsyncGenerator[None, None]:
             "custom_components.volvo_cars.VolvoCarsApi",
             autospec=True,
         ) as mock_api,
+        patch.object(ApiDataManager, "async_get_api_data") as mock_data_manager,
     ):
         vehicle_data = load_json_object_fixture("vehicle", model)
         vehicle = VolvoCarsVehicle.from_dict(vehicle_data)
@@ -118,6 +120,8 @@ async def mock_api(request: SubRequest) -> AsyncGenerator[None, None]:
                 id_token="",
             ),
         )
+
+        mock_data_manager.return_value = ApiData("", {}, {})
 
         yield
 

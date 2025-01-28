@@ -34,10 +34,11 @@ from .coordinator import (
     VolvoCarsData,
     VolvoCarsDataCoordinator,
 )
+from .data_manager import VOLVO_CARS_KEY
 from .entity import get_entity_id
+from .factory import async_create_auth_api
 from .store import VolvoCarsStoreManager
 from .volvo.api import VolvoCarsApi
-from .volvo.auth import VolvoCarsAuthApi
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -96,7 +97,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) ->
         get_setting(entry, CONF_VIN),
         get_setting(entry, CONF_VCC_API_KEY),
     )
-    auth_api = VolvoCarsAuthApi(client, api.update_access_token)
+    auth_api = await async_create_auth_api(hass, client, api.update_access_token)
 
     # Setup token refresh
     token_coordinator = TokenCoordinator(hass, entry, store, auth_api)
@@ -179,8 +180,11 @@ async def async_migrate_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) 
 async def async_unload_entry(hass: HomeAssistant, entry: VolvoCarsConfigEntry) -> bool:
     """Unload a config entry."""
     _LOGGER.debug("%s - Unloading entry", entry.entry_id)
-    entry.runtime_data.token_coordinator.cancel_refresh()
-    return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
+
+    if unload_ok := await hass.config_entries.async_unload_platforms(entry, PLATFORMS):
+        entry.runtime_data.token_coordinator.cancel_refresh()
+
+    return unload_ok
 
 
 async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
@@ -192,6 +196,8 @@ async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
     if entry.unique_id:
         store = VolvoCarsStoreManager(hass, entry.unique_id)
         await store.async_remove()
+
+    cleanup(hass, entry)
 
 
 async def _async_reset_request_count_if_missed(
@@ -246,3 +252,18 @@ def _remove_old_entities(
         if entry:
             _LOGGER.debug("Removing %s", entry.entity_id)
             er.async_remove(entry.entity_id)
+
+
+def cleanup(hass: HomeAssistant, entry: ConfigEntry) -> None:
+    """Remove data file if no more entries are loaded."""
+
+    if (data_manager := hass.data.get(VOLVO_CARS_KEY)) is None:
+        return
+
+    entries = hass.config_entries.async_loaded_entries(DOMAIN)
+    count = len(entries)
+
+    # During unloading of the entry, it is not marked as unloaded yet. So
+    # count can be 1 if it is the last one.
+    if count == 0 or (count == 1 and entries[0].entry_id == entry.entry_id):
+        data_manager.shutdown()

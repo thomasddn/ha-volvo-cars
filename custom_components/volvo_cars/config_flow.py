@@ -15,7 +15,6 @@ from homeassistant.const import CONF_FRIENDLY_NAME, CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import callback
 from homeassistant.data_entry_flow import section
 from homeassistant.exceptions import ConfigEntryError
-from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.selector import (
     ColorRGBSelector,
     SelectSelector,
@@ -36,8 +35,8 @@ from .const import (
     OPT_UNIT_MPG_US,
 )
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsData
+from .factory import async_create_auth_api
 from .store import VolvoCarsStoreManager
-from .volvo.auth import VolvoCarsAuthApi
 from .volvo.models import AuthorizationModel, VolvoAuthException
 
 _LOGGER = logging.getLogger(__name__)
@@ -104,8 +103,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             try:
-                client = async_get_clientsession(self.hass)
-                api = VolvoCarsAuthApi(client)
+                api = await async_create_auth_api(self.hass)
 
                 if self._auth_result and self._auth_result.next_url:
                     self._auth_result = await api.async_request_token(
@@ -182,9 +180,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             self._abort_if_unique_id_configured()
 
         try:
-            client = async_get_clientsession(self.hass)
-            api = VolvoCarsAuthApi(client)
-
+            api = await async_create_auth_api(self.hass)
             result = await api.async_authenticate(
                 user_input[CONF_USERNAME], user_input[CONF_PASSWORD]
             )
