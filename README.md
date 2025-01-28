@@ -2,7 +2,7 @@
 
 This integration provides access to your Volvo car, provided your model and region are supported by Volvo's public API. This is not a one-to-one replacement for the official Volvo app, as the app has access to more resources than those available through the public API.
 
-Supported regions include: Europe, the Middle East, and Africa. For a complete list of supported countries, check out [Volvo's API documentation](https://developer.volvocars.com/terms-and-conditions/apis-supported-locations/). However, users have reported it does work in the US and Brazil. So even if you're not in one of the listed countries, you might still get lucky!
+Supported regions include: Europe, the Middle East, and Africa. For a complete list of supported countries, check out [Volvo's API documentation](https://developer.volvocars.com/terms-and-conditions/apis-supported-locations/). Even if you're not in one of the listed countries, you might still get lucky! You'll need to try it to find out.
 
 Now check out the features section for details on what you'll get!
 
@@ -21,7 +21,12 @@ Now check out the features section for details on what you'll get!
 
 - Multiple cars
 - Multiple accounts
-- Translations (but [need help](#contributing) on this 🙏)
+- Multiple languages
+
+<br>
+
+[![Lokalise](docs/Lokalise.png)](https://lokalise.com/)<br>
+Thanks to Lokalise, this project manages translations hassle-free. Head over to the [translations section](#contributing) to see how you can contribute — it's super easy, I promise!
 
 ### Entities
 
@@ -84,6 +89,13 @@ The action's status is included in the attributes.
 - Odometer
 - Trip meter
 
+#### Attributes
+
+Most entities have these attributes:
+
+- `api_timestamp`: Timestamp indicating the last time the API retrieved the value from the vehicle.
+- `last_refresh`: Timestamp indicating the last time the value was retrieved from the API.
+
 #### Additional entities
 
 | Entity               | Type   | Description                                                                                                                                 |
@@ -92,6 +104,12 @@ The action's status is included in the attributes.
 | API request counter  | Sensor | Shows the number of requests made by this integration.                                                                                      |
 | Data update interval | Number | Set the data update interval. Default is 135 seconds. Volvo gives you 10.000 requests a day (per API key), so you may want to do some math! |
 | Update data          | Button | Force a data refresh.                                                                                                                       |
+
+## 🤖 Actions
+
+The integration allows you to refresh all data, or only specific parts of the data, by using the `Refresh data` action. This action can be used in automations.
+
+Triggering a data refresh with this action will reset the current refresh timer, postponing the next scheduled full data refresh.
 
 ## 🛠️ Installation
 
@@ -149,12 +167,6 @@ Once a car has been added, you can configure additional options for it.
 | Fuel consumption unit         | You can choose between `l/100km`, `mpg (UK)` and `mpg (US)`.              | Cars with a combustion engine.                        |
 | Images transparent background | Whether or not you want transparent a background for the exterior images. | Depending on the image URL provided by the Volvo API. |
 | Images background color       | Choose the background color for the exterior images.                      | Depending on the image URL provided by the Volvo API. |
-
-## 🤖 Actions
-
-The integration allows you to refresh all data or only specific parts of the data as needed by using the `Refresh data` action. This action can be used in automations.
-
-Triggering a data refresh with this action will reset the current refresh timer, postponing the next scheduled full data refresh.
 
 ## 🛟 Need help?
 
