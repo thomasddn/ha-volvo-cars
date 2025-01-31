@@ -101,7 +101,10 @@ class VolvoCarsDeviceTracker(VolvoCarsEntity, TrackerEntity):
             )
 
     def _set_picture(self, event: Event[EventStateChangedData]) -> None:
-        url = event.data["new_state"].attributes.get(ATTR_ENTITY_PICTURE, None)
-        if url:
-            self._attr_extra_state_attributes[ATTR_ENTITY_PICTURE] = url
-            self.schedule_update_ha_state()
+        state = event.data["new_state"]
+
+        if state:
+            url = state.attributes.get(ATTR_ENTITY_PICTURE, None)
+            if url:
+                self._attr_extra_state_attributes[ATTR_ENTITY_PICTURE] = url
+                self.schedule_update_ha_state()
