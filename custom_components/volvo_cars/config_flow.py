@@ -11,12 +11,19 @@ import voluptuous as vol
 
 from homeassistant import config_entries
 from homeassistant.config_entries import SOURCE_REAUTH, ConfigEntry, ConfigFlowResult
-from homeassistant.const import CONF_FRIENDLY_NAME, CONF_PASSWORD, CONF_USERNAME
+from homeassistant.const import (
+    CONF_FRIENDLY_NAME,
+    CONF_PASSWORD,
+    CONF_USERNAME,
+    Platform,
+)
 from homeassistant.core import callback
 from homeassistant.data_entry_flow import section
 from homeassistant.exceptions import ConfigEntryError
 from homeassistant.helpers.selector import (
     ColorRGBSelector,
+    EntitySelector,
+    EntitySelectorConfig,
     SelectSelector,
     SelectSelectorConfig,
 )
@@ -27,6 +34,7 @@ from .const import (
     CONF_VIN,
     DOMAIN,
     MANUFACTURER,
+    OPT_DEVICE_TRACKER_PICTURE,
     OPT_FUEL_CONSUMPTION_UNIT,
     OPT_IMG_BG_COLOR,
     OPT_IMG_TRANSPARENT,
@@ -47,7 +55,16 @@ def get_setting(entry: VolvoCarsConfigEntry, key: str) -> Any:
     if key in entry.options:
         return entry.options[key]
 
-    return entry.data[key]
+    return entry.data.get(key, None)
+
+
+def _create_section(name: str, schema: dict[vol.Marker, Any]) -> dict[vol.Marker, Any]:
+    return {
+        vol.Required(name): section(
+            vol.Schema(schema),
+            {"collapsed": True},
+        )
+    }
 
 
 class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
@@ -248,7 +265,7 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
     ) -> ConfigFlowResult:
         """Manage the options."""
         if user_input is not None:
-            # Remove sections
+            # Remove sections from input
             flat_input = {}
             for key, value in user_input.items():
                 if isinstance(value, dict):
@@ -263,20 +280,33 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
 
         coordinator = self.config_entry.runtime_data.coordinator
 
-        schema: dict[vol.Marker, Any] = self._create_section(
-            "api",
-            {
-                vol.Required(
-                    CONF_VCC_API_KEY,
-                    default=get_setting(self.config_entry, CONF_VCC_API_KEY),
-                ): str
-            },
-        )
+        schema: dict[vol.Marker, Any] = {
+            **_create_section(
+                "api",
+                {
+                    vol.Required(
+                        CONF_VCC_API_KEY,
+                        default=get_setting(self.config_entry, CONF_VCC_API_KEY),
+                    ): str
+                },
+            ),
+            **_create_section(
+                "device_tracker",
+                {
+                    vol.Optional(
+                        OPT_DEVICE_TRACKER_PICTURE,
+                        default=get_setting(
+                            self.config_entry, OPT_DEVICE_TRACKER_PICTURE
+                        ),
+                    ): EntitySelector(EntitySelectorConfig(domain=Platform.IMAGE))
+                },
+            ),
+        }
 
-        # Check engine
+        # Units
         if coordinator.vehicle.has_combustion_engine():
             schema.update(
-                self._create_section(
+                _create_section(
                     "units",
                     {
                         vol.Required(OPT_FUEL_CONSUMPTION_UNIT): SelectSelector(
@@ -294,13 +324,13 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
                 )
             )
 
-        # Check image URL
+        # Images
         url = coordinator.vehicle.images.exterior_image_url
         url_parts = parse.urlparse(url)
 
         if url_parts.netloc.startswith("cas"):
             schema.update(
-                self._create_section(
+                _create_section(
                     "images",
                     {
                         vol.Optional(OPT_IMG_TRANSPARENT, default=True): bool,
@@ -321,13 +351,3 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
                 vol.Schema(schema), self.config_entry.options
             ),
         )
-
-    def _create_section(
-        self, name: str, schema: dict[vol.Marker, Any]
-    ) -> dict[vol.Marker, Any]:
-        return {
-            vol.Required(name): section(
-                vol.Schema(schema),
-                {"collapsed": True},
-            )
-        }

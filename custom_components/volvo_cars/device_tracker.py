@@ -6,11 +6,13 @@ from homeassistant.components.device_tracker.config_entry import (
     TrackerEntity,
     TrackerEntityDescription,
 )
-from homeassistant.const import Platform
-from homeassistant.core import HomeAssistant
+from homeassistant.const import ATTR_ENTITY_PICTURE, Platform
+from homeassistant.core import Event, EventStateChangedData, HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.event import async_track_state_change_event
 
-from .const import ATTR_API_TIMESTAMP, ATTR_DIRECTION
+from .config_flow import get_setting
+from .const import ATTR_API_TIMESTAMP, ATTR_DIRECTION, OPT_DEVICE_TRACKER_PICTURE
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity
 from .entity_description import VolvoCarsDescription
@@ -64,6 +66,24 @@ class VolvoCarsDeviceTracker(VolvoCarsEntity, TrackerEntity):
         """Initialize."""
         super().__init__(coordinator, description, Platform.DEVICE_TRACKER)
 
+        picture_entity_id: str | None = get_setting(
+            self.coordinator.config_entry, OPT_DEVICE_TRACKER_PICTURE
+        )
+
+        if picture_entity_id:
+            self.coordinator.config_entry.async_on_unload(
+                async_track_state_change_event(
+                    self.coordinator.hass, picture_entity_id, self._set_picture
+                )
+            )
+        elif (
+            self.coordinator.vehicle.images
+            and self.coordinator.vehicle.images.exterior_image_url
+        ):
+            self._attr_extra_state_attributes[ATTR_ENTITY_PICTURE] = (
+                self.coordinator.vehicle.images.exterior_image_url
+            )
+
     def _update_state(self, api_field: VolvoCarsApiBaseModel | None) -> None:
         if not isinstance(api_field, VolvoCarsLocation):
             return
@@ -79,3 +99,9 @@ class VolvoCarsDeviceTracker(VolvoCarsEntity, TrackerEntity):
             self._attr_extra_state_attributes[ATTR_API_TIMESTAMP] = (
                 api_field.properties.timestamp
             )
+
+    def _set_picture(self, event: Event[EventStateChangedData]) -> None:
+        url = event.data["new_state"].attributes.get(ATTR_ENTITY_PICTURE, None)
+        if url:
+            self._attr_extra_state_attributes[ATTR_ENTITY_PICTURE] = url
+            self.schedule_update_ha_state()

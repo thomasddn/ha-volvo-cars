@@ -163,7 +163,8 @@ Once a car has been added, you can configure additional options for it.
 
 | Option                        | Description                                                               | Availability                                          |
 | ----------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------- |
-| Volvo API key                 | The generated API key in the developer account.                           |
+| Volvo API key                 | The generated API key in the developer account.                           |                                                       |
+| Device tracker picture        | The picture that will be shown on the map.                                |                                                       |
 | Fuel consumption unit         | You can choose between `l/100km`, `mpg (UK)` and `mpg (US)`.              | Cars with a combustion engine.                        |
 | Images transparent background | Whether or not you want transparent a background for the exterior images. | Depending on the image URL provided by the Volvo API. |
 | Images background color       | Choose the background color for the exterior images.                      | Depending on the image URL provided by the Volvo API. |

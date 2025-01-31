@@ -27,6 +27,7 @@ DATA_REQUEST_COUNT = "api_request_count"
 
 MANUFACTURER = "Volvo"
 
+OPT_DEVICE_TRACKER_PICTURE = "device_tracker_picture"
 OPT_FUEL_CONSUMPTION_UNIT = "fuel_consumption_unit"
 OPT_IMG_BG_COLOR = "image_bg_color"
 OPT_IMG_TRANSPARENT = "image_transparent"
