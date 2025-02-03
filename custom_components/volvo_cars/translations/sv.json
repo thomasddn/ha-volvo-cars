@@ -1178,6 +1178,12 @@
                         },
                         "name": "API"
                     },
+                    "device_tracker": {
+                        "data": {
+                            "device_tracker_picture": "Bild"
+                        },
+                        "name": "Enhetsspårare"
+                    },
                     "images": {
                         "data": {
                             "image_bg_color": "Bakgrundsfärg bilder",
