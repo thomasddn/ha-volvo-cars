@@ -1,0 +1,1250 @@
+{
+    "common": {
+        "api_timestamp": "API tidsstempel",
+        "car_error": "Kjøretøy feil",
+        "completed": "Ferdig",
+        "connection_failure": "Tilkobling feilet",
+        "delivered": "Levert",
+        "door_open": "Dør åpen",
+        "error": "Feil",
+        "high_pressure": "Høyt trykk",
+        "last_refresh": "Siste oppdatering",
+        "last_result": "Siste resultat",
+        "low_pressure": "Lavt trykk",
+        "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
+        "ok": "OK",
+        "pressure": "Trykk",
+        "rejected": "Avvist",
+        "running": "Kjører",
+        "time_frame_passed": "Tiden utløpt",
+        "timeout": "Tiden er ute",
+        "unknown": "Ukjent",
+        "vcc_api_key": "Volvo API nøkkel",
+        "vehicle_in_sleep": "Kjøretøy avslått",
+        "very_low_pressure": "Veldig lavt trykk",
+        "waiting": "Venter",
+        "wrong_usage": "Feil bruk"
+    },
+    "config": {
+        "abort": {
+            "already_configured": "Bilen er allerede konfigurert.",
+            "reauth_successful": "Oppdatering av autentiseringsinformasjon vellykket."
+        },
+        "error": {
+            "invalid_auth": "Oppdatering av autentiseringsinformasjon misslyktes."
+        },
+        "step": {
+            "otp": {
+                "data": {
+                    "otp": "OTP"
+                },
+                "description": "Skriv inn OTP-en du mottok i e-posten din."
+            },
+            "reauth_confirm": {
+                "description": "Volvo Cars-integrasjonen må autentiseres på nytt",
+                "title": "Autentiseringsinformasjon utløpt"
+            },
+            "user": {
+                "data": {
+                    "friendly_name": "Kallenavn",
+                    "password": "Passord",
+                    "username": "Brukernavn",
+                    "vcc_api_key": "Volvo API nøkkel",
+                    "vin": "VIN nummer"
+                },
+                "data_description": {
+                    "friendly_name": "Denne verdien brukes i enhets-ID-en (volvo_[vennlig navn]_[identifikator]). Hvis den står tom, vil VIN bli brukt.",
+                    "vin": "VIN nummer innholder 17 tegn, og starter vanligvis med YV1 eller YV4"
+                },
+                "description": "Skriv inn din Volvo-konto legitimasjon, VIN og Volvo Developers API-nøkkel (https://developer.volvocars.com/)."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "brake_fluid_level_warning": {
+                "name": "Bremesevæske",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "brake_light_center_warning": {
+                "name": "Bremselys midtre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "brake_light_left_warning": {
+                "name": "Bremselys venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "brake_light_right_warning": {
+                "name": "Bremselys høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "coolant_level_warning": {
+                "name": "Kjølevæskenivå",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "daytime_running_light_left_warning": {
+                "name": "Kjørelys venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "daytime_running_light_right_warning": {
+                "name": "Kjørelys høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "door_front_left": {
+                "name": "Lys framdør venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "door_front_right": {
+                "name": "Lys framdør høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "door_rear_left": {
+                "name": "Lys bakdør venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "door_rear_right": {
+                "name": "Lys bakdør høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "engine_status": {
+                "name": "Status motor",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "fog_light_front_warning": {
+                "name": "Tåkelys foran",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "fog_light_rear_warning": {
+                "name": "Tåkelys bak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "hazard_lights_warning": {
+                "name": "Nødblink",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "high_beam_left_warning": {
+                "name": "Fjernlys venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "high_beam_right_warning": {
+                "name": "Fjernlys høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "hood": {
+                "name": "Panser",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "low_beam_left_warning": {
+                "name": "Nærlys venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "low_beam_right_warning": {
+                "name": "Nærlys høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "oil_level_warning": {
+                "name": "Oljenivå",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    },
+                    "level": {
+                        "name": "Nivå",
+                        "state": {
+                            "no_warning": "OK",
+                            "service_required": "Service påkrevd",
+                            "too_high": "For høyt",
+                            "too_low": "For lavt"
+                        }
+                    }
+                }
+            },
+            "position_light_front_left_warning": {
+                "name": "Markeringslys foran venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "position_light_front_right_warning": {
+                "name": "Markeringslys foran høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "position_light_rear_left_warning": {
+                "name": "Markeringslys bak venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "position_light_rear_right_warning": {
+                "name": "Markeringslys bak høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "registration_plate_light_warning": {
+                "name": "Kjennemerkelys",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "reverse_lights_warning": {
+                "name": "Ryggelys",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "service_warning": {
+                "name": "Service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    },
+                    "reason": {
+                        "name": "Årsak",
+                        "state": {
+                            "distance_driven_almost_time_for_service": "Snart tid for service basert på kjørelengde",
+                            "distance_driven_overdue_for_service": "Servicetidspunkt basert på kjørelengde overskredet",
+                            "distance_driven_time_for_service": "Tid for service basert på kjørelengde",
+                            "engine_hours_almost_time_for_service": "Straks tid for motorservice",
+                            "engine_hours_overdue_for_service": "Tid for motorservice utgått",
+                            "engine_hours_time_for_service": "Tid for motorservice",
+                            "no_warning": "OK",
+                            "regular_maintenance_almost_time_for_service": "Straks tid for service",
+                            "regular_maintenance_overdue_for_service": "Tid til service passert",
+                            "regular_maintenance_time_for_service": "Tid til service",
+                            "unknown_warning": "Ukjent advarsel"
+                        }
+                    }
+                }
+            },
+            "side_mark_lights_warning": {
+                "name": "Sidemarkeringslys",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "sunroof": {
+                "name": "Soltak",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "tailgate": {
+                "name": "Bakluke",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "tank_lid": {
+                "name": "Tanklokk",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "turn_indication_front_left_warning": {
+                "name": "Blinklys foran venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "turn_indication_front_right_warning": {
+                "name": "Blinklys foran høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "turn_indication_rear_left_warning": {
+                "name": "Blinklys bak venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "turn_indication_rear_right_warning": {
+                "name": "Blinklys bak høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "tyre_front_left": {
+                "name": "Dekktrykk foran venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    },
+                    "pressure": {
+                        "name": "Trykk",
+                        "state": {
+                            "high_pressure": "Høyt trykk",
+                            "low_pressure": "Lavt trykk",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Veldig lavt trykk"
+                        }
+                    }
+                }
+            },
+            "tyre_front_right": {
+                "name": "Dekktrykk foran høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    },
+                    "pressure": {
+                        "name": "Trykk",
+                        "state": {
+                            "high_pressure": "Høyt trykk",
+                            "low_pressure": "Lavt trykk",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Veldig lavt trykk"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_left": {
+                "name": "Dekktrykk bak venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    },
+                    "pressure": {
+                        "name": "Trykk",
+                        "state": {
+                            "high_pressure": "Høyt trykk",
+                            "low_pressure": "Lavt trykk",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Veldig lavt trykk"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_right": {
+                "name": "Dekktrykk bak høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    },
+                    "pressure": {
+                        "name": "Trykk",
+                        "state": {
+                            "high_pressure": "Høyt trykk",
+                            "low_pressure": "Lavt trykk",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Veldig lavt trykk"
+                        }
+                    }
+                }
+            },
+            "washer_fluid_level_warning": {
+                "name": "Spylervæske",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "window_front_left": {
+                "name": "Vindu foran venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "window_front_right": {
+                "name": "Vindu foran høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "window_rear_left": {
+                "name": "Vindu bak venstre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "window_rear_right": {
+                "name": "Vindu bak høyre",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            }
+        },
+        "button": {
+            "climatization_start": {
+                "name": "Stopp klimaanlegg",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Siste resultat",
+                        "state": {
+                            "car_error": "Kjøretøy feil",
+                            "completed": "Ferdig",
+                            "connection_failure": "Tilkobling feilet",
+                            "delivered": "Levert",
+                            "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
+                            "not_allowed_wrong_usage_mode": "Feil bruk",
+                            "rejected": "Avvist",
+                            "running": "Kjører",
+                            "timeout": "Tiden er ute",
+                            "unknown": "Ukjent",
+                            "vehicle_in_sleep": "Kjøretøy avslått",
+                            "waiting": "Venter"
+                        }
+                    }
+                }
+            },
+            "climatization_stop": {
+                "name": "Start klimaanlegg",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Siste resultat",
+                        "state": {
+                            "car_error": "Kjøretøy feil",
+                            "completed": "Ferdig",
+                            "connection_failure": "Tilkobling feilet",
+                            "delivered": "Levert",
+                            "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
+                            "not_allowed_wrong_usage_mode": "Feil bruk",
+                            "rejected": "Avvist",
+                            "running": "Kjører",
+                            "timeout": "Tiden er ute",
+                            "unknown": "Ukjent",
+                            "vehicle_in_sleep": "Kjøretøy avslått",
+                            "waiting": "Venter"
+                        }
+                    }
+                }
+            },
+            "engine_start": {
+                "name": "Start motor",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Siste resultat",
+                        "state": {
+                            "car_error": "Kjøretøy feil",
+                            "completed": "Ferdig",
+                            "connection_failure": "Tilkobling feilet",
+                            "delivered": "Levert",
+                            "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
+                            "not_allowed_wrong_usage_mode": "Feil bruk",
+                            "rejected": "Avvist",
+                            "running": "Kjører",
+                            "timeout": "Tiden er ute",
+                            "unknown": "Ukjent",
+                            "vehicle_in_sleep": "Kjøretøy avslått",
+                            "waiting": "Venter"
+                        }
+                    }
+                }
+            },
+            "engine_stop": {
+                "name": "Stop motor",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Siste resultat",
+                        "state": {
+                            "car_error": "Kjøretøy feil",
+                            "completed": "Ferdig",
+                            "connection_failure": "Tilkobling feilet",
+                            "delivered": "Levert",
+                            "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
+                            "not_allowed_wrong_usage_mode": "Feil bruk",
+                            "rejected": "Avvist",
+                            "running": "Kjører",
+                            "timeout": "Tiden er ute",
+                            "unknown": "Ukjent",
+                            "vehicle_in_sleep": "Kjøretøy avslått",
+                            "waiting": "Venter"
+                        }
+                    }
+                }
+            },
+            "flash": {
+                "name": "Blink",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Siste resultat",
+                        "state": {
+                            "car_error": "Kjøretøy feil",
+                            "completed": "Ferdig",
+                            "connection_failure": "Tilkobling feilet",
+                            "delivered": "Levert",
+                            "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
+                            "not_allowed_wrong_usage_mode": "Feil bruk",
+                            "rejected": "Avvist",
+                            "timeout": "Tiden er ute",
+                            "unknown": "Ukjent",
+                            "vehicle_in_sleep": "Kjøretøy avslått"
+                        }
+                    }
+                }
+            },
+            "honk": {
+                "name": "Tut",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Siste resultat",
+                        "state": {
+                            "car_error": "Kjøretøy feil",
+                            "completed": "Ferdig",
+                            "connection_failure": "Tilkobling feilet",
+                            "delivered": "Levert",
+                            "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
+                            "not_allowed_wrong_usage_mode": "Feil bruk",
+                            "rejected": "Avvist",
+                            "timeout": "Tiden er ute",
+                            "unknown": "Ukjent",
+                            "vehicle_in_sleep": "Kjøretøy avslått"
+                        }
+                    }
+                }
+            },
+            "honk_flash": {
+                "name": "Tut og blink",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Siste resultat",
+                        "state": {
+                            "car_error": "Kjøretøy feil",
+                            "completed": "Ferdig",
+                            "connection_failure": "Tilkobling feilet",
+                            "delivered": "Levert",
+                            "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
+                            "not_allowed_wrong_usage_mode": "Feil bruk",
+                            "rejected": "Avvist",
+                            "timeout": "Tiden er ute",
+                            "unknown": "Ukjent",
+                            "vehicle_in_sleep": "Kjøretøy avslått"
+                        }
+                    }
+                }
+            },
+            "update_data": {
+                "name": "Oppdater data"
+            }
+        },
+        "device_tracker": {
+            "location": {
+                "name": "Sted",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "direction": {
+                        "name": "Retning"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            }
+        },
+        "image": {
+            "exterior": {
+                "name": "Eksteriør passasjerside"
+            },
+            "exterior_back": {
+                "name": "Eksteriør bak"
+            },
+            "exterior_back_driver": {
+                "name": "Eksteriør bak førerside"
+            },
+            "exterior_back_passenger": {
+                "name": "Eksteriør bak passasjerside"
+            },
+            "exterior_front": {
+                "name": "Eksteriør foran"
+            },
+            "exterior_front_driver": {
+                "name": "Eksteriør front førerside"
+            },
+            "exterior_front_passenger": {
+                "name": "Eksteriør front passasjerside"
+            },
+            "exterior_side_driver": {
+                "name": "Eksteriør førerside"
+            },
+            "interior": {
+                "name": "Interiør"
+            }
+        },
+        "lock": {
+            "lock": {
+                "name": "Sentrallås",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    },
+                    "last_result": {
+                        "name": "Siste resultat",
+                        "state": {
+                            "completed": "Ferdig",
+                            "connection_failure": "Tilkobling feilet",
+                            "delivered": "Levert",
+                            "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
+                            "not_allowed_wrong_usage_mode": "Feil bruk",
+                            "rejected": "Avvist",
+                            "timeout": "Tiden er ute",
+                            "unable_to_lock_door_open": "Dør åpen",
+                            "unknown": "Ukjent",
+                            "unlock_time_frame_passed": "Tiden utløpt",
+                            "vehicle_in_sleep": "Kjøretøy avslått"
+                        }
+                    }
+                }
+            },
+            "lock_reduced_guard": {
+                "name": "Redusert alarmmodus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    },
+                    "last_result": {
+                        "name": "Siste resultat",
+                        "state": {
+                            "completed": "Ferdig",
+                            "connection_failure": "Tilkobling feilet",
+                            "delivered": "Levert",
+                            "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
+                            "not_allowed_wrong_usage_mode": "Feil bruk",
+                            "rejected": "Avvist",
+                            "timeout": "Tiden er ute",
+                            "unable_to_lock_door_open": "Dør åpen",
+                            "unknown": "Ukjent",
+                            "unlock_time_frame_passed": "Tiden utløpt",
+                            "vehicle_in_sleep": "Kjøretøy avslått"
+                        }
+                    }
+                }
+            }
+        },
+        "number": {
+            "data_update_interval": {
+                "name": "Oppdateringsintervall"
+            },
+            "engine_run_time": {
+                "name": "Gangtimer motor"
+            }
+        },
+        "sensor": {
+            "api_request_count": {
+                "name": "Antall API kall"
+            },
+            "api_status": {
+                "name": "API status",
+                "state_attributes": {
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "availability": {
+                "name": "Tilkobling bil",
+                "state": {
+                    "available": "Tilgjengelig",
+                    "car_in_use": "Bil i bruk",
+                    "no_internet": "Ingen internett",
+                    "power_saving_mode": "Strømsparemodus",
+                    "unavailable": "Utilgjengelig",
+                    "unspecified": "Ukjent"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "average_energy_consumption": {
+                "name": "Gj. snitt strømforbruk manuell",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "average_energy_consumption_automatic": {
+                "name": "Gj. snitt strømforbruk auto",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "average_energy_consumption_charge": {
+                "name": "Gj. snitt strømforbruk etter lading",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "average_fuel_consumption": {
+                "name": "Gj. snitt forbruk manuell",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "average_fuel_consumption_automatic": {
+                "name": "Gj. snitt forbruk auto",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "average_speed": {
+                "name": "Gj. snitt hastinghet manuell",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "average_speed_automatic": {
+                "name": "Gj. snitt hastighet auto",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "battery_capacity": {
+                "name": "Batterikapasitet",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "battery_charge_level": {
+                "name": "Batterinivå",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "charging_connection_status": {
+                "name": "Status ladetilkobling",
+                "state": {
+                    "connection_status_connected_ac": "Tilkoblet AC",
+                    "connection_status_connected_dc": "Tilkoblet DC",
+                    "connection_status_disconnected": "Ikke tilkoblet",
+                    "connection_status_fault": "Feil",
+                    "connection_status_unspecified": "Ukjent"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "charging_system_status": {
+                "name": "Status lading",
+                "state": {
+                    "charging_system_charging": "Lader",
+                    "charging_system_done": "Ferdig",
+                    "charging_system_fault": "Feil",
+                    "charging_system_idle": "Tomgang",
+                    "charging_system_scheduled": "Planlagt",
+                    "charging_system_unspecified": "Ukjent"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "distance_to_empty_battery": {
+                "name": "Kjørelengde til tomt batteri",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "distance_to_empty_tank": {
+                "name": "Kjørelengde til tom tank",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "distance_to_service": {
+                "name": "Kjørelengde til service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "engine_time_to_service": {
+                "name": "Tid til motorservice",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "estimated_charging_time": {
+                "name": "Beregnet ladetid",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "fuel_amount": {
+                "name": "Mengde drivstoff",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "odometer": {
+                "name": "Kilometerstand",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "time_to_service": {
+                "name": "Tid til service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "trip_meter_automatic": {
+                "name": "Trippteller auto",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            },
+            "trip_meter_manual": {
+                "name": "Trippteller manuell",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API tidsstempel"
+                    },
+                    "last_refresh": {
+                        "name": "Siste oppdatering"
+                    }
+                }
+            }
+        }
+    },
+    "exceptions": {
+        "lock_failure": {
+            "message": "Mislyktes med å {command} kjøretøy. Status: {status}. Melding: {message}"
+        }
+    },
+    "options": {
+        "abort": {
+            "no_options_available": "Ingen valg tilgjengelig for din bil."
+        },
+        "step": {
+            "init": {
+                "sections": {
+                    "api": {
+                        "data": {
+                            "vcc_api_key": "Volvo API nøkkel"
+                        },
+                        "name": "API"
+                    },
+                    "device_tracker": {
+                        "data": {
+                            "device_tracker_picture": "Bilde"
+                        },
+                        "name": "Enhetssporing"
+                    },
+                    "images": {
+                        "data": {
+                            "image_bg_color": "Bakgrunnsfarge for bilder",
+                            "image_transparent": "Gjennomsiktig bakgrunnsfarge for bilder"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Kun mulig dersom gjennomsiktig ikke er valgt."
+                        },
+                        "name": "Bilder"
+                    },
+                    "units": {
+                        "data": {
+                            "fuel_consumption_unit": "Drivstofforbruk enhet"
+                        },
+                        "name": "Enheter"
+                    }
+                }
+            }
+        }
+    },
+    "selector": {
+        "fuel_consumption_unit": {
+            "options": {
+                "l_100km": "L/100 km",
+                "mpg_uk": "mpg (UK)",
+                "mpg_us": "mpg (US)"
+            }
+        },
+        "refresh_data_param": {
+            "options": {
+                "availability": "Tilgjengelighet",
+                "brakes": "Bremser",
+                "diagnostics": "Diagnostikk",
+                "doors": "Dører",
+                "engine": "Motor",
+                "engine_status": "Motorstatus",
+                "fuel": "Drivstoff",
+                "location": "Plassering",
+                "odometer": "Kilometerstand",
+                "recharge_status": "Recharge status",
+                "statistics": "Statistikk",
+                "tyres": "Dekk",
+                "warnings": "Advarsler",
+                "windows": "Vinduer"
+            }
+        }
+    },
+    "services": {
+        "refresh_data": {
+            "description": "Oppdater alle eller spesifikke data.",
+            "fields": {
+                "data": {
+                    "description": "La feltet være tomt for å oppdatere alle data.",
+                    "name": "Data"
+                },
+                "entry": {
+                    "description": "Elementet som skal oppdateres. La feltet være tomt for å oppdatere data for alle elementer.",
+                    "name": "Element"
+                }
+            },
+            "name": "Oppdater"
+        }
+    }
+}
