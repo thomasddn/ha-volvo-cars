@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import contextlib
 from dataclasses import dataclass
 import json
 import logging
@@ -13,6 +14,7 @@ from aiohttp import ClientError, ClientSession
 
 from homeassistant.const import EVENT_HOMEASSISTANT_STOP
 from homeassistant.core import CALLBACK_TYPE, Event, HomeAssistant
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.json import save_json
 from homeassistant.helpers.storage import STORAGE_DIR
 from homeassistant.util.hass_dict import HassKey
@@ -37,7 +39,10 @@ class ApiDataManager:
     """Access helper data."""
 
     _ITERATIONS = 5
-    _URL = "https://api.jsonsilo.com/public/f2deaae1-0228-4b32-b520-fcef31bd8838"
+    _URLS = [
+        "https://api.npoint.io/6e4e6a3859a4e1c83964",
+        "https://api.jsonsilo.com/public/f2deaae1-0228-4b32-b520-fcef31bd8838",
+    ]
 
     _api_data: ApiData | None = None
 
@@ -93,30 +98,40 @@ class ApiDataManager:
         return self._api_data
 
     async def _async_get_data(self, client: ClientSession) -> dict[str, Any]:
-        try:
-            # Get data from remote and save locally
-            data = await self._async_request_data(client)
+        data = {}
 
+        for url in self._URLS:
+            with contextlib.suppress(ClientError, TimeoutError):
+                data = await self._async_request_data(url, client)
+
+                if data:
+                    break
+
+        if data:
             _LOGGER.debug("Saving data to local file %s", self._path)
             save_json(self._path, data)
-        except (ClientError, TimeoutError):
-            # If remote call failed, load from local
-            _LOGGER.debug("Loading from remote failed")
+        else:
+            _LOGGER.debug("Loading data from remote failed")
             path = Path(self._path)
+
             if path.is_file():
                 _LOGGER.debug("Reading data from local file %s", self._path)
                 with Path.open(path) as file:
                     data = json.load(file)
 
+            raise HomeAssistantError("Unable to load data")
+
         self._deobfuscate_dict(data)
         return data
 
-    async def _async_request_data(self, client: ClientSession) -> dict[str, Any]:
-        _LOGGER.debug("Request [data]")
+    async def _async_request_data(
+        self, url: str, client: ClientSession
+    ) -> dict[str, Any]:
+        _LOGGER.debug("Request [data]: %s", url)
 
         try:
             async with client.get(
-                self._URL, headers={"Content-Type": "application/json"}
+                url, headers={"Content-Type": "application/json"}
             ) as response:
                 _LOGGER.debug("Request [data] status: %s", response.status)
                 json = await response.json()
