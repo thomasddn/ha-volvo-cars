@@ -195,7 +195,7 @@
                 }
             },
             "fog_light_front_warning": {
-                "name": "Nebelleuchten vorne",
+                "name": "Nebelscheinwerfer",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
@@ -206,7 +206,7 @@
                 }
             },
             "fog_light_rear_warning": {
-                "name": "Nebelleuchten hinten",
+                "name": "Nebelrückleuchte",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
@@ -380,7 +380,7 @@
                     "reason": {
                         "name": "Grund",
                         "state": {
-                            "distance_driven_almost_time_for_service": "Bald Zeit für die Kilometer-Service",
+                            "distance_driven_almost_time_for_service": "Bald Zeit für den Kilometer-Service",
                             "distance_driven_overdue_for_service": "Kilometer-Service überfällig",
                             "distance_driven_time_for_service": "Zeit für den Kilometer-Service",
                             "engine_hours_almost_time_for_service": "Bald Zeit für den Service nach Betriebsstunden",
@@ -396,7 +396,7 @@
                 }
             },
             "side_mark_lights_warning": {
-                "name": "Setiliche Markierungsleuchten",
+                "name": "Seitliche Markierungsleuchten",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
@@ -418,7 +418,7 @@
                 }
             },
             "tailgate": {
-                "name": "Kofferaum",
+                "name": "Kofferraum",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
@@ -1049,7 +1049,7 @@
                 }
             },
             "distance_to_empty_battery": {
-                "name": "Reichweite EV",
+                "name": "Reichweite elektrisch",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
@@ -1178,6 +1178,12 @@
                         },
                         "name": "API"
                     },
+                    "device_tracker": {
+                        "data": {
+                            "device_tracker_picture": "Bild"
+                        },
+                        "name": "Geräte-Tracker"
+                    },
                     "images": {
                         "data": {
                             "image_bg_color": "Hintergrundfarbe Bilder",
@@ -1190,7 +1196,7 @@
                     },
                     "units": {
                         "data": {
-                            "fuel_consumption_unit": "Einheit Verbrauch"
+                            "fuel_consumption_unit": "Verbrauchseinheit"
                         },
                         "name": "Einheit"
                     }
