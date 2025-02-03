@@ -21,7 +21,7 @@ Now check out the features section for details on what you'll get!
 
 - Multiple cars
 - Multiple accounts
-- Multiple languages: Dutch (nl), English (en), German (de), Polish (pl), Portuguese (pt-BR), Swedish (sv)
+- Multiple languages: Dutch (nl), English (en), German (de), Norwegian (no), Polish (pl), Portuguese (pt & pt-BR), Swedish (sv)
 
 <br>
 
@@ -183,7 +183,7 @@ You can also join the [thread on the HA community](https://community.home-assist
 
 ### General
 
-To everyone who tested, broke things, reported bugs, shared ideas, and gave feedback — y'all are the dream team! 🙌
+To everyone who tested, broke things, reported bugs, shared ideas, and gave feedback — y'all are the<br>dream team! 🙌
 
 If you stumble upon a bug, or have an idea to improve this integration, you may always submit a pull request.
 
