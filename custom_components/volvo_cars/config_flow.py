@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 import logging
+import re
 from typing import TYPE_CHECKING, Any, Self
 from urllib import parse
 
@@ -52,6 +53,7 @@ from .store import VolvoCarsStoreManager
 from .volvo.models import AuthorizationModel, VolvoAuthException
 
 _LOGGER = logging.getLogger(__name__)
+_VIN_REGEX = re.compile(r"[A-Z0-9]{17}")
 
 
 def get_setting(entry: VolvoCarsConfigEntry, key: str) -> Any:
@@ -95,21 +97,31 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         errors: dict[str, str] = {}
 
         if user_input is not None:
-            flow = await self._async_authenticate(
-                user_input[CONF_VIN], user_input, errors
-            )
+            vin = str(user_input[CONF_VIN]).strip().upper()
 
-            if flow is not None:
-                return flow
+            if _VIN_REGEX.fullmatch(vin) is None:
+                errors[CONF_VIN] = "invalid_vin"
+            else:
+                flow = await self._async_authenticate(vin, user_input, errors)
 
+                if flow is not None:
+                    return flow
+
+        user_input = user_input or {}
         schema = vol.Schema(
             {
-                vol.Required(CONF_USERNAME, default=self._username or ""): str,
-                vol.Required(CONF_PASSWORD, default=self._password or ""): str,
-                vol.Required(CONF_VIN, default=self._vin or ""): str,
-                vol.Required(CONF_VCC_API_KEY, default=self._api_key or ""): str,
+                vol.Required(
+                    CONF_USERNAME, default=user_input.get(CONF_USERNAME, "")
+                ): str,
+                vol.Required(
+                    CONF_PASSWORD, default=user_input.get(CONF_PASSWORD, "")
+                ): str,
+                vol.Required(CONF_VIN, default=user_input.get(CONF_VIN, "")): str,
+                vol.Required(
+                    CONF_VCC_API_KEY, default=user_input.get(CONF_VCC_API_KEY, "")
+                ): str,
                 vol.Optional(
-                    CONF_FRIENDLY_NAME, default=self._friendly_name or ""
+                    CONF_FRIENDLY_NAME, default=user_input.get(CONF_FRIENDLY_NAME, "")
                 ): str,
             },
         )

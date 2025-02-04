@@ -31,7 +31,8 @@
             "reauth_successful": "Successfully updated credentials"
         },
         "error": {
-            "invalid_auth": "Authentication failed"
+            "invalid_auth": "Authentication failed",
+            "invalid_vin": "VIN number is invalid"
         },
         "step": {
             "otp": {
