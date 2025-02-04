@@ -1196,7 +1196,8 @@
                     },
                     "units": {
                         "data": {
-                            "fuel_consumption_unit": "Fuel consumption unit"
+                            "fuel_consumption_unit": "Fuel consumption unit",
+                            "energy_consumption_unit": "Energy consumption unit"
                         },
                         "name": "Units"
                     }
@@ -1205,6 +1206,12 @@
         }
     },
     "selector": {
+        "energy_consumption_unit": {
+            "options": {
+                "kwh_100km": "kWh/100 km",
+                "miles_kwh": "mi/kWh"
+            }
+        },
         "fuel_consumption_unit": {
             "options": {
                 "l_100km": "L/100 km",

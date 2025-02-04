@@ -27,6 +27,7 @@ from homeassistant.helpers.selector import (
     SelectSelector,
     SelectSelectorConfig,
 )
+from homeassistant.util.unit_system import US_CUSTOMARY_SYSTEM
 
 from .const import (
     CONF_OTP,
@@ -35,9 +36,12 @@ from .const import (
     DOMAIN,
     MANUFACTURER,
     OPT_DEVICE_TRACKER_PICTURE,
+    OPT_ENERGY_CONSUMPTION_UNIT,
     OPT_FUEL_CONSUMPTION_UNIT,
     OPT_IMG_BG_COLOR,
     OPT_IMG_TRANSPARENT,
+    OPT_UNIT_ENERGY_KWH_PER_100KM,
+    OPT_UNIT_ENERGY_MILES_PER_KWH,
     OPT_UNIT_LITER_PER_100KM,
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
@@ -247,11 +251,39 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 data_updates=data,
             )
 
+        def _default_energy_unit() -> str:
+            return (
+                OPT_UNIT_ENERGY_MILES_PER_KWH
+                if (
+                    self.hass.config.units == US_CUSTOMARY_SYSTEM
+                    or self.hass.config.country in ("UK", "US")
+                )
+                else OPT_UNIT_ENERGY_KWH_PER_100KM
+            )
+
+        def _default_fuel_unit() -> str:
+            if self.hass.config.country == "UK":
+                return OPT_UNIT_MPG_UK
+
+            if (
+                self.hass.config.units == US_CUSTOMARY_SYSTEM
+                or self.hass.config.country == "US"
+            ):
+                return OPT_UNIT_MPG_US
+
+            return OPT_UNIT_LITER_PER_100KM
+
         _LOGGER.debug("Creating entry")
         return self.async_create_entry(
             title=f"{MANUFACTURER} {self._vin}",
             data=data,
-            options={OPT_FUEL_CONSUMPTION_UNIT: OPT_UNIT_LITER_PER_100KM},
+            options={
+                CONF_VCC_API_KEY: self._api_key,
+                OPT_ENERGY_CONSUMPTION_UNIT: _default_energy_unit(),
+                OPT_FUEL_CONSUMPTION_UNIT: _default_fuel_unit(),
+                OPT_IMG_BG_COLOR: [0, 0, 0],
+                OPT_IMG_TRANSPARENT: True,
+            },
         )
 
 
@@ -304,25 +336,52 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
         }
 
         # Units
-        if coordinator.vehicle.has_combustion_engine():
-            schema.update(
-                _create_section(
-                    "units",
-                    {
-                        vol.Required(OPT_FUEL_CONSUMPTION_UNIT): SelectSelector(
-                            SelectSelectorConfig(
-                                options=[
-                                    OPT_UNIT_LITER_PER_100KM,
-                                    OPT_UNIT_MPG_UK,
-                                    OPT_UNIT_MPG_US,
-                                ],
-                                multiple=False,
-                                translation_key=OPT_FUEL_CONSUMPTION_UNIT,
-                            )
+        unit_schema: dict[vol.Marker, Any] = {}
+
+        if coordinator.vehicle.has_battery_engine():
+            unit_schema.update(
+                {
+                    vol.Required(
+                        OPT_ENERGY_CONSUMPTION_UNIT,
+                        default=get_setting(
+                            self.config_entry, OPT_ENERGY_CONSUMPTION_UNIT
+                        ),
+                    ): SelectSelector(
+                        SelectSelectorConfig(
+                            options=[
+                                OPT_UNIT_ENERGY_KWH_PER_100KM,
+                                OPT_UNIT_ENERGY_MILES_PER_KWH,
+                            ],
+                            multiple=False,
+                            translation_key=OPT_ENERGY_CONSUMPTION_UNIT,
                         )
-                    },
-                )
+                    )
+                }
             )
+
+        if coordinator.vehicle.has_combustion_engine():
+            unit_schema.update(
+                {
+                    vol.Required(
+                        OPT_FUEL_CONSUMPTION_UNIT,
+                        default=get_setting(
+                            self.config_entry, OPT_FUEL_CONSUMPTION_UNIT
+                        ),
+                    ): SelectSelector(
+                        SelectSelectorConfig(
+                            options=[
+                                OPT_UNIT_LITER_PER_100KM,
+                                OPT_UNIT_MPG_UK,
+                                OPT_UNIT_MPG_US,
+                            ],
+                            multiple=False,
+                            translation_key=OPT_FUEL_CONSUMPTION_UNIT,
+                        )
+                    )
+                }
+            )
+
+        schema.update(_create_section("units", unit_schema))
 
         # Images
         url = coordinator.vehicle.images.exterior_image_url
@@ -333,10 +392,13 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
                 _create_section(
                     "images",
                     {
-                        vol.Optional(OPT_IMG_TRANSPARENT, default=True): bool,
+                        vol.Optional(
+                            OPT_IMG_TRANSPARENT,
+                            default=get_setting(self.config_entry, OPT_IMG_TRANSPARENT),
+                        ): bool,
                         vol.Optional(
                             OPT_IMG_BG_COLOR,
-                            default=[255, 255, 255],
+                            default=get_setting(self.config_entry, OPT_IMG_BG_COLOR),
                         ): ColorRGBSelector(),
                     },
                 )
