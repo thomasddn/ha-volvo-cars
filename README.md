@@ -21,7 +21,7 @@ Now check out the features section for details on what you'll get!
 
 - Multiple cars
 - Multiple accounts
-- Multiple languages: Dutch (nl), English (en), German (de), Norwegian (no), Polish (pl), Portuguese (pt & pt-BR), Swedish (sv)
+- Multiple languages: Dutch (nl), English (en), French (fr), German (de), Norwegian Bokmål (nb), Polish (pl), Portuguese Brazil (pt-BR), Portuguese Portugal (pt), Swedish (sv)
 
 <br>
 
@@ -165,7 +165,8 @@ Once a car has been added, you can configure additional options for it.
 | ----------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------- |
 | Volvo API key                 | The generated API key in the developer account.                           |                                                       |
 | Device tracker picture        | The picture that will be shown on the map.                                |                                                       |
-| Fuel consumption unit         | You can choose between `l/100km`, `mpg (UK)` and `mpg (US)`.              | Cars with a combustion engine.                        |
+| Energy consumption unit       | You can choose between `kWh/100 km` and `mi/kWh`.                         | Cars with a battery engine.                           |
+| Fuel consumption unit         | You can choose between `l/100 km`, `mpg (UK)` and `mpg (US)`              | Cars with a combustion engine.                        |
 | Images transparent background | Whether or not you want transparent a background for the exterior images. | Depending on the image URL provided by the Volvo API. |
 | Images background color       | Choose the background color for the exterior images.                      | Depending on the image URL provided by the Volvo API. |
 
