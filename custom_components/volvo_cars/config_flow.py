@@ -47,7 +47,7 @@ from .const import (
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
 )
-from .coordinator import VolvoCarsConfigEntry, VolvoCarsData
+from .coordinator import VolvoCarsData
 from .factory import async_create_auth_api
 from .store import VolvoCarsStoreManager
 from .volvo.models import AuthorizationModel, VolvoAuthException
@@ -56,7 +56,7 @@ _LOGGER = logging.getLogger(__name__)
 _VIN_REGEX = re.compile(r"[A-Z0-9]{17}")
 
 
-def get_setting(entry: VolvoCarsConfigEntry, key: str) -> Any:
+def get_setting(entry: ConfigEntry, key: str) -> Any:
     """Get setting from options with a fallback to config."""
     if key in entry.options:
         return entry.options[key]
@@ -165,12 +165,15 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         reauth_entry = self._get_reauth_entry()
 
         if user_input is not None:
-            flow = await self._async_authenticate(
-                reauth_entry.data[CONF_VIN], user_input, errors
-            )
+            vin = str(reauth_entry.data[CONF_VIN]).strip().upper()
 
-            if flow is not None:
-                return flow
+            if _VIN_REGEX.fullmatch(vin) is None:
+                errors[CONF_VIN] = "invalid_vin"
+            else:
+                flow = await self._async_authenticate(vin, user_input, errors)
+
+                if flow is not None:
+                    return flow
 
         schema = vol.Schema(
             {
@@ -179,7 +182,8 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 ): str,
                 vol.Required(CONF_PASSWORD, default=""): str,
                 vol.Required(
-                    CONF_VCC_API_KEY, default=reauth_entry.data.get(CONF_VCC_API_KEY)
+                    CONF_VCC_API_KEY,
+                    default=get_setting(reauth_entry, CONF_VCC_API_KEY),
                 ): str,
             },
         )
@@ -239,13 +243,6 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         return None
 
     async def _async_create_or_update_entry(self) -> ConfigFlowResult:
-        data = {
-            CONF_USERNAME: self._username,
-            CONF_VIN: self._vin,
-            CONF_VCC_API_KEY: self._api_key,
-            CONF_FRIENDLY_NAME: self._friendly_name,
-        }
-
         if self._auth_result and self._auth_result.token:
             if self.unique_id is None:
                 raise ConfigEntryError("Config entry has no unique_id")
@@ -257,10 +254,21 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 refresh_token=self._auth_result.token.refresh_token,
             )
 
+        data = {
+            CONF_USERNAME: self._username,
+            CONF_VIN: self._vin,
+            CONF_VCC_API_KEY: self._api_key,
+            CONF_FRIENDLY_NAME: self._friendly_name,
+        }
+
         if self.source == SOURCE_REAUTH:
+            # Keep API key in sync with options
+            reauth_entry = self._get_reauth_entry()
+            options = dict(reauth_entry.options) if reauth_entry else {}
+            options.update({CONF_VCC_API_KEY: self._api_key})
+
             return self.async_update_reload_and_abort(
-                self._get_reauth_entry(),
-                data_updates=data,
+                self._get_reauth_entry(), data_updates=data, options=options
             )
 
         def _default_energy_unit() -> str:
