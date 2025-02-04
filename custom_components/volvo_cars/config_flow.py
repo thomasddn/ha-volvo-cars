@@ -341,7 +341,8 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
                         OPT_DEVICE_TRACKER_PICTURE,
                         default=get_setting(
                             self.config_entry, OPT_DEVICE_TRACKER_PICTURE
-                        ),
+                        )
+                        or vol.UNDEFINED,
                     ): EntitySelector(EntitySelectorConfig(domain=Platform.IMAGE))
                 },
             ),
