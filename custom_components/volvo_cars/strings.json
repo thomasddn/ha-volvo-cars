@@ -32,7 +32,7 @@
         },
         "error": {
             "invalid_auth": "Authentication failed",
-            "invalid_vin": "VIN number is invalid"
+            "invalid_vin": "VIN is invalid"
         },
         "step": {
             "otp": {
