@@ -7,6 +7,7 @@ Supported regions include: Europe, the Middle East, and Africa. For a complete l
 Now check out the features section for details on what you'll get!
 
 [![GitHub release][releases-shield]][releases]
+[![Github downloads][downloads-shield]][releases]
 [![CI main][ci-main-shield]][ci-workflow]
 [![CI dev][ci-dev-shield]][ci-workflow]
 [![HACS][hacs-shield]][hacs]
@@ -215,6 +216,7 @@ When I'm coding, I run on coffee, Coca-Cola*, and Lays* potato chips. If you'd l
 <sub><sub>\* No affiliation with these brands — just personal favorites!</sub></sub>
 
 [releases-shield]: https://img.shields.io/github/v/release/thomasddn/ha-volvo-cars?style=flat-square
+[downloads-shield]: https://img.shields.io/github/downloads/thomasddn/ha-volvo-cars/total?style=flat-square
 [releases]: https://github.com/thomasddn/ha-volvo-cars/releases
 [ci-dev-shield]: https://img.shields.io/github/actions/workflow/status/thomasddn/ha-volvo-cars/ci.yml?branch=develop&style=flat-square&label=develop
 [ci-main-shield]: https://img.shields.io/github/actions/workflow/status/thomasddn/ha-volvo-cars/ci.yml?branch=main&style=flat-square&label=main
