@@ -23,7 +23,10 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from .const import (
     DATA_BATTERY_CAPACITY,
     DATA_REQUEST_COUNT,
+    OPT_ENERGY_CONSUMPTION_UNIT,
     OPT_FUEL_CONSUMPTION_UNIT,
+    OPT_UNIT_ENERGY_KWH_PER_100KM,
+    OPT_UNIT_ENERGY_MILES_PER_KWH,
     OPT_UNIT_LITER_PER_100KM,
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
@@ -46,8 +49,8 @@ class VolvoCarsSensorDescription(VolvoCarsDescription, SensorEntityDescription):
     """Describes a Volvo Cars sensor entity."""
 
     value_fn: Callable[[VolvoCarsValue, VolvoCarsConfigEntry], Any] | None = None
-    available_fn: Callable[[VolvoCarsVehicle], bool] = lambda vehicle: True
     unit_fn: Callable[[VolvoCarsConfigEntry], str] | None = None
+    available_fn: Callable[[VolvoCarsVehicle], bool] = lambda vehicle: True
 
 
 def _availability_status(field: VolvoCarsValue, _: VolvoCarsConfigEntry) -> str:
@@ -63,6 +66,30 @@ def _calculate_time_to_service(field: VolvoCarsValue, _: VolvoCarsConfigEntry) -
         return value * 30
 
     return value
+
+
+def _determine_energy_consumption_unit(entry: VolvoCarsConfigEntry) -> str:
+    unit_key = entry.options.get(
+        OPT_ENERGY_CONSUMPTION_UNIT, OPT_UNIT_ENERGY_KWH_PER_100KM
+    )
+
+    return "kWh/100 km" if unit_key == OPT_UNIT_ENERGY_KWH_PER_100KM else "mi/kWh"
+
+
+def _convert_energy_consumption(
+    field: VolvoCarsValue, entry: VolvoCarsConfigEntry
+) -> Decimal:
+    value = Decimal(field.value)
+    unit_key = entry.options.get(
+        OPT_ENERGY_CONSUMPTION_UNIT, OPT_UNIT_ENERGY_KWH_PER_100KM
+    )
+
+    converted_value = value
+
+    if unit_key == OPT_UNIT_ENERGY_MILES_PER_KWH:
+        converted_value = (100 / Decimal(1.609344) / value) if value else Decimal(0)
+
+    return round(converted_value, 1)
 
 
 def _determine_fuel_consumption_unit(entry: VolvoCarsConfigEntry) -> str:
@@ -130,34 +157,41 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         key="average_energy_consumption",
         translation_key="average_energy_consumption",
         api_field="averageEnergyConsumption",
-        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
-        device_class=SensorDeviceClass.ENERGY,
+        native_unit_of_measurement="kWh/100 km",
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:car-electric",
         available_fn=lambda vehicle: vehicle.has_battery_engine(),
+        unit_fn=_determine_energy_consumption_unit,
+        value_fn=_convert_energy_consumption,
     ),
     VolvoCarsSensorDescription(
         key="average_energy_consumption_automatic",
         translation_key="average_energy_consumption_automatic",
         api_field="averageEnergyConsumptionAutomatic",
-        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
-        device_class=SensorDeviceClass.ENERGY,
+        native_unit_of_measurement="kWh/100 km",
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:car-electric",
         available_fn=lambda vehicle: vehicle.has_battery_engine(),
+        unit_fn=_determine_energy_consumption_unit,
+        value_fn=_convert_energy_consumption,
     ),
     VolvoCarsSensorDescription(
         key="average_energy_consumption_charge",
         translation_key="average_energy_consumption_charge",
         api_field="averageEnergyConsumptionSinceCharge",
-        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
-        device_class=SensorDeviceClass.ENERGY,
+        native_unit_of_measurement="kWh/100 km",
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:car-electric",
         available_fn=lambda vehicle: vehicle.has_battery_engine(),
+        unit_fn=_determine_energy_consumption_unit,
+        value_fn=_convert_energy_consumption,
     ),
     VolvoCarsSensorDescription(
         key="average_fuel_consumption",
         translation_key="average_fuel_consumption",
         api_field="averageFuelConsumption",
         native_unit_of_measurement="L/100 km",
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:gas-station",
         available_fn=lambda vehicle: vehicle.has_combustion_engine(),
         unit_fn=_determine_fuel_consumption_unit,
@@ -168,6 +202,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         translation_key="average_fuel_consumption_automatic",
         api_field="averageFuelConsumptionAutomatic",
         native_unit_of_measurement="L/100 km",
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:gas-station",
         available_fn=lambda vehicle: vehicle.has_combustion_engine(),
         unit_fn=_determine_fuel_consumption_unit,

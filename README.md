@@ -7,6 +7,7 @@ Supported regions include: Europe, the Middle East, and Africa. For a complete l
 Now check out the features section for details on what you'll get!
 
 [![GitHub release][releases-shield]][releases]
+[![Github downloads][downloads-shield]][releases]
 [![CI main][ci-main-shield]][ci-workflow]
 [![CI dev][ci-dev-shield]][ci-workflow]
 [![HACS][hacs-shield]][hacs]
@@ -21,7 +22,7 @@ Now check out the features section for details on what you'll get!
 
 - Multiple cars
 - Multiple accounts
-- Multiple languages: Dutch (nl), English (en), German (de), Norwegian (no), Polish (pl), Portuguese (pt & pt-BR), Swedish (sv)
+- Multiple languages: Dutch (nl), English (en), French (fr), German (de), Norwegian Bokmål (nb), Polish (pl), Portuguese Brazil (pt-BR), Portuguese Portugal (pt), Swedish (sv)
 
 <br>
 
@@ -165,7 +166,8 @@ Once a car has been added, you can configure additional options for it.
 | ----------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------- |
 | Volvo API key                 | The generated API key in the developer account.                           |                                                       |
 | Device tracker picture        | The picture that will be shown on the map.                                |                                                       |
-| Fuel consumption unit         | You can choose between `l/100km`, `mpg (UK)` and `mpg (US)`.              | Cars with a combustion engine.                        |
+| Energy consumption unit       | You can choose between `kWh/100 km` and `mi/kWh`.                         | Cars with a battery engine.                           |
+| Fuel consumption unit         | You can choose between `l/100 km`, `mpg (UK)` and `mpg (US)`              | Cars with a combustion engine.                        |
 | Images transparent background | Whether or not you want transparent a background for the exterior images. | Depending on the image URL provided by the Volvo API. |
 | Images background color       | Choose the background color for the exterior images.                      | Depending on the image URL provided by the Volvo API. |
 
@@ -214,6 +216,7 @@ When I'm coding, I run on coffee, Coca-Cola*, and Lays* potato chips. If you'd l
 <sub><sub>\* No affiliation with these brands — just personal favorites!</sub></sub>
 
 [releases-shield]: https://img.shields.io/github/v/release/thomasddn/ha-volvo-cars?style=flat-square
+[downloads-shield]: https://img.shields.io/github/downloads/thomasddn/ha-volvo-cars/total?style=flat-square
 [releases]: https://github.com/thomasddn/ha-volvo-cars/releases
 [ci-dev-shield]: https://img.shields.io/github/actions/workflow/status/thomasddn/ha-volvo-cars/ci.yml?branch=develop&style=flat-square&label=develop
 [ci-main-shield]: https://img.shields.io/github/actions/workflow/status/thomasddn/ha-volvo-cars/ci.yml?branch=main&style=flat-square&label=main

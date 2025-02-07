@@ -28,13 +28,18 @@ DATA_REQUEST_COUNT = "api_request_count"
 MANUFACTURER = "Volvo"
 
 OPT_DEVICE_TRACKER_PICTURE = "device_tracker_picture"
+OPT_ENERGY_CONSUMPTION_UNIT = "energy_consumption_unit"
 OPT_FUEL_CONSUMPTION_UNIT = "fuel_consumption_unit"
 OPT_IMG_BG_COLOR = "image_bg_color"
 OPT_IMG_TRANSPARENT = "image_transparent"
 
+OPT_UNIT_ENERGY_KWH_PER_100KM = "kwh_100km"
+OPT_UNIT_ENERGY_MILES_PER_KWH = "miles_kwh"
+
 OPT_UNIT_LITER_PER_100KM = "l_100km"
 OPT_UNIT_MPG_UK = "mpg_uk"
 OPT_UNIT_MPG_US = "mpg_us"
+
 
 SERVICE_REFRESH_DATA = "refresh_data"
 SERVICE_PARAM_DATA = "data"

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 import logging
+import re
 from typing import TYPE_CHECKING, Any, Self
 from urllib import parse
 
@@ -27,6 +28,7 @@ from homeassistant.helpers.selector import (
     SelectSelector,
     SelectSelectorConfig,
 )
+from homeassistant.util.unit_system import US_CUSTOMARY_SYSTEM
 
 from .const import (
     CONF_OTP,
@@ -35,22 +37,26 @@ from .const import (
     DOMAIN,
     MANUFACTURER,
     OPT_DEVICE_TRACKER_PICTURE,
+    OPT_ENERGY_CONSUMPTION_UNIT,
     OPT_FUEL_CONSUMPTION_UNIT,
     OPT_IMG_BG_COLOR,
     OPT_IMG_TRANSPARENT,
+    OPT_UNIT_ENERGY_KWH_PER_100KM,
+    OPT_UNIT_ENERGY_MILES_PER_KWH,
     OPT_UNIT_LITER_PER_100KM,
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
 )
-from .coordinator import VolvoCarsConfigEntry, VolvoCarsData
+from .coordinator import VolvoCarsData
 from .factory import async_create_auth_api
 from .store import VolvoCarsStoreManager
 from .volvo.models import AuthorizationModel, VolvoAuthException
 
 _LOGGER = logging.getLogger(__name__)
+_VIN_REGEX = re.compile(r"[A-Z0-9]{17}")
 
 
-def get_setting(entry: VolvoCarsConfigEntry, key: str) -> Any:
+def get_setting(entry: ConfigEntry, key: str) -> Any:
     """Get setting from options with a fallback to config."""
     if key in entry.options:
         return entry.options[key]
@@ -91,21 +97,31 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         errors: dict[str, str] = {}
 
         if user_input is not None:
-            flow = await self._async_authenticate(
-                user_input[CONF_VIN], user_input, errors
-            )
+            vin = str(user_input[CONF_VIN]).strip().upper()
 
-            if flow is not None:
-                return flow
+            if _VIN_REGEX.fullmatch(vin) is None:
+                errors[CONF_VIN] = "invalid_vin"
+            else:
+                flow = await self._async_authenticate(vin, user_input, errors)
 
+                if flow is not None:
+                    return flow
+
+        user_input = user_input or {}
         schema = vol.Schema(
             {
-                vol.Required(CONF_USERNAME, default=self._username or ""): str,
-                vol.Required(CONF_PASSWORD, default=self._password or ""): str,
-                vol.Required(CONF_VIN, default=self._vin or ""): str,
-                vol.Required(CONF_VCC_API_KEY, default=self._api_key or ""): str,
+                vol.Required(
+                    CONF_USERNAME, default=user_input.get(CONF_USERNAME, "")
+                ): str,
+                vol.Required(
+                    CONF_PASSWORD, default=user_input.get(CONF_PASSWORD, "")
+                ): str,
+                vol.Required(CONF_VIN, default=user_input.get(CONF_VIN, "")): str,
+                vol.Required(
+                    CONF_VCC_API_KEY, default=user_input.get(CONF_VCC_API_KEY, "")
+                ): str,
                 vol.Optional(
-                    CONF_FRIENDLY_NAME, default=self._friendly_name or ""
+                    CONF_FRIENDLY_NAME, default=user_input.get(CONF_FRIENDLY_NAME, "")
                 ): str,
             },
         )
@@ -149,12 +165,15 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         reauth_entry = self._get_reauth_entry()
 
         if user_input is not None:
-            flow = await self._async_authenticate(
-                reauth_entry.data[CONF_VIN], user_input, errors
-            )
+            vin = str(reauth_entry.data[CONF_VIN]).strip().upper()
 
-            if flow is not None:
-                return flow
+            if _VIN_REGEX.fullmatch(vin) is None:
+                errors[CONF_VIN] = "invalid_vin"
+            else:
+                flow = await self._async_authenticate(vin, user_input, errors)
+
+                if flow is not None:
+                    return flow
 
         schema = vol.Schema(
             {
@@ -163,7 +182,8 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 ): str,
                 vol.Required(CONF_PASSWORD, default=""): str,
                 vol.Required(
-                    CONF_VCC_API_KEY, default=reauth_entry.data.get(CONF_VCC_API_KEY)
+                    CONF_VCC_API_KEY,
+                    default=get_setting(reauth_entry, CONF_VCC_API_KEY),
                 ): str,
             },
         )
@@ -223,13 +243,6 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         return None
 
     async def _async_create_or_update_entry(self) -> ConfigFlowResult:
-        data = {
-            CONF_USERNAME: self._username,
-            CONF_VIN: self._vin,
-            CONF_VCC_API_KEY: self._api_key,
-            CONF_FRIENDLY_NAME: self._friendly_name,
-        }
-
         if self._auth_result and self._auth_result.token:
             if self.unique_id is None:
                 raise ConfigEntryError("Config entry has no unique_id")
@@ -241,17 +254,56 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 refresh_token=self._auth_result.token.refresh_token,
             )
 
+        data = {
+            CONF_USERNAME: self._username,
+            CONF_VIN: self._vin,
+            CONF_VCC_API_KEY: self._api_key,
+            CONF_FRIENDLY_NAME: self._friendly_name,
+        }
+
         if self.source == SOURCE_REAUTH:
+            # Keep API key in sync with options
+            reauth_entry = self._get_reauth_entry()
+            options = dict(reauth_entry.options) if reauth_entry else {}
+            options.update({CONF_VCC_API_KEY: self._api_key})
+
             return self.async_update_reload_and_abort(
-                self._get_reauth_entry(),
-                data_updates=data,
+                self._get_reauth_entry(), data_updates=data, options=options
             )
+
+        def _default_energy_unit() -> str:
+            return (
+                OPT_UNIT_ENERGY_MILES_PER_KWH
+                if (
+                    self.hass.config.units == US_CUSTOMARY_SYSTEM
+                    or self.hass.config.country in ("UK", "US")
+                )
+                else OPT_UNIT_ENERGY_KWH_PER_100KM
+            )
+
+        def _default_fuel_unit() -> str:
+            if self.hass.config.country == "UK":
+                return OPT_UNIT_MPG_UK
+
+            if (
+                self.hass.config.units == US_CUSTOMARY_SYSTEM
+                or self.hass.config.country == "US"
+            ):
+                return OPT_UNIT_MPG_US
+
+            return OPT_UNIT_LITER_PER_100KM
 
         _LOGGER.debug("Creating entry")
         return self.async_create_entry(
             title=f"{MANUFACTURER} {self._vin}",
             data=data,
-            options={OPT_FUEL_CONSUMPTION_UNIT: OPT_UNIT_LITER_PER_100KM},
+            options={
+                CONF_VCC_API_KEY: self._api_key,
+                OPT_ENERGY_CONSUMPTION_UNIT: _default_energy_unit(),
+                OPT_FUEL_CONSUMPTION_UNIT: _default_fuel_unit(),
+                OPT_IMG_BG_COLOR: [0, 0, 0],
+                OPT_IMG_TRANSPARENT: True,
+            },
         )
 
 
@@ -297,32 +349,60 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
                         OPT_DEVICE_TRACKER_PICTURE,
                         default=get_setting(
                             self.config_entry, OPT_DEVICE_TRACKER_PICTURE
-                        ),
+                        )
+                        or vol.UNDEFINED,
                     ): EntitySelector(EntitySelectorConfig(domain=Platform.IMAGE))
                 },
             ),
         }
 
         # Units
-        if coordinator.vehicle.has_combustion_engine():
-            schema.update(
-                _create_section(
-                    "units",
-                    {
-                        vol.Required(OPT_FUEL_CONSUMPTION_UNIT): SelectSelector(
-                            SelectSelectorConfig(
-                                options=[
-                                    OPT_UNIT_LITER_PER_100KM,
-                                    OPT_UNIT_MPG_UK,
-                                    OPT_UNIT_MPG_US,
-                                ],
-                                multiple=False,
-                                translation_key=OPT_FUEL_CONSUMPTION_UNIT,
-                            )
+        unit_schema: dict[vol.Marker, Any] = {}
+
+        if coordinator.vehicle.has_battery_engine():
+            unit_schema.update(
+                {
+                    vol.Required(
+                        OPT_ENERGY_CONSUMPTION_UNIT,
+                        default=get_setting(
+                            self.config_entry, OPT_ENERGY_CONSUMPTION_UNIT
+                        ),
+                    ): SelectSelector(
+                        SelectSelectorConfig(
+                            options=[
+                                OPT_UNIT_ENERGY_KWH_PER_100KM,
+                                OPT_UNIT_ENERGY_MILES_PER_KWH,
+                            ],
+                            multiple=False,
+                            translation_key=OPT_ENERGY_CONSUMPTION_UNIT,
                         )
-                    },
-                )
+                    )
+                }
             )
+
+        if coordinator.vehicle.has_combustion_engine():
+            unit_schema.update(
+                {
+                    vol.Required(
+                        OPT_FUEL_CONSUMPTION_UNIT,
+                        default=get_setting(
+                            self.config_entry, OPT_FUEL_CONSUMPTION_UNIT
+                        ),
+                    ): SelectSelector(
+                        SelectSelectorConfig(
+                            options=[
+                                OPT_UNIT_LITER_PER_100KM,
+                                OPT_UNIT_MPG_UK,
+                                OPT_UNIT_MPG_US,
+                            ],
+                            multiple=False,
+                            translation_key=OPT_FUEL_CONSUMPTION_UNIT,
+                        )
+                    )
+                }
+            )
+
+        schema.update(_create_section("units", unit_schema))
 
         # Images
         url = coordinator.vehicle.images.exterior_image_url
@@ -333,10 +413,13 @@ class OptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
                 _create_section(
                     "images",
                     {
-                        vol.Optional(OPT_IMG_TRANSPARENT, default=True): bool,
+                        vol.Optional(
+                            OPT_IMG_TRANSPARENT,
+                            default=get_setting(self.config_entry, OPT_IMG_TRANSPARENT),
+                        ): bool,
                         vol.Optional(
                             OPT_IMG_BG_COLOR,
-                            default=[255, 255, 255],
+                            default=get_setting(self.config_entry, OPT_IMG_BG_COLOR),
                         ): ColorRGBSelector(),
                     },
                 )

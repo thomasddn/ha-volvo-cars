@@ -1,0 +1,40 @@
+name: Publish
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Publish zip file
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      INTEGRATION_PATH: ${{ github.workspace }}/custom_components/volvo_cars
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4.2.2
+
+      - name: Set version in manifest.json
+        run: |
+          # Extract version from tag (e.g., "refs/tags/v1.2.3" becomes "1.2.3")
+          version="${GITHUB_REF#refs/tags/v}"
+          echo "Setting version to ${version}"
+          # Update the "version" key in manifest.json (assumes a simple "version": "..." line)
+          sed -i -E "s/\"version\": \"[^\"]+\"/\"version\": \"${version}\"/" ${INTEGRATION_PATH}/manifest.json
+
+      - name: Zip
+        run: |
+          cd $INTEGRATION_PATH
+          zip volvo_cars.zip -r ./
+          pwd
+          ls -l *.zip
+
+      - name: Include zip in release
+        uses: softprops/action-gh-release@v2.2.1
+        with:
+          files: ${{ env.INTEGRATION_PATH }}/volvo_cars.zip
+          fail_on_unmatched_files: true

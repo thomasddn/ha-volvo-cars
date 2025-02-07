@@ -6,7 +6,10 @@ import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.volvo_cars.const import (
+    OPT_ENERGY_CONSUMPTION_UNIT,
     OPT_FUEL_CONSUMPTION_UNIT,
+    OPT_UNIT_ENERGY_KWH_PER_100KM,
+    OPT_UNIT_ENERGY_MILES_PER_KWH,
     OPT_UNIT_LITER_PER_100KM,
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
@@ -92,6 +95,51 @@ async def test_fuel_unit_conversion(
         hass.config_entries.async_update_entry(
             mock_config_entry,
             options={OPT_FUEL_CONSUMPTION_UNIT: unit},
+        )
+        await hass.async_block_till_done()
+
+        entity = hass.states.get(entity_id)
+        assert entity
+        assert entity.state == value
+        assert entity.attributes.get("unit_of_measurement") == unit_of_measurement
+
+
+@pytest.mark.parametrize(
+    ("entity_id", "unit", "value", "unit_of_measurement"),
+    [
+        (
+            "sensor.volvo_myvolvo_average_energy_consumption",
+            OPT_UNIT_ENERGY_KWH_PER_100KM,
+            "22.6",
+            "kWh/100 km",
+        ),
+        (
+            "sensor.volvo_myvolvo_average_energy_consumption",
+            OPT_UNIT_ENERGY_MILES_PER_KWH,
+            "2.7",
+            "mi/kWh",
+        ),
+    ],
+)
+@pytest.mark.use_model("xc40_bev")
+async def test_energy_unit_conversion(
+    hass: HomeAssistant,
+    enable_custom_integrations: None,
+    mock_config_entry: MockConfigEntry,
+    entity_id: str,
+    unit: str,
+    value: str,
+    unit_of_measurement: str,
+) -> None:
+    """Test energy unit conversion."""
+
+    with patch("custom_components.volvo_cars.PLATFORMS", [Platform.SENSOR]):
+        assert await hass.config_entries.async_setup(mock_config_entry.entry_id)
+        await hass.async_block_till_done()
+
+        hass.config_entries.async_update_entry(
+            mock_config_entry,
+            options={OPT_ENERGY_CONSUMPTION_UNIT: unit},
         )
         await hass.async_block_till_done()
 
