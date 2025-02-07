@@ -31,7 +31,8 @@
             "reauth_successful": "Oppdatering av autentiseringsinformasjon vellykket."
         },
         "error": {
-            "invalid_auth": "Oppdatering av autentiseringsinformasjon misslyktes."
+            "invalid_auth": "Oppdatering av autentiseringsinformasjon misslyktes.",
+            "invalid_vin": "Ikke gyldig understellsnummer"
         },
         "step": {
             "otp": {
@@ -1035,7 +1036,7 @@
                     "charging_system_charging": "Lader",
                     "charging_system_done": "Ferdig",
                     "charging_system_fault": "Feil",
-                    "charging_system_idle": "Tomgang",
+                    "charging_system_idle": "Inaktiv",
                     "charging_system_scheduled": "Planlagt",
                     "charging_system_unspecified": "Ukjent"
                 },
@@ -1196,6 +1197,7 @@
                     },
                     "units": {
                         "data": {
+                            "energy_consumption_unit": "Enhet for strømforbruk",
                             "fuel_consumption_unit": "Drivstofforbruk enhet"
                         },
                         "name": "Enheter"
@@ -1205,6 +1207,12 @@
         }
     },
     "selector": {
+        "energy_consumption_unit": {
+            "options": {
+                "kwh_100km": "kWh/100 km",
+                "miles_kwh": "mi/kWh"
+            }
+        },
         "fuel_consumption_unit": {
             "options": {
                 "l_100km": "L/100 km",

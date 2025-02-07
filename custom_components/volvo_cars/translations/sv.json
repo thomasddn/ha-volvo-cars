@@ -15,7 +15,7 @@
         "ok": "OK",
         "pressure": "Tryck",
         "rejected": "Avvisad",
-        "running": "Löper",
+        "running": "Kör",
         "time_frame_passed": "Tidsram passerad",
         "timeout": "Timeout",
         "unknown": "Okänd",
@@ -31,7 +31,8 @@
             "reauth_successful": "Autentiseringsuppgifterna har uppdaterats"
         },
         "error": {
-            "invalid_auth": "Autentiseringen misslyckades"
+            "invalid_auth": "Autentiseringen misslyckades",
+            "invalid_vin": "VIN-numret är felaktigt"
         },
         "step": {
             "otp": {
@@ -633,7 +634,7 @@
                             "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
                             "not_allowed_wrong_usage_mode": "Fel användning",
                             "rejected": "Avvisad",
-                            "running": "Löper",
+                            "running": "Kör",
                             "timeout": "Timeout",
                             "unknown": "Okänd",
                             "vehicle_in_sleep": "Fordonet i dvala",
@@ -655,7 +656,7 @@
                             "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
                             "not_allowed_wrong_usage_mode": "Fel användning",
                             "rejected": "Avvisad",
-                            "running": "Löper",
+                            "running": "Kör",
                             "timeout": "Timeout",
                             "unknown": "Okänd",
                             "vehicle_in_sleep": "Fordonet i dvala",
@@ -677,7 +678,7 @@
                             "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
                             "not_allowed_wrong_usage_mode": "Fel användning",
                             "rejected": "Avvisad",
-                            "running": "Löper",
+                            "running": "Kör",
                             "timeout": "Timeout",
                             "unknown": "Okänd",
                             "vehicle_in_sleep": "Fordonet i dvala",
@@ -699,7 +700,7 @@
                             "not_allowed_privacy_enabled": "Inte tillåtet, sekretess aktiverad",
                             "not_allowed_wrong_usage_mode": "Fel användning",
                             "rejected": "Avvisad",
-                            "running": "Löper",
+                            "running": "Kör",
                             "timeout": "Timeout",
                             "unknown": "Okänd",
                             "vehicle_in_sleep": "Fordonet i dvala",
@@ -1033,9 +1034,9 @@
                 "name": "Laddningsstatus",
                 "state": {
                     "charging_system_charging": "Laddar",
-                    "charging_system_done": "Utfört",
+                    "charging_system_done": "Laddning klar",
                     "charging_system_fault": "Fel",
-                    "charging_system_idle": "På tomgång",
+                    "charging_system_idle": "Ingen laddning",
                     "charging_system_scheduled": "Schemalagd",
                     "charging_system_unspecified": "Okänd"
                 },
@@ -1196,6 +1197,7 @@
                     },
                     "units": {
                         "data": {
+                            "energy_consumption_unit": "Energiförbrukningsenhet",
                             "fuel_consumption_unit": "Bränsleförbrukningsenhet"
                         },
                         "name": "Enheter"
@@ -1205,6 +1207,12 @@
         }
     },
     "selector": {
+        "energy_consumption_unit": {
+            "options": {
+                "kwh_100km": "kWh/100 km",
+                "miles_kwh": "mi/kWh"
+            }
+        },
         "fuel_consumption_unit": {
             "options": {
                 "l_100km": "L/100 km",

@@ -31,7 +31,8 @@
             "reauth_successful": "Zugangsdaten erfolgreich aktualisiert"
         },
         "error": {
-            "invalid_auth": "Authentifizierung fehlgeschlagen"
+            "invalid_auth": "Authentifizierung fehlgeschlagen",
+            "invalid_vin": "Fahrzeug-Identifikationsnummer ist ungültig"
         },
         "step": {
             "otp": {
@@ -1196,6 +1197,7 @@
                     },
                     "units": {
                         "data": {
+                            "energy_consumption_unit": "Einheit Energieverbrauch",
                             "fuel_consumption_unit": "Verbrauchseinheit"
                         },
                         "name": "Einheit"
@@ -1205,6 +1207,12 @@
         }
     },
     "selector": {
+        "energy_consumption_unit": {
+            "options": {
+                "kwh_100km": "kWh/100 km",
+                "miles_kwh": "mi/kWh"
+            }
+        },
         "fuel_consumption_unit": {
             "options": {
                 "l_100km": "L/100 km",

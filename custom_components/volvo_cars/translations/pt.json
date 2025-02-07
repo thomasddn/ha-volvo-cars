@@ -31,7 +31,8 @@
             "reauth_successful": "Credenciais atualizadas com êxito"
         },
         "error": {
-            "invalid_auth": "Falha na autenticação"
+            "invalid_auth": "Falha na autenticação",
+            "invalid_vin": "Número VIN inválido"
         },
         "step": {
             "otp": {
@@ -1196,6 +1197,7 @@
                     },
                     "units": {
                         "data": {
+                            "energy_consumption_unit": "Unidade de consumo de energia",
                             "fuel_consumption_unit": "Unidade de consumo de combustível"
                         },
                         "name": "Unidades"
@@ -1205,6 +1207,12 @@
         }
     },
     "selector": {
+        "energy_consumption_unit": {
+            "options": {
+                "kwh_100km": "kWh/100 km",
+                "miles_kwh": "mi/kWh"
+            }
+        },
         "fuel_consumption_unit": {
             "options": {
                 "l_100km": "L/100 km",
