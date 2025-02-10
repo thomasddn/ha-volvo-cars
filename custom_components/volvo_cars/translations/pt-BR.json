@@ -32,7 +32,7 @@
         },
         "error": {
             "invalid_auth": "Falha na autenticação",
-            "invalid_vin": ""
+            "invalid_vin": "O número VIN é inválido"
         },
         "step": {
             "otp": {
@@ -1197,7 +1197,7 @@
                     },
                     "units": {
                         "data": {
-                            "energy_consumption_unit": "",
+                            "energy_consumption_unit": "Unidade para consumo de energia",
                             "fuel_consumption_unit": "Unidade de consumo de combustível"
                         },
                         "name": "Unidades"
