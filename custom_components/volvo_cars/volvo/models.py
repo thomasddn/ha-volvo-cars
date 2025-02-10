@@ -87,9 +87,9 @@ class VolvoCarsVehicle(VolvoCarsApiBaseModel):
     model_year: int
     gearbox: str
     fuel_type: str
-    external_colour: str
     images: VolvoCarsImages
     description: VolvoCarsModel
+    external_colour: str | None = None
     battery_capacity_kwh: float | None = None
 
     def has_battery_engine(self) -> bool:

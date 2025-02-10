@@ -7,6 +7,7 @@ import pytest
 from custom_components.volvo_cars.volvo.models import (
     VolvoCarsLocation,
     VolvoCarsValueField,
+    VolvoCarsVehicle,
 )
 
 from .common import load_json_object_fixture
@@ -56,3 +57,26 @@ def test_create_location(has_timestamp: bool) -> None:
         assert location.properties.timestamp == date
     else:
         assert location.properties.timestamp is None
+
+
+@pytest.mark.parametrize(("has_colour"), [(True), (False)])
+def test_create_vehicle(has_colour: bool) -> None:
+    """Test deserialization of VolvoCarsVehicle."""
+
+    data = (
+        load_json_object_fixture("ex30_bev/vehicle")
+        if has_colour
+        else load_json_object_fixture("ex30_bev_no_colour/vehicle")
+    )
+
+    vehicle = VolvoCarsVehicle.from_dict(data)
+
+    assert vehicle
+    assert vehicle.vin == "YV1ABCDEFG1234567"
+    assert vehicle.model_year == 2024
+    assert vehicle.gearbox == "AUTOMATIC"
+
+    if has_colour:
+        assert vehicle.external_colour == "Crystal White Pearl"
+    else:
+        assert vehicle.external_colour is None
