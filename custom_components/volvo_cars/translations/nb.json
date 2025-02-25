@@ -64,7 +64,7 @@
     "entity": {
         "binary_sensor": {
             "brake_fluid_level_warning": {
-                "name": "Bremesevæske",
+                "name": "Bremsevæske",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
