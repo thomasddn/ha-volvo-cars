@@ -22,7 +22,7 @@ Now check out the features section for details on what you'll get!
 
 - Multiple cars
 - Multiple accounts
-- Multiple languages: Dutch (nl), English (en), French (fr), German (de), Norwegian Bokmål (nb), Polish (pl), Portuguese Brazil (pt-BR), Portuguese Portugal (pt), Swedish (sv)
+- Multiple languages: Dutch (nl), English (en), French (fr), German (de), Norwegian Bokmål (nb), Polish (pl), Portuguese Brazil (pt-BR), Portuguese Portugal (pt), Spanish (es), Swedish (sv)
 
 <br>
 
