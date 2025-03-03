@@ -251,7 +251,7 @@
                 }
             },
             "hood": {
-                "name": "Maletero",
+                "name": "Capó",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Marca de tiempo de la API"
@@ -1013,7 +1013,7 @@
                 }
             },
             "charging_connection_status": {
-                "name": "Estado de carga",
+                "name": "Conexión al cargador",
                 "state": {
                     "connection_status_connected_ac": "AC conectado",
                     "connection_status_connected_dc": "DC conectado",

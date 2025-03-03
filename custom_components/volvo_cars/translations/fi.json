@@ -1,0 +1,1258 @@
+{
+    "common": {
+        "api_timestamp": "API aikaleima",
+        "car_error": "Auton virhe",
+        "completed": "Valmis",
+        "connection_failure": "Yhteysvirhe",
+        "delivered": "Toimitettu",
+        "door_open": "Ovi auki",
+        "error": "Virhe",
+        "high_pressure": "Korkea paine",
+        "last_refresh": "Viimeinen päivitys",
+        "last_result": "Viimeisin tulos",
+        "low_pressure": "Matala paine",
+        "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
+        "ok": "OK",
+        "pressure": "Paine",
+        "rejected": "Hylätty",
+        "running": "Käynnissä",
+        "time_frame_passed": "Aikaraja ylitetty",
+        "timeout": "Aikakatkaisu",
+        "unknown": "Tuntematon",
+        "vcc_api_key": "Volvo API -avain",
+        "vehicle_in_sleep": "Auto virransäästötilassa",
+        "very_low_pressure": "Erittäin matala paine",
+        "waiting": "Odottaa",
+        "wrong_usage": "Virheellinen käyttö"
+    },
+    "config": {
+        "abort": {
+            "already_configured": "Auto on jo konfiguroitu",
+            "reauth_successful": "Kirjautumistiedot päivitetty onnistuneesti"
+        },
+        "error": {
+            "invalid_auth": "Autentikointi epäonnistui",
+            "invalid_vin": "VIN numero on virheellinen"
+        },
+        "step": {
+            "otp": {
+                "data": {
+                    "otp": "Kerta-avainkoodi (OTP)"
+                },
+                "description": "Syötä kerta-avainkoodi (OTP) minkä vastaanotit sähköpostitse."
+            },
+            "reauth_confirm": {
+                "description": "Volvo Cars integraation täytyy todentaa tilisi uudestaan.",
+                "title": "Kirjautumistiedot vanhentuneet"
+            },
+            "user": {
+                "data": {
+                    "friendly_name": "Mukautettu nimi",
+                    "password": "Salasana",
+                    "username": "Käyttäjätunnus",
+                    "vcc_api_key": "Volvo API -avain",
+                    "vin": "Ajoneuvon valmistenumero (VIN)"
+                },
+                "data_description": {
+                    "friendly_name": "Arvoa käytetään entity ID:ssä (volvo_[mukautettu nimi]_[avain]). Voidaan jättää tyhjäksi, jolloin käytetään VIN:iä.",
+                    "vin": "VIN on 17 merkkiä pitkä ja alkaa todennäköisesti joko YV1 tai YV4."
+                },
+                "description": "Syötä Volvo-tilin kirjautumistiedot, VIN ja Volvo kehittäjän API-avain (https://developer.volvocars.com/)."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "brake_fluid_level_warning": {
+                "name": "Jarruneste",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "brake_light_center_warning": {
+                "name": "Jarruvalo keski",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "brake_light_left_warning": {
+                "name": "Jarruvalo vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "brake_light_right_warning": {
+                "name": "Jarruvalo oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "coolant_level_warning": {
+                "name": "Jäähdytysnesteen taso",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "daytime_running_light_left_warning": {
+                "name": "Päiväajovalo vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "daytime_running_light_right_warning": {
+                "name": "Päiväajovalo oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "door_front_left": {
+                "name": "Ovi etu vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "door_front_right": {
+                "name": "Ovi etu oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "door_rear_left": {
+                "name": "Ovi taka vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "door_rear_right": {
+                "name": "Ovi taka oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "engine_status": {
+                "name": "Moottorin tila",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "fog_light_front_warning": {
+                "name": "Sumuvalo etu",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "fog_light_rear_warning": {
+                "name": "Sumuvalo taka",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "hazard_lights_warning": {
+                "name": "Hätävilkut",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "high_beam_left_warning": {
+                "name": "Kaukovalo vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "high_beam_right_warning": {
+                "name": "Kaukovalo oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "hood": {
+                "name": "Konepelti",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "low_beam_left_warning": {
+                "name": "Lähivalo vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "low_beam_right_warning": {
+                "name": "Lähivalo oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "oil_level_warning": {
+                "name": "Öljytaso",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    },
+                    "level": {
+                        "name": "Taso",
+                        "state": {
+                            "no_warning": "OK",
+                            "service_required": "Vaatii huoltoa",
+                            "too_high": "Liian korkea",
+                            "too_low": "Liian matala"
+                        }
+                    }
+                }
+            },
+            "position_light_front_left_warning": {
+                "name": "Huomiovalo etu vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "position_light_front_right_warning": {
+                "name": "Huomiovalo etu oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "position_light_rear_left_warning": {
+                "name": "Huomiovalo taka vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "position_light_rear_right_warning": {
+                "name": "Huomiovalo taka oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "registration_plate_light_warning": {
+                "name": "Rekisterikilven valo",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "reverse_lights_warning": {
+                "name": "Peruutusvalot",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "service_warning": {
+                "name": "Huolto",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    },
+                    "reason": {
+                        "name": "Syy",
+                        "state": {
+                            "distance_driven_almost_time_for_service": "Ajokilometreihin perustuvan huollon ajankohta lähellä",
+                            "distance_driven_overdue_for_service": "Ajokilometreihin perustuvan huollon ajankohta myöhässä",
+                            "distance_driven_time_for_service": "Huollon ajankohta (ajokilometrit)",
+                            "engine_hours_almost_time_for_service": "Moottorihuollon ajankohta lähellä",
+                            "engine_hours_overdue_for_service": "Moottorihuolto myöhässä",
+                            "engine_hours_time_for_service": "Moottorihuollon ajankohta",
+                            "no_warning": "OK",
+                            "regular_maintenance_almost_time_for_service": "Huollon ajankohta lähellä",
+                            "regular_maintenance_overdue_for_service": "Huolto myöhässä",
+                            "regular_maintenance_time_for_service": "Huollon aika",
+                            "unknown_warning": "Tuntematon varoitus"
+                        }
+                    }
+                }
+            },
+            "side_mark_lights_warning": {
+                "name": "Sivuvalot",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "sunroof": {
+                "name": "Kattoluukku",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "tailgate": {
+                "name": "Takaluukku",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "tank_lid": {
+                "name": "Polttoaineluukku",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "turn_indication_front_left_warning": {
+                "name": "Vilkku etu vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "turn_indication_front_right_warning": {
+                "name": "Vilkku etu oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "turn_indication_rear_left_warning": {
+                "name": "Vilkku taka vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "turn_indication_rear_right_warning": {
+                "name": "Vilkku taka oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "tyre_front_left": {
+                "name": "Rengas etu vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    },
+                    "pressure": {
+                        "name": "Paine",
+                        "state": {
+                            "high_pressure": "Korkea paine",
+                            "low_pressure": "Matala paine",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Erittäin matala paine"
+                        }
+                    }
+                }
+            },
+            "tyre_front_right": {
+                "name": "Rengas etu oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    },
+                    "pressure": {
+                        "name": "Paine",
+                        "state": {
+                            "high_pressure": "Korkea paine",
+                            "low_pressure": "Matala paine",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Erittäin matala paine"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_left": {
+                "name": "Rengas taka vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    },
+                    "pressure": {
+                        "name": "Paine",
+                        "state": {
+                            "high_pressure": "Korkea paine",
+                            "low_pressure": "Matala paine",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Erittäin matala paine"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_right": {
+                "name": "Rengas taka oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    },
+                    "pressure": {
+                        "name": "Paine",
+                        "state": {
+                            "high_pressure": "Korkea paine",
+                            "low_pressure": "Matala paine",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Erittäin matala paine"
+                        }
+                    }
+                }
+            },
+            "washer_fluid_level_warning": {
+                "name": "Lasinpesuneste",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "window_front_left": {
+                "name": "Ikkuna etu vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "window_front_right": {
+                "name": "Ikkuna etu oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "window_rear_left": {
+                "name": "Ikkuna taka vasen",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "window_rear_right": {
+                "name": "Ikkuna taka oikea",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            }
+        },
+        "button": {
+            "climatization_start": {
+                "name": "Käynnistä ilmastointi",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Viimeisin tulos",
+                        "state": {
+                            "car_error": "Auton virhe",
+                            "completed": "Valmis",
+                            "connection_failure": "Yhteysvirhe",
+                            "delivered": "Toimitettu",
+                            "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
+                            "not_allowed_wrong_usage_mode": "Virheellinen käyttö",
+                            "rejected": "Hylätty",
+                            "running": "Käynnissä",
+                            "timeout": "Aikakatkaisu",
+                            "unknown": "Tuntematon",
+                            "vehicle_in_sleep": "Auto virransäästötilassa",
+                            "waiting": "Odottaa"
+                        }
+                    }
+                }
+            },
+            "climatization_stop": {
+                "name": "Pysäytä ilmastointi",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Viimeisin tulos",
+                        "state": {
+                            "car_error": "Auton virhe",
+                            "completed": "Valmis",
+                            "connection_failure": "Yhteysvirhe",
+                            "delivered": "Toimitettu",
+                            "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
+                            "not_allowed_wrong_usage_mode": "Virheellinen käyttö",
+                            "rejected": "Hylätty",
+                            "running": "Käynnissä",
+                            "timeout": "Aikakatkaisu",
+                            "unknown": "Tuntematon",
+                            "vehicle_in_sleep": "Auto virransäästötilassa",
+                            "waiting": "Odottaa"
+                        }
+                    }
+                }
+            },
+            "engine_start": {
+                "name": "Käynnistä moottori",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Viimeisin tulos",
+                        "state": {
+                            "car_error": "Auton virhe",
+                            "completed": "Valmis",
+                            "connection_failure": "Yhteysvirhe",
+                            "delivered": "Toimitettu",
+                            "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
+                            "not_allowed_wrong_usage_mode": "Virheellinen käyttö",
+                            "rejected": "Hylätty",
+                            "running": "Käynnissä",
+                            "timeout": "Aikakatkaisu",
+                            "unknown": "Tuntematon",
+                            "vehicle_in_sleep": "Auto virransäästötilassa",
+                            "waiting": "Odottaa"
+                        }
+                    }
+                }
+            },
+            "engine_stop": {
+                "name": "Pysäytä moottori",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Viimeisin tulos",
+                        "state": {
+                            "car_error": "Auton virhe",
+                            "completed": "Valmis",
+                            "connection_failure": "Yhteysvirhe",
+                            "delivered": "Toimitettu",
+                            "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
+                            "not_allowed_wrong_usage_mode": "Virheellinen käyttö",
+                            "rejected": "Hylätty",
+                            "running": "Käynnissä",
+                            "timeout": "Aikakatkaisu",
+                            "unknown": "Tuntematon",
+                            "vehicle_in_sleep": "Auto virransäästötilassa",
+                            "waiting": "Odottaa"
+                        }
+                    }
+                }
+            },
+            "flash": {
+                "name": "Väläytä valoja",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Viimeisin tulos",
+                        "state": {
+                            "car_error": "Auton virhe",
+                            "completed": "Valmis",
+                            "connection_failure": "Yhteysvirhe",
+                            "delivered": "Toimitettu",
+                            "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
+                            "not_allowed_wrong_usage_mode": "Virheellinen käyttö",
+                            "rejected": "Hylätty",
+                            "timeout": "Aikakatkaisu",
+                            "unknown": "Tuntematon",
+                            "vehicle_in_sleep": "Auto virransäästötilassa"
+                        }
+                    }
+                }
+            },
+            "honk": {
+                "name": "Tööttää",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Viimeisin tulos",
+                        "state": {
+                            "car_error": "Auton virhe",
+                            "completed": "Valmis",
+                            "connection_failure": "Yhteysvirhe",
+                            "delivered": "Toimitettu",
+                            "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
+                            "not_allowed_wrong_usage_mode": "Virheellinen käyttö",
+                            "rejected": "Hylätty",
+                            "timeout": "Aikakatkaisu",
+                            "unknown": "Tuntematon",
+                            "vehicle_in_sleep": "Auto virransäästötilassa"
+                        }
+                    }
+                }
+            },
+            "honk_flash": {
+                "name": "Tööttää ja väläytä valoja",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Viimeisin tulos",
+                        "state": {
+                            "car_error": "Auton virhe",
+                            "completed": "Valmis",
+                            "connection_failure": "Yhteysvirhe",
+                            "delivered": "Toimitettu",
+                            "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
+                            "not_allowed_wrong_usage_mode": "Virheellinen käyttö",
+                            "rejected": "Hylätty",
+                            "timeout": "Aikakatkaisu",
+                            "unknown": "Tuntematon",
+                            "vehicle_in_sleep": "Auto virransäästötilassa"
+                        }
+                    }
+                }
+            },
+            "update_data": {
+                "name": "Päivitä tiedot"
+            }
+        },
+        "device_tracker": {
+            "location": {
+                "name": "Sijainti",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "direction": {
+                        "name": "Suunta"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            }
+        },
+        "image": {
+            "exterior": {
+                "name": "Ulkopuoli sivu matkustaja"
+            },
+            "exterior_back": {
+                "name": "Ulkopuoli taka"
+            },
+            "exterior_back_driver": {
+                "name": "Ulkopuoli taka kuljettaja"
+            },
+            "exterior_back_passenger": {
+                "name": "Ulkopuoli taka matkustaja"
+            },
+            "exterior_front": {
+                "name": "Ulkopuoli etu"
+            },
+            "exterior_front_driver": {
+                "name": "Ulkopuoli etu kuljettaja"
+            },
+            "exterior_front_passenger": {
+                "name": "Ulkopuoli etu matkustaja"
+            },
+            "exterior_side_driver": {
+                "name": "Ulkopuoli sivu kuljettaja"
+            },
+            "interior": {
+                "name": "Sisäpuoli"
+            }
+        },
+        "lock": {
+            "lock": {
+                "name": "Keskuslukitus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    },
+                    "last_result": {
+                        "name": "Viimeisin tulos",
+                        "state": {
+                            "completed": "Valmis",
+                            "connection_failure": "Yhteysvirhe",
+                            "delivered": "Toimitettu",
+                            "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
+                            "not_allowed_wrong_usage_mode": "Virheellinen käyttö",
+                            "rejected": "Hylätty",
+                            "timeout": "Aikakatkaisu",
+                            "unable_to_lock_door_open": "Ovi auki",
+                            "unknown": "Tuntematon",
+                            "unlock_time_frame_passed": "Aikaraja ylitetty",
+                            "vehicle_in_sleep": "Auto virransäästötilassa"
+                        }
+                    }
+                }
+            },
+            "lock_reduced_guard": {
+                "name": "Lukitus alennetulla hälyytystasolla",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    },
+                    "last_result": {
+                        "name": "Viimeisin tulos",
+                        "state": {
+                            "completed": "Valmis",
+                            "connection_failure": "Yhteysvirhe",
+                            "delivered": "Toimitettu",
+                            "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
+                            "not_allowed_wrong_usage_mode": "Virheellinen käyttö",
+                            "rejected": "Hylätty",
+                            "timeout": "Aikakatkaisu",
+                            "unable_to_lock_door_open": "Ovi auki",
+                            "unknown": "Tuntematon",
+                            "unlock_time_frame_passed": "Aikaraja ylitetty",
+                            "vehicle_in_sleep": "Auto virransäästötilassa"
+                        }
+                    }
+                }
+            }
+        },
+        "number": {
+            "data_update_interval": {
+                "name": "Tietojen päivitysväli"
+            },
+            "engine_run_time": {
+                "name": "Moottorin käyntiaika"
+            }
+        },
+        "sensor": {
+            "api_request_count": {
+                "name": "API-pyyntöjen määrä"
+            },
+            "api_status": {
+                "name": "APIn tila",
+                "state_attributes": {
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "availability": {
+                "name": "Auton yhteys",
+                "state": {
+                    "available": "Saatavilla",
+                    "car_in_use": "Auto on käytössä",
+                    "no_internet": "Ei internet-yhteyttä",
+                    "power_saving_mode": "Virransäästötila",
+                    "unavailable": "Ei saatavilla",
+                    "unspecified": "Tuntematon"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "average_energy_consumption": {
+                "name": "TM keskim. energiankulutus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "average_energy_consumption_automatic": {
+                "name": "TA keskim. energiankulutus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "average_energy_consumption_charge": {
+                "name": "Keskim. energiankulutus viime latauksesta",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "average_fuel_consumption": {
+                "name": "TM keskim. polttoaineenkulutus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "average_fuel_consumption_automatic": {
+                "name": "TA keskim. polttoaineenkulutus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "average_speed": {
+                "name": "TM keskinopeus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "average_speed_automatic": {
+                "name": "TA keskinopeus",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "battery_capacity": {
+                "name": "Akun kapasiteetti",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "battery_charge_level": {
+                "name": "Akun lataustaso",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "charging_connection_status": {
+                "name": "Latausliitännän tila",
+                "state": {
+                    "connection_status_connected_ac": "Yhdistetty AC",
+                    "connection_status_connected_dc": "Yhdistetty DC",
+                    "connection_status_disconnected": "Ei yhdistetty",
+                    "connection_status_fault": "Virhe",
+                    "connection_status_unspecified": "Tuntematon"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "charging_system_status": {
+                "name": "Latauksen tila",
+                "state": {
+                    "charging_system_charging": "Lataa",
+                    "charging_system_done": "Valmis",
+                    "charging_system_fault": "Virhe",
+                    "charging_system_idle": "Ei aktiivinen",
+                    "charging_system_scheduled": "Ajastettu",
+                    "charging_system_unspecified": "Tuntematon"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "distance_to_empty_battery": {
+                "name": "Kantama akulla",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "distance_to_empty_tank": {
+                "name": "Kantama polttoaineella",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "distance_to_service": {
+                "name": "Matkaa huoltoon",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "engine_time_to_service": {
+                "name": "Moottorin käyntiaikaa huoltoon",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "estimated_charging_time": {
+                "name": "Arvioitu latausaika",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "fuel_amount": {
+                "name": "Polttoaineen määrä",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "odometer": {
+                "name": "Matkamittari",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "time_to_service": {
+                "name": "Aikaa huoltoon",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "trip_meter_automatic": {
+                "name": "TA ajomatka",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            },
+            "trip_meter_manual": {
+                "name": "TM ajomatka",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API aikaleima"
+                    },
+                    "last_refresh": {
+                        "name": "Viimeinen päivitys"
+                    }
+                }
+            }
+        }
+    },
+    "exceptions": {
+        "lock_failure": {
+            "message": "Auton komento {command} epäonnistui. Tila: {status}. Viesti: {message}"
+        }
+    },
+    "options": {
+        "abort": {
+            "no_options_available": "Autollesi ei ole tarjolla asetuksia."
+        },
+        "step": {
+            "init": {
+                "sections": {
+                    "api": {
+                        "data": {
+                            "vcc_api_key": "Volvo API -avain"
+                        },
+                        "name": "API"
+                    },
+                    "device_tracker": {
+                        "data": {
+                            "device_tracker_picture": "Kuva"
+                        },
+                        "name": "Sijainnin seurantalaite"
+                    },
+                    "images": {
+                        "data": {
+                            "image_bg_color": "Kuvien taustaväri",
+                            "image_transparent": "Kuvien tausta läpinäkyvä"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Merkityksellinen vain jos läpinäkyvää ei ole valittu."
+                        },
+                        "name": "Kuvat"
+                    },
+                    "units": {
+                        "data": {
+                            "energy_consumption_unit": "Energiankulutuksen yksikkö",
+                            "fuel_consumption_unit": "Polttoaineenkulutuksen yksikkö"
+                        },
+                        "name": "Yksiköt"
+                    }
+                }
+            }
+        }
+    },
+    "selector": {
+        "energy_consumption_unit": {
+            "options": {
+                "kwh_100km": "kWh/100 km",
+                "miles_kwh": "mi/kWh"
+            }
+        },
+        "fuel_consumption_unit": {
+            "options": {
+                "l_100km": "l/100 km",
+                "mpg_uk": "mpg (UK)",
+                "mpg_us": "mpg (US)"
+            }
+        },
+        "refresh_data_param": {
+            "options": {
+                "availability": "Saatavuus",
+                "brakes": "Jarrut",
+                "diagnostics": "Diagnostiikka",
+                "doors": "Ovet",
+                "engine": "Moottori",
+                "engine_status": "Moottorin tila",
+                "fuel": "Polttoaine",
+                "location": "Sijainti",
+                "odometer": "Matkamittari",
+                "recharge_status": "Latauksen tila",
+                "statistics": "Tilastot",
+                "tyres": "Renkaat",
+                "warnings": "Varoitukset",
+                "windows": "Ikkunat"
+            }
+        }
+    },
+    "services": {
+        "refresh_data": {
+            "description": "Päivitä kaikki tiedot tai vain tietty osa tiedoista.",
+            "fields": {
+                "data": {
+                    "description": "Jätä kenttä tyhjäksi päivittääksesi kaikki tiedot.",
+                    "name": "Tieto"
+                },
+                "entry": {
+                    "description": "Päivitettävä kenttä. Jätä kenttä tyhjäksi päivittääksesi kaikki kentät.",
+                    "name": "Kenttä"
+                }
+            },
+            "name": "Päivitä tiedot"
+        }
+    }
+}
