@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 import pytest
 
 from custom_components.volvo_cars.volvo.models import (
+    VolvoCarsErrorResult,
     VolvoCarsLocation,
     VolvoCarsValueField,
     VolvoCarsVehicle,
@@ -80,3 +81,26 @@ def test_create_vehicle(has_colour: bool) -> None:
         assert vehicle.external_colour == "Crystal White Pearl"
     else:
         assert vehicle.external_colour is None
+
+
+@pytest.mark.parametrize(("has_description"), [(True), (False)])
+def test_error_parsing(has_description: bool) -> None:
+    """Test parsing an error message."""
+
+    message = "Something went wrong."
+    description = "More details about the error."
+
+    error_data = {"message": message}
+
+    if has_description:
+        error_data["description"] = description
+
+    error = VolvoCarsErrorResult.from_dict(error_data)
+
+    assert error
+    assert error.message == message
+
+    if has_description:
+        assert error.description == description
+    else:
+        assert error.description is None

@@ -161,8 +161,8 @@ class VolvoCarsCommandResult(VolvoCarsApiBaseModel):
 class VolvoCarsErrorResult(VolvoCarsApiBaseModel):
     """Error result model."""
 
-    message: str
-    description: str
+    message: str | None = None
+    description: str | None = None
 
 
 @dataclass
