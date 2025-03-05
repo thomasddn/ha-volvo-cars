@@ -27,6 +27,7 @@ jobs:
             This issue has been marked as stale due to inactivity. If no response
             is provided within 2 days, it will be automatically closed. Feel free
             to comment below if you'd like to keep it open.
+          exempt-issue-labels: no stale
 
       - name: Stale discussions
         uses: steffen-karlsson/stalesweeper@v1.1.1
