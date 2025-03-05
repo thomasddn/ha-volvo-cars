@@ -53,9 +53,6 @@ class ApiDataManager:
         self._path = hass.config.path(STORAGE_DIR, f"{DOMAIN}.data")
 
         self._cleanup_callbacks: list[CALLBACK_TYPE] = []
-        self._cleanup_callbacks.append(
-            hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STOP, self.shutdown)
-        )
         self._cleanup_callbacks.append(self._delete_data_file)
 
     @classmethod
@@ -67,9 +64,9 @@ class ApiDataManager:
 
         return manager
 
-    def shutdown(self, event: Event | None = None) -> None:
-        """Shutdown data manager."""
-        _LOGGER.debug("Shutting down data manager")
+    def cleanup(self, event: Event | None = None) -> None:
+        """Cleanup resources used by data manager."""
+        _LOGGER.debug("Cleaning up resources used by data manager")
         self._api_data = None
 
         while self._cleanup_callbacks:

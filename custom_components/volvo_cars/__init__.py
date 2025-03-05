@@ -197,7 +197,7 @@ async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
         store = VolvoCarsStoreManager(hass, entry.unique_id)
         await store.async_remove()
 
-    cleanup(hass, entry)
+    _cleanup(hass, entry)
 
 
 async def _async_reset_request_count_if_missed(
@@ -254,8 +254,8 @@ def _remove_old_entities(
             er.async_remove(entry.entity_id)
 
 
-def cleanup(hass: HomeAssistant, entry: ConfigEntry) -> None:
-    """Remove data file if no more entries are loaded."""
+def _cleanup(hass: HomeAssistant, entry: ConfigEntry) -> None:
+    """Cleanup resources if no more entries are loaded."""
 
     if (data_manager := hass.data.get(VOLVO_CARS_KEY)) is None:
         return
@@ -266,4 +266,4 @@ def cleanup(hass: HomeAssistant, entry: ConfigEntry) -> None:
     # During unloading of the entry, it is not marked as unloaded yet. So
     # count can be 1 if it is the last one.
     if count == 0 or (count == 1 and entries[0].entry_id == entry.entry_id):
-        data_manager.shutdown()
+        data_manager.cleanup()
