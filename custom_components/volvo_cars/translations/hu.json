@@ -1,0 +1,1258 @@
+{
+    "common": {
+        "api_timestamp": "API időkód",
+        "car_error": "Autó hiba",
+        "completed": "Completed",
+        "connection_failure": "Connection failure",
+        "delivered": "Delivered",
+        "door_open": "Door open",
+        "error": "Error",
+        "high_pressure": "High pressure",
+        "last_refresh": "Last refresh",
+        "last_result": "Last result",
+        "low_pressure": "Low pressure",
+        "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+        "ok": "OK",
+        "pressure": "Pressure",
+        "rejected": "Rejected",
+        "running": "Running",
+        "time_frame_passed": "Time frame passed",
+        "timeout": "Timeout",
+        "unknown": "Unknown",
+        "vcc_api_key": "Volvo API key",
+        "vehicle_in_sleep": "Vehicle in sleep",
+        "very_low_pressure": "Very low pressure",
+        "waiting": "Waiting",
+        "wrong_usage": "Wrong usage"
+    },
+    "config": {
+        "abort": {
+            "already_configured": "Car is already configured",
+            "reauth_successful": "Successfully updated credentials"
+        },
+        "error": {
+            "invalid_auth": "Authentication failed",
+            "invalid_vin": "VIN is invalid"
+        },
+        "step": {
+            "otp": {
+                "data": {
+                    "otp": "OTP"
+                },
+                "description": "Enter the OTP you received in your mailbox."
+            },
+            "reauth_confirm": {
+                "description": "The Volvo Cars integration needs to re-authenticate your account.",
+                "title": "Credentials expired"
+            },
+            "user": {
+                "data": {
+                    "friendly_name": "Friendly name",
+                    "password": "Password",
+                    "username": "Username",
+                    "vcc_api_key": "Volvo API key",
+                    "vin": "Vehicle Identification Number"
+                },
+                "data_description": {
+                    "friendly_name": "This value is used in the entity ID (volvo_[friendly name]_[key]). If left empty, VIN will be used.",
+                    "vin": "The VIN is 17 characters long and probably starts with YV1 or YV4."
+                },
+                "description": "Enter your Volvo account credentials, VIN and Volvo developers API key (https://developer.volvocars.com/)."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "brake_fluid_level_warning": {
+                "name": "Brake fluid",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "brake_light_center_warning": {
+                "name": "Brake light center",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "brake_light_left_warning": {
+                "name": "Brake light left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "brake_light_right_warning": {
+                "name": "Brake light right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "coolant_level_warning": {
+                "name": "Coolant level",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "daytime_running_light_left_warning": {
+                "name": "Daytime running light left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "daytime_running_light_right_warning": {
+                "name": "Daytime running light right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "door_front_left": {
+                "name": "Door front left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "door_front_right": {
+                "name": "Door front right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "door_rear_left": {
+                "name": "Door rear left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "door_rear_right": {
+                "name": "Door rear right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "engine_status": {
+                "name": "Engine status",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "fog_light_front_warning": {
+                "name": "Fog light front",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "fog_light_rear_warning": {
+                "name": "Fog light rear",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "hazard_lights_warning": {
+                "name": "Hazard lights",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "high_beam_left_warning": {
+                "name": "High beam left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "high_beam_right_warning": {
+                "name": "High beam right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "hood": {
+                "name": "Hood",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "low_beam_left_warning": {
+                "name": "Low beam left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "low_beam_right_warning": {
+                "name": "Low beam right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "oil_level_warning": {
+                "name": "Oil level",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    },
+                    "level": {
+                        "name": "Level",
+                        "state": {
+                            "no_warning": "OK",
+                            "service_required": "Service required",
+                            "too_high": "Too high",
+                            "too_low": "Too low"
+                        }
+                    }
+                }
+            },
+            "position_light_front_left_warning": {
+                "name": "Position light front left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "position_light_front_right_warning": {
+                "name": "Position light front right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "position_light_rear_left_warning": {
+                "name": "Position light rear left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "position_light_rear_right_warning": {
+                "name": "Position light rear right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "registration_plate_light_warning": {
+                "name": "Registration plate light",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "reverse_lights_warning": {
+                "name": "Reverse lights",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "service_warning": {
+                "name": "Service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    },
+                    "reason": {
+                        "name": "Reason",
+                        "state": {
+                            "distance_driven_almost_time_for_service": "Almost time for distance service",
+                            "distance_driven_overdue_for_service": "Distance service overdue",
+                            "distance_driven_time_for_service": "Time for distance service",
+                            "engine_hours_almost_time_for_service": "Almost time for engine service",
+                            "engine_hours_overdue_for_service": "Engine service overdue",
+                            "engine_hours_time_for_service": "Time for engine service",
+                            "no_warning": "OK",
+                            "regular_maintenance_almost_time_for_service": "Almost time for service",
+                            "regular_maintenance_overdue_for_service": "Service overdue",
+                            "regular_maintenance_time_for_service": "Time for service",
+                            "unknown_warning": "Unknown warning"
+                        }
+                    }
+                }
+            },
+            "side_mark_lights_warning": {
+                "name": "Side mark lights",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "sunroof": {
+                "name": "Sunroof",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "tailgate": {
+                "name": "Tailgate",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "tank_lid": {
+                "name": "Tank lid",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "turn_indication_front_left_warning": {
+                "name": "Turn indication front left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "turn_indication_front_right_warning": {
+                "name": "Turn indication front right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "turn_indication_rear_left_warning": {
+                "name": "Turn indication rear left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "turn_indication_rear_right_warning": {
+                "name": "Turn indication rear right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "tyre_front_left": {
+                "name": "Tyre front left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    },
+                    "pressure": {
+                        "name": "Pressure",
+                        "state": {
+                            "high_pressure": "High pressure",
+                            "low_pressure": "Low pressure",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Very low pressure"
+                        }
+                    }
+                }
+            },
+            "tyre_front_right": {
+                "name": "Tyre front right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    },
+                    "pressure": {
+                        "name": "Pressure",
+                        "state": {
+                            "high_pressure": "High pressure",
+                            "low_pressure": "Low pressure",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Very low pressure"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_left": {
+                "name": "Tyre rear left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    },
+                    "pressure": {
+                        "name": "Pressure",
+                        "state": {
+                            "high_pressure": "High pressure",
+                            "low_pressure": "Low pressure",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Very low pressure"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_right": {
+                "name": "Tyre rear right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    },
+                    "pressure": {
+                        "name": "Pressure",
+                        "state": {
+                            "high_pressure": "High pressure",
+                            "low_pressure": "Low pressure",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Very low pressure"
+                        }
+                    }
+                }
+            },
+            "washer_fluid_level_warning": {
+                "name": "Washer fluid",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "window_front_left": {
+                "name": "Window front left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "window_front_right": {
+                "name": "Window front right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "window_rear_left": {
+                "name": "Window rear left",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "window_rear_right": {
+                "name": "Window rear right",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            }
+        },
+        "button": {
+            "climatization_start": {
+                "name": "Start climatization",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Last result",
+                        "state": {
+                            "car_error": "Car error",
+                            "completed": "Completed",
+                            "connection_failure": "Connection failure",
+                            "delivered": "Delivered",
+                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+                            "not_allowed_wrong_usage_mode": "Wrong usage",
+                            "rejected": "Rejected",
+                            "running": "Running",
+                            "timeout": "Timeout",
+                            "unknown": "Unknown",
+                            "vehicle_in_sleep": "Vehicle in sleep",
+                            "waiting": "Waiting"
+                        }
+                    }
+                }
+            },
+            "climatization_stop": {
+                "name": "Stop climatization",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Last result",
+                        "state": {
+                            "car_error": "Car error",
+                            "completed": "Completed",
+                            "connection_failure": "Connection failure",
+                            "delivered": "Delivered",
+                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+                            "not_allowed_wrong_usage_mode": "Wrong usage",
+                            "rejected": "Rejected",
+                            "running": "Running",
+                            "timeout": "Timeout",
+                            "unknown": "Unknown",
+                            "vehicle_in_sleep": "Vehicle in sleep",
+                            "waiting": "Waiting"
+                        }
+                    }
+                }
+            },
+            "engine_start": {
+                "name": "Start engine",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Last result",
+                        "state": {
+                            "car_error": "Car error",
+                            "completed": "Completed",
+                            "connection_failure": "Connection failure",
+                            "delivered": "Delivered",
+                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+                            "not_allowed_wrong_usage_mode": "Wrong usage",
+                            "rejected": "Rejected",
+                            "running": "Running",
+                            "timeout": "Timeout",
+                            "unknown": "Unknown",
+                            "vehicle_in_sleep": "Vehicle in sleep",
+                            "waiting": "Waiting"
+                        }
+                    }
+                }
+            },
+            "engine_stop": {
+                "name": "Stop engine",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Last result",
+                        "state": {
+                            "car_error": "Car error",
+                            "completed": "Completed",
+                            "connection_failure": "Connection failure",
+                            "delivered": "Delivered",
+                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+                            "not_allowed_wrong_usage_mode": "Wrong usage",
+                            "rejected": "Rejected",
+                            "running": "Running",
+                            "timeout": "Timeout",
+                            "unknown": "Unknown",
+                            "vehicle_in_sleep": "Vehicle in sleep",
+                            "waiting": "Waiting"
+                        }
+                    }
+                }
+            },
+            "flash": {
+                "name": "Flash",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Last result",
+                        "state": {
+                            "car_error": "Car error",
+                            "completed": "Completed",
+                            "connection_failure": "Connection failure",
+                            "delivered": "Delivered",
+                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+                            "not_allowed_wrong_usage_mode": "Wrong usage",
+                            "rejected": "Rejected",
+                            "timeout": "Timeout",
+                            "unknown": "Unknown",
+                            "vehicle_in_sleep": "Vehicle in sleep"
+                        }
+                    }
+                }
+            },
+            "honk": {
+                "name": "Honk",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Last result",
+                        "state": {
+                            "car_error": "Car error",
+                            "completed": "Completed",
+                            "connection_failure": "Connection failure",
+                            "delivered": "Delivered",
+                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+                            "not_allowed_wrong_usage_mode": "Wrong usage",
+                            "rejected": "Rejected",
+                            "timeout": "Timeout",
+                            "unknown": "Unknown",
+                            "vehicle_in_sleep": "Vehicle in sleep"
+                        }
+                    }
+                }
+            },
+            "honk_flash": {
+                "name": "Honk & flash",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Last result",
+                        "state": {
+                            "car_error": "Car error",
+                            "completed": "Completed",
+                            "connection_failure": "Connection failure",
+                            "delivered": "Delivered",
+                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+                            "not_allowed_wrong_usage_mode": "Wrong usage",
+                            "rejected": "Rejected",
+                            "timeout": "Timeout",
+                            "unknown": "Unknown",
+                            "vehicle_in_sleep": "Vehicle in sleep"
+                        }
+                    }
+                }
+            },
+            "update_data": {
+                "name": "Update data"
+            }
+        },
+        "device_tracker": {
+            "location": {
+                "name": "Location",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "direction": {
+                        "name": "Direction"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            }
+        },
+        "image": {
+            "exterior": {
+                "name": "Exterior side passenger"
+            },
+            "exterior_back": {
+                "name": "Exterior back"
+            },
+            "exterior_back_driver": {
+                "name": "Exterior back driver"
+            },
+            "exterior_back_passenger": {
+                "name": "Exterior back passenger"
+            },
+            "exterior_front": {
+                "name": "Exterior front"
+            },
+            "exterior_front_driver": {
+                "name": "Exterior front driver"
+            },
+            "exterior_front_passenger": {
+                "name": "Exterior front passenger"
+            },
+            "exterior_side_driver": {
+                "name": "Exterior side driver"
+            },
+            "interior": {
+                "name": "Interior"
+            }
+        },
+        "lock": {
+            "lock": {
+                "name": "Central lock",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    },
+                    "last_result": {
+                        "name": "Last result",
+                        "state": {
+                            "completed": "Completed",
+                            "connection_failure": "Connection failure",
+                            "delivered": "Delivered",
+                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+                            "not_allowed_wrong_usage_mode": "Wrong usage",
+                            "rejected": "Rejected",
+                            "timeout": "Timeout",
+                            "unable_to_lock_door_open": "Door open",
+                            "unknown": "Unknown",
+                            "unlock_time_frame_passed": "Time frame passed",
+                            "vehicle_in_sleep": "Vehicle in sleep"
+                        }
+                    }
+                }
+            },
+            "lock_reduced_guard": {
+                "name": "Reduced guard lock",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    },
+                    "last_result": {
+                        "name": "Last result",
+                        "state": {
+                            "completed": "Completed",
+                            "connection_failure": "Connection failure",
+                            "delivered": "Delivered",
+                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
+                            "not_allowed_wrong_usage_mode": "Wrong usage",
+                            "rejected": "Rejected",
+                            "timeout": "Timeout",
+                            "unable_to_lock_door_open": "Door open",
+                            "unknown": "Unknown",
+                            "unlock_time_frame_passed": "Time frame passed",
+                            "vehicle_in_sleep": "Vehicle in sleep"
+                        }
+                    }
+                }
+            }
+        },
+        "number": {
+            "data_update_interval": {
+                "name": "Data update interval"
+            },
+            "engine_run_time": {
+                "name": "Engine run time"
+            }
+        },
+        "sensor": {
+            "api_request_count": {
+                "name": "API request count"
+            },
+            "api_status": {
+                "name": "API status",
+                "state_attributes": {
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "availability": {
+                "name": "Car connection",
+                "state": {
+                    "available": "Available",
+                    "car_in_use": "Car is in use",
+                    "no_internet": "No internet",
+                    "power_saving_mode": "Power saving mode",
+                    "unavailable": "Unavailable",
+                    "unspecified": "Unknown"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "average_energy_consumption": {
+                "name": "TM Avg. energy consumption",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "average_energy_consumption_automatic": {
+                "name": "TA Avg. energy consumption",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "average_energy_consumption_charge": {
+                "name": "Avg. energy consumption since charge",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "average_fuel_consumption": {
+                "name": "TM Avg. fuel consumption",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "average_fuel_consumption_automatic": {
+                "name": "TA Avg. fuel consumption",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "average_speed": {
+                "name": "TM Avg. speed",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "average_speed_automatic": {
+                "name": "TA Avg. speed",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "battery_capacity": {
+                "name": "Battery capacity",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "battery_charge_level": {
+                "name": "Battery charge level",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "charging_connection_status": {
+                "name": "Charging connection status",
+                "state": {
+                    "connection_status_connected_ac": "Connected AC",
+                    "connection_status_connected_dc": "Connected DC",
+                    "connection_status_disconnected": "Disconnected",
+                    "connection_status_fault": "Error",
+                    "connection_status_unspecified": "Unknown"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "charging_system_status": {
+                "name": "Charging status",
+                "state": {
+                    "charging_system_charging": "Charging",
+                    "charging_system_done": "Done",
+                    "charging_system_fault": "Error",
+                    "charging_system_idle": "Idle",
+                    "charging_system_scheduled": "Scheduled",
+                    "charging_system_unspecified": "Unknown"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "distance_to_empty_battery": {
+                "name": "Distance to empty battery",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "distance_to_empty_tank": {
+                "name": "Distance to empty tank",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "distance_to_service": {
+                "name": "Distance to service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "engine_time_to_service": {
+                "name": "Engine time to service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "estimated_charging_time": {
+                "name": "Est. charging time",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "fuel_amount": {
+                "name": "Fuel amount",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "odometer": {
+                "name": "Odometer",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "time_to_service": {
+                "name": "Time to service",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "trip_meter_automatic": {
+                "name": "TA Distance",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            },
+            "trip_meter_manual": {
+                "name": "TM Distance",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API timestamp"
+                    },
+                    "last_refresh": {
+                        "name": "Last refresh"
+                    }
+                }
+            }
+        }
+    },
+    "exceptions": {
+        "lock_failure": {
+            "message": "Failed to {command} vehicle. Status: {status}. Message: {message}"
+        }
+    },
+    "options": {
+        "abort": {
+            "no_options_available": "No options available for your vehicle."
+        },
+        "step": {
+            "init": {
+                "sections": {
+                    "api": {
+                        "data": {
+                            "vcc_api_key": "Volvo API key"
+                        },
+                        "name": "API"
+                    },
+                    "device_tracker": {
+                        "data": {
+                            "device_tracker_picture": "Picture"
+                        },
+                        "name": "Device tracker"
+                    },
+                    "images": {
+                        "data": {
+                            "image_bg_color": "Images background color",
+                            "image_transparent": "Images transparent background"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Only applicable if transparent is not checked."
+                        },
+                        "name": "Images"
+                    },
+                    "units": {
+                        "data": {
+                            "energy_consumption_unit": "Energy consumption unit",
+                            "fuel_consumption_unit": "Fuel consumption unit"
+                        },
+                        "name": "Units"
+                    }
+                }
+            }
+        }
+    },
+    "selector": {
+        "energy_consumption_unit": {
+            "options": {
+                "kwh_100km": "kWh/100 km",
+                "miles_kwh": "mi/kWh"
+            }
+        },
+        "fuel_consumption_unit": {
+            "options": {
+                "l_100km": "L/100 km",
+                "mpg_uk": "mpg (UK)",
+                "mpg_us": "mpg (US)"
+            }
+        },
+        "refresh_data_param": {
+            "options": {
+                "availability": "Availability",
+                "brakes": "Brakes",
+                "diagnostics": "Diagnostics",
+                "doors": "Doors",
+                "engine": "Engine",
+                "engine_status": "Engine status",
+                "fuel": "Fuel",
+                "location": "Location",
+                "odometer": "Odometer",
+                "recharge_status": "Recharge status",
+                "statistics": "Statistics",
+                "tyres": "Tyres",
+                "warnings": "Warnings",
+                "windows": "Windows"
+            }
+        }
+    },
+    "services": {
+        "refresh_data": {
+            "description": "Refresh all data or only specific parts.",
+            "fields": {
+                "data": {
+                    "description": "Leave the field empty to refresh all data.",
+                    "name": "Data"
+                },
+                "entry": {
+                    "description": "The entry to refresh. Leave empty to refresh the data for all entries.",
+                    "name": "Entry"
+                }
+            },
+            "name": "Refresh data"
+        }
+    }
+}
