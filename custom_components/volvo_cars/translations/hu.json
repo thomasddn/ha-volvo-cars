@@ -1223,19 +1223,19 @@
         "refresh_data_param": {
             "options": {
                 "availability": "Availability",
-                "brakes": "Brakes",
+                "brakes": "Fék",
                 "diagnostics": "Diagnostics",
-                "doors": "Doors",
-                "engine": "Engine",
-                "engine_status": "Engine status",
-                "fuel": "Fuel",
-                "location": "Location",
+                "doors": "Ajtó",
+                "engine": "Motor",
+                "engine_status": "Motor állapot",
+                "fuel": "Üzemeanyag",
+                "location": "Hely",
                 "odometer": "Odometer",
                 "recharge_status": "Recharge status",
                 "statistics": "Statistics",
                 "tyres": "Tyres",
                 "warnings": "Warnings",
-                "windows": "Windows"
+                "windows": "Ablak"
             }
         }
     },
