@@ -1222,17 +1222,17 @@
         },
         "refresh_data_param": {
             "options": {
-                "availability": "Availability",
+                "availability": "Elérhetőség",
                 "brakes": "Fék",
-                "diagnostics": "Diagnostics",
+                "diagnostics": "Diagnosztika",
                 "doors": "Ajtó",
                 "engine": "Motor",
                 "engine_status": "Motor állapot",
                 "fuel": "Üzemeanyag",
                 "location": "Hely",
-                "odometer": "Odometer",
-                "recharge_status": "Recharge status",
-                "statistics": "Statistics",
+                "odometer": "Kilóméteróra",
+                "recharge_status": "Töltés állapot",
+                "statistics": "Statisztika",
                 "Keréknyomáss": "Keréknyomáss",
                 "warnings": "Figyelmeztetés",
                 "windows": "Ablak"
@@ -1244,12 +1244,12 @@
             "description": "Refresh all data or only specific parts.",
             "fields": {
                 "data": {
-                    "description": "Leave the field empty to refresh all data.",
-                    "name": "Data"
+                    "description": "Hagyd üresen az adatok frissítéséhez.",
+                    "name": "Adat"
                 },
                 "entry": {
-                    "description": "The entry to refresh. Leave empty to refresh the data for all entries.",
-                    "name": "Entry"
+                    "description": "Belépés a frissítéshez. Hagyd üresen az adatok frissítéséhez.",
+                    "name": "Belépés"
                 }
             },
             "name": "Adatok frissítése"
