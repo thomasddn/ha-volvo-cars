@@ -2,17 +2,17 @@
     "common": {
         "api_timestamp": "API időkód",
         "car_error": "Autó hiba",
-        "completed": "Kész",
+        "Kész": "Kész",
         "connection_failure": "Kapcsolati hiba",
-        "delivered": "Szállítás",
+        "delivered": "Elküldve",
         "door_open": "Ajtó nyitva",
         "error": "hiba",
         "high_pressure": "Magas nyomás",
         "last_refresh": "Utolsó frissítés",
-        "last_result": "Last result",
+        "last_result": "Utolsó eredmény",
         "low_pressure": "Alacsony nyomás",
-        "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-        "ok": "OK",
+        "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+        "ok": "Rendben",
         "pressure": "Nyomás",
         "rejected": "Elutasítva",
         "running": "Fut",
@@ -78,611 +78,611 @@
                 "name": "Féklámpa középső",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "brake_light_left_warning": {
-                "name": "Brake light left",
+                "name": "Féklámpa bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
-            "brake_light_right_warning": {
-                "name": "Brake light right",
+            "brake_light_jobb_warning": {
+                "name": "Féklámpa jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "coolant_level_warning": {
-                "name": "Coolant level",
+                "name": "Hűtőfolyadék szint",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "daytime_running_light_left_warning": {
-                "name": "Daytime running light left",
+                "name": "Nappali menetlámpa bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
-            "daytime_running_light_right_warning": {
-                "name": "Daytime running light right",
+            "daytime_running_light_jobb_warning": {
+                "name": "Nappali menetlámpa jobb",
                 "state_attributes": {
-                    "api_timestamp": {
-                        "name": "API timestamp"
+                    "api_időkód": {
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "door_front_left": {
-                "name": "Door front left",
+                "name": "Első ajtó bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "door_front_right": {
-                "name": "Door front right",
+                "name": "Első ajtó jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "door_rear_left": {
-                "name": "Door rear left",
+                "name": "Hátsó ajtó bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "door_rear_right": {
-                "name": "Door rear right",
+                "name": "Hátsó ajtó jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "engine_status": {
-                "name": "Engine status",
+                "name": "Motor állapot",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "fog_light_front_warning": {
-                "name": "Fog light front",
+                "name": "Ködlámpa első",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "fog_light_rear_warning": {
-                "name": "Fog light rear",
+                "name": "Ködlámpa hátsó",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "hazard_lights_warning": {
-                "name": "Hazard lights",
+                "name": "Vészvillogó",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "high_beam_left_warning": {
-                "name": "High beam left",
+                "name": "Távolsági fényszóró bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "high_beam_right_warning": {
-                "name": "High beam right",
+                "name": "Távolsági fényszóró jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "hood": {
-                "name": "Hood",
+                "name": "Motorháztető",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "low_beam_left_warning": {
-                "name": "Low beam left",
+                "name": "Tompított fényszóró bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "low_beam_right_warning": {
-                "name": "Low beam right",
+                "name": "Tompított fényszóró jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "oil_level_warning": {
-                "name": "Oil level",
+                "name": "Olajszint",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     },
                     "level": {
-                        "name": "Level",
+                        "name": "Szint",
                         "state": {
-                            "no_warning": "OK",
-                            "service_required": "Service required",
-                            "too_high": "Too high",
-                            "too_low": "Too low"
+                            "no_warning": "Rendben",
+                            "service_required": "Szervíz szükséges",
+                            "too_high": "Magas",
+                            "too_low": "Alacsony"
                         }
                     }
                 }
             },
             "position_light_front_left_warning": {
-                "name": "Position light front left",
+                "name": "Irányjelző első bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "position_light_front_right_warning": {
-                "name": "Position light front right",
+                "name": "Irányjelző első jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "position_light_rear_left_warning": {
-                "name": "Position light rear left",
+                "name": "Irányjelző hátsó bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "position_light_rear_right_warning": {
-                "name": "Position light rear right",
+                "name": "Irányjelző hátsó jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "registration_plate_light_warning": {
-                "name": "Registration plate light",
+                "name": "Rendszám világítás",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "reverse_lights_warning": {
-                "name": "Reverse lights",
+                "name": "Tolató lámpa",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "service_warning": {
-                "name": "Service",
+                "name": "Szervíz",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     },
                     "reason": {
                         "name": "Reason",
                         "state": {
-                            "distance_driven_almost_time_for_service": "Almost time for distance service",
-                            "distance_driven_overdue_for_service": "Distance service overdue",
-                            "distance_driven_time_for_service": "Time for distance service",
-                            "engine_hours_almost_time_for_service": "Almost time for engine service",
-                            "engine_hours_overdue_for_service": "Engine service overdue",
-                            "engine_hours_time_for_service": "Time for engine service",
-                            "no_warning": "OK",
-                            "regular_maintenance_almost_time_for_service": "Almost time for service",
-                            "regular_maintenance_overdue_for_service": "Service overdue",
-                            "regular_maintenance_time_for_service": "Time for service",
-                            "unknown_warning": "Unknown warning"
+                            "distance_driven_almost_time_for_service": "Hanarosan szükséges a távoli szervíz szolgáltatás",
+                            "distance_driven_overdue_for_service": "Távoli szervíz szolgáltatás lejárt",
+                            "distance_driven_time_for_service": "Távoli szervíz szolgáltatás szükséges",
+                            "engine_hours_almost_time_for_service": "Hamarosan motor szervíz szükséges",
+                            "engine_hours_overdue_for_service": "Motor szervíz szolgáltataás lejárt",
+                            "engine_hours_time_for_service": "Motor szervíz szüksége",
+                            "no_warning": "Rendben",
+                            "regular_maintenance_almost_time_for_service": "Szervíz szükséges hamarosan",
+                            "regular_maintenance_overdue_for_service": "Szervíz lejárt",
+                            "regular_maintenance_time_for_service": "Szervíz szükséges",
+                            "unknown_warning": "Ismeretlen figyelmeztetés"
                         }
                     }
                 }
             },
             "side_mark_lights_warning": {
-                "name": "Side mark lights",
+                "name": "Oldalsó lámpák",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "sunroof": {
-                "name": "Sunroof",
+                "name": "Napfénytető",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "tailgate": {
-                "name": "Tailgate",
+                "name": "Csomagtérajtó",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "tank_lid": {
-                "name": "Tank lid",
+                "name": "Tanksapka",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "turn_indication_front_left_warning": {
-                "name": "Turn indication front left",
+                "name": "Index első bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "turn_indication_front_right_warning": {
-                "name": "Turn indication front right",
+                "name": "Index első jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "turn_indication_rear_left_warning": {
-                "name": "Turn indication rear left",
+                "name": "Index hátsó bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "turn_indication_rear_right_warning": {
-                "name": "Turn indication rear right",
+                "name": "Index hátsó jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
-            "tyre_front_left": {
-                "name": "Tyre front left",
+            "Keréknyomás_front_left": {
+                "name": "Keréknyomás első bal",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     },
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "Nyomás",
                         "state": {
-                            "high_pressure": "High pressure",
-                            "low_pressure": "Low pressure",
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure"
+                            "high_pressure": "Magas nyomás",
+                            "low_pressure": "Alacsony nyomás",
+                            "no_warning": "Rendben",
+                            "very_low_pressure": "Nagyon alacsony nynomás"
                         }
                     }
                 }
             },
             "tyre_front_right": {
-                "name": "Tyre front right",
+                "name": "Keréknyomás első jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     },
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "Nyomás",
                         "state": {
-                            "high_pressure": "High pressure",
-                            "low_pressure": "Low pressure",
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure"
+                            "high_pressure": "Magas nyomás",
+                            "low_pressure": "Alacsony nyomás",
+                            "no_warning": "Rendben",
+                            "very_low_pressure": "Nagyon alacsony nynomás"
                         }
                     }
                 }
             },
             "tyre_rear_left": {
-                "name": "Tyre rear left",
+                "name": "Keréknyomás hátsó left",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     },
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "Nyomás",
                         "state": {
-                            "high_pressure": "High pressure",
-                            "low_pressure": "Low pressure",
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure"
+                            "high_pressure": "Magas nyomás",
+                            "low_pressure": "Alacsony nyomás",
+                            "no_warning": "Rendben",
+                            "very_low_pressure": "Nagyon alacsony nynomás"
                         }
                     }
                 }
             },
             "tyre_rear_right": {
-                "name": "Tyre rear right",
+                "name": "Keréknyomás hátsó jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     },
                     "pressure": {
-                        "name": "Pressure",
+                        "name": "Nyomás",
                         "state": {
-                            "high_pressure": "High pressure",
-                            "low_pressure": "Low pressure",
-                            "no_warning": "OK",
-                            "very_low_pressure": "Very low pressure"
+                            "high_pressure": "Magas nyomás",
+                            "low_pressure": "Alacsony nyomás",
+                            "no_warning": "Rendben",
+                            "very_low_pressure": "Nagyon alacsony nynomás"
                         }
                     }
                 }
             },
             "washer_fluid_level_warning": {
-                "name": "Washer fluid",
+                "name": "Ablakmosó folyadék",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "window_front_left": {
-                "name": "Window front left",
+                "name": "Ablak első left",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
-            "window_front_right": {
-                "name": "Window front right",
+            "Ablak_front_jobb": {
+                "name": "Ablak első jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
-            "window_rear_left": {
-                "name": "Window rear left",
+            "window_hátsó_left": {
+                "name": "Ablak hátsó left",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
-            "window_rear_right": {
-                "name": "Window rear right",
+            "window_rear_jobb": {
+                "name": "Ablak hátsó jobb",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             }
         },
         "button": {
             "climatization_start": {
-                "name": "Start climatization",
+                "name": "Klima indítás",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Utolsó eredmény",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Rossz használat",
+                            "rejected": "Elutasítva",
+                            "running": "Fut",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Autó pihen",
+                            "waiting": "Várakozás"
                         }
                     }
                 }
             },
             "climatization_stop": {
-                "name": "Stop climatization",
+                "name": "Klíma leállítása",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Utolsó eredmény",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Rossz használat",
+                            "rejected": "Elutasítva",
+                            "running": "Fut",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Autó pihen",
+                            "waiting": "Várakozás"
                         }
                     }
                 }
             },
             "engine_start": {
-                "name": "Start engine",
+                "name": "Motor indítás",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Utolsó eredmény",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
                             "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Rossz használat",
+                            "rejected": "Elutasítva",
                             "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó pihen",
+                            "waiting": "Vár"
                         }
                     }
                 }
@@ -691,20 +691,20 @@
                 "name": "Stop engine",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Utolsó eredmény",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Rossz használat",
+                            "rejected": "Elutasítva",
                             "running": "Running",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep",
-                            "waiting": "Waiting"
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó pihen",
+                            "waiting": "Vár"
                         }
                     }
                 }
@@ -713,18 +713,18 @@
                 "name": "Flash",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Utolsó eredmény",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Rossz használat",
+                            "rejected": "Elutasítva",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó pihen"
                         }
                     }
                 }
@@ -733,18 +733,18 @@
                 "name": "Honk",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Utolsó eredmény",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Rossz használat",
+                            "rejected": "Elutasítva",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó pihen"
                         }
                     }
                 }
@@ -753,122 +753,122 @@
                 "name": "Honk & flash",
                 "state_attributes": {
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Utolsó eredmény",
                         "state": {
-                            "car_error": "Car error",
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unknown": "Unknown",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Rossz használat",
+                            "rejected": "Elutasítva",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó pihen"
                         }
                     }
                 }
             },
             "update_data": {
-                "name": "Update data"
+                "name": "Adatok frissítése"
             }
         },
         "device_tracker": {
             "location": {
-                "name": "Location",
+                "name": "Hely",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "direction": {
-                        "name": "Direction"
+                        "name": "Irány"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             }
         },
         "image": {
             "exterior": {
-                "name": "Exterior side passenger"
+                "name": "Külső utas oldal"
             },
             "exterior_back": {
-                "name": "Exterior back"
+                "name": "Külső hátsó"
             },
             "exterior_back_driver": {
-                "name": "Exterior back driver"
+                "name": "Külső hátsó vezető oldal"
             },
             "exterior_back_passenger": {
-                "name": "Exterior back passenger"
+                "name": "Külső hátsó pasutas oldalsenger"
             },
             "exterior_front": {
-                "name": "Exterior front"
+                "name": "Külső első"
             },
             "exterior_front_driver": {
-                "name": "Exterior front driver"
+                "name": "Külső első driver"
             },
             "exterior_front_passenger": {
-                "name": "Exterior front passenger"
+                "name": "Külső első utas oldal"
             },
             "exterior_side_driver": {
-                "name": "Exterior side driver"
+                "name": "Külső oldal vezető oldal"
             },
             "interior": {
-                "name": "Interior"
+                "name": "Belső"
             }
         },
         "lock": {
             "lock": {
-                "name": "Central lock",
+                "name": "Központi zár",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     },
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Utolsó eredmény",
                         "state": {
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unable_to_lock_door_open": "Door open",
-                            "unknown": "Unknown",
-                            "unlock_time_frame_passed": "Time frame passed",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "Elküldve": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Rossz használat",
+                            "rejected": "Elutasítva",
+                            "timeout": "Időtúllépés",
+                            "unable_to_lock_door_open": "Ajtó nyitva",
+                            "unknown": "Ismeretlen",
+                            "unlock_time_frame_passed": "Az idő lejárt",
+                            "vehicle_in_sleep": "Az autó pihen"
                         }
                     }
                 }
             },
             "lock_reduced_guard": {
-                "name": "Reduced guard lock",
+                "name": "Csökkentett biztonsági zár",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     },
                     "last_result": {
-                        "name": "Last result",
+                        "name": "Utolsó eredmény",
                         "state": {
-                            "completed": "Completed",
-                            "connection_failure": "Connection failure",
-                            "delivered": "Delivered",
-                            "not_allowed_privacy_enabled": "Not allowed, privacy enabled",
-                            "not_allowed_wrong_usage_mode": "Wrong usage",
-                            "rejected": "Rejected",
-                            "timeout": "Timeout",
-                            "unable_to_lock_door_open": "Door open",
-                            "unknown": "Unknown",
-                            "unlock_time_frame_passed": "Time frame passed",
-                            "vehicle_in_sleep": "Vehicle in sleep"
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Rossz használat",
+                            "rejected": "Elutasítva",
+                            "timeout": "Időtúllépés",
+                            "unable_to_lock_door_open": "Ajtó nyitva",
+                            "unknown": "Ismeretlen",
+                            "unlock_time_frame_passed": "Az idő lejárt",
+                            "vehicle_in_sleep": "Az autó pihen"
                         }
                     }
                 }
@@ -876,10 +876,10 @@
         },
         "number": {
             "data_update_interval": {
-                "name": "Data update interval"
+                "name": "Adat frissítési idő"
             },
             "engine_run_time": {
-                "name": "Engine run time"
+                "name": "Motor futási idő"
             }
         },
         "sensor": {
@@ -887,29 +887,29 @@
                 "name": "API request count"
             },
             "api_status": {
-                "name": "API status",
+                "name": "API állapot",
                 "state_attributes": {
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "availability": {
-                "name": "Car connection",
+                "name": "Az autó kapcsolatata",
                 "state": {
-                    "available": "Available",
-                    "car_in_use": "Car is in use",
-                    "no_internet": "No internet",
-                    "power_saving_mode": "Power saving mode",
-                    "unavailable": "Unavailable",
-                    "unspecified": "Unknown"
+                    "available": "Elérhető",
+                    "car_in_use": "Az autó használatban",
+                    "no_internet": "Nincs internet",
+                    "power_saving_mode": "Energiatakarékos üzemmód",
+                    "unavailable": "Elérhetetlen",
+                    "unspecified": "Ismeretlen"
                 },
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
@@ -917,10 +917,10 @@
                 "name": "TM Avg. energy consumption",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
@@ -928,10 +928,10 @@
                 "name": "TA Avg. energy consumption",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
@@ -939,10 +939,10 @@
                 "name": "Avg. energy consumption since charge",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
@@ -950,10 +950,10 @@
                 "name": "TM Avg. fuel consumption",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
@@ -961,10 +961,10 @@
                 "name": "TA Avg. fuel consumption",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
@@ -972,10 +972,10 @@
                 "name": "TM Avg. speed",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
@@ -983,69 +983,69 @@
                 "name": "TA Avg. speed",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "battery_capacity": {
-                "name": "Battery capacity",
+                "name": "Akkumlátor kapacitás",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "battery_charge_level": {
-                "name": "Battery charge level",
+                "name": "Akkumlátor töltés állapot",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "charging_connection_status": {
-                "name": "Charging connection status",
+                "name": "Töltés állapot",
                 "state": {
-                    "connection_status_connected_ac": "Connected AC",
-                    "connection_status_connected_dc": "Connected DC",
-                    "connection_status_disconnected": "Disconnected",
-                    "connection_status_fault": "Error",
-                    "connection_status_unspecified": "Unknown"
+                    "connection_status_connected_ac": "Csatlakozva AC",
+                    "connection_status_connected_dc": "Csatlakozva DC",
+                    "connection_status_disconnected": "Szétkapcsolva",
+                    "connection_status_fault": "Hiba",
+                    "connection_status_unspecified": "Ismeretlen"
                 },
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "charging_system_status": {
-                "name": "Charging status",
+                "name": "CharTöltés állapot",
                 "state": {
-                    "charging_system_charging": "Charging",
-                    "charging_system_done": "Done",
-                    "charging_system_fault": "Error",
-                    "charging_system_idle": "Idle",
-                    "charging_system_scheduled": "Scheduled",
-                    "charging_system_unspecified": "Unknown"
+                    "charging_system_charging": "Töltés",
+                    "charging_system_done": "Kész",
+                    "charging_system_fault": "Hiba",
+                    "charging_system_idle": "Várakozik",
+                    "charging_system_scheduled": "Ütemezve",
+                    "charging_system_unspecified": "Ismeretlen"
                 },
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
@@ -1053,109 +1053,109 @@
                 "name": "Distance to empty battery",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "distance_to_empty_tank": {
-                "name": "Distance to empty tank",
+                "name": "Hátralévő távolság a tank kiürüléséig",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "distance_to_service": {
-                "name": "Distance to service",
+                "name": "Távolsdág a szervízig",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "engine_time_to_service": {
-                "name": "Engine time to service",
+                "name": "Motor futási idő a szerzvízig",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "estimated_charging_time": {
-                "name": "Est. charging time",
+                "name": "Várható töltési idő",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "fuel_amount": {
-                "name": "Fuel amount",
+                "name": "Üzemanyag mennyiség",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "odometer": {
-                "name": "Odometer",
+                "name": "Megtett távolság",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "time_to_service": {
-                "name": "Time to service",
+                "name": "Hátralévő idő a szervízig",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "trip_meter_automatic": {
-                "name": "TA Distance",
+                "name": "TA távolság",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "trip_meter_manual": {
-                "name": "TM Distance",
+                "name": "TM távolság",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             }
@@ -1168,7 +1168,7 @@
     },
     "options": {
         "abort": {
-            "no_options_available": "No options available for your vehicle."
+            "no_options_available": "Az Ön járművéhez nem állnak rendelkezésre lehetőségek."
         },
         "step": {
             "init": {
@@ -1181,7 +1181,7 @@
                     },
                     "device_tracker": {
                         "data": {
-                            "device_tracker_picture": "Picture"
+                            "device_tracker_picture": "Kép"
                         },
                         "name": "Device tracker"
                     },
@@ -1233,8 +1233,8 @@
                 "odometer": "Odometer",
                 "recharge_status": "Recharge status",
                 "statistics": "Statistics",
-                "tyres": "Tyres",
-                "warnings": "Warnings",
+                "Keréknyomáss": "Keréknyomáss",
+                "warnings": "Figyelmeztetés",
                 "windows": "Ablak"
             }
         }
@@ -1252,7 +1252,7 @@
                     "name": "Entry"
                 }
             },
-            "name": "Refresh data"
+            "name": "Adatok frissítése"
         }
     }
 }
