@@ -4,7 +4,7 @@
         "car_error": "Autó hiba",
         "completed": "Kész",
         "connection_failure": "Kapcsolati hiba",
-        "delivered": "Delivered",
+        "delivered": "Szállítás",
         "door_open": "Ajtó nyitva",
         "error": "hiba",
         "high_pressure": "Magas nyomás",
@@ -17,65 +17,65 @@
         "rejected": "Elutasítva",
         "running": "Fut",
         "time_frame_passed": "Time frame passed",
-        "timeout": "Timeout",
+        "timeout": "Időtúllépés",
         "unknown": "Ismeretlen",
-        "vcc_api_key": "Volvo API key",
+        "vcc_api_key": "Volvo API kulcs",
         "vehicle_in_sleep": "Autó pihen",
         "very_low_pressure": "Nagyon alacsony nynomás",
         "waiting": "Várakozás",
-        "wrong_usage": "Wrong usage"
+        "wrong_usage": "Hibás használat"
     },
     "config": {
         "abort": {
-            "already_configured": "Car is already configured",
-            "reauth_successful": "Successfully updated credentials"
+            "already_configured": "Az autó konfigurálva",
+            "reauth_successful": "Azonosítás sikeres"
         },
         "error": {
-            "invalid_auth": "Authentication failed",
-            "invalid_vin": "VIN is invalid"
+            "invalid_auth": "Azonosítás hiba",
+            "invalid_vin": "A VIN hibás"
         },
         "step": {
             "otp": {
                 "data": {
                     "otp": "OTP"
                 },
-                "description": "Enter the OTP you received in your mailbox."
+                "description": "Írd be a e-mailben kapott azonosítót (OTP)."
             },
             "reauth_confirm": {
-                "description": "The Volvo Cars integration needs to re-authenticate your account.",
-                "title": "Credentials expired"
+                "description": "A Volvo Autó integrációt újra kell hitelesíteni",
+                "title": "Hitelesítés lejárt"
             },
             "user": {
                 "data": {
-                    "friendly_name": "Friendly name",
+                    "friendly_name": "Elnevezés",
                     "password": "Jelszó",
                     "username": "Felhasználó név",
                     "vcc_api_key": "Volvo API kulcs",
-                    "vin": "Vehicle Identification Number"
+                    "vin": "Autó Azonosító (Vehicle Identification Number, VIN)"
                 },
                 "data_description": {
                     "friendly_name": "This value is used in the entity ID (volvo_[friendly name]_[key]). If left empty, VIN will be used.",
-                    "vin": "The VIN is 17 characters long and probably starts with YV1 or YV4."
+                    "vin": "Az autó azonosító (VIN) 17 betű hosszú és a kezdete valószínűleg YV1 vagy YV4."
                 },
-                "description": "Enter your Volvo account credentials, VIN and Volvo developers API key (https://developer.volvocars.com/)."
+                "description": "Írd be a Volvo azonosítód, VIN és a Volvo developers API kulcsot (https://developer.volvocars.com/)."
             }
         }
     },
     "entity": {
         "binary_sensor": {
             "brake_fluid_level_warning": {
-                "name": "Brake fluid",
+                "name": "Fék folyadés",
                 "state_attributes": {
                     "api_timestamp": {
-                        "name": "API timestamp"
+                        "name": "API időkód"
                     },
                     "last_refresh": {
-                        "name": "Last refresh"
+                        "name": "Utolsó frissítés"
                     }
                 }
             },
             "brake_light_center_warning": {
-                "name": "Brake light center",
+                "name": "Féklámpa középső",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API timestamp"
