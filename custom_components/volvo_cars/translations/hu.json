@@ -2,7 +2,7 @@
     "common": {
         "api_timestamp": "API időkód",
         "car_error": "Autó hiba",
-        "Kész": "Kész",
+        "complited": "Kész",
         "connection_failure": "Kapcsolati hiba",
         "delivered": "Elküldve",
         "door_open": "Ajtó nyitva",
