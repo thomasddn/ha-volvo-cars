@@ -1,0 +1,1258 @@
+{
+    "common": {
+        "api_timestamp": "API časová značka",
+        "car_error": "Chyba vozu",
+        "completed": "Hotovo",
+        "connection_failure": "Chyba spojení",
+        "delivered": "Odesláno",
+        "door_open": "Otevřené dveře",
+        "error": "Chyba",
+        "high_pressure": "Vysoký tlak",
+        "last_refresh": "Poslední aktualizace",
+        "last_result": "Poslední výsledek",
+        "low_pressure": "Nízký tlak",
+        "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
+        "ok": "OK",
+        "pressure": "Tlak",
+        "rejected": "Odmítnuto",
+        "running": "Probíhá",
+        "time_frame_passed": "Časový interval uplynul",
+        "timeout": "Časový limit",
+        "unknown": "Neznámý",
+        "vcc_api_key": "Volvo API klíč",
+        "vehicle_in_sleep": "Vozidlo v režimu spánku",
+        "very_low_pressure": "Velmi nízký tlak",
+        "waiting": "Čekání",
+        "wrong_usage": "Špatné použití"
+    },
+    "config": {
+        "abort": {
+            "already_configured": "Auto je již nakonfigurováno",
+            "reauth_successful": "Přihlašovací údaje byly úspěšně aktualizovány"
+        },
+        "error": {
+            "invalid_auth": "Ověření se nezdařilo",
+            "invalid_vin": "Neplatný VIN"
+        },
+        "step": {
+            "otp": {
+                "data": {
+                    "otp": "Jednorázové heslo"
+                },
+                "description": "Zadejte jednorázové heslo, které jste obdrželi do své poštovní schránky."
+            },
+            "reauth_confirm": {
+                "description": "Integrace Volvo Cars potřebuje znovu ověřit váš účet.",
+                "title": "Platnost přihlašovacích údajů vypršela"
+            },
+            "user": {
+                "data": {
+                    "friendly_name": "Popisný název",
+                    "password": "Heslo",
+                    "username": "Uživatelské jméno",
+                    "vcc_api_key": "Volvo API klíč",
+                    "vin": "Identifikační číslo vozidla (VIN)"
+                },
+                "data_description": {
+                    "friendly_name": "Tato hodnota se používá v ID entity (volvo_[popisný název]_[klíč]). Pokud je prázdná, použije se VIN.",
+                    "vin": "VIN je 17 znaků dlouhý a pravděpodobně začíná na YV1, nebo YV4."
+                },
+                "description": "Zadejte přihlašovací údaje k účtu Volvo, VIN a klíč API pro vývojáře Volvo (https://developer.volvocars.com/)."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "brake_fluid_level_warning": {
+                "name": "Brzdová kapalina",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "brake_light_center_warning": {
+                "name": "Brzdové světlo uprostřed",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "brake_light_left_warning": {
+                "name": "Brzdové světlo levé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "brake_light_right_warning": {
+                "name": "Brzdové světlo pravé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "coolant_level_warning": {
+                "name": "Hladina chladicí kapaliny",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "daytime_running_light_left_warning": {
+                "name": "Světlo pro denní svícení levé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "daytime_running_light_right_warning": {
+                "name": "Světlo pro denní svícení pravé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "door_front_left": {
+                "name": "Dveře přední levé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "door_front_right": {
+                "name": "Dveře přední pravé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "door_rear_left": {
+                "name": "Dveře zadní levé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "door_rear_right": {
+                "name": "Dveře zadní pravé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "engine_status": {
+                "name": "Stav motoru",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "fog_light_front_warning": {
+                "name": "Mlhová světla přední",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "fog_light_rear_warning": {
+                "name": "Mlhová světla zadní",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "hazard_lights_warning": {
+                "name": "Výstražná světla",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "high_beam_left_warning": {
+                "name": "Dálkové světlo levé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "high_beam_right_warning": {
+                "name": "Dálkové světlo pravé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "hood": {
+                "name": "Kapota",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "low_beam_left_warning": {
+                "name": "Potkávací světlo levé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "low_beam_right_warning": {
+                "name": "Potkávací světlo pravé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "oil_level_warning": {
+                "name": "Hladina oleje",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    },
+                    "level": {
+                        "name": "Hladina",
+                        "state": {
+                            "no_warning": "OK",
+                            "service_required": "Je vyžadován servis",
+                            "too_high": "Příliš vysoká",
+                            "too_low": "Příliš nízká"
+                        }
+                    }
+                }
+            },
+            "position_light_front_left_warning": {
+                "name": "Obrysové světlo přední levé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "position_light_front_right_warning": {
+                "name": "Obrysové světlo přední pravé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "position_light_rear_left_warning": {
+                "name": "Obrysové světlo zadní levé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "position_light_rear_right_warning": {
+                "name": "Obrysové světlo zadní pravé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "registration_plate_light_warning": {
+                "name": "Osvětlení registrační značky",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "reverse_lights_warning": {
+                "name": "Zpětná světla",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "service_warning": {
+                "name": "Servis",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    },
+                    "reason": {
+                        "name": "Důvod",
+                        "state": {
+                            "distance_driven_almost_time_for_service": "Blíží se čas kontroly po ujeté vzdálenosti",
+                            "distance_driven_overdue_for_service": "Zameškaná kontrola po ujeté vzdálenosti",
+                            "distance_driven_time_for_service": "Je čas na kontrolu po ujeté vzdálenosti",
+                            "engine_hours_almost_time_for_service": "Blíží se čas pravidelné kontroly motoru",
+                            "engine_hours_overdue_for_service": "Zameškaná pravidelná kontrola motoru",
+                            "engine_hours_time_for_service": "Je čas na pravidelnou kontrolu motoru",
+                            "no_warning": "OK",
+                            "regular_maintenance_almost_time_for_service": "Blíží se čas pravidelné servisní kontroly",
+                            "regular_maintenance_overdue_for_service": "Změškaná pravidelná servisní kontrola",
+                            "regular_maintenance_time_for_service": "Je čas na pravidelnou servisní kontrolu",
+                            "unknown_warning": "Neznámé varování"
+                        }
+                    }
+                }
+            },
+            "side_mark_lights_warning": {
+                "name": "Boční obrysová světla",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "sunroof": {
+                "name": "Střešní okno",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "tailgate": {
+                "name": "Zadní dveře",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "tank_lid": {
+                "name": "Víčko nádrže",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "turn_indication_front_left_warning": {
+                "name": "Ukazatel směru přední levý",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "turn_indication_front_right_warning": {
+                "name": "Ukazatel směru přední pravý",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "turn_indication_rear_left_warning": {
+                "name": "Ukazatel směru zadní levý",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "turn_indication_rear_right_warning": {
+                "name": "Ukazatel směru zadní pravý",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "tyre_front_left": {
+                "name": "Pneumatika přední levá",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    },
+                    "pressure": {
+                        "name": "Tlak",
+                        "state": {
+                            "high_pressure": "Vysoký tlak",
+                            "low_pressure": "Nízký tlak",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Velmi nízký tlak"
+                        }
+                    }
+                }
+            },
+            "tyre_front_right": {
+                "name": "Pneumatika přední pravá",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    },
+                    "pressure": {
+                        "name": "Tlak",
+                        "state": {
+                            "high_pressure": "Vysoký tlak",
+                            "low_pressure": "Nízký tlak",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Velmi nízký tlak"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_left": {
+                "name": "Pneumatika zadní levá",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    },
+                    "pressure": {
+                        "name": "Tlak",
+                        "state": {
+                            "high_pressure": "Vysoký tlak",
+                            "low_pressure": "Nízký tlak",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Velmi nízký tlak"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_right": {
+                "name": "Pneumatika zadní pravá",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    },
+                    "pressure": {
+                        "name": "Tlak",
+                        "state": {
+                            "high_pressure": "Vysoký tlak",
+                            "low_pressure": "Nízký tlak",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Velmi nízký tlak"
+                        }
+                    }
+                }
+            },
+            "washer_fluid_level_warning": {
+                "name": "Kapalina do ostřikovačů",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "window_front_left": {
+                "name": "Okno přední levé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "window_front_right": {
+                "name": "Okno přední pravé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "window_rear_left": {
+                "name": "Okno zadní levé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "window_rear_right": {
+                "name": "Okno zadní pravé",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            }
+        },
+        "button": {
+            "climatization_start": {
+                "name": "Zapnout klimatizaci",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Poslední výsledek",
+                        "state": {
+                            "car_error": "Chyba vozu",
+                            "completed": "Hotovo",
+                            "connection_failure": "Chyba spojení",
+                            "delivered": "Odesláno",
+                            "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
+                            "not_allowed_wrong_usage_mode": "Špatné použití",
+                            "rejected": "Odmítnuto",
+                            "running": "Probíhá",
+                            "timeout": "Časový limit",
+                            "unknown": "Neznámý",
+                            "vehicle_in_sleep": "Vozidlo v režimu spánku",
+                            "waiting": "Čekání"
+                        }
+                    }
+                }
+            },
+            "climatization_stop": {
+                "name": "Vypnout klimatizaci",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Poslední výsledek",
+                        "state": {
+                            "car_error": "Chyba vozu",
+                            "completed": "Hotovo",
+                            "connection_failure": "Chyba spojení",
+                            "delivered": "Odesláno",
+                            "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
+                            "not_allowed_wrong_usage_mode": "Špatné použití",
+                            "rejected": "Odmítnuto",
+                            "running": "Probíhá",
+                            "timeout": "Časový limit",
+                            "unknown": "Neznámý",
+                            "vehicle_in_sleep": "Vozidlo v režimu spánku",
+                            "waiting": "Čekání"
+                        }
+                    }
+                }
+            },
+            "engine_start": {
+                "name": "Nastartovat motor",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Poslední výsledek",
+                        "state": {
+                            "car_error": "Chyba vozu",
+                            "completed": "Hotovo",
+                            "connection_failure": "Chyba spojení",
+                            "delivered": "Odesláno",
+                            "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
+                            "not_allowed_wrong_usage_mode": "Špatné použití",
+                            "rejected": "Odmítnuto",
+                            "running": "Probíhá",
+                            "timeout": "Časový limit",
+                            "unknown": "Neznámý",
+                            "vehicle_in_sleep": "Vozidlo v režimu spánku",
+                            "waiting": "Čekání"
+                        }
+                    }
+                }
+            },
+            "engine_stop": {
+                "name": "Vypnout motor",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Poslední výsledek",
+                        "state": {
+                            "car_error": "Chyba vozu",
+                            "completed": "Hotovo",
+                            "connection_failure": "Chyba spojení",
+                            "delivered": "Odesláno",
+                            "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
+                            "not_allowed_wrong_usage_mode": "Špatné použití",
+                            "rejected": "Odmítnuto",
+                            "running": "Probíhá",
+                            "timeout": "Časový limit",
+                            "unknown": "Neznámý",
+                            "vehicle_in_sleep": "Vozidlo v režimu spánku",
+                            "waiting": "Čekání"
+                        }
+                    }
+                }
+            },
+            "flash": {
+                "name": "Blikat",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Poslední výsledek",
+                        "state": {
+                            "car_error": "Chyba vozu",
+                            "completed": "Hotovo",
+                            "connection_failure": "Chyba spojení",
+                            "delivered": "Odesláno",
+                            "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
+                            "not_allowed_wrong_usage_mode": "Špatné použití",
+                            "rejected": "Odmítnuto",
+                            "timeout": "Časový limit",
+                            "unknown": "Neznámý",
+                            "vehicle_in_sleep": "Vozidlo v režimu spánku"
+                        }
+                    }
+                }
+            },
+            "honk": {
+                "name": "Troubit",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Poslední výsledek",
+                        "state": {
+                            "car_error": "Chyba vozu",
+                            "completed": "Hotovo",
+                            "connection_failure": "Chyba spojení",
+                            "delivered": "Odesláno",
+                            "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
+                            "not_allowed_wrong_usage_mode": "Špatné použití",
+                            "rejected": "Odmítnuto",
+                            "timeout": "Časový limit",
+                            "unknown": "Neznámý",
+                            "vehicle_in_sleep": "Vozidlo v režimu spánku"
+                        }
+                    }
+                }
+            },
+            "honk_flash": {
+                "name": "Troubit a blikat",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Poslední výsledek",
+                        "state": {
+                            "car_error": "Chyba vozu",
+                            "completed": "Hotovo",
+                            "connection_failure": "Chyba spojení",
+                            "delivered": "Odesláno",
+                            "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
+                            "not_allowed_wrong_usage_mode": "Špatné použití",
+                            "rejected": "Odmítnuto",
+                            "timeout": "Časový limit",
+                            "unknown": "Neznámý",
+                            "vehicle_in_sleep": "Vozidlo v režimu spánku"
+                        }
+                    }
+                }
+            },
+            "update_data": {
+                "name": "Aktualizovat data"
+            }
+        },
+        "device_tracker": {
+            "location": {
+                "name": "Poloha",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "direction": {
+                        "name": "Směr"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            }
+        },
+        "image": {
+            "exterior": {
+                "name": "Vnejší strana u spolujezdce"
+            },
+            "exterior_back": {
+                "name": "Pohled zezadu"
+            },
+            "exterior_back_driver": {
+                "name": "Vnejší strana u řidiče vzadu"
+            },
+            "exterior_back_passenger": {
+                "name": "Vnejší strana u spolujezdce vzadu"
+            },
+            "exterior_front": {
+                "name": "Pohled zepředu"
+            },
+            "exterior_front_driver": {
+                "name": "Vnějsí strana u řidiče vepředu"
+            },
+            "exterior_front_passenger": {
+                "name": "Vnější strana u spolujezdce vepředu"
+            },
+            "exterior_side_driver": {
+                "name": "Vnější strana u řidiče"
+            },
+            "interior": {
+                "name": "Interiér"
+            }
+        },
+        "lock": {
+            "lock": {
+                "name": "Centrální zamykání",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    },
+                    "last_result": {
+                        "name": "Poslední výsledek",
+                        "state": {
+                            "completed": "Hotovo",
+                            "connection_failure": "Chyba spojení",
+                            "delivered": "Odesláno",
+                            "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
+                            "not_allowed_wrong_usage_mode": "Špatné použití",
+                            "rejected": "Odmítnuto",
+                            "timeout": "Časový limit",
+                            "unable_to_lock_door_open": "Otevřené dveře",
+                            "unknown": "Neznámý",
+                            "unlock_time_frame_passed": "Časový interval uplynul",
+                            "vehicle_in_sleep": "Vozidlo v režimu spánku"
+                        }
+                    }
+                }
+            },
+            "lock_reduced_guard": {
+                "name": "Omezený ochranný zámek",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    },
+                    "last_result": {
+                        "name": "Poslední výsledek",
+                        "state": {
+                            "completed": "Hotovo",
+                            "connection_failure": "Chyba spojení",
+                            "delivered": "Odesláno",
+                            "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
+                            "not_allowed_wrong_usage_mode": "Špatné použití",
+                            "rejected": "Odmítnuto",
+                            "timeout": "Časový limit",
+                            "unable_to_lock_door_open": "Otevřené dveře",
+                            "unknown": "Neznámý",
+                            "unlock_time_frame_passed": "Časový interval uplynul",
+                            "vehicle_in_sleep": "Vozidlo v režimu spánku"
+                        }
+                    }
+                }
+            }
+        },
+        "number": {
+            "data_update_interval": {
+                "name": "Interval aktualizace dat"
+            },
+            "engine_run_time": {
+                "name": "Doba chodu motoru"
+            }
+        },
+        "sensor": {
+            "api_request_count": {
+                "name": "Počet požadavků API"
+            },
+            "api_status": {
+                "name": "Stav API",
+                "state_attributes": {
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "availability": {
+                "name": "Připojení automobilu",
+                "state": {
+                    "available": "K dispozici",
+                    "car_in_use": "Automobil je v provozu",
+                    "no_internet": "Žádný internet",
+                    "power_saving_mode": "Úsporný režim",
+                    "unavailable": "Není k dispozici",
+                    "unspecified": "Neznámý"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "average_energy_consumption": {
+                "name": "TM Průměrná spotřeba energie",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "average_energy_consumption_automatic": {
+                "name": "TA Průměrná spotřeba energie",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "average_energy_consumption_charge": {
+                "name": "Průměrná spotřeba energie od nabití",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "average_fuel_consumption": {
+                "name": "TM Průměrná spotřeba paliva",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "average_fuel_consumption_automatic": {
+                "name": "TA Průměrná spotřeba paliva",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "average_speed": {
+                "name": "TM Prům. rychlost",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "average_speed_automatic": {
+                "name": "TA Prům. rychlost",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "battery_capacity": {
+                "name": "Kapacita baterie",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "battery_charge_level": {
+                "name": "Úroveň nabití baterie",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "charging_connection_status": {
+                "name": "Stav připojení nabíjení",
+                "state": {
+                    "connection_status_connected_ac": "Připojeno AC",
+                    "connection_status_connected_dc": "Připojeno DC",
+                    "connection_status_disconnected": "Odpojeno",
+                    "connection_status_fault": "Chyba",
+                    "connection_status_unspecified": "Neznámý"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "charging_system_status": {
+                "name": "Stav nabíjení",
+                "state": {
+                    "charging_system_charging": "Nabíjení",
+                    "charging_system_done": "Hotovo",
+                    "charging_system_fault": "Chyba",
+                    "charging_system_idle": "Nečinný",
+                    "charging_system_scheduled": "Naplánováno",
+                    "charging_system_unspecified": "Neznámý"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "distance_to_empty_battery": {
+                "name": "Vzdálenost do vybití baterie",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "distance_to_empty_tank": {
+                "name": "Dojezd do prázdné nádrže",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "distance_to_service": {
+                "name": "Zbývající km do servisní kontroly",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "engine_time_to_service": {
+                "name": "Doba do kontroly motoru",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "estimated_charging_time": {
+                "name": "Odhadovaná doba nabíjení",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "fuel_amount": {
+                "name": "Množství paliva",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "odometer": {
+                "name": "Odometr",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "time_to_service": {
+                "name": "Doba do servisní kontroly",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "trip_meter_automatic": {
+                "name": "TA Vzdálenost",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            },
+            "trip_meter_manual": {
+                "name": "TM Vzdálenost",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API časová značka"
+                    },
+                    "last_refresh": {
+                        "name": "Poslední aktualizace"
+                    }
+                }
+            }
+        }
+    },
+    "exceptions": {
+        "lock_failure": {
+            "message": "Nepodařilo se {command} vozidlo. Stav: {status}. Zpráva: {message}"
+        }
+    },
+    "options": {
+        "abort": {
+            "no_options_available": "Pro vaše vozidlo nejsou k dispozici žádné možnosti."
+        },
+        "step": {
+            "init": {
+                "sections": {
+                    "api": {
+                        "data": {
+                            "vcc_api_key": "Volvo API klíč"
+                        },
+                        "name": "API"
+                    },
+                    "device_tracker": {
+                        "data": {
+                            "device_tracker_picture": "Obrázek"
+                        },
+                        "name": "Sledování zařízení"
+                    },
+                    "images": {
+                        "data": {
+                            "image_bg_color": "Barva pozadí obrázků",
+                            "image_transparent": "Transparentní pozadí obrázků"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Platí pouze v případě, že není požadována průhledost."
+                        },
+                        "name": "Obrázky"
+                    },
+                    "units": {
+                        "data": {
+                            "energy_consumption_unit": "Jednotka spotřeby energie",
+                            "fuel_consumption_unit": "Jednotka spotřeby paliva"
+                        },
+                        "name": "Jednotky"
+                    }
+                }
+            }
+        }
+    },
+    "selector": {
+        "energy_consumption_unit": {
+            "options": {
+                "kwh_100km": "kWh/100 km",
+                "miles_kwh": "mi/kwh"
+            }
+        },
+        "fuel_consumption_unit": {
+            "options": {
+                "l_100km": "l/100 km",
+                "mpg_uk": "mpg (UK)",
+                "mpg_us": "mpg (US)"
+            }
+        },
+        "refresh_data_param": {
+            "options": {
+                "availability": "Dostupnost",
+                "brakes": "Brzdy",
+                "diagnostics": "Diagnostika",
+                "doors": "Dveře",
+                "engine": "Motor",
+                "engine_status": "Stav motoru",
+                "fuel": "Palivo",
+                "location": "Poloha",
+                "odometer": "Odometr",
+                "recharge_status": "Stav nabíjení",
+                "statistics": "Statistiky",
+                "tyres": "Pneumatiky",
+                "warnings": "Varování",
+                "windows": "Okna"
+            }
+        }
+    },
+    "services": {
+        "refresh_data": {
+            "description": "Aktualizovat všechna data, nebo pouze vybrané části.",
+            "fields": {
+                "data": {
+                    "description": "Pro aktualizaci všech dat nechte pole prázdné",
+                    "name": "Data"
+                },
+                "entry": {
+                    "description": "Aktualizovaná entita. Pro aktualizaci všech entit nechte pole prázdné.",
+                    "name": "Vstup"
+                }
+            },
+            "name": "Aktualizovat data"
+        }
+    }
+}
