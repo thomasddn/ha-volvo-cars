@@ -44,3 +44,13 @@ OPT_UNIT_MPG_US = "mpg_us"
 SERVICE_REFRESH_DATA = "refresh_data"
 SERVICE_PARAM_DATA = "data"
 SERVICE_PARAM_ENTRY = "entry"
+
+# IEC-61851 converting
+DICT_CHARGE_STATUS_MAPPING: dict = {
+    "charging_system_charging": "C",
+    "charging_system_done": "B",
+    "charging_system_fault": "E",
+    "charging_system_idle": "B",
+    "charging_system_scheduled": "B",
+    "charging_system_unspecified": "A",
+}

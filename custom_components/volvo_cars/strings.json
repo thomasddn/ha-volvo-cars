@@ -1030,6 +1030,24 @@
                     }
                 }
             },
+            "charging_system_status_normalized": {
+                "name": "Charging status Normalized",
+                "state": {
+                    "A": "[%key:common::Unknown%]",
+                    "B": "Idle",
+                    "C": "Charging",
+                    "E": "[%key:common::error%]",
+                    "F": "[%key:common::error%]"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "[%key:common::api_timestamp%]"
+                    },
+                    "last_refresh": {
+                        "name": "[%key:common::last_refresh%]"
+                    }
+                }
+            },
             "charging_system_status": {
                 "name": "Charging status",
                 "state": {
