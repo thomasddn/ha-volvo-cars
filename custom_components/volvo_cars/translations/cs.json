@@ -8,7 +8,6 @@
         "door_open": "Otevřené dveře",
         "error": "Chyba",
         "high_pressure": "Vysoký tlak",
-        "last_refresh": "Poslední aktualizace",
         "last_result": "Poslední výsledek",
         "low_pressure": "Nízký tlak",
         "not_allowed_privacy_enabled": "Není povoleno, je nastaven režim ochrany soukromí",
@@ -39,7 +38,7 @@
                 "data": {
                     "otp": "Jednorázové heslo"
                 },
-                "description": "Zadejte jednorázové heslo, které jste obdrželi do své poštovní schránky."
+                "description": "Zadejte jednorázové heslo, které jste obdrželi do své mailové schránky."
             },
             "reauth_confirm": {
                 "description": "Integrace Volvo Cars potřebuje znovu ověřit váš účet.",
@@ -54,7 +53,7 @@
                     "vin": "Identifikační číslo vozidla (VIN)"
                 },
                 "data_description": {
-                    "friendly_name": "Tato hodnota se používá v ID entity (volvo_[popisný název]_[klíč]). Pokud je prázdná, použije se VIN.",
+                    "friendly_name": "Tato hodnota se používá v názvech entit (volvo_[popisný název]_[klíč]). Pokud je prázdná, použije se VIN.",
                     "vin": "VIN je 17 znaků dlouhý a pravděpodobně začíná na YV1, nebo YV4."
                 },
                 "description": "Zadejte přihlašovací údaje k účtu Volvo, VIN a klíč API pro vývojáře Volvo (https://developer.volvocars.com/)."
@@ -68,9 +67,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -79,9 +75,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -90,9 +83,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -101,9 +91,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -112,9 +99,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -123,9 +107,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -134,9 +115,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -145,9 +123,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -156,9 +131,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -167,9 +139,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -178,9 +147,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -189,9 +155,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -200,9 +163,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -211,9 +171,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -222,9 +179,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -233,9 +187,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -244,9 +195,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -255,9 +203,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -266,9 +211,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -277,9 +219,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -288,9 +227,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     },
                     "level": {
                         "name": "Hladina",
@@ -308,9 +244,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -319,9 +252,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -330,9 +260,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -341,9 +268,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -352,9 +276,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -363,9 +284,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -374,9 +292,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     },
                     "reason": {
                         "name": "Důvod",
@@ -401,9 +316,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -412,20 +324,14 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
             "tailgate": {
-                "name": "Zadní dveře",
+                "name": "Kufr",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -434,9 +340,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -445,9 +348,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -456,9 +356,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -467,9 +364,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -478,9 +372,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -489,9 +380,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     },
                     "pressure": {
                         "name": "Tlak",
@@ -510,9 +398,6 @@
                     "api_timestamp": {
                         "name": "API časová značka"
                     },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
-                    },
                     "pressure": {
                         "name": "Tlak",
                         "state": {
@@ -529,9 +414,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     },
                     "pressure": {
                         "name": "Tlak",
@@ -550,9 +432,6 @@
                     "api_timestamp": {
                         "name": "API časová značka"
                     },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
-                    },
                     "pressure": {
                         "name": "Tlak",
                         "state": {
@@ -569,9 +448,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -580,9 +456,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -591,9 +464,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -602,9 +472,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -613,9 +480,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             }
@@ -782,9 +646,6 @@
                     },
                     "direction": {
                         "name": "Směr"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             }
@@ -825,9 +686,6 @@
                     "api_timestamp": {
                         "name": "API časová značka"
                     },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
-                    },
                     "last_result": {
                         "name": "Poslední výsledek",
                         "state": {
@@ -851,9 +709,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     },
                     "last_result": {
                         "name": "Poslední výsledek",
@@ -887,12 +742,7 @@
                 "name": "Počet požadavků API"
             },
             "api_status": {
-                "name": "Stav API",
-                "state_attributes": {
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
-                    }
-                }
+                "name": "Stav API"
             },
             "availability": {
                 "name": "Připojení automobilu",
@@ -907,9 +757,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -918,9 +765,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -929,9 +773,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -940,9 +781,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -951,9 +789,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -962,9 +797,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -973,9 +805,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -984,9 +813,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -995,9 +821,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1006,9 +829,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1024,9 +844,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1043,9 +860,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1054,9 +868,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1065,9 +876,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1076,9 +884,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1087,9 +892,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1098,9 +900,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1109,20 +908,14 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
             "odometer": {
-                "name": "Odometr",
+                "name": "Ujetá vzdálenost",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1131,9 +924,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1142,9 +932,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             },
@@ -1153,9 +940,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API časová značka"
-                    },
-                    "last_refresh": {
-                        "name": "Poslední aktualizace"
                     }
                 }
             }
@@ -1230,7 +1014,7 @@
                 "engine_status": "Stav motoru",
                 "fuel": "Palivo",
                 "location": "Poloha",
-                "odometer": "Odometr",
+                "odometer": "Ujetá vzdálenost",
                 "recharge_status": "Stav nabíjení",
                 "statistics": "Statistiky",
                 "tyres": "Pneumatiky",

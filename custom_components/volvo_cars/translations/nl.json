@@ -8,7 +8,6 @@
         "door_open": "Deur open",
         "error": "Fout",
         "high_pressure": "Hoge druk",
-        "last_refresh": "Laatst ververst",
         "last_result": "Laatste resultaat",
         "low_pressure": "Lage druk",
         "not_allowed_privacy_enabled": "Niet toegestaan, privacy ingeschakeld",
@@ -68,9 +67,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -79,9 +75,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -90,9 +83,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -101,9 +91,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -112,9 +99,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -123,9 +107,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -134,9 +115,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -145,9 +123,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -156,9 +131,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -167,9 +139,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -178,9 +147,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -189,9 +155,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -200,9 +163,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -211,9 +171,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -222,9 +179,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -233,9 +187,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -244,9 +195,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -255,9 +203,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -266,9 +211,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -277,9 +219,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -288,9 +227,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     },
                     "level": {
                         "name": "Niveau",
@@ -308,9 +244,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -319,9 +252,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -330,9 +260,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -341,9 +268,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -352,9 +276,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -363,9 +284,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -374,9 +292,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     },
                     "reason": {
                         "name": "Reden",
@@ -401,9 +316,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -412,9 +324,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -423,9 +332,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -434,9 +340,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -445,9 +348,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -456,9 +356,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -467,9 +364,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -478,9 +372,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -489,9 +380,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     },
                     "pressure": {
                         "name": "Druk",
@@ -510,9 +398,6 @@
                     "api_timestamp": {
                         "name": "API tijdstip"
                     },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
-                    },
                     "pressure": {
                         "name": "Druk",
                         "state": {
@@ -529,9 +414,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     },
                     "pressure": {
                         "name": "Druk",
@@ -550,9 +432,6 @@
                     "api_timestamp": {
                         "name": "API tijdstip"
                     },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
-                    },
                     "pressure": {
                         "name": "Druk",
                         "state": {
@@ -569,9 +448,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -580,9 +456,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -591,9 +464,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -602,9 +472,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -613,9 +480,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             }
@@ -782,9 +646,6 @@
                     },
                     "direction": {
                         "name": "Richting"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             }
@@ -825,9 +686,6 @@
                     "api_timestamp": {
                         "name": "API tijdstip"
                     },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
-                    },
                     "last_result": {
                         "name": "Laatste resultaat",
                         "state": {
@@ -851,9 +709,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     },
                     "last_result": {
                         "name": "Laatste resultaat",
@@ -887,12 +742,7 @@
                 "name": "Aantal API requests"
             },
             "api_status": {
-                "name": "API status",
-                "state_attributes": {
-                    "last_refresh": {
-                        "name": "Laatst ververst"
-                    }
-                }
+                "name": "API status"
             },
             "availability": {
                 "name": "Verbinding voertuig",
@@ -907,9 +757,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -918,9 +765,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -929,9 +773,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -940,9 +781,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -951,9 +789,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -962,9 +797,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -973,9 +805,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -984,9 +813,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -995,9 +821,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1006,9 +829,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1024,9 +844,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1043,9 +860,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1054,9 +868,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1065,9 +876,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1076,9 +884,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1087,9 +892,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1098,9 +900,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1109,9 +908,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1120,9 +916,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1131,9 +924,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1142,9 +932,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             },
@@ -1153,9 +940,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
-                    },
-                    "last_refresh": {
-                        "name": "Laatst ververst"
                     }
                 }
             }
