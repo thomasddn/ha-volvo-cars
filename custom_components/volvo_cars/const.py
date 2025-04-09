@@ -15,7 +15,6 @@ PLATFORMS: list = [
 
 ATTR_API_TIMESTAMP = "api_timestamp"
 ATTR_DIRECTION = "direction"
-ATTR_LAST_REFRESH = "last_refresh"
 ATTR_LAST_RESULT = "last_result"
 
 CONF_OTP = "otp"

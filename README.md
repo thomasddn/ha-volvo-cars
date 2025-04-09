@@ -95,7 +95,6 @@ The action's status is included in the attributes.
 Most entities have these attributes:
 
 - `api_timestamp`: Timestamp indicating the last time the API retrieved the value from the vehicle.
-- `last_refresh`: Timestamp indicating the last time the value was retrieved from the API.
 
 #### Additional entities
 

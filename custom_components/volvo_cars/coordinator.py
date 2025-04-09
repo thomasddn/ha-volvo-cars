@@ -17,13 +17,7 @@ from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .const import (
-    ATTR_LAST_REFRESH,
-    DATA_BATTERY_CAPACITY,
-    DATA_REQUEST_COUNT,
-    DOMAIN,
-    MANUFACTURER,
-)
+from .const import DATA_BATTERY_CAPACITY, DATA_REQUEST_COUNT, DOMAIN, MANUFACTURER
 from .entity_description import VolvoCarsDescription
 from .store import VolvoCarsStoreManager
 from .volvo.api import VolvoCarsApi
@@ -213,13 +207,7 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
                     # Something bad happened, raise immediately.
                     raise result
 
-                api_data = cast(CoordinatorData, result)
-
-                for v in api_data.values():
-                    if v:
-                        v.extra_data[ATTR_LAST_REFRESH] = datetime.now(UTC)
-
-                data |= api_data
+                data |= cast(CoordinatorData, result)
                 valid += 1
 
             # Raise an error if not a single API call succeeded

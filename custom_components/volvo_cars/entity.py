@@ -4,7 +4,7 @@ from homeassistant.const import CONF_FRIENDLY_NAME, Platform
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import ATTR_API_TIMESTAMP, ATTR_LAST_REFRESH, MANUFACTURER
+from .const import ATTR_API_TIMESTAMP, MANUFACTURER
 from .coordinator import VolvoCarsDataCoordinator
 from .entity_description import VolvoCarsDescription
 from .volvo.models import VolvoCarsApiBaseModel, VolvoCarsValueField
@@ -64,9 +64,6 @@ class VolvoCarsEntity(CoordinatorEntity[VolvoCarsDataCoordinator]):
 
         if isinstance(api_field, VolvoCarsValueField):
             self._attr_extra_state_attributes[ATTR_API_TIMESTAMP] = api_field.timestamp
-
-        if api_field and (last_refresh := api_field.extra_data.get(ATTR_LAST_REFRESH)):
-            self._attr_extra_state_attributes[ATTR_LAST_REFRESH] = last_refresh
 
         self._update_state(api_field)
         super()._handle_coordinator_update()
