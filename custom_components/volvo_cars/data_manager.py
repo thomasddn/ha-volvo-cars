@@ -12,7 +12,6 @@ from typing import Any, cast
 
 from aiohttp import ClientError, ClientSession
 
-from homeassistant.const import EVENT_HOMEASSISTANT_STOP
 from homeassistant.core import CALLBACK_TYPE, Event, HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.json import save_json

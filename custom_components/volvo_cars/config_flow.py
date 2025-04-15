@@ -50,7 +50,7 @@ from .const import (
 from .coordinator import VolvoCarsData
 from .factory import async_create_auth_api
 from .store import VolvoCarsStoreManager
-from .volvo.models import AuthorizationModel, VolvoAuthException
+from .volvo.models import AuthorizationModel, VolvoApiException
 
 _LOGGER = logging.getLogger(__name__)
 _VIN_REGEX = re.compile(r"[A-Z0-9]{17}")
@@ -142,7 +142,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                     self._auth_result = await api.async_request_token(
                         self._auth_result.next_url, user_input[CONF_OTP]
                     )
-            except VolvoAuthException as ex:
+            except VolvoApiException as ex:
                 _LOGGER.exception("Authentication failed: %s", ex.message)
                 errors["base"] = "invalid_auth"
 
@@ -221,7 +221,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             result = await api.async_authenticate(
                 user_input[CONF_USERNAME], user_input[CONF_PASSWORD]
             )
-        except VolvoAuthException as ex:
+        except VolvoApiException as ex:
             _LOGGER.exception("Authentication failed: %s", ex.message)
             errors["base"] = "invalid_auth"
 

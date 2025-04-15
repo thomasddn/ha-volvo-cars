@@ -6,7 +6,12 @@ from typing import Any, cast
 
 from aiohttp import ClientError, ClientSession, ClientTimeout, hdrs
 
-from .models import AuthorizationModel, TokenResponse, VolvoAuthException
+from .models import (
+    AuthorizationModel,
+    TokenResponse,
+    VolvoApiException,
+    VolvoAuthException,
+)
 from .util import redact_data
 
 _AUTH_URL = "https://volvoid.eu.volvocars.com/as/authorization.oauth2"
@@ -249,9 +254,12 @@ class VolvoCarsAuthApi:
                 response.raise_for_status()
                 return data
 
-        except (ClientError, TimeoutError) as ex:
+        except ClientError as ex:
             _LOGGER.debug("Request [%s] error: %s", name, ex.__class__.__name__)
             raise VolvoAuthException(ex.__class__.__name__) from ex
+        except TimeoutError as ex:
+            _LOGGER.debug("Request [%s] error: %s", name, ex.__class__.__name__)
+            raise VolvoApiException(ex.__class__.__name__) from ex
 
     def _create_exception(self, data: dict[str, Any]) -> VolvoAuthException:
         return VolvoAuthException(

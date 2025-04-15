@@ -430,6 +430,7 @@ class TokenCoordinator:
             result = await self._auth_api.async_refresh_token(
                 self._store.data["refresh_token"]
             )
+
         except VolvoAuthException as ex:
             if raise_on_auth_failed:
                 _LOGGER.exception("Authentication failed: %s", ex.message)
@@ -448,6 +449,22 @@ class TokenCoordinator:
                     "Authentication failed: %s. Starting reauth flow", ex.message
                 )
                 self._entry.async_start_reauth(self._hass)
+
+        except VolvoApiException as ex:
+            if raise_on_auth_failed:
+                _LOGGER.exception("Authentication failed: %s", ex.message)
+                raise ConfigEntryAuthFailed(
+                    f"Authentication failed. {ex.message}"
+                ) from ex
+
+            if not self._delays:
+                self._delays = deque([300])
+
+            _LOGGER.exception(
+                "Authentication failed: %s. Trying again in %ss",
+                ex.message,
+                self._delays[0],
+            )
 
         if result and result.token:
             await self._store.async_update(
