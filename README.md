@@ -11,7 +11,7 @@ Now check out the features section for details on what you'll get!
 [![CI main][ci-main-shield]][ci-workflow]
 [![CI dev][ci-dev-shield]][ci-workflow]
 [![HACS][hacs-shield]][hacs]
-[![Sponsor][sponsor-shield]][sponsor]
+[![Sponsor][sponsor-shield]](#sponsor)
 
 > [!IMPORTANT]
 > Coming over from volvo2mqtt? Hi! 👋 Please [read this](https://github.com/thomasddn/ha-volvo-cars/wiki/volvo2mqtt).
@@ -22,7 +22,7 @@ Now check out the features section for details on what you'll get!
 
 - Multiple cars
 - Multiple accounts
-- Multiple languages: Dutch (nl), English (en), Finnish (fi), French (fr), German (de), Norwegian Bokmål (nb), Polish (pl), Portuguese Brazil (pt-BR), Portuguese Portugal (pt), Spanish (es), Swedish (sv)
+- Multiple languages: Czech (cs), Dutch (nl), English (en), Finnish (fi), French (fr), German (de), Norwegian Bokmål (nb), Polish (pl), Portuguese Brazil (pt-BR), Portuguese Portugal (pt), Spanish (es), Swedish (sv)
 
 <br>
 
@@ -206,11 +206,14 @@ Both [timthorn](https://community.home-assistant.io/t/volvo-cars-integration/796
 
 - ~~Test if you have multiple Volvos on the **same account**.~~
 
+<a name="sponsor"></a>
+
 ## 🥤 Powered by snacks
 
 When I'm coding, I run on coffee, Coca-Cola*, and Lays* potato chips. If you'd like to show your appreciation for this project, consider making a small donation to help keep my stash stocked! (Note: I'm also happy to accept 1,000,000 USD — or EUR, I'm not picky. 😁)
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N7UZ6KN)
+[![ko-fi sponsor][kofi-sponsor-shield]][kofi-sponsor]
+[![github sponsor][github-sponsor-shield]][github-sponsor]
 
 <sub><sub>\* No affiliation with these brands — just personal favorites!</sub></sub>
 
@@ -223,4 +226,7 @@ When I'm coding, I run on coffee, Coca-Cola*, and Lays* potato chips. If you'd l
 [hacs-shield]: https://img.shields.io/badge/HACS-queued-orange?style=flat-square
 [hacs]: https://github.com/hacs/default/pulls?q=is%3Apr+is%3Aopen+draft%3Afalse+sort%3Acreated-asc
 [sponsor-shield]: https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&color=%23fe8e86&style=flat-square
-[sponsor]: https://ko-fi.com/N4N7UZ6KN
+[kofi-sponsor-shield]: https://img.shields.io/badge/Support_me_on_Ko--fi-%E2%9D%A4-fe8e86?style=for-the-badge&logo=kofi&logoColor=ffffff
+[kofi-sponsor]: https://ko-fi.com/N4N7UZ6KN
+[github-sponsor-shield]: https://img.shields.io/badge/Support_me_on_GitHub-%E2%9D%A4-fe8e86?style=for-the-badge&logo=github&color=fe8e86
+[github-sponsor]: https://github.com/sponsors/thomasddn
