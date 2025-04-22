@@ -195,7 +195,7 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
                 if isinstance(result, VolvoApiException):
                     # Maybe it's just one call that fails. Log the error and
                     # continue processing the other calls.
-                    _LOGGER.debug(
+                    _LOGGER.warning(
                         "%s - Error during data update: %s",
                         self.config_entry.entry_id,
                         result.message,

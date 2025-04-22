@@ -209,7 +209,7 @@ class VolvoCarsApi:
         if method == hdrs.METH_POST:
             headers[hdrs.CONTENT_TYPE] = "application/json"
 
-        data: dict[str, Any]
+        data: dict[str, Any] = {}
 
         try:
             _LOGGER.debug(
