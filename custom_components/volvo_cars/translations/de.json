@@ -8,7 +8,6 @@
         "door_open": "Tür offen",
         "error": "Fehler",
         "high_pressure": "Hoher Reifendruck",
-        "last_refresh": "Zuletzt aktualisiert",
         "last_result": "Letztes Ergebnis",
         "low_pressure": "Niedriger Reifendruck",
         "not_allowed_privacy_enabled": "Nicht erlaubt, Datenschutz aktiviert",
@@ -68,9 +67,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -79,9 +75,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -90,9 +83,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -101,9 +91,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -112,9 +99,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -123,9 +107,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -134,9 +115,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -145,9 +123,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -156,9 +131,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -167,9 +139,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -178,9 +147,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -189,9 +155,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -200,9 +163,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -211,9 +171,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -222,9 +179,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -233,9 +187,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -244,9 +195,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -255,9 +203,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -266,9 +211,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -277,9 +219,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -288,9 +227,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     },
                     "level": {
                         "name": "Füllstand",
@@ -308,9 +244,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -319,9 +252,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -330,9 +260,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -341,9 +268,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -352,9 +276,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -363,9 +284,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -374,9 +292,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     },
                     "reason": {
                         "name": "Grund",
@@ -401,9 +316,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -412,9 +324,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -423,9 +332,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -434,9 +340,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -445,9 +348,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -456,9 +356,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -467,9 +364,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -478,9 +372,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -489,9 +380,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     },
                     "pressure": {
                         "name": "Reifendruck",
@@ -510,9 +398,6 @@
                     "api_timestamp": {
                         "name": "API Zeitstempel"
                     },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
-                    },
                     "pressure": {
                         "name": "Reifendruck",
                         "state": {
@@ -529,9 +414,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     },
                     "pressure": {
                         "name": "Reifendruck",
@@ -550,9 +432,6 @@
                     "api_timestamp": {
                         "name": "API Zeitstempel"
                     },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
-                    },
                     "pressure": {
                         "name": "Reifendruck",
                         "state": {
@@ -569,9 +448,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -580,9 +456,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -591,9 +464,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -602,9 +472,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -613,9 +480,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             }
@@ -782,9 +646,6 @@
                     },
                     "direction": {
                         "name": "Richtung"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             }
@@ -825,9 +686,6 @@
                     "api_timestamp": {
                         "name": "API Zeitstempel"
                     },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
-                    },
                     "last_result": {
                         "name": "Letztes Ergebnis",
                         "state": {
@@ -851,9 +709,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     },
                     "last_result": {
                         "name": "Letztes Ergebnis",
@@ -887,12 +742,7 @@
                 "name": "API Zugriffszähler"
             },
             "api_status": {
-                "name": "API Status",
-                "state_attributes": {
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
-                    }
-                }
+                "name": "API Status"
             },
             "availability": {
                 "name": "Fahrzeugverbindung",
@@ -907,9 +757,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -918,9 +765,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -929,9 +773,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -940,9 +781,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -951,9 +789,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -962,9 +797,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -973,9 +805,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -984,9 +813,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -995,9 +821,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1006,9 +829,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1024,9 +844,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1043,9 +860,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1054,9 +868,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1065,9 +876,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1076,9 +884,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1087,9 +892,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1098,9 +900,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1109,9 +908,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1120,9 +916,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1131,9 +924,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1142,9 +932,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             },
@@ -1153,9 +940,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API Zeitstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Zuletzt aktualisiert"
                     }
                 }
             }

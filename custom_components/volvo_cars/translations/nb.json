@@ -8,7 +8,6 @@
         "door_open": "Dør åpen",
         "error": "Feil",
         "high_pressure": "Høyt trykk",
-        "last_refresh": "Siste oppdatering",
         "last_result": "Siste resultat",
         "low_pressure": "Lavt trykk",
         "not_allowed_privacy_enabled": "Ulovlig, privat modus på",
@@ -68,9 +67,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -79,9 +75,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -90,9 +83,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -101,9 +91,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -112,9 +99,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -123,9 +107,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -134,9 +115,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -145,9 +123,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -156,9 +131,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -167,9 +139,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -178,9 +147,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -189,9 +155,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -200,9 +163,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -211,9 +171,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -222,9 +179,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -233,9 +187,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -244,9 +195,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -255,9 +203,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -266,9 +211,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -277,9 +219,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -288,9 +227,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     },
                     "level": {
                         "name": "Nivå",
@@ -308,9 +244,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -319,9 +252,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -330,9 +260,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -341,9 +268,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -352,9 +276,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -363,9 +284,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -374,9 +292,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     },
                     "reason": {
                         "name": "Årsak",
@@ -401,9 +316,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -412,9 +324,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -423,9 +332,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -434,9 +340,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -445,9 +348,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -456,9 +356,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -467,9 +364,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -478,9 +372,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -489,9 +380,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     },
                     "pressure": {
                         "name": "Trykk",
@@ -510,9 +398,6 @@
                     "api_timestamp": {
                         "name": "API tidsstempel"
                     },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
-                    },
                     "pressure": {
                         "name": "Trykk",
                         "state": {
@@ -529,9 +414,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     },
                     "pressure": {
                         "name": "Trykk",
@@ -550,9 +432,6 @@
                     "api_timestamp": {
                         "name": "API tidsstempel"
                     },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
-                    },
                     "pressure": {
                         "name": "Trykk",
                         "state": {
@@ -569,9 +448,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -580,9 +456,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -591,9 +464,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -602,9 +472,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -613,9 +480,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             }
@@ -782,9 +646,6 @@
                     },
                     "direction": {
                         "name": "Retning"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             }
@@ -825,9 +686,6 @@
                     "api_timestamp": {
                         "name": "API tidsstempel"
                     },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
-                    },
                     "last_result": {
                         "name": "Siste resultat",
                         "state": {
@@ -851,9 +709,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     },
                     "last_result": {
                         "name": "Siste resultat",
@@ -887,12 +742,7 @@
                 "name": "Antall API kall"
             },
             "api_status": {
-                "name": "API status",
-                "state_attributes": {
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
-                    }
-                }
+                "name": "API status"
             },
             "availability": {
                 "name": "Tilkobling bil",
@@ -907,9 +757,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -918,9 +765,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -929,9 +773,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -940,9 +781,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -951,9 +789,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -962,9 +797,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -973,9 +805,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -984,9 +813,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -995,9 +821,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1006,9 +829,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1024,9 +844,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1043,9 +860,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1054,9 +868,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1065,9 +876,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1076,9 +884,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1087,9 +892,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1098,9 +900,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1109,9 +908,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1120,9 +916,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1131,9 +924,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1142,9 +932,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             },
@@ -1153,9 +940,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tidsstempel"
-                    },
-                    "last_refresh": {
-                        "name": "Siste oppdatering"
                     }
                 }
             }
