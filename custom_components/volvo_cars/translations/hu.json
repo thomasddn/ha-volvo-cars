@@ -1,0 +1,1042 @@
+{
+    "common": {
+        "api_timestamp": "API időkód",
+        "car_error": "Autó hiba",
+        "completed": "Kész",
+        "connection_failure": "Kapcsolati hiba",
+        "delivered": "Elküldve",
+        "door_open": "Ajtó nyitva",
+        "error": "Hiba",
+        "high_pressure": "Magas nyomás",
+        "last_result": "Utolsó eredmény",
+        "low_pressure": "Alacsony nyomás",
+        "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+        "ok": "OK",
+        "pressure": "Nyomás",
+        "rejected": "Elutasítva",
+        "running": "Fut",
+        "time_frame_passed": "Eltelt az időkeret",
+        "timeout": "Időtúllépés",
+        "unknown": "Ismeretlen",
+        "vcc_api_key": "Volvo API-kulcs",
+        "vehicle_in_sleep": "Az autó alvó állapotban",
+        "very_low_pressure": "Nagyon alacsony nynomás",
+        "waiting": "Várakozás",
+        "wrong_usage": "Helytelen használat"
+    },
+    "config": {
+        "abort": {
+            "already_configured": "Az autó konfigurálva",
+            "reauth_successful": "Azonosítás sikeres"
+        },
+        "error": {
+            "invalid_auth": "Azonosítás hiba",
+            "invalid_vin": "VIN hibás"
+        },
+        "step": {
+            "otp": {
+                "data": {
+                    "otp": "OTP"
+                },
+                "description": "Írd be a e-mailben kapott azonosítót (OTP)."
+            },
+            "reauth_confirm": {
+                "description": "A Volvo Autó integrációt újra kell hitelesíteni",
+                "title": "A hitelesítés lejárt"
+            },
+            "user": {
+                "data": {
+                    "friendly_name": "Rövid név",
+                    "password": "Jelszó",
+                    "username": "Felhasználónév",
+                    "vcc_api_key": "Volvo API-kulcs",
+                    "vin": "Járműazonosító szám"
+                },
+                "data_description": {
+                    "friendly_name": "Ezt az értéket az entitás azonosító (volvo_[friendly name]_[key]) használja. Ha üresen marad, a VIN kerül felhasználásra.",
+                    "vin": "Az alvázszám 17 karakter hosszú, és valószínűleg YV1 vagy YV4 betűvel kezdődik."
+                },
+                "description": "Írd be a Volvo azonosítód, VIN és a Volvo developers API kulcsot (https://developer.volvocars.com/)."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "brake_fluid_level_warning": {
+                "name": "Fék folyadék",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "brake_light_center_warning": {
+                "name": "Féklámpa középső",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "brake_light_left_warning": {
+                "name": "Féklámpa bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "brake_light_right_warning": {
+                "name": "Féklámpa jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "coolant_level_warning": {
+                "name": "Hűtőfolyadék szint",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "daytime_running_light_left_warning": {
+                "name": "Menetfény bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "daytime_running_light_right_warning": {
+                "name": "Menetfény jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "door_front_left": {
+                "name": "Első ajtó bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "door_front_right": {
+                "name": "Első ajtó jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "door_rear_left": {
+                "name": "Hátsó ajtó bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "door_rear_right": {
+                "name": "Hátsó ajtó jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "engine_status": {
+                "name": "Motor állapot",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "fog_light_front_warning": {
+                "name": "Ködlámpa első",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "fog_light_rear_warning": {
+                "name": "Ködlámpa hátsó",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "hazard_lights_warning": {
+                "name": "Vészvillogó",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "high_beam_left_warning": {
+                "name": "Távolsági fényszóró bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "high_beam_right_warning": {
+                "name": "Távolsági fényszóró jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "hood": {
+                "name": "Motorháztető",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "low_beam_left_warning": {
+                "name": "Tompított fényszóró bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "low_beam_right_warning": {
+                "name": "Tompított fényszóró jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "oil_level_warning": {
+                "name": "Olajszint",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    },
+                    "level": {
+                        "name": "Szint",
+                        "state": {
+                            "no_warning": "OK",
+                            "service_required": "Szervíz szükséges",
+                            "too_high": "Túl magas",
+                            "too_low": "Túl alacsony"
+                        }
+                    }
+                }
+            },
+            "position_light_front_left_warning": {
+                "name": "Helyzetjelző lámpa balra elöl",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "position_light_front_right_warning": {
+                "name": "Helyzetlámpa jobb elöl",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "position_light_rear_left_warning": {
+                "name": "Helyzetlámpa bal hátsó",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "position_light_rear_right_warning": {
+                "name": "Helyzetlámpa jobb hátsó",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "registration_plate_light_warning": {
+                "name": "Rendszám világítás",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "reverse_lights_warning": {
+                "name": "Tolató lámpa",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "service_warning": {
+                "name": "Szervíz szükséges",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    },
+                    "reason": {
+                        "name": "Indoklás",
+                        "state": {
+                            "distance_driven_almost_time_for_service": "Megtett kilóméter alapú szervíz szükséges hamarosan",
+                            "distance_driven_overdue_for_service": "Megtett kilóméter alapú szervíz lejárt",
+                            "distance_driven_time_for_service": "Megtett kilóméter alapú szervíz szükséges",
+                            "engine_hours_almost_time_for_service": "Hamarosan motor szervíz szükséges",
+                            "engine_hours_overdue_for_service": "Motor szervíz szolgáltataás lejárt",
+                            "engine_hours_time_for_service": "Motor szervíz szüksége",
+                            "no_warning": "OK",
+                            "regular_maintenance_almost_time_for_service": "Szervíz szükséges hamarosan",
+                            "regular_maintenance_overdue_for_service": "A szolgáltatás lejárt",
+                            "regular_maintenance_time_for_service": "A szerviz ideje",
+                            "unknown_warning": "Ismeretlen figyelmeztetés"
+                        }
+                    }
+                }
+            },
+            "side_mark_lights_warning": {
+                "name": "Helyzetjelző lámpa",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "sunroof": {
+                "name": "Napfénytető",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "tailgate": {
+                "name": "Csomagtérajtó",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "tank_lid": {
+                "name": "Benzintank fedél",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "turn_indication_front_left_warning": {
+                "name": "Első index bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "turn_indication_front_right_warning": {
+                "name": "Első index jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "turn_indication_rear_left_warning": {
+                "name": "Hátsó index bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "turn_indication_rear_right_warning": {
+                "name": "Hátsó index jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "tyre_front_left": {
+                "name": "Első kerék bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    },
+                    "pressure": {
+                        "name": "Nyomás",
+                        "state": {
+                            "high_pressure": "Magas nyomás",
+                            "low_pressure": "Alacsony nyomás",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Nagyon alacsony nynomás"
+                        }
+                    }
+                }
+            },
+            "tyre_front_right": {
+                "name": "Első kerék jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    },
+                    "pressure": {
+                        "name": "Nyomás",
+                        "state": {
+                            "high_pressure": "Magas nyomás",
+                            "low_pressure": "Alacsony nyomás",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Nagyon alacsony nynomás"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_left": {
+                "name": "Hátsó kerék bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    },
+                    "pressure": {
+                        "name": "Nyomás",
+                        "state": {
+                            "high_pressure": "Magas nyomás",
+                            "low_pressure": "Alacsony nyomás",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Nagyon alacsony nynomás"
+                        }
+                    }
+                }
+            },
+            "tyre_rear_right": {
+                "name": "Hátsó kerék jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    },
+                    "pressure": {
+                        "name": "Nyomás",
+                        "state": {
+                            "high_pressure": "Magas nyomás",
+                            "low_pressure": "Alacsony nyomás",
+                            "no_warning": "OK",
+                            "very_low_pressure": "Nagyon alacsony nynomás"
+                        }
+                    }
+                }
+            },
+            "washer_fluid_level_warning": {
+                "name": "Mosófolyadék",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "window_front_left": {
+                "name": "Első ablak bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "window_front_right": {
+                "name": "Első ablak jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "window_rear_left": {
+                "name": "Hátsó ablak bal",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "window_rear_right": {
+                "name": "Hátsó ablak jobb",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            }
+        },
+        "button": {
+            "climatization_start": {
+                "name": "Klíma indítása",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Utolsó eredmény",
+                        "state": {
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Helytelen használat",
+                            "rejected": "Elutasítva",
+                            "running": "Fut",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó alvó állapotban",
+                            "waiting": "Várakozás"
+                        }
+                    }
+                }
+            },
+            "climatization_stop": {
+                "name": "Klima leálítása",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Utolsó eredmény",
+                        "state": {
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Helytelen használat",
+                            "rejected": "Elutasítva",
+                            "running": "Fut",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó alvó állapotban",
+                            "waiting": "Várakozás"
+                        }
+                    }
+                }
+            },
+            "engine_start": {
+                "name": "Indítsa be a motort",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Utolsó eredmény",
+                        "state": {
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Helytelen használat",
+                            "rejected": "Elutasítva",
+                            "running": "Fut",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó alvó állapotban",
+                            "waiting": "Várakozás"
+                        }
+                    }
+                }
+            },
+            "engine_stop": {
+                "name": "Állítsa le a motort",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Utolsó eredmény",
+                        "state": {
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Helytelen használat",
+                            "rejected": "Elutasítva",
+                            "running": "Fut",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó alvó állapotban",
+                            "waiting": "Várakozás"
+                        }
+                    }
+                }
+            },
+            "flash": {
+                "name": "Villogás",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Utolsó eredmény",
+                        "state": {
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Helytelen használat",
+                            "rejected": "Elutasítva",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó alvó állapotban"
+                        }
+                    }
+                }
+            },
+            "honk": {
+                "name": "Kürt",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Utolsó eredmény",
+                        "state": {
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Helytelen használat",
+                            "rejected": "Elutasítva",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó alvó állapotban"
+                        }
+                    }
+                }
+            },
+            "honk_flash": {
+                "name": "Kürt és villogás",
+                "state_attributes": {
+                    "last_result": {
+                        "name": "Utolsó eredmény",
+                        "state": {
+                            "car_error": "Autó hiba",
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Helytelen használat",
+                            "rejected": "Elutasítva",
+                            "timeout": "Időtúllépés",
+                            "unknown": "Ismeretlen",
+                            "vehicle_in_sleep": "Az autó alvó állapotban"
+                        }
+                    }
+                }
+            },
+            "update_data": {
+                "name": "Az adatok frissítése"
+            }
+        },
+        "device_tracker": {
+            "location": {
+                "name": "Helyszín",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    },
+                    "direction": {
+                        "name": "Irány"
+                    }
+                }
+            }
+        },
+        "image": {
+            "exterior": {
+                "name": "Külső utasoldal"
+            },
+            "exterior_back": {
+                "name": "Külső hátoldal"
+            },
+            "exterior_back_driver": {
+                "name": "Külső hátsó vezető"
+            },
+            "exterior_back_passenger": {
+                "name": "Külső hátsó utas"
+            },
+            "exterior_front": {
+                "name": "Külső első"
+            },
+            "exterior_front_driver": {
+                "name": "Külső vezető oldal"
+            },
+            "exterior_front_passenger": {
+                "name": "Külső utas oldal"
+            },
+            "exterior_side_driver": {
+                "name": "Külső vezető oldal"
+            },
+            "interior": {
+                "name": "Beltér"
+            }
+        },
+        "lock": {
+            "lock": {
+                "name": "Központi zár",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    },
+                    "last_result": {
+                        "name": "Utolsó eredmény",
+                        "state": {
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Helytelen használat",
+                            "rejected": "Elutasítva",
+                            "timeout": "Időtúllépés",
+                            "unable_to_lock_door_open": "Ajtó nyitva",
+                            "unknown": "Ismeretlen",
+                            "unlock_time_frame_passed": "Eltelt az időkeret",
+                            "vehicle_in_sleep": "Az autó alvó állapotban"
+                        }
+                    }
+                }
+            },
+            "lock_reduced_guard": {
+                "name": "Csökkentett zár",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    },
+                    "last_result": {
+                        "name": "Utolsó eredmény",
+                        "state": {
+                            "completed": "Kész",
+                            "connection_failure": "Kapcsolati hiba",
+                            "delivered": "Elküldve",
+                            "not_allowed_privacy_enabled": "Nem engedélyezett, az adatvédelem bekapcsolva",
+                            "not_allowed_wrong_usage_mode": "Helytelen használat",
+                            "rejected": "Elutasítva",
+                            "timeout": "Időtúllépés",
+                            "unable_to_lock_door_open": "Ajtó nyitva",
+                            "unknown": "Ismeretlen",
+                            "unlock_time_frame_passed": "Eltelt az időkeret",
+                            "vehicle_in_sleep": "Az autó alvó állapotban"
+                        }
+                    }
+                }
+            }
+        },
+        "number": {
+            "data_update_interval": {
+                "name": "Adatfrissítési időköz"
+            },
+            "engine_run_time": {
+                "name": "Motor futási ideje"
+            }
+        },
+        "sensor": {
+            "api_request_count": {
+                "name": "API kérések száma"
+            },
+            "api_status": {
+                "name": "API státusz"
+            },
+            "availability": {
+                "name": "Autócsatlakozás",
+                "state": {
+                    "available": "Elérhető",
+                    "car_in_use": "Használatban",
+                    "no_internet": "Nincs internet",
+                    "power_saving_mode": "Energiatakarékos mód",
+                    "unavailable": "Nem elérhető",
+                    "unspecified": "Ismeretlen"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "average_energy_consumption": {
+                "name": "TM Átlagos energiafogyasztás",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "average_energy_consumption_automatic": {
+                "name": "TA Átlagos energiafogyasztás",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "average_energy_consumption_charge": {
+                "name": "Átlagos energiafogyasztás a töltés óta",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "average_fuel_consumption": {
+                "name": "TM Átlagos üzemanyag-fogyasztás",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "average_fuel_consumption_automatic": {
+                "name": "TA Átlagos üzemanyag-fogyasztás",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "average_speed": {
+                "name": "TM Átlagos sebesség",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "average_speed_automatic": {
+                "name": "TA átlagos. sebesség",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "battery_capacity": {
+                "name": "Akkumulátor kapacitása",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "battery_charge_level": {
+                "name": "Az akkumulátor töltöttségi szintje",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "charging_connection_status": {
+                "name": "Töltési kapcsolat állapota",
+                "state": {
+                    "connection_status_connected_ac": "Csatlakoztatva AC",
+                    "connection_status_connected_dc": "Csatlakoztatva DC",
+                    "connection_status_disconnected": "Szétkapcsolva",
+                    "connection_status_fault": "Hiba",
+                    "connection_status_unspecified": "Ismeretlen"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "charging_system_status": {
+                "name": "Töltési állapot",
+                "state": {
+                    "charging_system_charging": "Töltés",
+                    "charging_system_done": "Kész",
+                    "charging_system_fault": "Hiba",
+                    "charging_system_idle": "Tétlen",
+                    "charging_system_scheduled": "Ütemezés",
+                    "charging_system_unspecified": "Ismeretlen"
+                },
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "distance_to_empty_battery": {
+                "name": "Akkumlátorral megtehető távolság",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "distance_to_empty_tank": {
+                "name": "Üzemanyaggal megtehető távolság",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "distance_to_service": {
+                "name": "Távolság a szervízig",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "engine_time_to_service": {
+                "name": "Motor futási idő a szervízig",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "estimated_charging_time": {
+                "name": "Várható töltési idő",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "fuel_amount": {
+                "name": "Üzemanyag mennyiség",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "odometer": {
+                "name": "Kilóméteróra",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "time_to_service": {
+                "name": "Hátralévő idő a szervízig",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "trip_meter_automatic": {
+                "name": "TA távolság",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            },
+            "trip_meter_manual": {
+                "name": "TM távolság",
+                "state_attributes": {
+                    "api_timestamp": {
+                        "name": "API időkód"
+                    }
+                }
+            }
+        }
+    },
+    "exceptions": {
+        "lock_failure": {
+            "message": "Nem sikerült {command} jármű. Állapot: {status}. Üzenet: {message}"
+        }
+    },
+    "options": {
+        "abort": {
+            "no_options_available": "Az Ön járművéhez nem állnak rendelkezésre lehetőségek."
+        },
+        "step": {
+            "init": {
+                "sections": {
+                    "api": {
+                        "data": {
+                            "vcc_api_key": "Volvo API-kulcs"
+                        },
+                        "name": "API"
+                    },
+                    "device_tracker": {
+                        "data": {
+                            "device_tracker_picture": "Kép"
+                        },
+                        "name": "Nyomkövető"
+                    },
+                    "images": {
+                        "data": {
+                            "image_bg_color": "Képek háttérszíne",
+                            "image_transparent": "Átlátszó háttér képek"
+                        },
+                        "data_description": {
+                            "image_bg_color": "Csak akkor alkalmazható, ha az átlátszó nincs bejelölve."
+                        },
+                        "name": "Képek"
+                    },
+                    "units": {
+                        "data": {
+                            "energy_consumption_unit": "Energia fogyasztás mértékegység",
+                            "fuel_consumption_unit": "Üzemanyag-fogyasztás mértékegysége"
+                        },
+                        "name": "Mértékegység"
+                    }
+                }
+            }
+        }
+    },
+    "selector": {
+        "energy_consumption_unit": {
+            "options": {
+                "kwh_100km": "kWh/100 km",
+                "miles_kwh": "mi/kWh"
+            }
+        },
+        "fuel_consumption_unit": {
+            "options": {
+                "l_100km": "L/100 km",
+                "mpg_uk": "mpg (UK)",
+                "mpg_us": "mpg (US)"
+            }
+        },
+        "refresh_data_param": {
+            "options": {
+                "availability": "Elérhetőség",
+                "brakes": "Fékek",
+                "diagnostics": "Diagnosztika",
+                "doors": "Ajtók",
+                "engine": "Motor",
+                "engine_status": "Motor állapot",
+                "fuel": "Üzemeanyag",
+                "location": "Hely",
+                "odometer": "Kilóméteróra",
+                "recharge_status": "Töltési állapot",
+                "statistics": "Statisztikák",
+                "tyres": "Gumik",
+                "warnings": "Figyelmeztetések",
+                "windows": "Ablakok"
+            }
+        }
+    },
+    "services": {
+        "refresh_data": {
+            "description": "Frissítse az összes adatot vagy néhány részletet",
+            "fields": {
+                "data": {
+                    "description": "Hagyd üresen",
+                    "name": "Adat"
+                },
+                "entry": {
+                    "description": "A bejegyzés frissítése. Hagyja üresen az összes bejegyzés adatainak frissítéséhez.",
+                    "name": "Belépés"
+                }
+            },
+            "name": "Adatok frissítése"
+        }
+    }
+}

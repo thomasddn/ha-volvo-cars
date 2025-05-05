@@ -8,7 +8,6 @@
         "door_open": "Porta aberta",
         "error": "Erro",
         "high_pressure": "Pressão alta",
-        "last_refresh": "Última atualização",
         "last_result": "Último resultado",
         "low_pressure": "Pressão baixa",
         "not_allowed_privacy_enabled": "Não permitido, privacidade ativada",
@@ -68,9 +67,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -79,9 +75,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -90,9 +83,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -101,9 +91,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -112,9 +99,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -123,9 +107,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -134,9 +115,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -145,9 +123,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -156,9 +131,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -167,9 +139,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -178,9 +147,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -189,9 +155,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -200,9 +163,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -211,9 +171,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -222,9 +179,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -233,9 +187,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -244,9 +195,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -255,9 +203,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -266,9 +211,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -277,9 +219,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -288,9 +227,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     },
                     "level": {
                         "name": "Nível",
@@ -308,9 +244,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -319,9 +252,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -330,9 +260,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -341,9 +268,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -352,9 +276,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -363,9 +284,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -374,9 +292,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     },
                     "reason": {
                         "name": "Motivo",
@@ -401,9 +316,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -412,9 +324,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -423,9 +332,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -434,9 +340,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -445,9 +348,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -456,9 +356,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -467,9 +364,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -478,9 +372,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -489,9 +380,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     },
                     "pressure": {
                         "name": "Pressão",
@@ -510,9 +398,6 @@
                     "api_timestamp": {
                         "name": "Data/hora da API"
                     },
-                    "last_refresh": {
-                        "name": "Última atualização"
-                    },
                     "pressure": {
                         "name": "Pressão",
                         "state": {
@@ -529,9 +414,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     },
                     "pressure": {
                         "name": "Pressão",
@@ -550,9 +432,6 @@
                     "api_timestamp": {
                         "name": "Data/hora da API"
                     },
-                    "last_refresh": {
-                        "name": "Última atualização"
-                    },
                     "pressure": {
                         "name": "Pressão",
                         "state": {
@@ -569,9 +448,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -580,9 +456,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -591,9 +464,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -602,9 +472,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -613,9 +480,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             }
@@ -782,9 +646,6 @@
                     },
                     "direction": {
                         "name": "Direção"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             }
@@ -825,9 +686,6 @@
                     "api_timestamp": {
                         "name": "Data/hora da API"
                     },
-                    "last_refresh": {
-                        "name": "Última atualização"
-                    },
                     "last_result": {
                         "name": "Último resultado",
                         "state": {
@@ -851,9 +709,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     },
                     "last_result": {
                         "name": "Último resultado",
@@ -887,12 +742,7 @@
                 "name": "Quantidade de pedidos à API"
             },
             "api_status": {
-                "name": "Estado da API",
-                "state_attributes": {
-                    "last_refresh": {
-                        "name": "Última atualização"
-                    }
-                }
+                "name": "Estado da API"
             },
             "availability": {
                 "name": "Ligação ao carro",
@@ -907,9 +757,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -918,9 +765,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -929,9 +773,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -940,9 +781,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -951,9 +789,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -962,9 +797,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -973,9 +805,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -984,9 +813,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -995,9 +821,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1006,9 +829,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1024,9 +844,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1043,9 +860,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1054,9 +868,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1065,9 +876,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1076,9 +884,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1087,9 +892,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1098,9 +900,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1109,9 +908,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1120,9 +916,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1131,9 +924,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1142,9 +932,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             },
@@ -1153,9 +940,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Data/hora da API"
-                    },
-                    "last_refresh": {
-                        "name": "Última atualização"
                     }
                 }
             }

@@ -8,7 +8,6 @@
         "door_open": "Portière ouverte",
         "error": "Erreur",
         "high_pressure": "Pression élevée",
-        "last_refresh": "Dernière actualisation",
         "last_result": "Dernier résultat",
         "low_pressure": "Pression faible",
         "not_allowed_privacy_enabled": "Non autorisé, protection de la vie privée activée",
@@ -68,9 +67,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -79,9 +75,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -90,9 +83,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -101,9 +91,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -112,9 +99,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -123,9 +107,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -134,9 +115,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -145,9 +123,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -156,9 +131,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -167,9 +139,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -178,9 +147,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -189,9 +155,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -200,9 +163,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -211,9 +171,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -222,9 +179,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -233,9 +187,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -244,9 +195,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -255,9 +203,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -266,9 +211,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -277,9 +219,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -288,9 +227,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     },
                     "level": {
                         "name": "Niveau",
@@ -308,9 +244,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -319,9 +252,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -330,9 +260,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -341,9 +268,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -352,9 +276,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -363,9 +284,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -374,9 +292,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     },
                     "reason": {
                         "name": "Motif",
@@ -401,9 +316,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -412,9 +324,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -423,9 +332,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -434,9 +340,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -445,9 +348,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -456,9 +356,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -467,9 +364,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -478,9 +372,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -489,9 +380,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     },
                     "pressure": {
                         "name": "Pression",
@@ -510,9 +398,6 @@
                     "api_timestamp": {
                         "name": "Horodatage API"
                     },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
-                    },
                     "pressure": {
                         "name": "Pression",
                         "state": {
@@ -529,9 +414,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     },
                     "pressure": {
                         "name": "Pression",
@@ -550,9 +432,6 @@
                     "api_timestamp": {
                         "name": "Horodatage API"
                     },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
-                    },
                     "pressure": {
                         "name": "Pression",
                         "state": {
@@ -569,9 +448,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -580,9 +456,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -591,9 +464,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -602,9 +472,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -613,9 +480,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             }
@@ -782,9 +646,6 @@
                     },
                     "direction": {
                         "name": "Direction"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             }
@@ -825,9 +686,6 @@
                     "api_timestamp": {
                         "name": "Horodatage API"
                     },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
-                    },
                     "last_result": {
                         "name": "Dernier résultat",
                         "state": {
@@ -851,9 +709,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     },
                     "last_result": {
                         "name": "Dernier résultat",
@@ -887,12 +742,7 @@
                 "name": "Nombre de requêtes API"
             },
             "api_status": {
-                "name": "État de l’API",
-                "state_attributes": {
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
-                    }
-                }
+                "name": "État de l’API"
             },
             "availability": {
                 "name": "Connexion à la voiture",
@@ -907,9 +757,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -918,9 +765,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -929,9 +773,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -940,9 +781,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -951,9 +789,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -962,9 +797,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -973,9 +805,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -984,9 +813,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -995,9 +821,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1006,9 +829,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1024,9 +844,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1043,9 +860,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1054,9 +868,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1065,9 +876,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1076,9 +884,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1087,9 +892,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1098,9 +900,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1109,9 +908,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1120,9 +916,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1131,9 +924,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1142,9 +932,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             },
@@ -1153,9 +940,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "Horodatage API"
-                    },
-                    "last_refresh": {
-                        "name": "Dernière actualisation"
                     }
                 }
             }

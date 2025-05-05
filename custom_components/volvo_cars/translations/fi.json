@@ -8,7 +8,6 @@
         "door_open": "Ovi auki",
         "error": "Virhe",
         "high_pressure": "Korkea paine",
-        "last_refresh": "Viimeinen päivitys",
         "last_result": "Viimeisin tulos",
         "low_pressure": "Matala paine",
         "not_allowed_privacy_enabled": "Ei sallittu, yksityisyydensuoja käytössä",
@@ -68,9 +67,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -79,9 +75,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -90,9 +83,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -101,9 +91,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -112,9 +99,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -123,9 +107,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -134,9 +115,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -145,9 +123,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -156,9 +131,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -167,9 +139,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -178,9 +147,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -189,9 +155,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -200,9 +163,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -211,9 +171,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -222,9 +179,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -233,9 +187,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -244,9 +195,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -255,9 +203,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -266,9 +211,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -277,9 +219,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -288,9 +227,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     },
                     "level": {
                         "name": "Taso",
@@ -308,9 +244,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -319,9 +252,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -330,9 +260,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -341,9 +268,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -352,9 +276,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -363,9 +284,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -374,9 +292,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     },
                     "reason": {
                         "name": "Syy",
@@ -401,9 +316,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -412,9 +324,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -423,9 +332,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -434,9 +340,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -445,9 +348,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -456,9 +356,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -467,9 +364,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -478,9 +372,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -489,9 +380,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     },
                     "pressure": {
                         "name": "Paine",
@@ -510,9 +398,6 @@
                     "api_timestamp": {
                         "name": "API aikaleima"
                     },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
-                    },
                     "pressure": {
                         "name": "Paine",
                         "state": {
@@ -529,9 +414,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     },
                     "pressure": {
                         "name": "Paine",
@@ -550,9 +432,6 @@
                     "api_timestamp": {
                         "name": "API aikaleima"
                     },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
-                    },
                     "pressure": {
                         "name": "Paine",
                         "state": {
@@ -569,9 +448,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -580,9 +456,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -591,9 +464,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -602,9 +472,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -613,9 +480,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             }
@@ -782,9 +646,6 @@
                     },
                     "direction": {
                         "name": "Suunta"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             }
@@ -825,9 +686,6 @@
                     "api_timestamp": {
                         "name": "API aikaleima"
                     },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
-                    },
                     "last_result": {
                         "name": "Viimeisin tulos",
                         "state": {
@@ -851,9 +709,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     },
                     "last_result": {
                         "name": "Viimeisin tulos",
@@ -887,12 +742,7 @@
                 "name": "API-pyyntöjen määrä"
             },
             "api_status": {
-                "name": "APIn tila",
-                "state_attributes": {
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
-                    }
-                }
+                "name": "APIn tila"
             },
             "availability": {
                 "name": "Auton yhteys",
@@ -907,9 +757,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -918,9 +765,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -929,9 +773,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -940,9 +781,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -951,9 +789,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -962,9 +797,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -973,9 +805,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -984,9 +813,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -995,9 +821,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1006,9 +829,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1024,9 +844,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1043,9 +860,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1054,9 +868,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1065,9 +876,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1076,9 +884,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1087,9 +892,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1098,9 +900,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1109,9 +908,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1120,9 +916,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1131,9 +924,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1142,9 +932,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             },
@@ -1153,9 +940,6 @@
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API aikaleima"
-                    },
-                    "last_refresh": {
-                        "name": "Viimeinen päivitys"
                     }
                 }
             }
