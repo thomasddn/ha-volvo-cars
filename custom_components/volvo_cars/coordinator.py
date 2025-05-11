@@ -207,7 +207,7 @@ class VolvoCarsDataCoordinator(DataUpdateCoordinator[CoordinatorData]):
                     # Something bad happened, raise immediately.
                     raise result
 
-                data |= cast(CoordinatorData, result)
+                data |= cast("CoordinatorData", result)
                 valid += 1
 
             # Raise an error if not a single API call succeeded
