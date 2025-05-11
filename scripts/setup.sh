@@ -22,7 +22,7 @@ if [ ! -n "$VIRTUAL_ENV" ]; then
   else
     python3 -m venv venv
   fi
-  source venv/bin/activate
+  source /home/vscode/.local/ha-venv/bin/activate
 fi
 
 if ! [ -x "$(command -v uv)" ]; then
