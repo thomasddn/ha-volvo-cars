@@ -208,9 +208,9 @@ Both [timthorn](https://community.home-assistant.io/t/volvo-cars-integration/796
 
 <a name="sponsor"></a>
 
-## 🥤 Powered by snacks
+## 🚗 Powered by dreams
 
-When I'm coding, I run on coffee, Coca-Cola*, and Lays* potato chips. If you'd like to show your appreciation for this project, consider making a small donation to help keep my stash stocked! (Note: I'm also happy to accept 1,000,000 USD — or EUR, I'm not picky. 😁)
+If you'd like to show your appreciation for this project, feel free to toss a coin to your dev. Donations help keep things running — and who knows, maybe one day they'll add up to a Volvo EX90 (hey, let me dream!). If you're feeling generous, you may donate one too — I'll even come pick it up! 😁
 
 [![ko-fi sponsor][kofi-sponsor-shield]][kofi-sponsor]
 [![github sponsor][github-sponsor-shield]][github-sponsor]
