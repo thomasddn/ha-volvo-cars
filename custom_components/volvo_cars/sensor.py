@@ -30,6 +30,7 @@ from .const import (
     OPT_UNIT_LITER_PER_100KM,
     OPT_UNIT_MPG_UK,
     OPT_UNIT_MPG_US,
+    DICT_CHARGE_STATUS_MAPPING,
 )
 from .coordinator import VolvoCarsConfigEntry, VolvoCarsDataCoordinator
 from .entity import VolvoCarsEntity, value_to_translation_key
@@ -90,6 +91,11 @@ def _convert_energy_consumption(
         converted_value = (100 / Decimal(1.609344) / value) if value else Decimal(0)
 
     return round(converted_value, 1)
+
+
+# convert charging system status in IEC-61851
+def _convert_charging_system(field: VolvoCarsValue, entry: VolvoCarsConfigEntry) -> str:
+    return DICT_CHARGE_STATUS_MAPPING.get(str(field.value), "A")
 
 
 def _determine_fuel_consumption_unit(entry: VolvoCarsConfigEntry) -> str:
@@ -275,6 +281,23 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
         ],
         icon="mdi:ev-station",
         available_fn=lambda vehicle: vehicle.has_battery_engine(),
+    ),
+    VolvoCarsSensorDescription(
+        key="charging_system_status_normalized",
+        translation_key="charging_system_status_normalized",
+        api_field="chargingSystemStatus",
+        device_class=SensorDeviceClass.ENUM,
+        options=[
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+        ],
+        icon="mdi:ev-station",
+        available_fn=lambda vehicle: vehicle.has_battery_engine(),
+        value_fn=_convert_charging_system,
     ),
     VolvoCarsSensorDescription(
         key="distance_to_empty_battery",
