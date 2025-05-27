@@ -22,7 +22,7 @@ Now check out the features section for details on what you'll get!
 
 - Multiple cars
 - Multiple accounts
-- Multiple languages: Czech (cs), Dutch (nl), English (en), Finnish (fi), French (fr), German (de), Norwegian Bokmål (nb), Polish (pl), Portuguese Brazil (pt-BR), Portuguese Portugal (pt), Spanish (es), Swedish (sv)
+- Multiple languages: Czech (cs), Dutch (nl), English (en), Finnish (fi), French (fr), German (de), Hungarian (hu), Norwegian Bokmål (nb), Polish (pl), Portuguese Brazil (pt-BR), Portuguese Portugal (pt), Spanish (es), Swedish (sv)
 
 <br>
 
@@ -215,16 +215,14 @@ If you'd like to show your appreciation for this project, feel free to toss a co
 [![ko-fi sponsor][kofi-sponsor-shield]][kofi-sponsor]
 [![github sponsor][github-sponsor-shield]][github-sponsor]
 
-<sub><sub>\* No affiliation with these brands — just personal favorites!</sub></sub>
-
 [releases-shield]: https://img.shields.io/github/v/release/thomasddn/ha-volvo-cars?style=flat-square
 [downloads-shield]: https://img.shields.io/github/downloads/thomasddn/ha-volvo-cars/total?style=flat-square
 [releases]: https://github.com/thomasddn/ha-volvo-cars/releases
 [ci-dev-shield]: https://img.shields.io/github/actions/workflow/status/thomasddn/ha-volvo-cars/ci.yml?branch=develop&style=flat-square&label=develop
 [ci-main-shield]: https://img.shields.io/github/actions/workflow/status/thomasddn/ha-volvo-cars/ci.yml?branch=main&style=flat-square&label=main
 [ci-workflow]: https://github.com/thomasddn/ha-volvo-cars/actions/workflows/ci.yml
-[hacs-shield]: https://img.shields.io/badge/HACS-queued-orange?style=flat-square
-[hacs]: https://github.com/hacs/default/pulls?q=is%3Apr+is%3Aopen+draft%3Afalse+sort%3Acreated-asc
+[hacs-shield]: https://img.shields.io/badge/HACS-default-blue?style=flat-square
+[hacs]: https://my.home-assistant.io/redirect/hacs_repository/?owner=thomasddn&repository=ha-volvo-cars&category=integration
 [sponsor-shield]: https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&color=%23fe8e86&style=flat-square
 [kofi-sponsor-shield]: https://img.shields.io/badge/Support_me_on_Ko--fi-%E2%9D%A4-fe8e86?style=for-the-badge&logo=kofi&logoColor=ffffff
 [kofi-sponsor]: https://ko-fi.com/N4N7UZ6KN
