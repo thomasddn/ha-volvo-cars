@@ -22,7 +22,7 @@ Now check out the features section for details on what you'll get!
 
 - Multiple cars
 - Multiple accounts
-- Multiple languages: Czech (cs), Dutch (nl), English (en), Finnish (fi), French (fr), German (de), Norwegian Bokmål (nb), Polish (pl), Portuguese Brazil (pt-BR), Portuguese Portugal (pt), Spanish (es), Swedish (sv)
+- Multiple languages: Czech (cs), Dutch (nl), English (en), Finnish (fi), French (fr), German (de), Hungarian (hu), Norwegian Bokmål (nb), Polish (pl), Portuguese Brazil (pt-BR), Portuguese Portugal (pt), Spanish (es), Swedish (sv)
 
 <br>
 
@@ -208,14 +208,12 @@ Both [timthorn](https://community.home-assistant.io/t/volvo-cars-integration/796
 
 <a name="sponsor"></a>
 
-## 🥤 Powered by snacks
+## 🚗 Powered by dreams
 
-When I'm coding, I run on coffee, Coca-Cola*, and Lays* potato chips. If you'd like to show your appreciation for this project, consider making a small donation to help keep my stash stocked! (Note: I'm also happy to accept 1,000,000 USD — or EUR, I'm not picky. 😁)
+If you'd like to show your appreciation for this project, feel free to toss a coin to your dev. Donations help keep things running — and who knows, maybe one day they'll add up to a Volvo EX90 (hey, let me dream!). If you're feeling generous, you may donate one too — I'll even come pick it up! 😁
 
 [![ko-fi sponsor][kofi-sponsor-shield]][kofi-sponsor]
 [![github sponsor][github-sponsor-shield]][github-sponsor]
-
-<sub><sub>\* No affiliation with these brands — just personal favorites!</sub></sub>
 
 [releases-shield]: https://img.shields.io/github/v/release/thomasddn/ha-volvo-cars?style=flat-square
 [downloads-shield]: https://img.shields.io/github/downloads/thomasddn/ha-volvo-cars/total?style=flat-square
@@ -223,8 +221,8 @@ When I'm coding, I run on coffee, Coca-Cola*, and Lays* potato chips. If you'd l
 [ci-dev-shield]: https://img.shields.io/github/actions/workflow/status/thomasddn/ha-volvo-cars/ci.yml?branch=develop&style=flat-square&label=develop
 [ci-main-shield]: https://img.shields.io/github/actions/workflow/status/thomasddn/ha-volvo-cars/ci.yml?branch=main&style=flat-square&label=main
 [ci-workflow]: https://github.com/thomasddn/ha-volvo-cars/actions/workflows/ci.yml
-[hacs-shield]: https://img.shields.io/badge/HACS-queued-orange?style=flat-square
-[hacs]: https://github.com/hacs/default/pulls?q=is%3Apr+is%3Aopen+draft%3Afalse+sort%3Acreated-asc
+[hacs-shield]: https://img.shields.io/badge/HACS-default-blue?style=flat-square
+[hacs]: https://my.home-assistant.io/redirect/hacs_repository/?owner=thomasddn&repository=ha-volvo-cars&category=integration
 [sponsor-shield]: https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&color=%23fe8e86&style=flat-square
 [kofi-sponsor-shield]: https://img.shields.io/badge/Support_me_on_Ko--fi-%E2%9D%A4-fe8e86?style=for-the-badge&logo=kofi&logoColor=ffffff
 [kofi-sponsor]: https://ko-fi.com/N4N7UZ6KN
