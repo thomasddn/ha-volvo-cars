@@ -230,6 +230,9 @@ class VolvoCarsAuthApi:
     ) -> dict[str, Any]:
         _LOGGER.debug("Request [%s]", name)
 
+        if url.startswith("http://"):
+            url = "https://" + url[len("http://") :]
+
         try:
             async with self._client.request(
                 method,
@@ -263,5 +266,5 @@ class VolvoCarsAuthApi:
 
     def _create_exception(self, data: dict[str, Any]) -> VolvoAuthException:
         return VolvoAuthException(
-            f"Status: {data.get("status")} Reason: {data.get("message")}"
+            f"Status: {data.get('status')} Reason: {data.get('message')}"
         )
