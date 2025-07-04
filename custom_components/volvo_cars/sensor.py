@@ -147,6 +147,7 @@ SENSORS: tuple[VolvoCarsSensorDescription, ...] = (
             "available",
             "car_in_use",
             "no_internet",
+            "ota_installation_in_progress",
             "power_saving_mode",
             "unspecified",
         ],

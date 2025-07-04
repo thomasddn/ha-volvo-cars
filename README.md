@@ -194,18 +194,6 @@ Would you like to see the labels in your own language? Or perhaps you've spotted
 
 Thanks for the idea, [ivanfmartinez](https://github.com/ivanfmartinez)! 🔡
 
-### Testing
-
-Shoutout to [Pau1ey](https://github.com/thomasddn/ha-volvo-cars/issues/1#issuecomment-2540446206) for testing and confirming this! 🤩
-
-- ~~Test if you have multiple Volvos across **different accounts**.~~
-- ~~Test with other Volvo models (non-BEV).~~
-- ~~Users that use imperial system.~~
-
-Both [timthorn](https://community.home-assistant.io/t/volvo-cars-integration/796417/73) and [dalvald](https://github.com/thomasddn/ha-volvo-cars/discussions/3#discussioncomment-11754676) rocking two cars on the same account, what a flex! 💪
-
-- ~~Test if you have multiple Volvos on the **same account**.~~
-
 <a name="sponsor"></a>
 
 ## 🚗 Powered by dreams
