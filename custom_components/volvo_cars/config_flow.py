@@ -251,7 +251,7 @@ class VolvoCarsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             store = VolvoCarsStoreManager(self.hass, self.unique_id)
             await store.async_update(
                 access_token=self._auth_result.token.access_token,
-                refresh_token=self._auth_result.token.refresh_token,
+                refresh_token=self._auth_result.token.refresh_token or "",
             )
 
         data = {
