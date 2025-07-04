@@ -750,6 +750,7 @@
                     "available": "Dostępny",
                     "car_in_use": "Pojazd w użyciu",
                     "no_internet": "Brak internetu",
+                    "ota_installation_in_progress": "Instalowanie aktualizacji OTA",
                     "power_saving_mode": "Tryb oszczędzania energii",
                     "unavailable": "Niedostępny",
                     "unspecified": "Nieznany"

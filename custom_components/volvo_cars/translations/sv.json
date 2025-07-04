@@ -750,6 +750,7 @@
                     "available": "Tillgänglig",
                     "car_in_use": "Bilen används",
                     "no_internet": "Ingen internet",
+                    "ota_installation_in_progress": "Installerar OTA uppdatering",
                     "power_saving_mode": "Energisparläge",
                     "unavailable": "Inte tillgänglig",
                     "unspecified": "Okänd"
