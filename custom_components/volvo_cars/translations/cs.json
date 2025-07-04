@@ -750,6 +750,7 @@
                     "available": "K dispozici",
                     "car_in_use": "Automobil je v provozu",
                     "no_internet": "Žádný internet",
+                    "ota_installation_in_progress": "",
                     "power_saving_mode": "Úsporný režim",
                     "unavailable": "Není k dispozici",
                     "unspecified": "Neznámý"

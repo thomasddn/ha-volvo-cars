@@ -750,6 +750,7 @@
                     "available": "Verfügbar",
                     "car_in_use": "Fahrzeug ist in Gebrauch",
                     "no_internet": "Keine Internetverbindung",
+                    "ota_installation_in_progress": "",
                     "power_saving_mode": "Energiesparmodus",
                     "unavailable": "Nicht verfügbar",
                     "unspecified": "Unbekannt"
