@@ -170,9 +170,9 @@ class TokenResponse(VolvoCarsApiBaseModel):
     """Authorization response model."""
 
     access_token: str
-    refresh_token: str
     token_type: str
     expires_in: int
+    refresh_token: str | None = None
     id_token: str | None = None
 
 
