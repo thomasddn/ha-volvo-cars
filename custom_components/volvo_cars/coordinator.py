@@ -467,10 +467,13 @@ class TokenCoordinator:
             )
 
         if result and result.token:
-            await self._store.async_update(
-                access_token=result.token.access_token,
-                refresh_token=result.token.refresh_token,
-            )
+            if result.token.access_token and result.token.refresh_token:
+                await self._store.async_update(
+                    access_token=result.token.access_token,
+                    refresh_token=result.token.refresh_token,
+                )
+            elif result.token.access_token:
+                await self._store.async_update(access_token=result.token.access_token)
 
             self._set_delays(result.token.expires_in)
 
