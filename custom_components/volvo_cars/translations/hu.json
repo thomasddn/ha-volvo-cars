@@ -750,6 +750,7 @@
                     "available": "Elérhető",
                     "car_in_use": "Használatban",
                     "no_internet": "Nincs internet",
+                    "ota_installation_in_progress": "OTA frissítés",
                     "power_saving_mode": "Energiatakarékos mód",
                     "unavailable": "Nem elérhető",
                     "unspecified": "Ismeretlen"

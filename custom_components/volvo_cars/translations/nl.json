@@ -328,7 +328,7 @@
                 }
             },
             "tailgate": {
-                "name": "Koffer",
+                "name": "Kofferbak",
                 "state_attributes": {
                     "api_timestamp": {
                         "name": "API tijdstip"
@@ -750,6 +750,7 @@
                     "available": "Beschikbaar",
                     "car_in_use": "Voertuig in gebruik",
                     "no_internet": "Geen internet",
+                    "ota_installation_in_progress": "OTA update bezig",
                     "power_saving_mode": "Spaarstand",
                     "unavailable": "Niet beschikbaar",
                     "unspecified": "Onbekend"

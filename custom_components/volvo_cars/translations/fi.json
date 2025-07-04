@@ -750,6 +750,7 @@
                     "available": "Saatavilla",
                     "car_in_use": "Auto on käytössä",
                     "no_internet": "Ei internet-yhteyttä",
+                    "ota_installation_in_progress": "OTA päivitys käynnissä",
                     "power_saving_mode": "Virransäästötila",
                     "unavailable": "Ei saatavilla",
                     "unspecified": "Tuntematon"
