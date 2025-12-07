@@ -1,7 +1,7 @@
 # Volvo Cars Home Assistant integration
 
 > [!IMPORTANT]
-> As of **Home Assistant v2025.8.0** there is an [official Volvo integration](https://www.home-assistant.io/integrations/volvo) available! You can — and probably should — read more about it [right here](https://github.com/thomasddn/ha-volvo-cars/wiki/Official-integration). 🚗💨
+> This custom integration is **no longer maintained** because Home Assistant now provides an [official Volvo integration](https://www.home-assistant.io/integrations/volvo) (also developed by yours truly). This repository is retained for reference and legacy use but will not receive further development.
 
 This integration provides access to your Volvo car, provided your model and region are supported by Volvo's public API. This is not a one-to-one replacement for the official Volvo app, as the app has access to more resources than those available through the public API.
 
